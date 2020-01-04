@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<Models.Entity.FooterCategory>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List Footer Category
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.id">
+                                        <td>@item.id</td>
+                                        <td>@item.name</td>
+                                        <td>
+                                            <a href="/Admin/FooterCategoryAdmin/Edit/@item.id">Edit</a>
+                                            /
+                                            @Ajax.ActionLink("Delete", "Delete", new {@id = item.id} ,new AjaxOptions
+                                       {
+                                           Confirm = "Do you want delete this?",
+                                           OnComplete = "$('#row_" + @item.id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "FooterCategoryAdmin")'">
+            Create New
+        </button>
+    </div>
+</section>
+

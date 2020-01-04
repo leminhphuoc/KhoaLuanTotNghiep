@@ -1,0 +1,75 @@
+﻿@model List<Models.Entity.Contact>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <!-- Title Page -->
+    <div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
+        <div class="container">
+            <h1 class="main-title">
+                Contact
+            </h1>
+
+            <ul class="breadcrumbs">
+                <li>
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    Contact
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end Title Page -->
+    <!-- content contact-page -->
+    <div class="sec--content--contact-page">
+        <div class="container">
+            <div class="hun-element-map layout-1" id="google_map" data-map-x="10.741413" data-map-y="106.702055" data-scrollwhell="1" data-draggable="1" data-zoom="11" data-pin="/Asset/Client/images/icons/pin-map.png"></div>
+
+            <div class="row">
+                <div class="col-md-4 mb-5 mb-md-0">
+                    <div class="hun-element-info-contact layout-1">
+                        <h3 class="title-element">
+                            Contact Details
+                        </h3>
+                        @foreach(var item in Model)
+                        {
+                            if(item.content != null)
+                            {
+                                @Html.Raw(item.content);
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new { @class = "contact-form-01" }))
+                    { 
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input name="name" id="name" class="input-field" type="text" placeholder="Name *">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input name="email" id="email" class="input-field" type="email" placeholder="E-mail *">
+                        </div>
+
+                        <div class="col-12">
+                            <textarea name="comment" id="comment" class="input-field" placeholder="Your Comments *"></textarea>
+
+                            <button class="hun-button size-normal shape-round style-fill-color">
+                                Send message
+                            </button>
+                        </div>
+                    </div>
+              
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end content contact-page -->

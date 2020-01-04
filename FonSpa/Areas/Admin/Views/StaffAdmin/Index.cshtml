@@ -1,0 +1,65 @@
+﻿@model PagedList.IPagedList<Models.Entity.Staff>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section jsFooter{
+
+    <script src="~/Asset/Admin/Controller/StaffController.js"></script>
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List Staff
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>ShowOnHome</th>
+                            <th>Status</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                        <tr id="row_@item.Id">
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Phone</td>
+                            <td><a href="#" class="btn-active" data-id="@item.Id">@(item.status == true ? "Active" : "Disable")</a></td>
+                            <td><a href="#" class="btn-active" data-id="@item.Id">@(item.status == true ? "Active" : "Disable")</a></td>
+                            <td>
+                                <a href="/Admin/StaffAdmin/Edit/@item.Id">Edit</a>
+                                /
+                                @Ajax.ActionLink("Delete", "Delete", new {@id = item.Id } ,new AjaxOptions
+                           {
+                               Confirm = "Are you sure ?",
+                               OnComplete = "$('#row_" + @item.Id + "').remove()",
+                               HttpMethod = "Delete"
+                           })
+                            </td>
+                        </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "StaffAdmin")'">
+            Create New
+        </button>
+    </div>
+</section>
+

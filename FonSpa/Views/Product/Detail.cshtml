@@ -1,0 +1,92 @@
+﻿@model Models.Entity.Product
+    @{
+        ViewBag.Title = "Detail";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <!-- Title Page -->
+    <div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
+        <div class="container">
+            <h1 class="main-title">
+                Products
+            </h1>
+
+            <ul class="breadcrumbs">
+                <li>
+                    <a href="/">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    Product Detail
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end Title Page -->
+    <!-- content service-detail-page -->
+    <div class="sec--content--service-detail-page">
+        <div class="container">
+            <div class="hun-element-service-detail layout-1">
+                <div class="pic-service js-call-slick">
+                    <div style="width:500px;margin-left:auto;margin-right:auto" class="slide-slick" data-slick='{"adaptiveHeight": true, "fade": false, "speed": 500, "dots": false, "arrows": true, "autoplay": false, "autoplaySpeed": 5000, "infinite": true, "slidesToShow": 1, "slidesToScroll": 1}'>
+
+                        <div class="item-slick">
+                            <img style="height:auto;max-width:100%;" src="@Model.image" alt="IMG">
+                        </div>
+
+                        <div class="item-slick">
+                            <img style="height:auto;max-width:100%;" src="@Model.image" alt="IMG">
+                        </div>
+
+                        <div class="item-slick">
+                            <img style="height:auto;max-width:100%;" src="@Model.image" alt="IMG">
+                        </div>
+                    </div>
+
+                    <div class="arrows-slick">
+                        <a class="item-arrow prev-slick">
+                            <i class="zmdi zmdi-chevron-left"></i>
+                        </a>
+
+                        <a class="item-arrow next-slick">
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="head-element">
+                    <h3 class="title-service">
+                        @Model.name
+                    </h3>
+
+                    <div class="info-service">
+                        <span class="item-info">
+                            <i class="zmdi zmdi-money-box"></i>
+                            $@Model.price
+                        </span>
+                        @*<span class="item-info">
+                            <a  href="booking.html" class="link-item">
+                                Buy now
+                            </a>
+                        </span>*@
+                       
+                    </div>
+                </div>
+
+                <p>
+                    @Model.description
+                </p>     
+
+                <h4 class="subtitle-service">
+                    Description
+                </h4>
+
+                <p>
+                    @Html.Raw(Model.detail)
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- end content service-detail-page -->

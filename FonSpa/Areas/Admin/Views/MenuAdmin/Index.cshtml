@@ -1,0 +1,80 @@
+﻿@model PagedList.IPagedList<Models.Entity.Menu>
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    List<Models.Entity.MenuType> listMenuTypes = ViewBag.MenuType;
+}
+@section jsFooter{
+    <script src="~/Asset/Admin/Controller/MenuController.js"></script>
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List Menu
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Text</th>
+                            <th>DisplayOrder</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.id">
+                                        <td>@item.id</td>
+                                        <td>@item.text</td>
+                                        <td>@item.displayOrder</td>
+                                        <td>
+                                            @{
+                                                if (item.typeId != null)
+                                                {
+                                                    foreach (var type in listMenuTypes)
+                                                    {
+                                                        if (item.typeId == type.id)
+                                                        {
+                                                            @: @type.name
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </td>
+                                        <td><a href="#" class="btn-active" data-id="@item.id">@(item.status == true ? "Kích hoạt" : "Khóa")</a></td>
+                                        <td>
+                                            <a href="/Admin/MenuAdmin/Edit/@item.id">Sửa</a>
+                                            /
+                                            @Ajax.ActionLink("Xóa", "Delete", new {@id = item.id} ,new AjaxOptions
+                                       {
+                                           Confirm = "Bạn có muốn xoá bản ghi này?",
+                                           OnComplete = "$('#row_" + @item.id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "MenuAdmin")'">
+            Create New
+        </button>
+    </div>
+</section>
+

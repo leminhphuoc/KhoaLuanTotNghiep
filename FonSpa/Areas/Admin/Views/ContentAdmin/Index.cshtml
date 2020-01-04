@@ -1,0 +1,79 @@
+﻿@model PagedList.IPagedList<Models.Entity.Content>
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    List<Models.Entity.ContentCategory> listContentCategory = ViewBag.Category;
+}
+@section jsFooter{
+
+    <script src="~/Asset/Admin/Controller/ContentController.js"></script>
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List Blog
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Blog Name</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.id">
+                                        <td>@item.id</td>
+                                        <td>@item.name</td>
+                                        <td>
+                                            @{
+                                                if (item.categoryID != null)
+                                                {
+                                                    foreach (var category in listContentCategory)
+                                                    {
+                                                        if (item.categoryID == category.id)
+                                                        {
+                                                            @: @category.name
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        </td>
+                                        <td><a href="#" class="btn-active" data-id="@item.id">@(item.status == true ? "Kích hoạt" : "Khóa")</a></td>
+                                        <td>
+                                            <a href="/Admin/ContentAdmin/Edit/@item.id">Sửa</a>
+                                            /
+                                            @Ajax.ActionLink("Xóa", "Delete", new {@id = item.id} ,new AjaxOptions
+                                       {
+                                           Confirm = "Bạn có muốn xoá bản ghi này?",
+                                           OnComplete = "$('#row_" + @item.id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "ContentAdmin")'">
+            Create New
+        </button>
+    </div>
+</section>
+

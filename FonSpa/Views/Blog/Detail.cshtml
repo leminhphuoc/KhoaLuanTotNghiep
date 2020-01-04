@@ -1,0 +1,259 @@
+﻿@model Models.Entity.Content
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Models.Entity.ContentCategory> contentCategories = ViewBag.ListContentCategory;
+    List<Models.Entity.Content> recentBlog = ViewBag.RecentBlog;
+}
+
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
+    <div class="container">
+        <h1 class="main-title">
+            Blog
+        </h1>
+
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                Blog Detail
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end Title Page -->
+<!-- Content Page -->
+<div class="content-page have-sidebar-right">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="main-content">
+                    <div class="hun-element-blog-detail layout-1">
+                        <div class="pic-blog">
+                            <img src="@Model.image" alt="IMG">
+                        </div>
+
+                        <div class="cat-blog">
+                            <a href="#" class="item-cat">
+                                @foreach (var category in contentCategories)
+                                {
+                                    if (category.id == Model.categoryID)
+                                    {
+                                        @: @category.name
+                                    }
+                                }
+                            </a>
+                        </div>
+
+                        <h4 class="title-blog">
+                            @Model.name
+                        </h4>
+
+                        <div class="content-blog">
+                            <p>
+                                @Model.description
+                            </p>
+
+                            @Html.Raw(Model.detail)
+                        </div>
+
+                        <div class="info-and-share">
+                            <div class="info-blog">
+                                <span class="item-info">@Model.createdDate.Value.ToString("MMMM d")</span>
+
+                                <span class="item-info">By <a href="#">Judith Obrien</a></span>
+                            </div>
+
+                            <ul class="share-link">
+                                <li>
+                                    <a href="#" class="item-share">
+                                        <i class="icon-social-facebook"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="item-share">
+                                        <i class="icon-social-twitter"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="item-share">
+                                        <i class="icon-social-dribbble"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="item-share">
+                                        <i class="icon-social-tumblr"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="author-blog">
+                            <a href="#" class="pic-author">
+                                <img src="/Asset/Client/images/ava-06.jpg" alt="IMG">
+                            </a>
+
+                            <div class="text-author">
+                                <h4 class="name-author">
+                                    <a href="#">
+                                        Janice Stewart
+                                    </a>
+                                </h4>
+
+                                <div class="info-author">
+                                    <a href="#">janice91@example.com</a>
+                                </div>
+
+                                <div class="description-author">
+                                    On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms.
+                                </div>
+                            </div>
+                        </div>
+
+                       
+
+                                    
+                                      
+                           
+                                      
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 js-call-sticky-sidebar">
+                <div class="main-sidebar">
+                    <div class="hun-widget-search layout-1">
+                        <form>
+                            <input type="text" placeholder="Search">
+
+                            <button>
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="hun-widget-author layout-1">
+                        <div class="inner-widget">
+                            <div class="ava-author">
+                                <a href="#">
+                                    <img src="/Asset/Client/images/ava-05.jpg" alt="IMG">
+                                </a>
+                            </div>
+
+                            <h4 class="name-author">
+                                <a href="#">
+                                    Sharon Jenkins
+                                </a>
+                            </h4>
+
+                            <div class="info-author">
+                                <a href="#">
+                                    sharon86@example.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hun-widget-categories layout-1">
+                        <h3 class="title-widget">
+                            Categories
+                        </h3>
+
+                        <ul>
+                            @foreach (var category in contentCategories)
+                            {
+                                <li>
+                                    <a href="#">
+                                        @category.name
+                                    </a>
+                                    @{
+                                        int count = 0;
+                                        foreach (var blog in ViewBag.BlogsList)
+                                        {
+                                            if (blog.categoryID == category.id)
+                                            {
+                                                count++;
+                                            }
+                                        }
+                                    }
+
+                                    <span class="count">
+                                        (@count)
+                                    </span>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <div class="hun-widget-posts layout-1">
+                        <h3 class="title-widget">
+                            Recent Posts
+                        </h3>
+
+                        <div class="list-post">
+                            @foreach (var item in recentBlog)
+                            {
+                                <div class="item-post">
+                                    <a href="#" class="pic-post">
+                                        <img src="@item.image" alt="IMG">
+                                    </a>
+
+                                    <div class="text-post">
+                                        <div class="date-post">
+                                            @item.createdDate.Value.ToString("MMMM d")
+                                        </div>
+
+                                        <h4 class="title-post">
+                                            <a href="/blogdetail?id=@item.id">
+                                                @item.name
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="hun-widget-tags layout-1">
+                        <h3 class="title-widget">
+                            Tags
+                        </h3>
+
+                        <div class="list-tag">
+                            <a href="#" class="item-tag">
+                                Beauty
+                            </a>
+
+                            <a href="#" class="item-tag">
+                                Spa
+                            </a>
+
+                            <a href="#" class="item-tag">
+                                message
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hun-widget-text">
+                        <a href="#">
+                            <img src="/Asset/Client/images/insta-widget-01.jpg" alt="IMG">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Content Page -->

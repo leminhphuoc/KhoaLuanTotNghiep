@@ -1,0 +1,76 @@
+﻿@model PagedList.IPagedList<Models.Entity.Slide>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section jsFooter{
+
+    <script src="~/Asset/Admin/Controller/SlideController.js"></script>
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List Slide
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Subtitle</th>
+                            <th>Text Button</th>
+                            <th>Link</th>
+                            <th>Display Order</th>
+                            <th>Status</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.id">
+                                        <td>@item.id</td>
+                                        <td>
+                                            @if (item.image != null)
+                                            {
+                                                <img style="max-width:80px" src="@item.image">
+                                            }
+                                        </td>
+                                        <td>@item.title</td>
+                                        <td>@item.subtitle</td>
+                                        <td>@item.TextButton</td>
+                                        <td>@item.link</td>
+                                        <td>@item.displayOrder</td>
+                                        <td><a href="#" class="btn-active" data-id="@item.id">@(item.status == true ? "Kích hoạt" : "Khóa")</a></td>
+                                        <td>
+                                            <a href="/Admin/SlideAdmin/Edit/@item.id">Edit</a>
+                                            /
+                                            @Ajax.ActionLink("Delete", "Delete", new {@id = item.id} ,new AjaxOptions
+                                       {
+                                           Confirm = "Bạn có muốn xoá bản ghi này?",
+                                           OnComplete = "$('#row_" + @item.id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "SlideAdmin")'">
+            Create New
+        </button>
+    </div>
+</section>
+

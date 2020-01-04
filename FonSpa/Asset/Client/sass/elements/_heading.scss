@@ -1,0 +1,36 @@
+/*[ hun-element-heading ]
+//////////////////////////////////////////////////////////////////*/
+
+/*\
+ *
+ * layout-1
+ *
+\*/
+.hun-element-heading.layout-1 {
+	.title-element {
+		font-weight: 400;
+		font-size: 40px;
+		line-height: 1.1;
+		color: $main-color-02;
+		text-transform: uppercase;
+		letter-spacing: 5px;
+	}
+
+	.line-element {
+		img {
+			max-width: 100%;
+		}
+	}
+
+	&.style-light {
+		.title-element {
+			color: #fff;
+		}
+	}
+
+	@media (max-width: 575px) {
+		.title-element {
+			font-size: 33px;
+		}
+	}
+}

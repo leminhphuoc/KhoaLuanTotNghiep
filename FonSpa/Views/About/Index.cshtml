@@ -1,0 +1,190 @@
+﻿@model List<Models.Entity.About>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Models.Entity.Staff> staffsList = ViewBag.Staffs;
+}
+
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
+    <div class="container">
+        <h1 class="main-title">
+            About Us
+        </h1>
+
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+
+            @*<li>
+                    <a href="#">
+                        Pages
+                    </a>
+                </li>*@
+
+            <li>
+                About Us
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end Title Page -->
+<!-- our-story about-page -->
+@foreach (var item in Model)
+{
+    if (item.name.Contains("Our Story"))
+    {
+        <div class="sec--our-story--about-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 pb-5 pb-md-0 pr-md-4 pr-lg-5">
+                        <div class="hun-element-image layout-1">
+                            <img src="@item.image" alt="IMG">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 pt-4 pt-md-0 align-self-center pl-md-4 pl-lg-5">
+                        <div class="hun-element-our-story layout-2">
+                            <div class="heading-element">
+                                <h3 class="title-element">
+                                    @item.name
+                                </h3>
+
+                                <img class="line-heading" src="/Asset/Client/images/icons/wave-line-02.png" alt="IMG">
+                            </div>
+
+                            <div class="content-element">
+                                <strong class="strong-content">@item.Title</strong>
+
+                                @item.description
+                            </div>
+
+                            <div class="info-element">
+                                <div class="sign-element">
+                                    <img src="/Asset/Client/images/icons/sign-01.png" alt="IMG">
+                                </div>
+
+                                <div class="author-element">
+                                    <span class="name-author">Brenda Rose</span> / Founder
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<!-- end our-story about-page -->
+<!-- testimonial home-1 -->
+<div class="sec--testimonial--home-1 parallax100" style="background-image: url('assets/images/bg-04.jpg');">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="hun-element-testimonial layout-1">
+                    <div class="slide-ava js-call-slick" data-animate="true">
+                        <div id="ava-tes-01" class="slide-slick" data-slick='{"asNavFor": "#text-tes-01", "centerMode": true, "centerPadding": "0px", "focusOnSelect": true, "fade": false, "speed": 500, "dots": false, "arrows": false, "autoplay": false, "autoplaySpeed": 5000, "infinite": true, "slidesToShow": 3, "slidesToScroll": 1}'>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.name.Contains("Testimonial"))
+                                {
+                                    <div class="item-slick">
+                                        <div class="wrap-ava">
+                                            <img src="@item.image" alt="IMG">
+                                        </div>
+                                    </div>
+                                }
+                            }
+                      
+                        </div>
+                    </div>
+
+                    <div class="slide-text js-call-slick" data-animate="true">
+                        <div id="text-tes-01" class="slide-slick" data-slick='{"asNavFor": "#ava-tes-01", "fade": true, "speed": 500, "dots": false, "arrows": false, "autoplay": false, "autoplaySpeed": 5000, "infinite": true, "slidesToShow": 1, "slidesToScroll": 1}'>
+
+                            @foreach (var item in Model)
+                            {
+                                if (item.name.Contains("Testimonial"))
+                                {
+                            <div class="item-slick">
+                                <div class="content-tes" data-appear="fadeInUp" data-delay="0">
+                                    <img class="mark-tes" src="/Asset/Client/images/icons/mark-tes-01.png" alt="IMG" data-appear="fadeInDown" data-delay="100">
+
+                                    @item.description
+                                </div>
+
+                                <div class="star-tes" data-appear="zoomIn" data-delay="600">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+
+                                <div class="author-tes" data-appear="zoomIn" data-delay="1200">
+                                    <span class="name-author">@item.Title</span> / Photography
+                                </div>
+                            </div>
+                                }
+                            }
+
+                            
+
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end testimonial home-1 -->
+<!-- our-team about-page -->
+<div class="sec--our-team--about-page">
+    <div class="container">
+        <div class="hun-element-heading layout-1 text-center">
+            <h3 class="title-element">
+                Our team
+            </h3>
+
+            <div class="line-element">
+                <img src="/Asset/Client/images/icons/wave-line-02.png" alt="IMG">
+            </div>
+        </div>
+
+        <div class="hun-element-team layout-1">
+            <div class="row justify-content-center">
+                @foreach (var staff in staffsList)
+                {
+                    <div class="col-md-9 col-lg-4">
+                        <div class="item-team">
+                            <a href="#"><img class="pic-item" src="@staff.image" alt="IMG"></a>
+
+                            <div class="content-item">
+                                <h4 class="name-item">
+                                    <a href="#">
+                                       @staff.Name
+                                    </a>
+                                </h4>
+
+                                <div class="info-item">
+                                    / @staff.Position
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+              
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end our-team about-page -->

@@ -1,0 +1,303 @@
+﻿@model PagedList.IPagedList<Models.Entity.Content>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Models.Entity.ContentCategory> contentCategories = ViewBag.ListContentCategory;
+    List<Models.Entity.Content> recentBlog = ViewBag.RecentBlog;
+    List<Models.Entity.Content> blogList = ViewBag.BlogList;
+}
+
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
+    <div class="container">
+        <h1 class="main-title">
+            Blog
+        </h1>
+
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                Blog Sidebar Right
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end Title Page -->
+<!-- Content Page -->
+<div class="content-page have-sidebar-right">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="main-content">
+                    <div class="hun-element-blog layout-1">
+                        @foreach (var blog in Model)
+                        {
+                            <div class="item-blog">
+                                <div class="pic-blog">
+                                    <a href="/blogdetail?id=@blog.id">
+                                        <img src="@blog.image" alt="IMG">
+                                    </a>
+                                </div>
+
+                                <div class="text-blog">
+                                    <div class="cat-blog">
+                                        <a href="#" class="item-cat">
+                                            @foreach (var category in contentCategories)
+                                            {
+                                                if (category.id == blog.categoryID)
+                                                {
+                                                    @: @category.name
+                                                }
+                                            }
+                                        </a>
+                                    </div>
+
+                                    <h4 class="title-blog">
+                                        <a href="/blogdetail?id=@blog.id">
+                                            @blog.name
+                                        </a>
+                                    </h4>
+
+                                    <div class="description-blog">
+                                        @blog.description
+                                    </div>
+                                </div>
+
+                                <div class="foot-item">
+                                    <a href="/blogdetail?id=@blog.id" class="link-blog">
+                                        Read more
+                                    </a>
+
+                                    <ul class="share-link">
+                                        <li>
+                                            <a href="#" class="item-share">
+                                                <i class="icon-social-facebook"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="item-share">
+                                                <i class="icon-social-twitter"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="item-share">
+                                                <i class="icon-social-dribbble"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="item-share">
+                                                <i class="icon-social-tumblr"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+
+
+
+                    </div>
+
+                    <div class="loop-pagination text-center">
+                        <ul>
+                            @{
+                                if (Model.PageNumber == 1)
+                                {
+                                    <li class="d-none">
+                                        <a href="#" class="page-numbers prev">
+                                            <i class="zmdi zmdi-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+
+                                    var prevalue = Model.PageNumber;
+                                    if (Model.PageNumber > 1)
+                                    {
+                                        prevalue = Model.PageNumber - 1;
+                                    }
+
+                                    <li>
+                                        <a href="/Blog/Index?page=@prevalue" class="page-numbers prev">
+                                            <i class="zmdi zmdi-chevron-left"></i>
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+
+                            @for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                if (Model.PageNumber == i)
+                                {
+                                    <li>
+                                        <a href="/Blog/Index?page=@i" class="page-numbers current">
+                                            @i
+                                        </a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a href="/Blog/Index?page=@i" class="page-numbers">
+                                            @i
+                                        </a>
+                                    </li>
+                                }
+                            }
+
+                            <li>
+                                @{
+                                    var nextvalue = Model.PageNumber;
+                                    if (Model.PageNumber < Model.PageCount)
+                                    {
+                                        nextvalue = Model.PageNumber + 1;
+                                    }
+                                }
+                                <a href="/Blog/Index?page=@nextvalue" class="page-numbers next">
+                                    <i class="zmdi zmdi-chevron-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 js-call-sticky-sidebar">
+                <div class="main-sidebar">
+                    <div class="hun-widget-search layout-1">
+                        <form>
+                            <input type="text" placeholder="Search">
+
+                            <button>
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="hun-widget-author layout-1">
+                        <div class="inner-widget">
+                            <div class="ava-author">
+                                <a href="#">
+                                    <img src="/Asset/Client/images/ava-05.jpg" alt="IMG">
+                                </a>
+                            </div>
+
+                            <h4 class="name-author">
+                                <a href="#">
+                                    Sharon Jenkins
+                                </a>
+                            </h4>
+
+                            <div class="info-author">
+                                <a href="#">
+                                    sharon86@example.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hun-widget-categories layout-1">
+                        <h3 class="title-widget">
+                            Categories
+                        </h3>
+
+                        <ul>
+                            @foreach (var category in contentCategories)
+                            {
+                                <li>
+                                    <a href="/Blog/ListByCategory?idCategory=@category.id">
+                                       @category.name
+                                    </a>
+                                    @{ 
+                                        int count = 0;
+                                        foreach(var blog in blogList)
+                                        {
+                                            if(blog.categoryID == category.id)
+                                            {
+                                                count++;
+                                            }
+                                        }
+                                    }
+                                    
+                                    <span class="count">
+                                        (@count)
+                                    </span>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <div class="hun-widget-posts layout-1">
+                        <h3 class="title-widget">
+                            Recent Posts
+                        </h3>
+
+                        <div class="list-post">
+                            @foreach (var item in recentBlog)
+                            {
+                                <div class="item-post">
+                                    <a href="#" class="pic-post">
+                                        <img src="@item.image" alt="IMG">
+                                    </a>
+
+                                    <div class="text-post">
+                                        <div class="date-post">
+                                            @item.createdDate.Value.ToString("MMMM d")
+                                        </div>
+
+                                        <h4 class="title-post">
+                                            <a href="/blogdetail?id=@item.id">
+                                                @item.name
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            }
+
+
+                           
+                        </div>
+                    </div>
+
+                    <div class="hun-widget-tags layout-1">
+                        <h3 class="title-widget">
+                            Tags
+                        </h3>
+
+                        <div class="list-tag">
+                            <a href="#" class="item-tag">
+                                Beauty
+                            </a>
+
+                            <a href="#" class="item-tag">
+                                Spa
+                            </a>
+
+                            <a href="#" class="item-tag">
+                                message
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hun-widget-text">
+                        <a href="#">
+                            <img src="/Asset/Client/images/insta-widget-01.jpg" alt="IMG">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Content Page -->

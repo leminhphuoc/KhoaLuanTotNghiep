@@ -1,0 +1,47 @@
+/*[ hun-element-progress ]
+//////////////////////////////////////////////////////////////////*/
+
+/*\
+ *
+ * layout-1
+ *
+\*/
+.hun-element-progress.layout-1 {
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 1.5;
+	color: #fff;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+
+	.text-element {
+		flex-grow: 1;
+		flex-basis: 0;
+		padding-right: 30px;
+	}
+
+	.progress-bar {
+		width: 100%;
+		height: 10px;
+		border-radius: 5px;
+		background-color: rgba(255, 255, 255, .5);
+		overflow: hidden;
+		margin-top: 7px;
+
+		.inner-progress {
+			display: block;
+			width: 0;
+			height: 100%;
+			background-color: $main-color-01;
+		}
+	}
+
+	&.color-2 {
+		color: $text-color-01;
+
+		.progress-bar {
+			background-color: rgba($main-color-01-R, $main-color-01-G, $main-color-01-B, .15);
+		}
+	}
+}

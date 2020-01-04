@@ -1,0 +1,57 @@
+﻿@model PagedList.IPagedList<Models.Entity.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section jsFooter{
+    <script src="~/Asset/Admin/Controller/CustomerController.js"></script>
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List Customer
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.id">
+                                        <td>@item.id</td>
+                                        <td>@item.Name</td>
+                                        <td>@item.phone</td>
+                                        <td>
+                                            <a href="/Admin/CustomerAdmin/Edit/@item.id">Edit</a>
+                                            /
+                                            @Ajax.ActionLink("Delete", "Delete", new {@id = item.id} ,new AjaxOptions
+                                       {
+                                           Confirm = "Bạn có muốn xoá bản ghi này?",
+                                           OnComplete = "$('#row_" + @item.id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+

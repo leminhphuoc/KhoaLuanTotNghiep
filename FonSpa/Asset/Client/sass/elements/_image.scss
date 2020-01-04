@@ -1,0 +1,37 @@
+/*[ hun-element-image ]
+//////////////////////////////////////////////////////////////////*/
+
+.hun-element-image {
+	img {
+		max-width: 100%;
+	}
+}
+
+/*\
+ *
+ * layout-1
+ *
+\*/
+.hun-element-image.layout-1 {
+	padding-left: 30px;
+	padding-bottom: 30px;
+	position: relative;
+	z-index: 0;
+
+	&::before {
+		content: '';
+		display: block;
+		width: calc(100% - 30px);
+		height: calc(100% - 30px);
+		position: absolute;
+		z-index: -1;
+		left: 0;
+		bottom: 0;
+		border: 5px solid $main-color-01;
+		opacity: .5;
+	}
+
+	img {
+		width: 100%;
+	}
+}

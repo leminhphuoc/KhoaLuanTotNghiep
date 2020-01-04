@@ -1,0 +1,143 @@
+﻿@model List<Models.Entity.Footer>
+@{
+    List<Models.Entity.FooterCategory> footerCategories = ViewBag.FooterCategories;
+}
+<footer class="hun-footer layout-1 parallax100" style="background-image: url('/Asset/Client/images/bg-02.jpg');">
+    <div class="container">
+        <div class="content-footer text-center">
+            <div class="logo-footer">
+                <a href="#">
+                    <img src="~/Asset/Client/images/icons/logo-footer-01.png" alt="IMG">
+                </a>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="hun-widget-info layout-1">
+                        <ul>
+                            @foreach (var footer in Model)
+                            {
+                                foreach (var category in footerCategories)
+                                {
+                                    if (category.name == "Left")
+                                    {
+                                        if (category.id == footer.typeId)
+                                        {
+                                            if (footer.link == null)
+                                            {
+                                                <li>
+                                                    <i class="@footer.Icon"></i>
+                                                    <a href="#">@footer.text</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <i class="@footer.Icon"></i>
+                                                    <a href="@footer.link">@footer.text</a>
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="hun-widget-info layout-1">
+                        <ul>
+                            @foreach (var footer in Model)
+                            {
+                                foreach (var category in footerCategories)
+                                {
+                                    if (category.name == "Mid")
+                                    {
+                                        if (category.id == footer.typeId)
+                                        {
+                                            if (footer.link == null)
+                                            {
+                                                <li>
+                                                    <i class="@footer.Icon"></i>
+                                                    <a href="#">@footer.text</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <i class="@footer.Icon"></i>
+                                                    <a href="@footer.link">@footer.text</a>
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="hun-widget-info layout-1">
+                        <ul>
+                            @foreach (var footer in Model)
+                            {
+                                foreach (var category in footerCategories)
+                                {
+                                    if (category.name == "Right")
+                                    {
+                                        if (category.id == footer.typeId)
+                                        {
+                                            if (footer.link == null)
+                                            {
+                                                <li>
+                                                    <i class="@footer.Icon"></i>
+                                                    <a href="#">@footer.text</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <i class="@footer.Icon"></i>
+                                                    <a href="@footer.link">@footer.text</a>
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <form class="subscribe-form-01">
+                <input type="text" placeholder="Enter your email">
+
+                <button>
+                    Subscribe
+                </button>
+            </form>
+
+            <div class="hun-element-social layout-1">
+                @foreach (var footer in Model)
+                {
+                    foreach (var category in footerCategories)
+                    {
+                        if (category.name == "Social")
+                        {
+                            if (category.id == footer.typeId)
+                            {
+                                    <a href="@footer.link" class="item-social">
+                                        <i class="@footer.Icon"></i>
+                                    </a>
+                            }
+                        }
+                    }
+                }
+               
+            </div>
+        </div>
+    </div>
+</footer>

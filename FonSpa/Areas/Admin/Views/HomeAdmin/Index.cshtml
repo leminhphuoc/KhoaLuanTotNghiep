@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+@section jsfooter{
+<script>
+        $(document).ready(function () {
+            //BOX BUTTON SHOW AND CLOSE
+            jQuery('.small-graph-box').hover(function () {
+                jQuery(this).find('.box-button').fadeIn('fast');
+            }, function () {
+                jQuery(this).find('.box-button').fadeOut('fast');
+            });
+            jQuery('.small-graph-box .box-close').click(function () {
+                jQuery(this).closest('.small-graph-box').fadeOut(200);
+                return false;
+            });
+
+            //CHARTS
+            function gd(year, day, month) {
+                return new Date(year, month - 1, day).getTime();
+            }
+
+            graphArea2 = Morris.Area({
+                element: 'hero-area',
+                padding: 10,
+                behaveLikeLine: true,
+                gridEnabled: false,
+                gridLineColor: '#dddddd',
+                axes: true,
+                resize: true,
+                smooth: true,
+                pointSize: 0,
+                lineWidth: 0,
+                fillOpacity: 0.85,
+                data: [
+                    { month: '@DateTime.Now.AddMonths(-8).ToString("yyyy-MM")', booking: 8, customer: @ViewBag.CountCustomer8, visitor: @ViewBag.CountVisitor8 },
+                    { month: '@DateTime.Now.AddMonths(-7).ToString("yyyy-MM")', booking: 7, customer: @ViewBag.CountCustomer7, visitor: @ViewBag.CountVisitor7 },
+                    { month: '@DateTime.Now.AddMonths(-6).ToString("yyyy-MM")', booking: 6, customer: @ViewBag.CountCustomer6, visitor: @ViewBag.CountVisitor6 },
+                    { month: '@DateTime.Now.AddMonths(-5).ToString("yyyy-MM")', booking: 5, customer: @ViewBag.CountCustomer5, visitor: @ViewBag.CountVisitor5 },
+                    { month: '@DateTime.Now.AddMonths(-4).ToString("yyyy-MM")', booking:4, customer: @ViewBag.CountCustomer4, visitor: @ViewBag.CountVisitor4 },
+                    { month: '@DateTime.Now.AddMonths(-3).ToString("yyyy-MM")', booking: 3, customer: @ViewBag.CountCustomer3, visitor: @ViewBag.CountVisitor3 },
+                    { month: '@DateTime.Now.AddMonths(-2).ToString("yyyy-MM")', booking:2, customer: @ViewBag.CountCustomer2, visitor: @ViewBag.CountVisitor2 },
+                    { month: '@DateTime.Now.AddMonths(-1).ToString("yyyy-MM")', booking: 1, customer: @ViewBag.CountCustomer1, visitor: @ViewBag.CountVisitor1 },
+                    { month: '@DateTime.Now.ToString("yyyy-MM")', booking: , customer: @ViewBag.CountCustomer, visitor: @ViewBag.CountVisitor },
+
+                ],
+                lineColors: ['#a44e4e', '#926383', '#eb6f6f '],
+                xkey: 'month',
+                redraw: true,
+                ykeys: ['booking', 'customer', 'visitor'],
+                labels: ['Booking Total', 'Customer Total', 'Visitors Total'],
+                pointSize: 2,
+                hideHover: 'auto',
+                resize: true
+            });
+
+
+        });
+</script>
+}
+<section class="wrapper">
+    <!-- //market-->
+    <div class="market-updates">
+        <div class="col-md-3 market-update-gd">
+            <div class="market-update-block clr-block-2">
+                <div class="col-md-4 market-update-right">
+                    <i class="fa fa-eye"> </i>
+                </div>
+                <div class="col-md-8 market-update-left">
+                    <h4>Visitors</h4>
+                    <h3>@ViewBag.Visitor</h3>
+                    <p>Other hand, we denounce</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="col-md-3 market-update-gd">
+            <div class="market-update-block clr-block-1">
+                <div class="col-md-4 market-update-right">
+                    <i class="fa fa-users"></i>
+                </div>
+                <div class="col-md-8 market-update-left">
+                    <h4>Customer</h4>
+                    <h3>@ViewBag.Customer</h3>
+                    <p>Other hand, we denounce</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="col-md-3 market-update-gd">
+            <div class="market-update-block clr-block-3">
+                <div class="col-md-4 market-update-right">
+                    <i class="fa fa-usd"></i>
+                </div>
+                <div class="col-md-8 market-update-left">
+                    <h4>Booking</h4>
+                    <h3></h3>
+                    <p>Other hand, we denounce</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="col-md-3 market-update-gd">
+            <div class="market-update-block clr-block-4">
+                <div class="col-md-4 market-update-right">
+                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-8 market-update-left">
+                    <h4>Services</h4>
+                    <h3></h3>
+                    <p>Other hand, we denounce</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <!-- //market-->
+    <div class="row">
+        <div class="panel-body">
+            <div class="col-md-12 w3ls-graph">
+                <!--agileinfo-grap-->
+                <div class="agileinfo-grap">
+                    <div class="agileits-box">
+                        <header class="agileits-box-header clearfix">
+                            <h3>Visitor Statistics</h3>
+                            <div class="toolbar">
+                            </div>
+                        </header>
+                        <div class="agileits-box-body clearfix">
+                            <div id="hero-area"></div>
+                        </div>
+                    </div>
+                </div>
+                <!--//agileinfo-grap-->
+
+            </div>
+        </div>
+    </div>
+    <div class="agil-info-calendar">
+        <!-- calendar -->
+        <div class="col-md-6 agile-calendar">
+            <div class="calendar-widget">
+                <div class="panel-heading ui-sortable-handle">
+                    <span class="panel-icon">
+                        <i class="fa fa-calendar-o"></i>
+                    </span>
+                    <span class="panel-title"> Calendar Widget</span>
+                </div>
+                <!-- grids -->
+                <div class="agile-calendar-grid">
+                    <div class="page">
+
+                        <div class="w3l-calendar-left">
+                            <div class="calendar-heading">
+
+                            </div>
+                            <div class="monthly" id="mycalendar"></div>
+                        </div>
+
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //calendar -->
+        <div class="col-md-6 w3agile-notifications">
+            <div class="notifications">
+                <!--notification start-->
+
+                <header class="panel-heading">
+                    Notification
+                </header>
+                <div class="notify-w3ls">
+                    <div class="alert alert-info clearfix">
+                        <span class="alert-icon"><i class="fa fa-envelope-o"></i></span>
+                        <div class="notification-info">
+                            <ul class="clearfix notification-meta">
+                                <li class="pull-left notification-sender"><span><a href="#">Jonathan Smith</a></span> send you a mail </li>
+                                <li class="pull-right notification-time">1 min ago</li>
+                            </ul>
+                            <p>
+                                Urgent meeting for next proposal
+                            </p>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger">
+                        <span class="alert-icon"><i class="fa fa-facebook"></i></span>
+                        <div class="notification-info">
+                            <ul class="clearfix notification-meta">
+                                <li class="pull-left notification-sender"><span><a href="#">Jonathan Smith</a></span> mentioned you in a post </li>
+                                <li class="pull-right notification-time">7 Hours Ago</li>
+                            </ul>
+                            <p>
+                                Very cool photo jack
+                            </p>
+                        </div>
+                    </div>
+                    <div class="alert alert-success ">
+                        <span class="alert-icon"><i class="fa fa-comments-o"></i></span>
+                        <div class="notification-info">
+                            <ul class="clearfix notification-meta">
+                                <li class="pull-left notification-sender">You have 5 message unread</li>
+                                <li class="pull-right notification-time">1 min ago</li>
+                            </ul>
+                            <p>
+                                <a href="#">Anjelina Mewlo, Jack Flip</a> and <a href="#">3 others</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="alert alert-warning ">
+                        <span class="alert-icon"><i class="fa fa-bell-o"></i></span>
+                        <div class="notification-info">
+                            <ul class="clearfix notification-meta">
+                                <li class="pull-left notification-sender">Domain Renew Deadline 7 days ahead</li>
+                                <li class="pull-right notification-time">5 Days Ago</li>
+                            </ul>
+                            <p>
+                                Next 5 July Thursday is the last day
+                            </p>
+                        </div>
+                    </div>
+                    <div class="alert alert-info clearfix">
+                        <span class="alert-icon"><i class="fa fa-envelope-o"></i></span>
+                        <div class="notification-info">
+                            <ul class="clearfix notification-meta">
+                                <li class="pull-left notification-sender"><span><a href="#">Jonathan Smith</a></span> send you a mail </li>
+                                <li class="pull-right notification-time">1 min ago</li>
+                            </ul>
+                            <p>
+                                Urgent meeting for next proposal
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--notification end-->
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</section>

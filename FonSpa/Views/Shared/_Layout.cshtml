@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Tittle</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/png" href="/Asset/Client/images/icons/favicon-01.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/fonts/font-awesome-4/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/fonts/iconic-font/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/fonts/simple-line-icons/css/simple-line-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/fonts/linearicons/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/bootstrap/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/magnific-popup/magnific-popup.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/animsition/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/parallax100/parallax100.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Client/css/style.css">
+    <!--===============================================================================================-->
+
+</head>
+<body class="animsition">
+
+    <!-- Header -->
+    <header class="hun-header style-sticky layout-2">
+        <div class="wrapper-header element-for-stick">
+            <div class="logo-header">
+                <a href="/" class="main-logo">
+                    <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
+                </a>
+
+                <a href="/" class="mobile-logo">
+                    <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
+                </a>
+
+                <a href="/" class="sticky-logo">
+                    <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
+                </a>
+
+                <a href="/" class="retina-logo">
+                    <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
+                </a>
+            </div>
+
+            @{Html.RenderAction("MainMenu", "Home");}
+
+            <div class="group-feature">
+
+                <div class="hun-element-search layout-1">
+                    <span class="search-open">
+                        <i class="zmdi zmdi-search"></i>
+                    </span>
+
+                    <div class="search-form">
+                        <span class="search-close"></span>
+
+                        <form>
+                            <input type="text" class="search-field" />
+                            <span class="search-notice"> Hit enter to search or ESC to close</span>
+                        </form>
+
+                        <ul class="list-result"></ul>
+                    </div>
+                </div>
+
+                <div class="hun-menu-mobile">
+                    <a href="#" class="btn-toggle-menu"></a>
+
+                    <nav class="mobile-navigation">
+                        <div class="logo-menu-mobile">
+                            <a href="/">
+                                <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- end Header -->
+    @RenderBody();
+    <!-- Footer -->
+    @{Html.RenderAction("Footer", "Home");}
+    <!-- end Footer -->
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/libs/jquery/jquery-1.11.0.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/libs/bootstrap/popper.js"></script>
+    <script src="/Asset/Client/libs/bootstrap/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/libs/slick/slick.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/libs/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/libs/animsition/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/libs/daterangepicker/moment.min.js"></script>
+    <script src="/Asset/Client/libs/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/libs/parallax100/parallax100.js"></script>
+    <!--===============================================================================================-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2-FTfalYzmj_0Ie_1x1Xpa7dbHQEOAJo"></script>
+    <script src="/Asset/Client/js/map-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Client/js/main.js"></script>
+
+
+</body>
+</html>

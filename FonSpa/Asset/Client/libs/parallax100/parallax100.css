@@ -1,0 +1,11 @@
+
+.parallax100 {
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 991px) {
+  .parallax100 {background-attachment: inherit;}
+}

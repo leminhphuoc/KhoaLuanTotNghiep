@@ -1,0 +1,91 @@
+﻿@model Models.Entity.Menu
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    List<Models.Entity.MenuType> menuTypes = ViewBag.MenuType;
+
+}
+
+
+<section class="wrapper">
+    <div class="form-w3layouts">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Edit Menu
+                        <span class="tools pull-right">
+                        </span>
+                    </header>
+                    <div class="panel-body">
+                        <div class="form">
+
+                            @*<div class="form">*@
+
+                            @*<form  method="get" action="" novalidate="novalidate">*@
+                            @using (Html.BeginForm("Edit", "MenuAdmin", FormMethod.Post, new { @class = "cmxform form-horizontal", @id = "signupForm" }))
+                            {
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Text</label>
+                                    <div class="col-lg-6">
+                                        @*<input class="form-control " id="username" name="username" type="text">*@
+                                        @Html.ValidationMessageFor(model => model.text, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.text, new { htmlAttributes = new { @class = "form-control", @type = "text" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-3">Arrival Time</label>
+                                    <div class="col-lg-6">
+                                        <select id="link" name="link" class="form-control m-bot15">
+                                            <option value="/">Home</option>
+                                            <option value="/serviceshome">Services</option>
+                                            <option value="/product">Products</option>
+                                            <option value="/blog">Blog</option>
+                                            <option value="/aboutus">About Us</option>
+                                            <option value="/contact">Contact</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Display Order</label>
+                                    <div class="col-lg-6">
+                                        @*<input class="form-control " id="username" name="username" type="text">*@
+                                        @Html.ValidationMessageFor(model => model.displayOrder, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.displayOrder, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-3">Type</label>
+                                    <div class="col-lg-6">
+                                        <select id="typeID" name="typeID" class="form-control m-bot15">
+                                            @foreach (var type in menuTypes)
+                                            {
+                                                <option value="@type.id">@type.name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-3">Status</label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.status, new[] { new SelectListItem { Text = "Active", Value = "true" }, new SelectListItem { Text = "Disable", Value = "false" } }, new { @class = "form-control m-bot15" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-lg-offset-3 col-lg-6">
+                                        <button class="btn btn-primary" type="submit">Save</button>
+                                        <button class="btn btn-default" type="button">Cancel</button>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
