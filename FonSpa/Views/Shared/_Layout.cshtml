@@ -31,6 +31,10 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/parallax100/parallax100.css">
     <!--===============================================================================================-->
+    <!--Shoping cart-->
+    <link href="/Asset/Cartpage/web/css/shop.css" rel="stylesheet" type="text/css" />
+    <link href="~/Asset/Cartpage/web/css/checkout.css" rel="stylesheet" type="text/css"  />
+    <!--//Shoping cart-->
     <link rel="stylesheet" type="text/css" href="/Asset/Client/css/style.css">
     <!--===============================================================================================-->
 
@@ -100,6 +104,7 @@
     <!-- end Footer -->
     <!--===============================================================================================-->
     <script src="/Asset/Client/libs/jquery/jquery-1.11.0.min.js"></script>
+
     <!--===============================================================================================-->
     <script src="/Asset/Client/libs/bootstrap/popper.js"></script>
     <script src="/Asset/Client/libs/bootstrap/bootstrap.min.js"></script>
@@ -121,7 +126,7 @@
     <script src="/Asset/Client/js/map-custom.js"></script>
     <!--===============================================================================================-->
     <script src="/Asset/Client/js/main.js"></script>
-
+    @RenderSection("ProductJs", required: false)
 
 </body>
 </html>

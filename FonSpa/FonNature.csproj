@@ -46,71 +46,60 @@
   <ItemGroup>
     <Reference Include="CKFinder, Version=2.6.0.2792, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKFinder.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKFinder.dll</HintPath>
     </Reference>
     <Reference Include="CKFinder_FileEditor, Version=2.1.0.1132, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKFinder_FileEditor.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKFinder_FileEditor.dll</HintPath>
     </Reference>
     <Reference Include="CKFinder_ImageResize, Version=2.1.0.1132, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKFinder_ImageResize.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKFinder_ImageResize.dll</HintPath>
     </Reference>
     <Reference Include="CKFinder_Watermark, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKFinder_Watermark.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKFinder_Watermark.dll</HintPath>
     </Reference>
-    <Reference Include="CKSource.CKFinder.Connector.Config, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.CKFinder.Connector.Config.dll</HintPath>
+    <Reference Include="CKSource.CKFinder.Connector.Config">
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.CKFinder.Connector.Config.dll</HintPath>
     </Reference>
-    <Reference Include="CKSource.CKFinder.Connector.Core, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.CKFinder.Connector.Core.dll</HintPath>
+    <Reference Include="CKSource.CKFinder.Connector.Core">
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.CKFinder.Connector.Core.dll</HintPath>
     </Reference>
-    <Reference Include="CKSource.CKFinder.Connector.Host.Owin, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.CKFinder.Connector.Host.Owin.dll</HintPath>
+    <Reference Include="CKSource.CKFinder.Connector.Host.Owin">
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.CKFinder.Connector.Host.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="CKSource.CKFinder.Connector.KeyValue.FileSystem, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.CKFinder.Connector.KeyValue.FileSystem.dll</HintPath>
+    <Reference Include="CKSource.CKFinder.Connector.KeyValue.FileSystem">
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.CKFinder.Connector.KeyValue.FileSystem.dll</HintPath>
     </Reference>
-    <Reference Include="CKSource.CKFinder.Connector.Logs.NLog, Version=3.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.CKFinder.Connector.Logs.NLog.dll</HintPath>
+    <Reference Include="CKSource.CKFinder.Connector.Logs.NLog">
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.CKFinder.Connector.Logs.NLog.dll</HintPath>
     </Reference>
     <Reference Include="CKSource.CKFinder.Connector.WebApp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.CKFinder.Connector.WebApp.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.CKFinder.Connector.WebApp.dll</HintPath>
     </Reference>
-    <Reference Include="CKSource.FileSystem, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.FileSystem.dll</HintPath>
+    <Reference Include="CKSource.FileSystem">
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.FileSystem.dll</HintPath>
     </Reference>
     <Reference Include="CKSource.FileSystem.Amazon, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.FileSystem.Amazon.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.FileSystem.Amazon.dll</HintPath>
     </Reference>
     <Reference Include="CKSource.FileSystem.Azure, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.FileSystem.Azure.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.FileSystem.Azure.dll</HintPath>
     </Reference>
     <Reference Include="CKSource.FileSystem.Dropbox, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.FileSystem.Dropbox.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.FileSystem.Dropbox.dll</HintPath>
     </Reference>
     <Reference Include="CKSource.FileSystem.Ftp, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.FileSystem.Ftp.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.FileSystem.Ftp.dll</HintPath>
     </Reference>
-    <Reference Include="CKSource.FileSystem.Local, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\CKSource.FileSystem.Local.dll</HintPath>
-    </Reference>
-    <Reference Include="Dropbox.Api, Version=0.1.5960.22395, Culture=neutral, PublicKeyToken=310f0e82fbb45d01, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\Dropbox.Api.dll</HintPath>
+    <Reference Include="CKSource.FileSystem.Local">
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\CKSource.FileSystem.Local.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -119,31 +108,26 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\Microsoft.Owin.Security.dll</HintPath>
+    <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Facebook">
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\Microsoft.Owin.Security.Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Google">
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\Microsoft.Owin.Security.Google.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\Microsoft.Owin.Security.Google.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth">
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Twitter">
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ShopWeb\ShopWeb\bin\Owin.dll</HintPath>
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -2166,6 +2150,80 @@
     <Content Include="Asset\Admin\js\raphael-min.js" />
     <Content Include="Asset\Admin\js\script.js" />
     <Content Include="Asset\Admin\js\scripts.js" />
+    <Content Include="Asset\Cartpage\web\about.html" />
+    <Content Include="Asset\Cartpage\web\checkout.html" />
+    <Content Include="Asset\Cartpage\web\contact.html" />
+    <Content Include="Asset\Cartpage\web\css\bootstrap.min.css" />
+    <Content Include="Asset\Cartpage\web\css\checkout.css" />
+    <Content Include="Asset\Cartpage\web\css\creditly.css" />
+    <Content Include="Asset\Cartpage\web\css\easy-responsive-tabs.css" />
+    <Content Include="Asset\Cartpage\web\css\flexslider.css" />
+    <Content Include="Asset\Cartpage\web\css\fontawesome-all.min.css" />
+    <Content Include="Asset\Cartpage\web\css\jquery-ui1.css" />
+    <Content Include="Asset\Cartpage\web\css\shop.css" />
+    <Content Include="Asset\Cartpage\web\css\style.css" />
+    <Content Include="Asset\Cartpage\web\icon.html" />
+    <Content Include="Asset\Cartpage\web\images\a1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\a2.jpg" />
+    <Content Include="Asset\Cartpage\web\images\a3.jpg" />
+    <Content Include="Asset\Cartpage\web\images\a4.jpg" />
+    <Content Include="Asset\Cartpage\web\images\a5.jpg" />
+    <Content Include="Asset\Cartpage\web\images\a6.jpg" />
+    <Content Include="Asset\Cartpage\web\images\arr.png" />
+    <Content Include="Asset\Cartpage\web\images\b1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\b2.jpg" />
+    <Content Include="Asset\Cartpage\web\images\b3.jpg" />
+    <Content Include="Asset\Cartpage\web\images\cc1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\cc2.jpg" />
+    <Content Include="Asset\Cartpage\web\images\close.png" />
+    <Content Include="Asset\Cartpage\web\images\close_1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\f1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\f2.jpg" />
+    <Content Include="Asset\Cartpage\web\images\f3.jpg" />
+    <Content Include="Asset\Cartpage\web\images\g1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\g2.jpg" />
+    <Content Include="Asset\Cartpage\web\images\g3.jpg" />
+    <Content Include="Asset\Cartpage\web\images\g4.jpg" />
+    <Content Include="Asset\Cartpage\web\images\left-arrow.png" />
+    <Content Include="Asset\Cartpage\web\images\next.png" />
+    <Content Include="Asset\Cartpage\web\images\p1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\p2.jpg" />
+    <Content Include="Asset\Cartpage\web\images\p3.jpg" />
+    <Content Include="Asset\Cartpage\web\images\p4.jpg" />
+    <Content Include="Asset\Cartpage\web\images\paypal.png" />
+    <Content Include="Asset\Cartpage\web\images\pp1.png" />
+    <Content Include="Asset\Cartpage\web\images\right-arrow.png" />
+    <Content Include="Asset\Cartpage\web\images\search.png" />
+    <Content Include="Asset\Cartpage\web\images\t1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\t2.jpg" />
+    <Content Include="Asset\Cartpage\web\images\t3.jpg" />
+    <Content Include="Asset\Cartpage\web\images\team1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\tt1.jpg" />
+    <Content Include="Asset\Cartpage\web\images\tt2.jpg" />
+    <Content Include="Asset\Cartpage\web\images\typo.jpg" />
+    <Content Include="Asset\Cartpage\web\index.html" />
+    <Content Include="Asset\Cartpage\web\js\bootstrap.min.js" />
+    <Content Include="Asset\Cartpage\web\js\creditly.js" />
+    <Content Include="Asset\Cartpage\web\js\easing.js" />
+    <Content Include="Asset\Cartpage\web\js\easy-responsive-tabs.js" />
+    <Content Include="Asset\Cartpage\web\js\imagezoom.js" />
+    <Content Include="Asset\Cartpage\web\js\jquery-2.2.3.min.js" />
+    <Content Include="Asset\Cartpage\web\js\jquery-ui.js" />
+    <Content Include="Asset\Cartpage\web\js\jquery.flexisel.js" />
+    <Content Include="Asset\Cartpage\web\js\jquery.flexslider.js" />
+    <Content Include="Asset\Cartpage\web\js\minicart.js" />
+    <Content Include="Asset\Cartpage\web\js\move-top.js" />
+    <Content Include="Asset\Cartpage\web\js\responsiveslides.min.js" />
+    <Content Include="Asset\Cartpage\web\payment.html" />
+    <Content Include="Asset\Cartpage\web\product.html" />
+    <Content Include="Asset\Cartpage\web\service.html" />
+    <Content Include="Asset\Cartpage\web\shop.html" />
+    <Content Include="Asset\Cartpage\web\single.html" />
+    <Content Include="Asset\Cartpage\web\typography.html" />
+    <Content Include="Asset\Cartpage\web\w3layouts-License.txt" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-brands-400.svg" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-regular-400.svg" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-solid-900.svg" />
     <Content Include="Asset\Client\css\style.css" />
     <Content Include="Asset\Client\fonts\font-awesome-4\css\font-awesome.css" />
     <Content Include="Asset\Client\fonts\font-awesome-4\css\font-awesome.min.css" />
@@ -2405,8 +2463,10 @@
     <Content Include="Asset\Client\images\title-page-01.png" />
     <Content Include="Asset\Client\images\video-01.jpg" />
     <Content Include="Asset\Client\images\video-02.jpg" />
+    <Content Include="Asset\Client\js\bootstrap-3.1.1.min.js" />
     <Content Include="Asset\Client\js\main.js" />
     <Content Include="Asset\Client\js\map-custom.js" />
+    <Content Include="Asset\Client\js\minicart.js" />
     <Content Include="Asset\Client\libs\animate\animate.css" />
     <Content Include="Asset\Client\libs\animsition\animsition.css" />
     <Content Include="Asset\Client\libs\animsition\animsition.js" />
@@ -2659,6 +2719,18 @@
     <Content Include="Asset\Client\sass\page-layout\_title-page.scss" />
     <Content Include="Asset\Client\sass\sections\_sections.scss" />
     <Content Include="Asset\Client\sass\style.scss" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-brands-400.eot" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-brands-400.ttf" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-brands-400.woff" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-brands-400.woff2" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-regular-400.eot" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-regular-400.ttf" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-regular-400.woff" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-regular-400.woff2" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-solid-900.eot" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-solid-900.ttf" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-solid-900.woff" />
+    <Content Include="Asset\Cartpage\web\webfonts\fa-solid-900.woff2" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -2668,7 +2740,9 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -2692,6 +2766,7 @@
     <Content Include="Views\Product\ListByCategory.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
+    <Content Include="Views\Product\CheckOut.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2739,6 +2814,9 @@
       <Project>{ebf779b1-bca6-4f3b-a34a-1f48563558c3}</Project>
       <Name>Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

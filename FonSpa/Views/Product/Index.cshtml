@@ -6,6 +6,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section ProductJs{
+
+    <!-- cart-js -->
+
+    <script src="~/Asset/Cartpage/web/js/minicart.js"></script>
+    <script>
+        toys.render();
+
+        toys.cart.on('toys_checkout', function (evt) {
+            var items, len, i;
+
+            if (this.subtotal() > 0) {
+                items = this.items();
+
+                for (i = 0, len = items.length; i < len; i++) { }
+            }
+        });
+    </script>
+    <!-- //cart-js -->
+    <script src="/Asset/Client/js/bootstrap-3.1.1.min.js"></script>
+}
 <!-- Title Page -->
 <div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
     <div class="container">
@@ -39,7 +60,7 @@
                 <img src="/Asset/Client/images/icons/wave-line-02.png" alt="IMG">
             </div>
         </div>
-         
+
         <div class="hun-element-service layout-1">
             <div id="product-section" class="row">
 
@@ -73,11 +94,20 @@
                             </div>
 
                             <div class="foot-item">
-                                
 
-                                <a style="margin:auto" href="/productdetail?id=@product.id" class="link-item">
-                                    Buy now
-                                </a>
+                            
+                                <div style="margin:auto" class="toys single-item hvr-outline-out">
+                                    <form action="#" method="post">
+                                        <input type="hidden" name="cmd" value="_cart">
+                                        <input type="hidden" name="add" value="1">
+                                        <input type="hidden" name="toys_item" value="@product.name">
+                                        <input type="hidden" name="amount" value="@product.price">
+                                        <input type="hidden" name="id" value="@product.id">
+                                        <button type="submit" style="margin:auto" class="link-item">
+                                            Add to cart
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -102,19 +132,19 @@
                         }
                         else
                         {
-                             
-                                var prevalue = Model.PageNumber;
-                                if (Model.PageNumber > 1)
-                                {
-                                    prevalue = Model.PageNumber - 1;
-                                }
-                            
+
+                            var prevalue = Model.PageNumber;
+                            if (Model.PageNumber > 1)
+                            {
+                                prevalue = Model.PageNumber - 1;
+                            }
+
                             <li>
                                 <a href="/Product/Index?page=@prevalue" class="page-numbers prev">
                                     <i class="zmdi zmdi-chevron-left"></i>
                                 </a>
                             </li>
-                                }
+                        }
                     }
 
 

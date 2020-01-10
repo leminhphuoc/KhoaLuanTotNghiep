@@ -43,5 +43,20 @@ namespace FonNature.Controllers
             return View(product);
         }
 
+        public ActionResult CheckOut()
+        {
+            var idProductsFromCart = Request.Form["id"];
+            int productTotal = idProductsFromCart.ToList().Count();
+            if (productTotal == 0) return View();
+
+            for(int i = 0; i< productTotal; i++)
+            {
+                
+            }
+            
+            var idProductsSplit = idProductsFromCart.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            return View();
+        }
+
     }
 }
