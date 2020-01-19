@@ -1,4 +1,6 @@
 ﻿using FonNature.Services.IClientServices;
+using Models.Entity;
+using Models.Model;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -46,17 +48,24 @@ namespace FonNature.Controllers
         public ActionResult CheckOut()
         {
             var idProductsFromCart = Request.Form["id"];
-            int productTotal = idProductsFromCart.ToList().Count();
-            if (productTotal == 0) return View();
-
-            for(int i = 0; i< productTotal; i++)
-            {
-                
-            }
-            
+            if (idProductsFromCart == null) return View();
             var idProductsSplit = idProductsFromCart.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            return View();
+            int productTotal = idProductsSplit.Count();
+            if (productTotal == 0) return View();
+            List<CartProduct> cart = new List<CartProduct>();
+            for (int i = 1; i <= productTotal; i++)
+            {
+                CartProduct product = new CartProduct(long.Parse(idProductsSplit[i - 1])) { ProductId = long.Parse(idProductsSplit[i - 1]), Count = int.Parse(Request.Form["quantity_" + i]) };
+                cart.Add(product);
+            }
+            Session[Constant.Cart_Sesion] = cart;
+            return View(cart);
         }
 
+        public ActionResult Order(Customer customer)
+        {
+            var idProductsFromCart = Request.Form["id"];
+            return View();
+        }
     }
 }

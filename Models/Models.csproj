@@ -89,6 +89,7 @@
       <DependentUpon>201912240333276_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\CartProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AboutAdminRepository.cs" />
     <Compile Include="Repository\AccountAdminRepository.cs" />

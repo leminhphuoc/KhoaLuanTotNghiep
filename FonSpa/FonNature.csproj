@@ -237,6 +237,7 @@
     <Compile Include="Asset\Admin\js\Plugin\ckfinder\App_Code\ConnectorConfig.cs" />
     <Compile Include="Asset\Admin\js\Plugin\ckfinder\App_Code\RoleBasedAuthenticator.cs" />
     <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Constant.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ContactController.cs" />

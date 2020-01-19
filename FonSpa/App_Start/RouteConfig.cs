@@ -46,6 +46,12 @@ namespace FonNature
              defaults: new { controller = "Blog", action = "Detail", id = UrlParameter.Optional }
          );
             routes.MapRoute(
+             name: "Order",
+             url: "order",
+             defaults: new { controller = "Product", action = "Order", id = UrlParameter.Optional }
+         );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
