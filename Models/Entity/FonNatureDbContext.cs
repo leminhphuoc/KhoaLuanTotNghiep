@@ -31,6 +31,9 @@ namespace Models.Entity
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<UsefulInformation> UsefulInformations { get; set; }
         public virtual DbSet<VisitorByTime> VisitorByTimes { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderInformation> OrderInformations { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

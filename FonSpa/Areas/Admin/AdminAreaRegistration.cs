@@ -59,6 +59,7 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IProductServices, ProductServices>();
             container.RegisterType<IBlogServices, BlogServices>();
             container.RegisterType<IAboutServices, AboutServices>();
+            container.RegisterType<IOrderRepository, OrdersRepository>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 

@@ -7,15 +7,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace FonNature.Controllers
 {
     public class ProductController : Controller
     {
         private readonly IProductServices _productServices;
-        public ProductController(IProductServices productServices)
+        private readonly IOrderServices _orderServices;
+        public ProductController(IProductServices productServices, IOrderServices orderServices)
         {
             _productServices = productServices;
+            _orderServices = orderServices;
         }
         // GET: Product
         public ActionResult Index(int? page, string searchString = null)
@@ -62,10 +65,20 @@ namespace FonNature.Controllers
             return View(cart);
         }
 
-        public ActionResult Order(Customer customer)
+        [HttpPost]
+        public JsonResult OrderInformation(List<OrderInformation> orderInformations)
         {
-            var idProductsFromCart = Request.Form["id"];
-            return View();
+            TempData["OrderInformation"] = orderInformations;
+            return Json(new { orderInformations }
+            );
+        }
+
+        [HttpPost]
+        public ActionResult Order(Customer customerInfor)
+        {
+            var orderInformations = TempData["OrderProduct"] as List<OrderInformation>;
+            var idOrder = _orderServices.CreateOrder(orderInformations,customerInfor);
+            return View(idOrder);
         }
     }
 }

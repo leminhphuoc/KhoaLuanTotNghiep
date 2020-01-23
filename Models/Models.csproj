@@ -63,6 +63,9 @@
     <Compile Include="Entity\IPAddress.cs" />
     <Compile Include="Entity\Menu.cs" />
     <Compile Include="Entity\MenuType.cs" />
+    <Compile Include="Entity\Order.cs" />
+    <Compile Include="Entity\OrderInformation.cs" />
+    <Compile Include="Entity\OrderStatus.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\ProductCategory.cs" />
     <Compile Include="Entity\Slide.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="IRepository\IMenuAdminRepository.cs" />
     <Compile Include="IRepository\IMenuTypeAdminRepository.cs" />
     <Compile Include="IRepository\IIPAddressRepository.cs" />
+    <Compile Include="IRepository\IOrderRepository.cs" />
     <Compile Include="IRepository\IProductAdminRepository.cs" />
     <Compile Include="IRepository\IProductCategoryAdminRepository.cs" />
     <Compile Include="IRepository\ISlideAdminRepository.cs" />
@@ -87,6 +91,14 @@
     <Compile Include="Migrations\201912240333276_Initial.cs" />
     <Compile Include="Migrations\201912240333276_Initial.Designer.cs">
       <DependentUpon>201912240333276_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001210943023_[-CreateOrder].cs" />
+    <Compile Include="Migrations\202001210943023_[-CreateOrder].Designer.cs">
+      <DependentUpon>202001210943023_[-CreateOrder].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001211000380_[-CreateStatus].cs" />
+    <Compile Include="Migrations\202001211000380_[-CreateStatus].Designer.cs">
+      <DependentUpon>202001211000380_[-CreateStatus].cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\CartProduct.cs" />
@@ -121,6 +133,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201912240333276_Initial.resx">
       <DependentUpon>201912240333276_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001210943023_[-CreateOrder].resx">
+      <DependentUpon>202001210943023_[-CreateOrder].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001211000380_[-CreateStatus].resx">
+      <DependentUpon>202001211000380_[-CreateStatus].cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

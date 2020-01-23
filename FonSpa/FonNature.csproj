@@ -147,6 +147,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
@@ -253,6 +254,7 @@
     <Compile Include="Services\ClientServices\AboutServices.cs" />
     <Compile Include="Services\ClientServices\BlogServices.cs" />
     <Compile Include="Services\ClientServices\HomeServices.cs" />
+    <Compile Include="Services\ClientServices\OrderServicescs.cs" />
     <Compile Include="Services\ClientServices\ProductServices.cs" />
     <Compile Include="Services\ClientServices\SendMail.cs" />
     <Compile Include="Services\IAdminServices\IAboutAdminServices.cs" />
@@ -289,6 +291,7 @@
     <Compile Include="Services\IClientServices\IAboutServices.cs" />
     <Compile Include="Services\IClientServices\IBlogServices.cs" />
     <Compile Include="Services\IClientServices\IHomeServices.cs" />
+    <Compile Include="Services\IClientServices\IOrderServices.cs" />
     <Compile Include="Services\IClientServices\IProductServices.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2768,6 +2771,7 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
     <Content Include="Views\Product\CheckOut.cshtml" />
+    <Content Include="Views\Product\OrderInfor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
