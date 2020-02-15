@@ -4,8 +4,6 @@ using Models.Entity;
 using Models.IRepository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FonNature.Services.Services
 {
@@ -55,14 +53,14 @@ namespace FonNature.Services.Services
         {
             if (product == null) return false;
             var editProduct = _productAdminRepository.EditProduct(product);
-            return true;
+            return editProduct;
         }
 
         public bool Delete(int id)
         {
             if (id == 0) return false;
             var deleteSuccess = _productAdminRepository.Delete(id);
-            return true;
+            return deleteSuccess;
         }
 
         public bool? ChangeStatus(int id)

@@ -1,0 +1,59 @@
+﻿
+@model List<Models.Entity.Order>
+@{
+    ViewBag.Title = "OrdersList";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    List<Models.Entity.Customer> customersList = ViewBag.customersList;
+    List<Models.Entity.OrderStatus> statusList = ViewBag.statuses;
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Orders List
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Created Date</th>
+                            <th>Customer Name</th>
+                            <th>Customer Phone</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.Id">
+                                        <td><a href="/Admin/OrderAdmin/OrderDetail/@item.Id">@item.Id</a></td>
+                                        <td>@item.createdDate.Value.ToShortDateString()</td>
+                                        <td>@(customersList.Where(x=>x.id == item.IdCustomer).Select(x=>x.Name).SingleOrDefault())</td>
+                                        <td>@(customersList.Where(x => x.id == item.IdCustomer).Select(x => x.phone).SingleOrDefault())</td> 
+                                        <td>
+                                            <a href="/Admin/OrderAdmin/OrderDetail/@item.Id">Infor</a>/
+                                            <a href="/Admin/OrderAdmin/Edit/@item.Id">Edit</a>
+                                            /
+                                            @Ajax.ActionLink("Delete", "Delete", new {@id = item.Id} ,new AjaxOptions
+                                       {
+                                           Confirm = "Bạn có muốn xoá đơn hàng này?",
+                                           OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

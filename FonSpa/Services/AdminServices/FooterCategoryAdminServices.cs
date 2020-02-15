@@ -4,8 +4,6 @@ using Models.Entity;
 using Models.IRepository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FonNature.Services.Services
 {
@@ -55,14 +53,14 @@ namespace FonNature.Services.Services
         {
             if (footercategory == null) return false;
             var editFooterCategory = _footerCategoryAdminRepository.EditFooterCategory(footercategory);
-            return true;
+            return editFooterCategory;
         }
 
         public bool Delete(int id)
         {
             if (id == 0) return false;
             var deleteSuccess = _footerCategoryAdminRepository.Delete(id);
-            return true;
+            return deleteSuccess;
         }
     }
 }

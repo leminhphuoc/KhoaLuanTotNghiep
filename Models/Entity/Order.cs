@@ -13,7 +13,9 @@
 
         public long IdCustomer { get; set; }
 
-        [Column(TypeName = "date")]
+        public int IdStatus { get; set; }
+
+        [Column(TypeName = "datetime")]
         public DateTime? createdDate { get; set; }
     }
 }

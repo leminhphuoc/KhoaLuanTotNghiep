@@ -14,7 +14,7 @@
 
     using Owin;
 
-    public class ConnectorConfig
+    public static class ConnectorConfig
     {
         public static void RegisterFileSystems()
         {

@@ -4,8 +4,6 @@ using Models.Entity;
 using Models.IRepository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FonNature.Services.Services
 {
@@ -36,10 +34,10 @@ namespace FonNature.Services.Services
             return _contentCategoryAdminRepository.GetListContentCategory();
         }
 
-        public long AddContentCategory(ContentCategory contentategory)
+        public long AddContentCategory(ContentCategory contentCategory)
         {
-            if (contentategory == null) return 0;
-            var addContentCategory = _contentCategoryAdminRepository.AddContentCategory(contentategory);
+            if (contentCategory == null) return 0;
+            var addContentCategory = _contentCategoryAdminRepository.AddContentCategory(contentCategory);
             var idContentCategory = addContentCategory;
             return idContentCategory;
         }
@@ -51,18 +49,18 @@ namespace FonNature.Services.Services
             return contentcategory;
         }
 
-        public bool Edit(ContentCategory contentcategory)
+        public bool Edit(ContentCategory contentCategory)
         {
-            if (contentcategory == null) return false;
-            var editProductCategory = _contentCategoryAdminRepository.EditContentCategory(contentcategory);
-            return true;
+            if (contentCategory == null) return false;
+            var editProductCategory = _contentCategoryAdminRepository.EditContentCategory(contentCategory);
+            return editProductCategory;
         }
 
         public bool Delete(int id)
         {
             if (id == 0) return false;
             var deleteSuccess = _contentCategoryAdminRepository.Delete(id);
-            return true;
+            return deleteSuccess;
         }
 
         public bool? ChangeStatus(int id)

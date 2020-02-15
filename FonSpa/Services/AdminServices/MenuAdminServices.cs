@@ -1,11 +1,8 @@
 ﻿using FonNature.Services.IServices;
-using HelperLibrary;
 using Models.Entity;
 using Models.IRepository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FonNature.Services.Services
 {
@@ -50,14 +47,14 @@ namespace FonNature.Services.Services
         {
             if (menu == null) return false;
             var editMenu = _menuAdminRepository.EditMenu(menu);
-            return true;
+            return editMenu;
         }
 
         public bool Delete(int id)
         {
             if (id == 0) return false;
             var deleteSuccess = _menuAdminRepository.Delete(id);
-            return true;
+            return deleteSuccess;
         }
 
         public bool? ChangeStatus(int id)

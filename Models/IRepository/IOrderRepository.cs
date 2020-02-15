@@ -11,5 +11,9 @@ namespace Models.IRepository
     {
         long CreateOrder(Order order);
         long CreateOrderInformation(OrderInformation orderInfor);
+        List<Order> GetOrders();
+        List<OrderStatus> GetStatuses();
+        Order GetOrder(long id);
+        List<OrderInformation> GetOrderInfors(long idOrder);
     }
 }

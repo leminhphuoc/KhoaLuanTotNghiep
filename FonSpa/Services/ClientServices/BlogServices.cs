@@ -1,10 +1,8 @@
 ﻿using FonNature.Services.IClientServices;
 using Models.Entity;
 using Models.IRepository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace FonNature.Services.ClientServices
 {
@@ -38,7 +36,7 @@ namespace FonNature.Services.ClientServices
 
         public List<ContentCategory> ListContentCategory()
         {
-            return _contentCategoryAdminRepository.GetListContentCategory().Where(x => x.status == true).OrderBy(x => x.displayOrder).ToList(); ;
+            return _contentCategoryAdminRepository.GetListContentCategory().Where(x => x.status == true).OrderBy(x => x.displayOrder).ToList();
         }
 
         public List<Content> ListRecentBlog()

@@ -1,13 +1,12 @@
-﻿using Models.Entity;
+﻿using FonNature.Services.IClientServices;
+using Models.Entity;
 using Models.IRepository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FonNature.Services.ClientServices
 {
-    public class OrderServicescs
+    public class OrderServicescs : IOrderServices
     {
         private readonly IOrderRepository _orderRepository;
         private readonly ICustomerAdminRepository _customerAdminRepository;
@@ -24,6 +23,7 @@ namespace FonNature.Services.ClientServices
             var idOrder = _orderRepository.CreateOrder(order);
             foreach(var infor in orderInformations)
             {
+                infor.IdOrder = idOrder;
                 _orderRepository.CreateOrderInformation(infor);
             }
             return idOrder;

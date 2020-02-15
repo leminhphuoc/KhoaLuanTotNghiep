@@ -1,8 +1,5 @@
 ﻿using Models.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FonNature.Services.IServices
 {
@@ -10,10 +7,10 @@ namespace FonNature.Services.IServices
     {
         List<ContentCategory> ListAllByName(string searchString);
         List<ContentCategory> GetContentCategory();
-        long AddContentCategory(ContentCategory contentcategory);
+        long AddContentCategory(ContentCategory contentCategory);
         bool Delete(int id);
         ContentCategory GetDetail(int id);
-        bool Edit(ContentCategory contentcategory);
+        bool Edit(ContentCategory contentCategory);
         bool? ChangeStatus(int id);
     }
 }

@@ -7,6 +7,8 @@ using FonNature.Services.IServices;
 using FonNature.Services.Services;
 using FonNature.Services.IClientServices;
 using FonNature.Services.ClientServices;
+using FonNature.Services.IAdminServices;
+using FonNature.Services.AdminServices;
 
 namespace FonNature.Areas.Admin
 {
@@ -60,6 +62,8 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IBlogServices, BlogServices>();
             container.RegisterType<IAboutServices, AboutServices>();
             container.RegisterType<IOrderRepository, OrdersRepository>();
+            container.RegisterType<IOrderServices, OrderServicescs>();
+            container.RegisterType<IOrderAdminServices, OrderAdminServices>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 
@@ -69,6 +73,12 @@ namespace FonNature.Areas.Admin
                 "CreateAccount",
                 "Admin/createaccount",
                 new { action = "Create", Controller = "AccountAdmin" }
+            );
+
+            context.MapRoute(
+                "OrderAdmin",
+                "Admin/Order",
+                new { action = "OrdersList", Controller = "OrderAdmin" }
             );
 
             context.MapRoute(

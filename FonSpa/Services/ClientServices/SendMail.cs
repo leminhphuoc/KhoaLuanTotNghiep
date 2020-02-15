@@ -1,12 +1,8 @@
 ﻿using HelperLibrary;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace FonNature.Services.ClientServices
 {
-    public class SendMail
+    public static class SendMail
     {
         public static bool SendMailFromCustomer(string name, string email, string message)
         {

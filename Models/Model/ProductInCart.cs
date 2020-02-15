@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Models.Model
 {
-    public class CartProduct
+    public class ProductInCart
     {
-        public CartProduct(long productId)
+        public ProductInCart(long productId)
         {
             var product = new ProductAdminRepository().GetDetail(productId);
             ProductName = product.name;

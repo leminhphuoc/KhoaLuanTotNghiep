@@ -230,6 +230,7 @@
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuTypeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideAdminController.cs" />
@@ -251,6 +252,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminServices\OrderAdminServices.cs" />
     <Compile Include="Services\ClientServices\AboutServices.cs" />
     <Compile Include="Services\ClientServices\BlogServices.cs" />
     <Compile Include="Services\ClientServices\HomeServices.cs" />
@@ -268,6 +270,7 @@
     <Compile Include="Services\IAdminServices\IFooterCategoryAdminServices.cs" />
     <Compile Include="Services\IAdminServices\IMenuAdminServices.cs" />
     <Compile Include="Services\IAdminServices\IMenuTypeSerivces.cs" />
+    <Compile Include="Services\IAdminServices\IOrderAdminServices.cs" />
     <Compile Include="Services\IAdminServices\IProductAdminSerivces.cs" />
     <Compile Include="Services\IAdminServices\IProductCategoryAdminServices.cs" />
     <Compile Include="Services\IAdminServices\ISlideAdminServices.cs" />
@@ -2638,14 +2641,11 @@
     <Content Include="Areas\Admin\Views\FooterCategoryAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\FooterCategoryAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\FooterCategoryAdmin\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\BookingAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\BookingAdmin\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\BookingAdmin\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\BookingAdmin\Schedule.cshtml" />
-    <Content Include="Areas\Admin\Views\BookingAdmin\FullBed.cshtml" />
     <Content Include="Areas\Admin\Views\StaffAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\StaffAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\StaffAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderAdmin\OrdersList.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderAdmin\OrderDetail.cshtml" />
     <None Include="Asset\Admin\js\Plugin\ckfinder\packages.config" />
     <Content Include="Asset\Admin\js\Plugin\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Asset\Admin\js\Plugin\ckfinder\plugins\README.md" />
@@ -2771,7 +2771,7 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
     <Content Include="Views\Product\CheckOut.cshtml" />
-    <Content Include="Views\Product\OrderInfor.cshtml" />
+    <Content Include="Views\Product\Order.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2822,6 +2822,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\Google.Protobuf.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\SonarAnalyzer.CFG.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\SonarAnalyzer.CSharp.dll" />
+    <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

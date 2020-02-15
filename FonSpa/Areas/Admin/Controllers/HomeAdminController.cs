@@ -1,10 +1,6 @@
 ﻿using FonNature.Filter;
-using FonNature.Services.IServices;
 using Models.Repository;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
@@ -17,7 +13,6 @@ namespace FonNature.Areas.Admin.Controllers
         public ActionResult Index()
         {
             ViewBag.Visitor = new IPAddressRepository().CountVisitor();
-            var product = new ProductAdminRepository().Count();
             ViewBag.Customer = new CustomerAdminRepository().Count();
 
            

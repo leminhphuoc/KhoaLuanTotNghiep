@@ -1,9 +1,6 @@
 ﻿using FonNature.Services.ClientServices;
 using FonNature.Services.IServices;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers

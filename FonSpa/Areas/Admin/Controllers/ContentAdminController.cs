@@ -1,10 +1,5 @@
 ﻿using FonNature.Services.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using PagedList.Mvc;
 using PagedList;
 using Models.Entity;
 using FonNature.Filter;
@@ -95,7 +90,7 @@ namespace FonNature.Areas.Admin.Controllers
         [HttpDelete]
         public ActionResult Delete(int id)
         {
-            var deleteAccountSuccess = _contentServices.Delete(id);
+            _contentServices.Delete(id);
             return RedirectToAction("Index");
         }
     }

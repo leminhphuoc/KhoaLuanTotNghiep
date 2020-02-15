@@ -1,0 +1,33 @@
+﻿@model Models.Model.Cart
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="hun-element-404error layout-1 full-height-with-header" style="background-image: url(/Asset/Client/images/bg-08.jpg);">
+    <h2 class="title-element">
+        Cảm ơn bạn đã mua hàng!
+        <br>
+        Thông tin đơn hàng :
+    </h2>
+
+    <div class="description-element">
+        <p>
+            Mã đơn hàng : #@(ViewBag.idOrder != null ? ViewBag.idOrder : "" ) <br />
+            Tên khách hàng : @Model.customer.Name <br />
+            Số điện thoại : @Model.customer.phone <br />
+            Địa chỉ nhận hàng : @Model.customer.address 
+        </p>
+    </div>
+
+    <div class="buttons-element">
+        <a href="/product" class="hun-button size-normal shape-round style-fill-light">
+            Tiếp tục mua hàng
+        </a>
+
+        <a href="/" class="hun-button size-normal shape-round style-fill-color">
+            Trang chủ
+        </a>
+    </div>
+</div>
+

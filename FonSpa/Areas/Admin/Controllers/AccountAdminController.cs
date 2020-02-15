@@ -2,11 +2,6 @@
 using FonNature.Services.IServices;
 using Models.Entity;
 using Models.IRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
@@ -93,7 +88,7 @@ namespace FonNature.Areas.Admin.Controllers
         [HttpDelete]
         public ActionResult DeleteAccount(int id)
         {
-            var deleteAccountSuccess = _accountAdminRepository.Delete(id);
+            _accountAdminRepository.Delete(id);
             return RedirectToAction("Index");
         }
     }

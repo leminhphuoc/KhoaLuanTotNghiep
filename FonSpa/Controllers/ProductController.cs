@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
 
 namespace FonNature.Controllers
 {
@@ -55,10 +54,10 @@ namespace FonNature.Controllers
             var idProductsSplit = idProductsFromCart.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             int productTotal = idProductsSplit.Count();
             if (productTotal == 0) return View();
-            List<CartProduct> cart = new List<CartProduct>();
+            List<ProductInCart> cart = new List<ProductInCart>();
             for (int i = 1; i <= productTotal; i++)
             {
-                CartProduct product = new CartProduct(long.Parse(idProductsSplit[i - 1])) { ProductId = long.Parse(idProductsSplit[i - 1]), Count = int.Parse(Request.Form["quantity_" + i]) };
+                var product = new ProductInCart(long.Parse(idProductsSplit[i - 1])) { ProductId = long.Parse(idProductsSplit[i - 1]), Count = int.Parse(Request.Form["quantity_" + i]) };
                 cart.Add(product);
             }
             Session[Constant.Cart_Sesion] = cart;
@@ -76,9 +75,17 @@ namespace FonNature.Controllers
         [HttpPost]
         public ActionResult Order(Customer customerInfor)
         {
-            var orderInformations = TempData["OrderProduct"] as List<OrderInformation>;
+            var orderInformations = TempData["OrderInformation"] as List<OrderInformation>;
             var idOrder = _orderServices.CreateOrder(orderInformations,customerInfor);
-            return View(idOrder);
+            var productInCarts = new List<ProductInCart>();
+            foreach(var order in orderInformations)
+            {
+                var product = new ProductInCart(order.IdProduct);
+                productInCarts.Add(product);
+            }
+            var cart = new Cart() { productInCarts = productInCarts, customer = customerInfor };
+            if (idOrder > 0) ViewBag.idOrder = idOrder;
+            return View(cart);
         }
     }
 }

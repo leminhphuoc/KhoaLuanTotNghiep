@@ -15,10 +15,6 @@
 
         public long IdOrder { get; set; }
 
-        public int? IdStatus { get; set; }
-
         public int Quantity { get; set; }
-
-        public decimal Price { get; set; }
     }
 }
