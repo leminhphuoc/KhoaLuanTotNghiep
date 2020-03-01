@@ -1,8 +1,16 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>@ViewBag.Tittle</title>
+    <title>@(ViewBag.MetaTitle ?? ViewBag.Tittle)</title>
     <meta charset="UTF-8">
+    <meta name="title" content="@(ViewBag.MetaTitle ?? string.Empty)" />
+    <meta name="description" content="@(ViewBag.MetaDescription ?? string.Empty)" />
+    <meta name="keywords" content="@(ViewBag.MetaKeyword ?? string.Empty)" />
+    <meta property="og:title" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:url" content="@Context.Request.Url.AbsoluteUri" />
+    <meta property="og:description" content="@(ViewBag.MetaDescription ?? string.Empty)" />
+    <meta property="og:site_name" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="icon" type="image/png" href="/Asset/Client/images/icons/favicon-01.png" />
@@ -33,11 +41,11 @@
     <!--===============================================================================================-->
     <!--Shoping cart-->
     <link href="/Asset/Cartpage/web/css/shop.css" rel="stylesheet" type="text/css" />
-    <link href="~/Asset/Cartpage/web/css/checkout.css" rel="stylesheet" type="text/css"  />
+    <link href="~/Asset/Cartpage/web/css/checkout.css" rel="stylesheet" type="text/css" />
     <!--//Shoping cart-->
     <link rel="stylesheet" type="text/css" href="/Asset/Client/css/style.css">
     <!--===============================================================================================-->
-
+    <script src="https://kit.fontawesome.com/666ff9ef07.js" crossorigin="anonymous"></script>
 </head>
 <body class="animsition">
 
@@ -65,7 +73,15 @@
             @{Html.RenderAction("MainMenu", "Home");}
 
             <div class="group-feature">
-
+                <div class="toyscart toyscart2 cart cart box_1">
+                    <form action="#" method="post" class="last">
+                        <input type="hidden" name="cmd" value="_cart">
+                        <input type="hidden" name="display" value="1">
+                        <button style="background-color:inherit" class="top_toys_cart" type="submit" name="submit" value="">
+                            <span class="fas fa-shopping-cart"></span>
+                        </button>
+                    </form>
+                </div>
                 <div class="hun-element-search layout-1">
                     <span class="search-open">
                         <i class="zmdi zmdi-search"></i>
@@ -127,6 +143,11 @@
     <!--===============================================================================================-->
     <script src="/Asset/Client/js/main.js"></script>
     @RenderSection("ProductJs", required: false)
+    <script>
+        $('#cartTop').on('click', function () {
+            toys.view.show();
+        });
+    </script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-/*!
+﻿/*!
  * mincart
  * The Mini Cart i a great way to improve your PayPal shopping cart integration.
  *
@@ -1917,7 +1917,7 @@ var defaults = module.exports = {
         button: 'Check Out',
         subtotal: 'Subtotal:',
         discount: 'Discount:',
-        empty: 'Your shopping cart is empty'
+        empty: 'Giỏ hàng hiện không có sản phẩm'
     }
 
 };

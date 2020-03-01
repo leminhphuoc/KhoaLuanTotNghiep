@@ -22,28 +22,37 @@ namespace FonNature.Controllers
         // GET: Product
         public ActionResult Index(int? page, string searchString = null)
         {
-            ViewBag.Tittle = "Products";
             var listProduct = _productServices.ListAll();
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             var listProductPaged = listProduct.ToPagedList(pageNumber, pageSize);
+            var seo = _productServices.GetProductSeo();
+            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
             return View(listProductPaged);
         }
 
         public ActionResult ListByCategory(int? page, string searchString = null, int idCategory = 0)
         {
-            ViewBag.Tittle = "Products";
             var listProduct = _productServices.ListByCategory(idCategory);
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             var listProductPaged = listProduct.ToPagedList(pageNumber, pageSize);
+            var seo = _productServices.GetProductSeo();
+            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
             return View(listProductPaged);
         }
 
         public ActionResult Detail(long id)
         {
             var product = _productServices.GetDetail(id);
-            ViewBag.Tittle = "Product Detail";
+            ViewBag.ListImage = _productServices.GetImagesList(id);
+            ViewBag.MetaTitle = product.metaTitle ?? string.Empty;
+            ViewBag.MetaDescription = product.MetaKeyword ?? string.Empty;
+            ViewBag.MetaKeyword = product.MetaDescription ?? string.Empty;
             return View(product);
         }
 

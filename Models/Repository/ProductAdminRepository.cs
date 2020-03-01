@@ -1,10 +1,10 @@
-﻿using Models.Entity;
+﻿using HelperLibrary;
+using Models.Entity;
 using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Models.Repository
 {
@@ -30,9 +30,22 @@ namespace Models.Repository
             return _db.Products.ToList();
         }
 
+        public bool SaveImages(string images, long id)
+        {
+            var product = _db.Products.Find(id);
+            product.moreImages = images;
+            _db.SaveChanges();
+            return true;
+        }
+        public string GetImagesList(long id)
+        {
+            var imageInDb = _db.Products.Find(id);
+            if (imageInDb == null) return null;
+            return imageInDb.moreImages;
+        }
+
         public long AddProduct(Product product)
         {
-            product.status = false;
             product.createdDate = DateTime.Now;
             var addProduct = _db.Products.Add(product);
             _db.SaveChanges();
@@ -44,6 +57,8 @@ namespace Models.Repository
             var productEdit = _db.Products.Where(x => x.id == product.id).SingleOrDefault();
             productEdit.name = product.name;
             productEdit.metaTitle = product.metaTitle;
+            productEdit.MetaKeyword = product.metaTitle;
+            productEdit.MetaDescription = product.metaTitle;
             productEdit.description = product.description;
             productEdit.image = product.image;
             productEdit.moreImages = product.moreImages;
@@ -53,7 +68,7 @@ namespace Models.Repository
             productEdit.idCategory = product.idCategory;
             productEdit.detail = product.detail;
             productEdit.modifiDate = DateTime.Now;
-            productEdit.status = product.status;
+            productEdit.status = true;
             productEdit.topHot = product.topHot;
             _db.SaveChanges();
             return true;
@@ -83,7 +98,7 @@ namespace Models.Repository
         {
             if (searchString == null) return null;
 
-            var listProduct = _db.Products.Where(x => x.name.ToUpper() == searchString.ToUpper());
+            var listProduct = _db.Products.Where(Predicate(searchString));
             return listProduct.ToList();
         }
 
@@ -104,6 +119,9 @@ namespace Models.Repository
             return _db.Products.Count();
         }
 
-
+        private static Func<Product, bool> Predicate(string searchString)
+        {
+            return x => Helper.RemoveSign4VietnameseString(x.name).ToUpper().Contains(searchString.ToUpper());
+        }
     }
 }

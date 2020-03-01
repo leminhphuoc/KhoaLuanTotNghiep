@@ -10,7 +10,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home</title>
+    <title>@(ViewBag.MetaTitle ?? ViewBag.Tittle)</title>
+    <meta name="title" content="@ViewBag.MetaTitle" />
+    <meta name="description" content="@ViewBag.MetaDescription" />
+    <meta name="keywords" content="@ViewBag.MetaKeyword" />
+    <meta property="og:title" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:url" content="@Context.Request.Url.AbsoluteUri" />
+    <meta property="og:description" content="@(ViewBag.MetaDescription ?? string.Empty)" />
+    <meta property="og:site_name" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="~/Asset/Client/images/icons/favicon-01.png" />

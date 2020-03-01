@@ -10,10 +10,17 @@ namespace FonNature.Services.ClientServices
     {
         private readonly IContentAdminRepository _contentAdminRepository;
         private readonly IContentCategoryAdminRepository _contentCategoryAdminRepository;
-        public BlogServices(IContentAdminRepository contentAdminRepository, IContentCategoryAdminRepository contentCategoryAdminRepository)
+        private readonly ISEORepository _seoRepository;
+        public BlogServices(IContentAdminRepository contentAdminRepository, IContentCategoryAdminRepository contentCategoryAdminRepository, 
+            ISEORepository seoRepository)
         {
             _contentAdminRepository = contentAdminRepository;
             _contentCategoryAdminRepository = contentCategoryAdminRepository;
+            _seoRepository = seoRepository;
+        }
+        public SEO GetSeo()
+        {
+            return _seoRepository.GetSEO(3);
         }
 
         public List<Content> ListAll(string searchString)

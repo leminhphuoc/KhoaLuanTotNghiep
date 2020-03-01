@@ -17,6 +17,10 @@ namespace FonNature.Controllers
         {
             ViewBag.Tittle = "Contact";
             var listContact = _contactClientServices.GetContacts();
+            var seo = _contactClientServices.GetSeo();
+            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
             return View(listContact);
         }
         public ActionResult SendMessage(string name, string email, string comment)

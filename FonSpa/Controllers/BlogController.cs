@@ -22,7 +22,11 @@ namespace FonNature.Controllers
             var blogList = _blogServices.ListAll(searchString);
             int pageSize = 4;
             int pageNumber = (page ?? 1);
-            var blogListPaged = blogList.ToPagedList(pageNumber, pageSize);            
+            var blogListPaged = blogList.ToPagedList(pageNumber, pageSize);
+            var seo = _blogServices.GetSeo();
+            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
             return View(blogListPaged);
         }
 

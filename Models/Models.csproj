@@ -68,6 +68,7 @@
     <Compile Include="Entity\OrderStatus.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\ProductCategory.cs" />
+    <Compile Include="Entity\SEO.cs" />
     <Compile Include="Entity\Slide.cs" />
     <Compile Include="Entity\Staff.cs" />
     <Compile Include="Entity\UsefulInformation.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="IRepository\IOrderRepository.cs" />
     <Compile Include="IRepository\IProductAdminRepository.cs" />
     <Compile Include="IRepository\IProductCategoryAdminRepository.cs" />
+    <Compile Include="IRepository\ISEORepository.cs" />
     <Compile Include="IRepository\ISlideAdminRepository.cs" />
     <Compile Include="IRepository\IStaffAdminRepository.cs" />
     <Compile Include="Migrations\201912240333276_Initial.cs" />
@@ -99,6 +101,10 @@
     <Compile Include="Migrations\202001211000380_[-CreateStatus].cs" />
     <Compile Include="Migrations\202001211000380_[-CreateStatus].Designer.cs">
       <DependentUpon>202001211000380_[-CreateStatus].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002190508253_[-AddSEOTable].cs" />
+    <Compile Include="Migrations\202002190508253_[-AddSEOTable].Designer.cs">
+      <DependentUpon>202002190508253_[-AddSEOTable].cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cart.cs" />
@@ -119,6 +125,7 @@
     <Compile Include="Repository\OrdersRepository.cs" />
     <Compile Include="Repository\ProductAdminRepository.cs" />
     <Compile Include="Repository\ProductCategoryAdminRepository.cs" />
+    <Compile Include="Repository\SEORepository.cs" />
     <Compile Include="Repository\SlideAdminRepository.cs" />
     <Compile Include="Repository\StaffAdminRepository.cs" />
     <Compile Include="Repository\VisitorRepository.cs" />
@@ -142,6 +149,15 @@
     <EmbeddedResource Include="Migrations\202001211000380_[-CreateStatus].resx">
       <DependentUpon>202001211000380_[-CreateStatus].cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002190508253_[-AddSEOTable].resx">
+      <DependentUpon>202002190508253_[-AddSEOTable].cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HelperLibrary\HelperLibrary.csproj">
+      <Project>{58D044CA-F2AA-4E89-9BEE-6B1353F3370F}</Project>
+      <Name>HelperLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

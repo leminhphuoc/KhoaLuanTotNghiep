@@ -12,5 +12,7 @@ namespace FonNature.Services.IServices
         Product GetDetail(int id);
         bool Edit(Product product);
         bool? ChangeStatus(int id);
+        bool SaveProductImage(string images, long id);
+        List<string> GetImagesList(long id);
     }
 }

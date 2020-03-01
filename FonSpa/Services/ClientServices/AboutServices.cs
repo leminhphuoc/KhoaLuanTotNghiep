@@ -10,10 +10,18 @@ namespace FonNature.Services.ClientServices
     {
         private readonly IAboutAdminRepository _aboutAdminRepository;
         private readonly IStaffAdminRepository _staffAdminRepository;
-        public AboutServices(IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository)
+        private readonly ISEORepository _seoRepository;
+        public AboutServices(IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository,
+            ISEORepository seoRepository)
         {
             _aboutAdminRepository = aboutAdminRepository;
             _staffAdminRepository = staffAdminRepository;
+            _seoRepository = seoRepository;
+        }
+
+        public SEO GetSeo()
+        {
+            return _seoRepository.GetSEO(4);
         }
 
         public About GetAbout(int id)

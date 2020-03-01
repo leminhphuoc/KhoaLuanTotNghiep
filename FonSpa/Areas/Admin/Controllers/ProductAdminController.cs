@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using PagedList;
 using Models.Entity;
-using FonNature.Filter;
 
 namespace FonNature.Areas.Admin.Controllers
 {
-    [AuthData]
     public class ProductAdminController : Controller
     {
         private readonly IProductAdminSerivces _productAdminServices;
@@ -24,6 +22,7 @@ namespace FonNature.Areas.Admin.Controllers
             int pageNumber = (page ?? 1);
             var listProductPaged = listProduct.ToPagedList(pageNumber, pageSize);
             ViewBag.ProductCategory = _productAdminServices.GetProductCategory();
+            ViewBag.SearchString = searchString ?? string.Empty;
             return View(listProductPaged);
         }   
 
@@ -87,6 +86,35 @@ namespace FonNature.Areas.Admin.Controllers
             {
                 Status = res
             });
+        }
+
+        [HttpPost]
+        public JsonResult SaveProductImages(string images, long id)
+        {
+            try
+            {
+                var saveImages = _productAdminServices.SaveProductImage(images, id);
+                return Json(new
+                {
+                    Status = saveImages
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    Status = false
+                });
+            }
+        }
+
+        public JsonResult ProductImages(long id)
+        {
+            var imagesList = _productAdminServices.GetImagesList(id);
+            return Json(new
+            {
+                data = imagesList
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }

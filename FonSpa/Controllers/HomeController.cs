@@ -23,7 +23,11 @@ namespace FonNature.Controllers
             ViewBag.FooterCategories = _homeServices.ListFooterCategory();
             ViewBag.Footers = _homeServices.ListFooter();
             ViewBag.About = _homeServices.ListAbout();
-            ViewBag.Staffs = _homeServices.GetStaffs(); 
+            ViewBag.Staffs = _homeServices.GetStaffs();
+            var seo = _homeServices.GetHomeSeo();
+            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
             return View();
         }
 

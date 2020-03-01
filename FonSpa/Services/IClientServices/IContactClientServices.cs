@@ -6,5 +6,6 @@ namespace FonNature.Services.IServices
     public interface IContactClientServices
     {
         List<Contact> GetContacts();
+        SEO GetSeo();
     }
 }

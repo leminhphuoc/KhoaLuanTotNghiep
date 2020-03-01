@@ -18,6 +18,12 @@ namespace Models.Entity
         public string metaTitle { get; set; }
 
         [StringLength(250)]
+        public string MetaKeyword { get; set; }
+
+        [StringLength(250)]
+        public string MetaDescription { get; set; }
+
+        [StringLength(250)]
         public string description { get; set; }
 
         [StringLength(100)]

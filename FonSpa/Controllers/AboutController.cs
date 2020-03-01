@@ -17,6 +17,10 @@ namespace FonNature.Controllers
             ViewBag.Tittle = "About";
             ViewBag.Staffs = _aboutServices.GetStaffs();
             var model = _aboutServices.GetAbouts();
+            var seo = _aboutServices.GetSeo();
+            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
             return View(model);
         }
     }

@@ -65,6 +65,8 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IOrderServices, OrderServicescs>();
             container.RegisterType<IOrderAdminServices, OrderAdminServices>();
 
+            container.RegisterType<ISEORepository, SEORepository>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 
             //Admin Account

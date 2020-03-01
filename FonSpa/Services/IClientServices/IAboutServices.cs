@@ -8,5 +8,6 @@ namespace FonNature.Services.IClientServices
         About GetAbout(int id);
         List<About> GetAbouts();
         List<Staff> GetStaffs();
+        SEO GetSeo();
     }
 }

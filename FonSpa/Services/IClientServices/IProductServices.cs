@@ -8,5 +8,7 @@ namespace FonNature.Services.IClientServices
         List<Product> ListAll();
         Product GetDetail(long id);
         List<Product> ListByCategory(int idCategory);
+        SEO GetProductSeo();
+        List<string> GetImagesList(long id);
     }
 }

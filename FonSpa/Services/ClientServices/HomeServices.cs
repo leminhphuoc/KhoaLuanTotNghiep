@@ -16,7 +16,9 @@ namespace FonNature.Services.ClientServices
         private readonly IFooterCategoryAdminRepository _footerCategoryAdminRepository;
         private readonly IFooterAdminRepository _footerAdminRepository;
         private readonly IAboutAdminRepository _aboutAdminRepository;
-        public HomeServices(IMenuAdminRepository menuAdminRepository, ISlideAdminRepository slideAdminRepository, IProductCategoryAdminRepository productCategoryAdminRepository ,IContentCategoryAdminRepository contentCategoryAdminRepository, IFooterAdminRepository footerAdminRepository, IFooterCategoryAdminRepository footerCategoryAdminRepository, IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository)
+        private readonly ISEORepository _seoRepository;
+        public HomeServices(IMenuAdminRepository menuAdminRepository, ISlideAdminRepository slideAdminRepository, IProductCategoryAdminRepository productCategoryAdminRepository ,IContentCategoryAdminRepository contentCategoryAdminRepository, IFooterAdminRepository footerAdminRepository, IFooterCategoryAdminRepository footerCategoryAdminRepository, IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository
+            , ISEORepository seoRepository)
         {
             _menuAdminRepository = menuAdminRepository;
             _slideAdminRepository = slideAdminRepository;
@@ -26,11 +28,17 @@ namespace FonNature.Services.ClientServices
             _footerCategoryAdminRepository = footerCategoryAdminRepository;
             _footerAdminRepository = footerAdminRepository;
             _aboutAdminRepository = aboutAdminRepository;
+            _seoRepository = seoRepository;
         }
 
         public List<Menu> ListMenu()
         {
             return _menuAdminRepository.GetListMenu();
+        }
+
+        public SEO GetHomeSeo()
+        {
+            return _seoRepository.GetSEO(1);
         }
 
         public List<Slide> ListSlide()

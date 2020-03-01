@@ -10,5 +10,6 @@ namespace FonNature.Services.IClientServices
         List<Content> ListRecentBlog();
         Content GetDetail(long id);
         List<Content> ListAllByCategory(string searchString, int idCategory);
+        SEO GetSeo();
     }
 }

@@ -8,9 +8,15 @@ namespace FonNature.Services.Services
     public class ContactClientServices : IContactClientServices
     {
         private readonly IContactAdminRepository _contactAdminRepository;
-        public ContactClientServices(IContactAdminRepository contactAdminRepository)
+        private readonly ISEORepository _seoRepository;
+        public ContactClientServices(IContactAdminRepository contactAdminRepository , ISEORepository seoRepository)
         {
             _contactAdminRepository = contactAdminRepository;
+            _seoRepository = seoRepository;
+        }
+        public SEO GetSeo()
+        {
+            return _seoRepository.GetSEO(5);
         }
 
         public List<Contact> GetContacts()

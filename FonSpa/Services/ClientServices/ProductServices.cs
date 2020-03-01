@@ -3,15 +3,22 @@ using Models.Entity;
 using Models.IRepository;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace FonNature.Services.ClientServices
 {
     public class ProductServices : IProductServices
     {
         private readonly IProductAdminRepository _productAdminRepository;
-        public ProductServices(IProductAdminRepository productAdminRepository)
+        private readonly ISEORepository _seoRepository;
+        public ProductServices(IProductAdminRepository productAdminRepository , ISEORepository seoRepository)
         {
             _productAdminRepository = productAdminRepository;
+            _seoRepository = seoRepository;
+        }
+        public SEO GetProductSeo()
+        {
+            return  _seoRepository.GetSEO(2);
         }
 
         public List<Product> ListAll()
@@ -28,6 +35,20 @@ namespace FonNature.Services.ClientServices
         {
             if (id == 0) return null;
             return _productAdminRepository.GetDetail(id);
+        }
+
+        public List<string> GetImagesList(long id)
+        {
+            if (id == 0) return new List<string>();
+            var imageInDb = _productAdminRepository.GetImagesList(id);
+            if (imageInDb == null) return new List<string>();
+            var imageXML = XElement.Parse(imageInDb);
+            var imagesList = new List<string>();
+            foreach (var node in imageXML.Elements())
+            {
+                imagesList.Add(node.Value);
+            }
+            return imagesList;
         }
 
     }

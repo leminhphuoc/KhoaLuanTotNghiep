@@ -1,92 +1,137 @@
 ﻿@model Models.Entity.Product
-    @{
-        ViewBag.Title = "Detail";
-        Layout = "~/Views/Shared/_Layout.cshtml";
-    }
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<string> imagesList = ViewBag.ListImage ?? null;
+}
 
-    <!-- Title Page -->
-    <div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
-        <div class="container">
-            <h1 class="main-title">
-                Products
-            </h1>
+@section ProductJs{
 
-            <ul class="breadcrumbs">
-                <li>
-                    <a href="/">
-                        Home
+    <!-- cart-js -->
+
+    <script src="~/Asset/Cartpage/web/js/minicart.js"></script>
+    <script>
+        toys.render();
+
+        toys.cart.on('toys_checkout', function (evt) {
+            var items, len, i;
+
+            if (this.subtotal() > 0) {
+                items = this.items();
+                console.log(items)
+                for (i = 0, len = items.length; i < len; i++) { }
+            }
+        });
+    </script>
+
+    <!--    //cart-js -->
+    <script src="/Asset/Client/js/bootstrap-3.1.1.min.js"></script>
+}
+
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
+    <div class="container">
+        <h1 class="main-title">
+            @Model.name
+        </h1>
+
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Trang chủ
+                </a>
+            </li>
+
+            <li>
+                @Model.name
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end Title Page -->
+<!-- content service-detail-page -->
+<div class="sec--content--service-detail-page">
+    <div class="container">
+        <div class="hun-element-service-detail layout-1">
+            <div class="pic-service js-call-slick">
+                <div style="width:500px;margin-left:auto;margin-right:auto" class="slide-slick" data-slick='{"adaptiveHeight": true, "fade": false, "speed": 500, "dots": false, "arrows": true, "autoplay": false, "autoplaySpeed": 5000, "infinite": true, "slidesToShow": 1, "slidesToScroll": 1}'>
+
+                    <div class="item-slick">
+                        <img style="height:auto;max-width:100%;" src="@Model.image" alt="IMG">
+                    </div>
+                    @if (imagesList != null)
+                    {
+                        foreach (var image in imagesList)
+                        {
+                            <div class="item-slick">
+                                <img style="height:auto;max-width:100%;" src="@image" alt="IMG">
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="arrows-slick">
+                    <a class="item-arrow prev-slick">
+                        <i class="zmdi zmdi-chevron-left"></i>
                     </a>
-                </li>
 
-                <li>
-                    Product Detail
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- end Title Page -->
-    <!-- content service-detail-page -->
-    <div class="sec--content--service-detail-page">
-        <div class="container">
-            <div class="hun-element-service-detail layout-1">
-                <div class="pic-service js-call-slick">
-                    <div style="width:500px;margin-left:auto;margin-right:auto" class="slide-slick" data-slick='{"adaptiveHeight": true, "fade": false, "speed": 500, "dots": false, "arrows": true, "autoplay": false, "autoplaySpeed": 5000, "infinite": true, "slidesToShow": 1, "slidesToScroll": 1}'>
-
-                        <div class="item-slick">
-                            <img style="height:auto;max-width:100%;" src="@Model.image" alt="IMG">
-                        </div>
-
-                        <div class="item-slick">
-                            <img style="height:auto;max-width:100%;" src="@Model.image" alt="IMG">
-                        </div>
-
-                        <div class="item-slick">
-                            <img style="height:auto;max-width:100%;" src="@Model.image" alt="IMG">
-                        </div>
-                    </div>
-
-                    <div class="arrows-slick">
-                        <a class="item-arrow prev-slick">
-                            <i class="zmdi zmdi-chevron-left"></i>
-                        </a>
-
-                        <a class="item-arrow next-slick">
-                            <i class="zmdi zmdi-chevron-right"></i>
-                        </a>
-                    </div>
+                    <a class="item-arrow next-slick">
+                        <i class="zmdi zmdi-chevron-right"></i>
+                    </a>
                 </div>
-
-                <div class="head-element">
-                    <h3 class="title-service">
-                        @Model.name
-                    </h3>
-
-                    <div class="info-service">
-                        <span class="item-info">
-                            <i class="zmdi zmdi-money-box"></i>
-                            $@Model.price
-                        </span>
-                        @*<span class="item-info">
-                            <a  href="booking.html" class="link-item">
-                                Buy now
-                            </a>
-                        </span>*@
-                       
-                    </div>
-                </div>
-
-                <p>
-                    @Model.description
-                </p>     
-
-                <h4 class="subtitle-service">
-                    Description
-                </h4>
-
-                <p>
-                    @Html.Raw(Model.detail)
-                </p>
             </div>
+
+            <div class="head-element">
+                <h3 class="title-service">
+                    @Model.name
+                </h3>
+
+                <div class="info-service">
+                    <span class="item-info">
+                        <i class="zmdi zmdi-money-box"></i>
+                        @if (Model.promotionPrice != null)
+                        {
+                            <label style="text-decoration:line-through">@Model.price.Value.ToString("N0") đ </label>
+                            <label style="color:red;font:bold;font-size:150%;margin-left:10px">@Model.promotionPrice.Value.ToString("N0") đ</label>
+                        }
+                        else
+                        {
+                            <label style="color:red;font:bold;font-size:150%">@Model.price.Value.ToString("N0") đ</label>
+                        }
+                    </span>
+                    @*<span class="item-info">
+            <a  href="booking.html" class="link-item">
+                Buy now
+            </a>
+        </span>*@
+                    @*<div class="toys single-item hvr-outline-out">*@
+            <form class="item-info" action="#" method="post">
+                <input type="hidden" name="cmd" value="_cart">
+                <input type="hidden" name="add" value="1">
+                <input type="hidden" name="toys_item" value="@Model.name">
+                <input type="hidden" name="amount" value="@(Model.promotionPrice ?? Model.price)">
+                <input type="hidden" name="id" value="@Model.id">
+                <button type="submit" style="margin:auto" class="link-item">
+                    Chọn Mua
+                </button>
+            </form>
+        @*</div>*@
+
+                </div>
+            </div>
+
+            <p>
+                @Model.description
+            </p>
+
+            <h4 class="subtitle-service">
+                Description
+            </h4>
+
+            <p>
+                @Html.Raw(Model.detail)
+            </p>
         </div>
     </div>
-    <!-- end content service-detail-page -->
+</div>
+<!-- end content service-detail-page -->

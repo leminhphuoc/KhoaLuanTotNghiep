@@ -18,5 +18,7 @@ namespace Models.IRepository
         List<Product> ListSearchProduct(string searchString);
         List<ProductCategory> GetProductCategories();
         bool CheckExits(string name);
+        bool SaveImages(string images, long id);
+        string GetImagesList(long id);
     }
 }

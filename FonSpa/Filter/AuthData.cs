@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FonNature.Common;
+using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
@@ -10,7 +11,7 @@ namespace FonNature.Filter
     {
         public void OnAuthentication(AuthenticationContext filterContext)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session["USER_SESSION_ADMIN"])))
+            if (string.IsNullOrEmpty(Convert.ToString(filterContext.HttpContext.Session[CommonConstants.UserSession.USER_SESSION_ADMIN])))
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }

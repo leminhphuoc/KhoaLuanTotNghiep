@@ -2,8 +2,11 @@
 
 namespace FonNature.Common
 {
-    public static class CommonConstants
+    public struct CommonConstants
     {
-        public static string USER_SESSION_ADMIN { get; set; }
+        public struct UserSession
+        {
+            public const string USER_SESSION_ADMIN = " USER_SESSION_ADMIN";
+        }
     }
 }

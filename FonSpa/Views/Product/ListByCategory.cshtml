@@ -2,8 +2,12 @@
 @using PagedList
 @using PagedList.Mvc
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+                /**/
+
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section ProductJs{
@@ -24,25 +28,30 @@
             }
         });
     </script>
-    <!-- //cart-js -->
+    <script>
+        $('#cartTop').on('click', function () {
+            toys.view.show();
+        });
+    </script>
+    <!--    //cart-js -->
     <script src="/Asset/Client/js/bootstrap-3.1.1.min.js"></script>
 }
 <!-- Title Page -->
 <div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
     <div class="container">
         <h1 class="main-title">
-            Products
+            Sản phẩm
         </h1>
 
         <ul class="breadcrumbs">
             <li>
                 <a href="/">
-                    Home
+                    Trang chủ
                 </a>
             </li>
 
             <li>
-                Products
+                Sản phẩm
             </li>
         </ul>
     </div>
@@ -53,7 +62,7 @@
     <div class="container">
         <div class="hun-element-heading layout-1 text-center">
             <h3 class="title-element">
-                Our products
+                Danh sách sản phẩm
             </h3>
 
             <div class="line-element">
@@ -84,7 +93,15 @@
                                 <div class="meta-info-item">
                                     <span class="item-info">
                                         <i class="zmdi zmdi-money-box"></i>
-                                        $@product.price
+                                        @if (product.promotionPrice != null)
+                                        {
+                                            <label style="text-decoration:line-through">@product.price.Value.ToString("N0") đ </label>
+                                            <label style="color:red;font:bold;font-size:150%;margin-left:10px">@product.promotionPrice.Value.ToString("N0") đ</label>
+                                        }
+                                        else
+                                        {
+                                            <label style="color:red;font:bold;font-size:150%">@(product.price.Value.ToString("N0")) đ</label>
+                                        }
                                     </span>
                                 </div>
 
@@ -101,10 +118,10 @@
                                         <input type="hidden" name="cmd" value="_cart">
                                         <input type="hidden" name="add" value="1">
                                         <input type="hidden" name="toys_item" value="@product.name">
-                                        <input type="hidden" name="amount" value="@product.price">
+                                        <input type="hidden" name="amount" value="@(product.promotionPrice ?? product.price)">
                                         <input type="hidden" name="id" value="@product.id">
                                         <button type="submit" style="margin:auto" class="link-item">
-                                            Add to cart
+                                            Chọn Mua
                                         </button>
                                     </form>
                                 </div>
