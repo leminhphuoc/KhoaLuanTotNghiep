@@ -27,9 +27,12 @@ namespace FonNature.Controllers
             int pageNumber = (page ?? 1);
             var listProductPaged = listProduct.ToPagedList(pageNumber, pageSize);
             var seo = _productServices.GetProductSeo();
-            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+            if (seo != null)
+            {
+                ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+            }
             return View(listProductPaged);
         }
 
@@ -40,9 +43,12 @@ namespace FonNature.Controllers
             int pageNumber = (page ?? 1);
             var listProductPaged = listProduct.ToPagedList(pageNumber, pageSize);
             var seo = _productServices.GetProductSeo();
-            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+            if (seo != null)
+            {
+                ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+            }
             return View(listProductPaged);
         }
 

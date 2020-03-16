@@ -35,7 +35,7 @@
 <!-- our-story about-page -->
 @foreach (var item in Model)
 {
-    if (item.name.Contains("Our Story"))
+    if (item.id == 3)
     {
         <div class="sec--our-story--about-page">
             <div class="container">
@@ -95,7 +95,7 @@
                                 {
                                     <div class="item-slick">
                                         <div class="wrap-ava">
-                                            <img src="@item.image" alt="IMG">
+                                            <img src="@item.image" style="height:113px;width:113px" alt="IMG">
                                         </div>
                                     </div>
                                 }

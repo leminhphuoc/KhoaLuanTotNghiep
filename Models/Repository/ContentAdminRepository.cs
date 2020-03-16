@@ -44,6 +44,8 @@ namespace Models.Repository
             var contentEdit = _db.Contents.Where(x => x.id == content.id).SingleOrDefault();
             contentEdit.name = content.name;
             contentEdit.metatitle = content.metatitle;
+            contentEdit.SeoKeyWord = content.SeoKeyWord;
+            contentEdit.SeoDescription = content.SeoDescription;
             contentEdit.description = content.description;
             contentEdit.image = content.image;
             contentEdit.categoryID = content.categoryID;

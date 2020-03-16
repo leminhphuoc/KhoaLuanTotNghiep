@@ -11,29 +11,29 @@ namespace Models.Entity
     {
         public long id { get; set; }
 
-        [StringLength(250)]
+        //[StringLength(250)]
         public string image { get; set; }
 
         public int? displayOrder { get; set; }
 
-        [StringLength(250)]
+        //[StringLength(250)]
         public string link { get; set; }
 
-        [Column(TypeName = "date")]
+        //[Column(TypeName = "date")]
         public DateTime? createdDate { get; set; }
 
-        [Column(TypeName = "date")]
+        //[Column(TypeName = "date")]
         public DateTime? modifiedDate { get; set; }
 
         public bool? status { get; set; }
 
-        [StringLength(250)]
+        //[StringLength(250)]
         public string title { get; set; }
 
-        [StringLength(250)]
+        //[StringLength(250)]
         public string subtitle { get; set; }
 
-        [StringLength(250)]
+        //[StringLength(250)]
         public string TextButton { get; set; }
     }
 }

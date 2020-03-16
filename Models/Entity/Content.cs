@@ -18,6 +18,12 @@ namespace Models.Entity
         public string metatitle { get; set; }
 
         [StringLength(500)]
+        public string SeoKeyWord { get; set; }
+
+        [StringLength(500)]
+        public string SeoDescription { get; set; }
+
+        [StringLength(500)]
         public string description { get; set; }
 
         [StringLength(250)]

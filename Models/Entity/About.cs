@@ -13,6 +13,10 @@ namespace Models.Entity
 
         [StringLength(250)]
         public string name { get; set; }
+        /// <summary>
+        /// 1: About, 2: Testimonial
+        /// </summary>
+        public int Category { get; set; }
 
         [StringLength(500)]
         public string Title { get; set; }

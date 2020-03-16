@@ -24,9 +24,12 @@ namespace FonNature.Controllers
             int pageNumber = (page ?? 1);
             var blogListPaged = blogList.ToPagedList(pageNumber, pageSize);
             var seo = _blogServices.GetSeo();
-            ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-            ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-            ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+            if (seo != null)
+            {
+                ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+            }
             return View(blogListPaged);
         }
 
@@ -41,6 +44,13 @@ namespace FonNature.Controllers
             int pageSize = 4;
             int pageNumber = (page ?? 1);
             var blogListPaged = blogList.ToPagedList(pageNumber, pageSize);
+            var seo = _blogServices.GetSeo();
+            if (seo != null)
+            {
+                ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
+                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+            }
             return View(blogListPaged);
         }
 
@@ -51,6 +61,9 @@ namespace FonNature.Controllers
             ViewBag.RecentBlog = _blogServices.ListRecentBlog();
             ViewBag.BlogsList = _blogServices.ListAll(null);
             var blog = _blogServices.GetDetail(id);
+            ViewBag.MetaTitle = blog.metatitle ?? string.Empty;
+            ViewBag.MetaDescription = blog.SeoKeyWord ?? string.Empty;
+            ViewBag.MetaKeyword = blog.SeoDescription ?? string.Empty;
             return View(blog);
         }
 

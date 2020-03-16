@@ -2417,6 +2417,53 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Data1\images\1-1546922880772608954210.jpg" />
+    <Content Include="Data1\images\10375474-1534559175048303.jpg" />
+    <Content Include="Data1\images\11370307-3364442887582176.jpg" />
+    <Content Include="Data1\images\22180029_922033304615069_6450395575354216904_o.jpg" />
+    <Content Include="Data1\images\ava-tes-01.jpg" />
+    <Content Include="Data1\images\ava-tes-02.jpg" />
+    <Content Include="Data1\images\ava-tes-03.jpg" />
+    <Content Include="Data1\images\ava-tes-04.jpg" />
+    <Content Include="Data1\images\blog-01.jpg" />
+    <Content Include="Data1\images\blog-09.jpg" />
+    <Content Include="Data1\images\download.jpg" />
+    <Content Include="Data1\images\gallery-thumb-04.jpg" />
+    <Content Include="Data1\images\herbal2.jpg" />
+    <Content Include="Data1\images\service-01%282%29.jpg" />
+    <Content Include="Data1\images\service-03%282%29.jpg" />
+    <Content Include="Data1\images\service-detail-01%281%29.jpg" />
+    <Content Include="Data1\images\service-detail-01.jpg" />
+    <Content Include="Data1\images\single-image-06 %281%29.jpg" />
+    <Content Include="Data1\images\slide-01.jpg" />
+    <Content Include="Data1\images\slide-02.jpg" />
+    <Content Include="Data1\images\slide-03.jpg" />
+    <Content Include="Data1\images\slide-04.jpg" />
+    <Content Include="Data1\images\team-01.jpg" />
+    <Content Include="Data1\images\team-02.jpg" />
+    <Content Include="Data1\images\team-03.jpg" />
+    <Content Include="Data1\_thumbs\Images\1-1546922880772608954210.jpg" />
+    <Content Include="Data1\_thumbs\Images\10375474-1534559175048303.jpg" />
+    <Content Include="Data1\_thumbs\Images\11370307-3364442887582176.jpg" />
+    <Content Include="Data1\_thumbs\Images\22180029_922033304615069_6450395575354216904_o.jpg" />
+    <Content Include="Data1\_thumbs\Images\ava-tes-01.jpg" />
+    <Content Include="Data1\_thumbs\Images\ava-tes-02.jpg" />
+    <Content Include="Data1\_thumbs\Images\ava-tes-03.jpg" />
+    <Content Include="Data1\_thumbs\Images\ava-tes-04.jpg" />
+    <Content Include="Data1\_thumbs\Images\blog-01.jpg" />
+    <Content Include="Data1\_thumbs\Images\blog-09.jpg" />
+    <Content Include="Data1\_thumbs\Images\download.jpg" />
+    <Content Include="Data1\_thumbs\Images\gallery-thumb-04.jpg" />
+    <Content Include="Data1\_thumbs\Images\herbal2.jpg" />
+    <Content Include="Data1\_thumbs\Images\service-01%282%29.jpg" />
+    <Content Include="Data1\_thumbs\Images\service-03%282%29.jpg" />
+    <Content Include="Data1\_thumbs\Images\service-detail-01%281%29.jpg" />
+    <Content Include="Data1\_thumbs\Images\service-detail-01.jpg" />
+    <Content Include="Data1\_thumbs\Images\single-image-06 %281%29.jpg" />
+    <Content Include="Data1\_thumbs\Images\slide-01.jpg" />
+    <Content Include="Data1\_thumbs\Images\slide-02.jpg" />
+    <Content Include="Data1\_thumbs\Images\slide-03.jpg" />
+    <Content Include="Data1\_thumbs\Images\slide-04.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -2631,7 +2678,12 @@
     <Content Include="Asset\Cartpage\web\webfonts\fa-solid-900.ttf" />
     <Content Include="Asset\Cartpage\web\webfonts\fa-solid-900.woff" />
     <Content Include="Asset\Cartpage\web\webfonts\fa-solid-900.woff2" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\fondekao - FTP1.pubxml" />
+    <None Include="Properties\PublishProfiles\fondekao - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\fondekao - ReadOnly - FTP1.pubxml" />
+    <None Include="Properties\PublishProfiles\fondekao - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\fondekao - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2672,7 +2724,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data1\" />
+    <Folder Include="Data1\files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
