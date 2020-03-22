@@ -1,0 +1,100 @@
+/*---------------------------------------
+    17. Newsletter CSS
+-----------------------------------------*/
+.newsletter-popup-area{
+
+
+    @media #{$tablet-device, $large-mobile}{
+        display: none;
+    }
+
+    &:after{
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #333;
+        opacity: 0.8;
+        z-index: 99;
+        visibility: visible;
+    }
+
+}
+
+.newsletter-popup-content{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $white;
+    padding: 50px 20px;
+    z-index: 999;
+    width: 50%;
+
+    @media #{$laptop-device}{
+        width: 70%;
+    }
+
+    @media #{$desktop-device}{
+        width: 80%;
+    }
+
+
+    .close-newsletter-popup{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px 15px;
+        background-color: #333;
+        color: $white;
+
+        &:hover{
+            background-color: $theme-color;
+        }
+    }
+
+
+    h2{
+        font-size: 24px;
+        text-transform: uppercase;
+        color: $heading-color;
+        font-weight: 700;
+        letter-spacing: 3px;
+        margin: 0 0 15px;
+    }
+
+    p{
+        
+    }
+
+    .subscription-form{
+        form{
+            input{
+                background: #EBEBEB none repeat scroll 0% 0%;
+                border: medium none;
+                height: 40px;
+                width: 65%;
+                margin: 20px auto;
+                padding: 0 15px;
+                font-size: 15px;
+                display: block;
+            }
+
+            button{
+                border-radius: 5px;
+                background-color: #f0f0f0;
+                color: #333;
+                margin-bottom: 20px;
+
+                &:hover{
+                    background-color: $theme-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+    
+    
+}

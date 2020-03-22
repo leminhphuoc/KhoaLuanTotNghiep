@@ -71,23 +71,6 @@ namespace FonNature.Areas.Admin
 
             //Admin Account
 
-            context.MapRoute(
-                "CreateAccount",
-                "Admin/createaccount",
-                new { action = "Create", Controller = "AccountAdmin" }
-            );
-
-            context.MapRoute(
-                "OrderAdmin",
-                "Admin/Order",
-                new { action = "OrdersList", Controller = "OrderAdmin" }
-            );
-
-            context.MapRoute(
-                "Admin_default",
-                "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
-            );
         }
     }
 }

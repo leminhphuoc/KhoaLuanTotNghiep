@@ -56,9 +56,9 @@ namespace Models.Repository
         {
             var productEdit = _db.Products.Where(x => x.id == product.id).SingleOrDefault();
             productEdit.name = product.name;
-            productEdit.metaTitle = product.metaTitle;
-            productEdit.MetaKeyword = product.metaTitle;
-            productEdit.MetaDescription = product.metaTitle;
+            productEdit.MetaTitle = product.MetaTitle;
+            productEdit.MetaKeyword = product.MetaKeyword;
+            productEdit.MetaDescription = product.MetaDescription;
             productEdit.description = product.description;
             productEdit.image = product.image;
             productEdit.moreImages = product.moreImages;

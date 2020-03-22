@@ -1,0 +1,172 @@
+/*----------------------------------------*/
+/*  08. Cta CSS
+/*----------------------------------------*/
+
+.cta-content, .cta-content-area{
+    text-align: center;
+    & h3{
+        font-size: 34px;
+        color: $white;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        // Responsive
+        @media #{$large-mobile}{
+            font-size: 24px;
+        }
+        & span{
+            color: $theme-color;
+            font-weight: 700;
+        }
+    }
+    & p{
+        padding: 22px 0 38px;
+        color: $white;
+        line-height: 24px;
+        margin-bottom: 0;
+        // Responsive
+        @media #{$large-mobile}{
+            padding: 20px 0 30px;
+        }
+        & span{
+            display: block;
+        }
+    }
+}
+.cta-content-area{
+    border: 20px solid #e5e5e5;
+    padding: 90px 0;
+    // Responsive
+    @media #{$tablet-device}{
+        padding: 70px 0;
+    }
+    @media #{$large-mobile}{
+        padding: 50px 15px;
+        border: 5px solid #e5e5e5;
+    }
+    & h3{
+        color: $heading-color;
+    }
+    & p{
+        color: $body-color;
+    }
+    & .cta-form{
+        & input{
+            border: 1px solid #525252;
+            color: $body-color;
+            &::placeholder{
+                color: $body-color;
+            }
+            // Responsive
+            @media #{$large-mobile}{
+                height: 50px;
+            }
+        }
+        & button{
+            background-color: $heading-color;
+            color: $white;
+        }
+    }
+}
+.cta-section-area{
+    text-align: center;
+    padding: 55px 0 0;
+    border: 20px solid #e5e5e5;
+    // Responsive
+    @media #{$large-mobile}{
+        border: 5px solid #e5e5e5;
+    }
+    & h3{
+        font-size: 24px;
+        color: $heading-color;
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+    & p{
+        padding: 22px 0 38px;
+        font-size: 14px;
+        color: $body-color;
+        line-height: 24px;
+        margin-bottom: 0;
+        & span{
+            display: block;
+        }
+    }
+    & .cta-form{
+        width: 100%;
+        padding: 0 50px;
+        // Responsive
+        @media #{$large-mobile}{
+            padding: 0 15px;
+        }
+        & form{
+            & input{
+                border: 1px solid #e5e5e5;
+                padding: 0 10px;
+                height: 50px;
+                color: $heading-color;
+                text-align: center;
+            }
+            & button{
+                position: static;
+                background-color: $heading-color;
+                color: $white;
+                line-height: 35px;
+                margin: 35px 0 40px;
+                // Responsive
+                @media #{$large-mobile}{
+                    margin: 20px 0 40px;
+                }
+            }
+        }
+    }
+}
+
+/*--  Cta Form CSS --*/
+.cta-form{
+    width: 80%;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    // Responsive
+    @media #{$large-mobile}{
+        width: 100%;
+    }
+    & form{
+        position: relative;
+        & input{
+            background: transparent;
+            color: #fefefe;
+            display: block;
+            padding: 0 330px 0 10px;
+            font-size: 15px;
+            line-height: 65px;
+            border: 1px solid $white;
+            width: 100%;
+            &::placeholder{
+                color: #fefefe;
+            }
+            // Responsive
+            @media #{$large-mobile}{
+                padding: 0 10px;
+            }
+        }
+        & button{
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #fff;
+            color: #222222;
+            font-weight: 900;
+            font-size: 14px;
+            padding: 7px 50px;
+            margin: 12px 12px 12px 0;
+            border: 0;
+            text-transform: uppercase;
+            // Responsive
+            @media #{$large-mobile}{
+                position: static;
+            }
+        }
+    }
+}

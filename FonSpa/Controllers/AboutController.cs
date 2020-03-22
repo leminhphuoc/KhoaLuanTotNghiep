@@ -4,6 +4,8 @@ using System.Web.Mvc;
 
 namespace FonNature.Controllers
 {
+    [RoutePrefix("about")]
+    [Route("{action=AboutHome}")]
     public class AboutController : Controller
     {
         private readonly IAboutServices _aboutServices;
@@ -12,8 +14,8 @@ namespace FonNature.Controllers
             _aboutServices = aboutServices;
         }
         // GET: About
-        public ActionResult Index()
-        {
+        public ActionResult AboutHome()
+        {   
             ViewBag.Tittle = "About";
             ViewBag.Staffs = _aboutServices.GetStaffs();
             var model = _aboutServices.GetAbouts();

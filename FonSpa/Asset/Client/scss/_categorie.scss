@@ -1,0 +1,137 @@
+/*----------------------------------------*/
+/*  09. Categorie CSS
+/*----------------------------------------*/
+
+/* Categorie Product CSS */
+.single-categorie{
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    & .categorie-image{
+        position: relative;
+        overflow: hidden;
+        &::after{
+            content: "";
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: all 0.4s ease-out;
+        }
+        & img{
+            width: 100%;
+        }
+    }
+    & .categorie-content{
+        position: absolute;
+        top: 33%;
+        left: 0;
+        right: 0;
+        opacity: 0;
+        // Responsive
+        @media #{$tablet-device}{
+            top: 16%;
+        }
+        @media #{$extra-small-mobile}{
+            top: 16%;
+        }
+        & h3{
+            font-size: 16px;
+            font-weight: bold;
+            color: $white;
+            text-transform: uppercase;
+            display: inline-block;
+            width: 100%;
+            // Responsive
+            @media #{$laptop-device}{
+                font-size: 14px;
+            }
+            @media #{$desktop-device}{
+                font-size: 13px;
+            }
+            @media #{$tablet-device}{
+                font-size: 13px;
+            }
+            @media #{$extra-small-mobile}{
+                font-size: 13px;
+            }
+        }
+        & a{
+            color: $white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 8px 10px;
+            letter-spacing: 1px;
+            min-width: 127px;
+            border: 1px solid $white;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 24px 0 14px;
+            // Responsive
+            @media #{$laptop-device}{
+                margin: 10px 0 10px;
+            }
+            @media #{$desktop-device}{
+                margin: 8px 0 8px;
+                padding: 3px 8px;
+                min-width: 90px;
+            }
+            @media #{$tablet-device}{
+                margin: 8px 0 8px;
+                padding: 3px 8px;
+                min-width: 90px;
+            }
+            @media #{$extra-small-mobile}{
+                margin: 8px 0 8px;
+                padding: 3px 8px;
+                min-width: 90px;
+            }
+            &:hover{
+                color: $theme-color;
+                border-color: $theme-color;
+            }
+        }
+        & h1{
+            margin: 0;
+            font-size: 60px;
+            font-weight: 400;
+            font-family: 'Yesteryear', cursive;
+            color: $theme-color;
+            // Responsive
+            @media #{$laptop-device}{
+                font-size: 40px;
+            }
+            @media #{$desktop-device}{
+                font-size: 36px;
+            }
+            @media #{$tablet-device}{
+                font-size: 32px;
+            }
+            @media #{$extra-small-mobile}{
+                font-size: 32px;
+            }
+        }
+    }
+    &:hover{
+        & .categorie-image{
+            &::after{
+                background: rgba(0, 0, 0, 0.2);
+            }
+        }
+        & .categorie-content{
+            opacity: 1;
+            & h3{
+                animation:  fadeInDown 1s ease-in-out;
+            }
+            & a{
+                animation:  zoomIn 1s ease-in-out;
+            }
+            & h1{
+                animation:  fadeInLeft 1s ease-in-out;
+            }
+        }
+    }
+}

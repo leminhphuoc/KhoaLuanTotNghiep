@@ -1,0 +1,579 @@
+/*----------------------------------------*/
+/*  03. Hero CSS
+/*----------------------------------------*/
+/*-- Hero Slider --*/
+.slider-nav {
+    & .slick-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 9;
+        border: none;
+        background-color: transparent;
+        color: #999999;
+        padding: 0px;
+        width: auto;
+        height: auto;
+        border: 0;
+        border-radius: 0;
+        transform: rotate(90deg);
+        font-size: 24px;
+        text-transform: capitalize;
+        box-shadow: 0 5px 10px rgba($black, 0);
+        opacity: 1;
+        // Responsive
+        @media #{$tablet-device}{
+            font-size: 18px;
+        }
+        @media #{$large-mobile}{
+            font-size: 18px;
+        }
+        &::before{
+            display: none;
+        }
+        &.slick-next{
+            margin-right: 0;
+            margin-top: -60px;
+            left: auto !important;
+            right: 20px;
+            // Responsive
+            @media #{$tablet-device}{
+                margin-top: -40px;
+            }
+            @media #{$large-mobile}{
+                margin-top: -30px;
+            }
+        }
+        &.slick-prev{
+            margin-left: 0;
+            margin-top: 60px;
+            left: auto !important;
+            right: 20px;
+            // Responsive
+            @media #{$tablet-device}{
+                margin-top: 40px;
+            }
+            @media #{$large-mobile}{
+                margin-top: 30px;
+            }
+        }
+        &:hover {
+            background-color: transparent;
+            color: $theme-color;
+        }
+    }
+    &:hover {
+        & .slick-arrow {
+            opacity: 1;
+            &.slick-next{
+                margin-right: 0;
+            }
+            &.slick-prev{
+                margin-left: 0;
+            }
+        }
+    }
+    & .slick-dots {
+        position: absolute;
+        left: 0;
+        bottom: 40px;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        // Responsive
+        @media #{$tablet-device}{
+            bottom: 20px;
+        }
+        @media #{$large-mobile}{
+            bottom: 20px;
+        }
+        @media #{$small-mobile}{
+            bottom: 15px;
+        }
+        & li {
+            margin: 0 5px;
+            & button {
+                display: block;
+                padding: 0;
+                width: 15px;
+                height: 4px;
+                background-color: #252525;
+                text-indent: -9999px;
+                border-radius: 0;
+                @media #{$large-mobile}{
+                    border-width: 2px;
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+            &.slick-active {
+                & button {
+                    width: 15px;
+                    background-color: $theme-color;
+                }
+            }
+        }
+    }
+}
+
+/*-- Hero Item --*/
+.hero-item {
+    width: 100%;
+    height: 800px;
+    align-items: center;
+    display: flex !important;
+    justify-content: center;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 1;
+    &.image-height {
+        height: 665px;
+        // Responsive
+        @media #{$laptop-device}{
+            height: 500px;
+        }
+        @media #{$desktop-device}{
+            height: 500px;
+        }
+        @media #{$tablet-device}{
+            height: 450px;
+        }
+        @media #{$large-mobile}{
+            height: 400px;
+        }
+    }
+    // Responsive
+    @media #{$laptop-device}{
+        height: 600px;
+    }
+    @media #{$desktop-device}{
+        height: 500px;
+    }
+    @media #{$tablet-device}{
+        height: 500px;
+    }
+    @media #{$large-mobile}{
+        height: 350px;
+    }
+}
+/*-- Hero Content Two For Hero Slider --*/
+.hero-content-2 {
+    &.left {
+        text-align: left;
+    }
+    &.center {
+        text-align: center;
+    }
+    &.right {
+        text-align: right;
+    }
+    &.color-1{
+        & h2{
+            color: #45342d;
+        }
+        & h1{
+            color: #45342d;
+        }
+        & h3{
+            color: #c16404;
+        }
+    }
+    
+    // All Element Selector
+    & > * {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-name: fadeOutUp;
+    }
+    & h2 {
+        font-size: 46px;
+        line-height: 1;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: $white;
+        margin-bottom: 20px;
+        
+        // Responsive
+        @media #{$laptop-device}{
+            font-size: 40px;
+        }
+        @media #{$desktop-device}{
+            font-size: 36px;
+        }
+        @media #{$tablet-device}{
+            font-size: 36px;
+        }
+        @media #{$large-mobile}{
+            font-size: 24px;
+        }
+        @media #{$small-mobile}{
+            font-size: 22px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 20px;
+        }
+    }
+    & h1 {
+        font-size: 62px;
+        line-height: 1;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: $theme-color;
+        margin-bottom: 30px;
+        
+        // Responsive
+        @media #{$laptop-device}{
+            font-size: 56px;
+        }
+        @media #{$desktop-device}{
+            font-size: 50px;
+        }
+        @media #{$large-mobile}{
+            font-size: 36px;
+        }
+        @media #{$small-mobile}{
+            font-size: 32px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 28px;
+        }
+    }
+    & h3 {
+        font-size: 24px;
+        line-height: 1;
+        color: $white;
+        letter-spacing: 15px;
+        text-transform: uppercase;
+        margin-bottom: 40px;  
+        //Responsive
+        @media #{$laptop-device}{
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        @media #{$desktop-device}{
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        @media #{$large-mobile}{
+            font-size: 16px;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+    }
+    & a {
+        font-size: 20px;
+        line-height: 1;
+        text-decoration: underline;
+        display: block;
+        color: $theme-color;
+        font-weight: 600;
+    }
+}
+/*-- Hero Content Three For Hero Slider --*/
+.hero-content-3 {
+    display: inline-block;
+    text-align: center;
+    &.left {
+        text-align: left;
+    }
+    &.center {
+        text-align: center;
+    }
+    &.right {
+        text-align: right;
+    }
+    
+    // All Element Selector
+    & > * {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-name: fadeOutUp;
+    }
+    & h2 {
+        color: $theme-color;
+        font-size: 28px;
+        font-weight: 700;
+        font-style: italic;
+        margin-bottom: 30px;
+        
+        // Responsive
+        @media #{$laptop-device}{
+            font-size: 26px;
+        }
+        @media #{$desktop-device}{
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        @media #{$tablet-device}{
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        @media #{$large-mobile}{
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        @media #{$small-mobile}{
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    }
+    & h1, 
+    & h3 {
+        color: #777777;
+        font-size: 60px;
+        font-weight: 300;
+        text-transform: uppercase;
+        
+        // Responsive
+        @media #{$laptop-device}{
+            font-size: 56px;
+        }
+        @media #{$desktop-device}{
+            font-size: 52px;
+        }
+        @media #{$tablet-device}{
+            font-size: 48px;
+        }
+        @media #{$large-mobile}{
+            font-size: 44px;
+        }
+        @media #{$small-mobile}{
+            font-size: 34px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 26px;
+        }
+    }
+    & h3 {
+        color: $heading-color;
+        font-size: 60px;
+        font-weight: 800;
+        text-transform: uppercase; 
+        //Responsive
+        @media #{$laptop-device}{
+            font-size: 56px;
+        }
+        @media #{$desktop-device}{
+            font-size: 52px;
+        }
+        @media #{$tablet-device}{
+            font-size: 48px;
+        }
+        @media #{$large-mobile}{
+            font-size: 44px;
+        }
+        @media #{$small-mobile}{
+            font-size: 34px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 26px;
+        }
+    }
+    & a {
+        color: $heading-color;
+        font-size: 18px;
+        font-weight: 600;
+        display: inline-block;
+        margin: 35px 0 0;
+        // Responsive
+        @media #{$laptop-device}{
+            margin: 25px 0 0;
+        }
+        @media #{$laptop-device}{
+            margin: 20px 0 0;
+        }
+        @media #{$tablet-device}{
+            margin: 20px 0 0;
+        }
+        @media #{$large-mobile}{
+            margin: 10px 0 0;
+        }
+        &:hover{
+            color: $theme-color;
+        }
+    }
+}
+/*-- Hero Content Four For Hero Slider --*/
+.hero-content-4 {
+    display: inline-block;
+    &.left {
+        text-align: left;
+    }
+    &.center {
+        text-align: center;
+    }
+    &.right {
+        text-align: right;
+    }
+    
+    
+    // All Element Selector
+    & > * {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        animation-name: fadeOutUp;
+    }
+    & h2 {
+        & span{
+            color: $white;
+            font-size: 28px;
+            font-weight: 700;
+            font-style: italic;
+            background-color: $theme-color;
+            display: inline-block;
+            padding: 0 5px;
+            margin-bottom: 30px;
+            
+            // Responsive
+            @media #{$laptop-device}{
+                font-size: 26px;
+            }
+            @media #{$desktop-device}{
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            @media #{$tablet-device}{
+                font-size: 22px;
+                margin-bottom: 15px;
+            }
+            @media #{$large-mobile}{
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+            @media #{$small-mobile}{
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            @media #{$extra-small-mobile}{
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    & h1 {
+        & span{
+            color: $white;
+            font-size: 60px;
+            font-weight: 300;
+            text-transform: uppercase;
+            background-color: $heading-color;
+            display: inline-block;
+            padding: 0 5px;
+            
+            // Responsive
+            @media #{$laptop-device}{
+                font-size: 56px;
+            }
+            @media #{$desktop-device}{
+                font-size: 52px;
+            }
+            @media #{$tablet-device}{
+                font-size: 48px;
+            }
+            @media #{$large-mobile}{
+                font-size: 44px;
+            }
+            @media #{$small-mobile}{
+                font-size: 34px;
+            }
+            @media #{$extra-small-mobile}{
+                font-size: 26px;
+            }
+        }
+    }
+    & h3 {
+        & span{
+            color: $white;
+            font-size: 60px;
+            font-weight: 800;
+            text-transform: uppercase; 
+            background-color: $heading-color;
+            display: inline-block;
+            padding: 0 5px;
+            //Responsive
+            @media #{$laptop-device}{
+                font-size: 56px;
+            }
+            @media #{$desktop-device}{
+                font-size: 52px;
+            }
+            @media #{$tablet-device}{
+                font-size: 48px;
+            }
+            @media #{$large-mobile}{
+                font-size: 44px;
+            }
+            @media #{$small-mobile}{
+                font-size: 34px;
+            }
+            @media #{$extra-small-mobile}{
+                font-size: 26px;
+            }
+        }
+    }
+    & a {
+        color: $theme-color;
+        font-size: 18px;
+        font-weight: 600;
+        display: block;
+        margin: 35px 0 0;
+        // Responsive
+        @media #{$laptop-device}{
+            margin: 25px 0 0;
+        }
+        @media #{$laptop-device}{
+            margin: 20px 0 0;
+        }
+        @media #{$tablet-device}{
+            margin: 20px 0 0;
+        }
+        @media #{$large-mobile}{
+            margin: 10px 0 0;
+        }
+        &:hover{
+            color: $theme-color;
+        }
+    }
+}
+/*-- Slide Content In Animation --*/
+.slick-active {
+
+    /*-- Hero Content Two For Hero Slider --*/
+    & .hero-content-2, & .hero-content-3, & .hero-content-4  {
+
+        // All Element Selector
+        & > * {
+            animation-name: fadeInUp;
+            
+            // Child Selector
+            &:nth-child(1) {
+                animation-delay: 0.5s;
+            }
+            &:nth-child(2) {
+                animation-delay: 1s;
+            }
+            &:nth-child(3) {
+                animation-delay: 1.5s;
+            }
+            &:nth-child(4) {
+                animation-delay: 2s;
+            }
+            &:nth-child(5) {
+                animation-delay: 2.5s;
+            }
+            &:nth-child(6) {
+                animation-delay: 3s;
+            }
+            
+        }
+    }
+    
+}

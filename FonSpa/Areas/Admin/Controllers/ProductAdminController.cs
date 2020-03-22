@@ -99,7 +99,7 @@ namespace FonNature.Areas.Admin.Controllers
                     Status = saveImages
                 });
             }
-            catch (Exception ex)
+            catch 
             {
                 return Json(new
                 {

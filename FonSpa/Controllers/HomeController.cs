@@ -16,7 +16,8 @@ namespace FonNature.Controllers
         {
             _homeServices = homeServices;
         }
-        public ActionResult Index()
+
+        public ActionResult Home()
         {
             ViewBag.Title = "Home Page";
             ViewBag.SlideList = _homeServices.ListSlide();

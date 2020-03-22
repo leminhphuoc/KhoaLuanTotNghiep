@@ -1,0 +1,175 @@
+/*----------------------------------------*/
+/*  05. Banner CSS
+/*----------------------------------------*/
+
+/*-- Single Banner Image Style CSS --*/
+.single-banner {
+	position: relative;
+    overflow: hidden;
+    & a{
+        display: block;
+        & img{
+            width: 100%;
+            transition: all 1s ease-in-out;
+        }
+    }
+    &:hover{
+        & a{
+            & img{
+                transform: scale(1.05, 1.05);
+            }
+        }
+    }
+}
+
+/*-- Banner Content CSS --*/
+.banner-content {
+    display: inline-block;
+    text-align: center;
+    & h2 {
+        color: $theme-color;
+        font-size: 28px;
+        font-weight: 700;
+        font-style: italic;
+        margin-bottom: 30px;
+        
+        // Responsive
+        @media #{$laptop-device}{
+            font-size: 26px;
+        }
+        @media #{$desktop-device}{
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        @media #{$tablet-device}{
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        @media #{$large-mobile}{
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        @media #{$small-mobile}{
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+    }
+    & h1 {
+        color: #777777;
+        font-size: 60px;
+        font-weight: 300;
+        text-transform: uppercase;
+        
+        // Responsive
+        @media #{$laptop-device}{
+            font-size: 56px;
+        }
+        @media #{$desktop-device}{
+            font-size: 52px;
+        }
+        @media #{$tablet-device}{
+            font-size: 48px;
+        }
+        @media #{$large-mobile}{
+            font-size: 44px;
+        }
+        @media #{$small-mobile}{
+            font-size: 34px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 26px;
+        }
+    }
+    & h3 {
+        color: $heading-color;
+        font-size: 60px;
+        font-weight: 800;
+        text-transform: uppercase; 
+        //Responsive
+        @media #{$laptop-device}{
+            font-size: 56px;
+        }
+        @media #{$desktop-device}{
+            font-size: 52px;
+        }
+        @media #{$tablet-device}{
+            font-size: 48px;
+        }
+        @media #{$large-mobile}{
+            font-size: 44px;
+        }
+        @media #{$small-mobile}{
+            font-size: 34px;
+        }
+        @media #{$extra-small-mobile}{
+            font-size: 26px;
+        }
+    }
+    & a {
+        color: $heading-color;
+        font-size: 18px;
+        font-weight: 600;
+        display: inline-block;
+        margin: 35px 0 0;
+        // Responsive
+        @media #{$laptop-device}{
+            margin: 25px 0 0;
+        }
+        @media #{$laptop-device}{
+            margin: 20px 0 0;
+        }
+        @media #{$tablet-device}{
+            margin: 20px 0 0;
+        }
+        @media #{$large-mobile}{
+            margin: 10px 0 0;
+        }
+        &:hover{
+            color: $theme-color;
+        }
+    }
+}
+
+.banner-section{
+    &:hover{
+        & .banner-content{
+            & h2{
+                animation: fadeInDown 1s ease-in-out;
+            }
+            & h1{
+                animation: fadeInLeft 1s ease-in-out;
+            }
+            & h3{
+                animation: fadeInLeft 1s ease-in-out;
+            }
+            & a{
+                animation: zoomIn 1s ease-in-out;
+            }
+        }
+    }
+}
+
+
+/* Shop Banner CSS */
+.shop-banner{
+    & img{
+        width: 100%;
+    }
+}
+.shop-banner-title{
+    & h2{
+        font-size: 34px;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin: 0 0 37px;
+        // Responsive
+        @media #{$large-mobile}{
+            margin: 0 0 20px;
+            font-size: 24px;
+        }
+    }
+}

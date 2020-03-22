@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <title>@(ViewBag.MetaTitle ?? ViewBag.Tittle)</title>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="title" content="@(ViewBag.MetaTitle ?? string.Empty)" />
     <meta name="description" content="@(ViewBag.MetaDescription ?? string.Empty)" />
     <meta name="keywords" content="@(ViewBag.MetaKeyword ?? string.Empty)" />
@@ -14,141 +15,284 @@
     <meta name="google-site-verification" content="b32z8I1U65G5SAsbWbGk_zZuawyKZQEQ5M2NQdLgnGM" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" type="image/png" href="/Asset/Client/images/icons/favicon-01.png" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/fonts/font-awesome-4/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/fonts/iconic-font/css/material-design-iconic-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/fonts/simple-line-icons/css/simple-line-icons.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/fonts/linearicons/icon-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/bootstrap/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/slick/slick.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/magnific-popup/magnific-popup.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/animsition/animsition.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/libs/parallax100/parallax100.css">
-    <!--===============================================================================================-->
-    <!--Shoping cart-->
-    <link href="/Asset/Cartpage/web/css/shop.css" rel="stylesheet" type="text/css" />
-    <link href="~/Asset/Cartpage/web/css/checkout.css" rel="stylesheet" type="text/css" />
-    <!--//Shoping cart-->
-    <link rel="stylesheet" type="text/css" href="/Asset/Client/css/style.css">
-    <!--===============================================================================================-->
-    <script src="https://kit.fontawesome.com/666ff9ef07.js" crossorigin="anonymous"></script>
+    <!-- Place favicon.ico in the root directory -->
+    <link href="~/Asset/Client/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link rel="stylesheet" href="~/Asset/Client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Asset/Client/css/iconfont.min.css">
+    <link rel="stylesheet" href="~/Asset/Client/css/plugins.css">
+    <link rel="stylesheet" href="~/Asset/Client/css/helper.css">
+    <link rel="stylesheet" href="~/Asset/Client/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="~/Asset/Client/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body class="animsition">
+    <div id="main-wrapper">
+        <!--Header section start-->
+        <header class="header header-transparent header-sticky">
+            <div class="header-top">
+                <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
+                    <div class="row align-items-center">
 
-    <!-- Header -->
-    <header class="hun-header style-sticky layout-2">
-        <div class="wrapper-header element-for-stick">
-            <div class="logo-header">
-                <a href="/" class="main-logo">
-                    <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
-                </a>
-
-                <a href="/" class="mobile-logo">
-                    <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
-                </a>
-
-                <a href="/" class="sticky-logo">
-                    <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
-                </a>
-
-                <a href="/" class="retina-logo">
-                    <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
-                </a>
-            </div>
-
-            @{Html.RenderAction("MainMenu", "Home");}
-
-            <div class="group-feature">
-                <div class="toyscart toyscart2 cart cart box_1">
-                    <form action="#" method="post" class="last">
-                        <input type="hidden" name="cmd" value="_cart">
-                        <input type="hidden" name="display" value="1">
-                        <button style="background-color:inherit" class="top_toys_cart" type="submit" name="submit" value="">
-                            <span class="fas fa-shopping-cart"></span>
-                        </button>
-                    </form>
-                </div>
-                <div class="hun-element-search layout-1">
-                    <span class="search-open">
-                        <i class="zmdi zmdi-search"></i>
-                    </span>
-
-                    <div class="search-form">
-                        <span class="search-close"></span>
-
-                        <form>
-                            <input type="text" class="search-field" />
-                            <span class="search-notice"> Hit enter to search or ESC to close</span>
-                        </form>
-
-                        <ul class="list-result"></ul>
-                    </div>
-                </div>
-
-                <div class="hun-menu-mobile">
-                    <a href="#" class="btn-toggle-menu"></a>
-
-                    <nav class="mobile-navigation">
-                        <div class="logo-menu-mobile">
-                            <a href="/">
-                                <img src="/Asset/Client/images/icons/logo-02.png" alt="IMG">
-                            </a>
+                        <div class="col-xl-6 col-lg-8 d-flex flex-wrap justify-content-lg-start justify-content-center align-items-center">
+                            <!--Links start-->
+                            <div class="header-top-links">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-phone"></i>(08) 123 456 7890</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope-open-o"></i>yourmail@domain.com</a></li>
+                                </ul>
+                            </div>
+                            <!--Links end-->
+                            <!--Socail start-->
+                            <div class="header-top-social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </div>
+                            <!--Socail end-->
                         </div>
-                    </nav>
+                        <div class="col-xl-6 col-lg-4">
+                            <div class="ht-right d-flex justify-content-lg-end justify-content-center">
+                                <ul class="ht-us-menu d-flex">
+                                    <li>
+                                        <a href="#"><i class="fa fa-user-circle-o"></i>Login</a>
+                                        <ul class="ht-dropdown right">
+                                            <li><a href="compare.html">Compare Products</a></li>
+                                            <li><a href="my-account.html">My Account</a></li>
+                                            <li><a href="wishlist.html">My Wish List</a></li>
+                                            <li><a href="login-register.html">Sign In</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </header>
-    <!-- end Header -->
-    @RenderBody();
-    <!-- Footer -->
-    @{Html.RenderAction("Footer", "Home");}
-    <!-- end Footer -->
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/libs/jquery/jquery-1.11.0.min.js"></script>
+            <div class="header-bottom menu-right">
+                <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
+                    <div class="row align-items-center">
 
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/libs/bootstrap/popper.js"></script>
-    <script src="/Asset/Client/libs/bootstrap/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/libs/slick/slick.js"></script>
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/libs/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/libs/animsition/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/libs/daterangepicker/moment.min.js"></script>
-    <script src="/Asset/Client/libs/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/libs/parallax100/parallax100.js"></script>
-    <!--===============================================================================================-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2-FTfalYzmj_0Ie_1x1Xpa7dbHQEOAJo"></script>
-    <script src="/Asset/Client/js/map-custom.js"></script>
-    <!--===============================================================================================-->
-    <script src="/Asset/Client/js/main.js"></script>
-    @RenderSection("ProductJs", required: false)
-    <script>
-        $('#cartTop').on('click', function () {
-            toys.view.show();
-        });
-    </script>
+                        <!--Logo start-->
+                        <div class="col-lg-3 col-md-3 col-6 order-lg-1 order-md-1 order-1">
+                            <div class="logo">
+                                <a href="index.html"><img src="/Asset/Client/images/logo.png" alt=""></a>
+                            </div>
+                        </div>
+                        <!--Logo end-->
+                        <!--Menu start-->
+                        <div class="col-lg-6 col-md-6 col-12 order-lg-2 order-md-2 order-3 d-flex justify-content-center">
+                            <nav class="main-menu">
+                                <ul>
+                                    <li>
+                                        <a href="index.html">Home</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="index.html">Home One</a></li>
+                                            <li><a href="index-2.html">Home Two</a></li>
+                                            <li><a href="index-3.html">Home Three</a></li>
+                                            <li><a href="index-4.html">Home Four</a></li>
+                                            <li><a href="index-5.html">Home Five</a></li>
+                                            <li><a href="index-6.html">Home Six</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="shop.html">Shop</a>
+                                        <ul class="mega-menu four-column">
+                                            <li>
+                                                <a href="#" class="item-link">Pages</a>
+                                                <ul>
+                                                    <li><a href="compare.html">Compare</a></li>
+                                                    <li><a href="cart.html">Shopping Cart</a></li>
+                                                    <li><a href="checkout.html">Checkout</a></li>
+                                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                                    <li><a href="my-account.html">My Account</a></li>
+                                                    <li><a href="login-register.html">Login Register</a></li>
+                                                    <li><a href="faq.html">Frequently Questions</a></li>
+                                                    <li><a href="404.html">Error 404</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="item-link">Shop Layout</a>
+                                                <ul>
+                                                    <li><a href="shop.html">Shop</a></li>
+                                                    <li><a href="shop-three-column.html">Shop Three Column</a></li>
+                                                    <li><a href="shop-four-column.html">Shop Four Column</a></li>
+                                                    <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
+                                                    <li><a href="shop-list-nosidebar.html">Shop List No Sidebar</a></li>
+                                                    <li>
+                                                        <a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-list-right-sidebar.html">
+                                                            Shop List Right
+                                                            Sidebar
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="item-link">Product Details</a>
+                                                <ul>
+                                                    <li><a href="single-product.html">Single Product</a></li>
+                                                    <li><a href="single-product-variable.html">Variable Product</a></li>
+                                                    <li>
+                                                        <a href="single-product-affiliate.html">Affiliate Product</a>
+                                                    </li>
+                                                    <li><a href="single-product-group.html">Group Product</a></li>
+                                                    <li>
+                                                        <a href="single-product-tabstyle-2.html">Product Left Tab</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="single-product-tabstyle-3.html">Product Right Tab</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="single-product-gallery-left.html">
+                                                            Product Gallery
+                                                            Left
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="single-product-gallery-right.html">
+                                                            Product Gallery
+                                                            Right
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="item-link">Product Details</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="single-product-sticky-left.html">
+                                                            Product Sticky
+                                                            Left
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="single-product-sticky-right.html">
+                                                            Product Sticky
+                                                            Right
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="single-product-slider-box.html">Product Box Slider</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="blog.html">Blog</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="blog.html">Blog Three Column</a></li>
+                                            <li><a href="blog-two-column.html">Blog Two Column</a></li>
+                                            <li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>
+                                            <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+                                            <li><a href="blog-details.html">Blog Details</a></li>
+                                            <li><a href="blog-details-gallery.html">Blog Details Gallery</a></li>
+                                            <li><a href="blog-details-audio.html">Blog Details Audio</a></li>
+                                            <li><a href="blog-details-video.html">Blog Details Video</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!--Menu end-->
+                        <!--Search Cart Start-->
+                        <div class="col-lg-3 col-md-3 col-6 order-lg-3 order-md-3 order-2 d-flex justify-content-end">
+                            <div class="header-search">
+                                <button class="header-search-toggle"><i class="fa fa-search"></i></button>
+                                <div class="header-search-form">
+                                    <form action="#">
+                                        <input type="text" placeholder="Type and hit enter">
+                                        <button><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="header-cart">
+                                <a href="cart.html"><i class="fa fa-shopping-cart"></i><span>3</span></a>
+                                <!--Mini Cart Dropdown Start-->
+                                <div class="header-cart-dropdown">
+                                    <ul class="cart-items">
+                                        <li class="single-cart-item">
+                                            <div class="cart-img">
+                                                <a href="cart.html"><img src="/Asset/Client/images/cart/cart-1.jpg" alt=""></a>
+                                            </div>
+                                            <div class="cart-content">
+                                                <h5 class="product-name">
+                                                    <a href="single-product.html">
+                                                        Dell Inspiron
+                                                        24
+                                                    </a>
+                                                </h5>
+                                                <span class="product-quantity">1 ×</span>
+                                                <span class="product-price">$278.00</span>
+                                            </div>
+                                            <div class="cart-item-remove">
+                                                <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="single-cart-item">
+                                            <div class="cart-img">
+                                                <a href="cart.html"><img src="/Asset/Client/images/cart/cart-2.jpg" alt=""></a>
+                                            </div>
+                                            <div class="cart-content">
+                                                <h5 class="product-name">
+                                                    <a href="single-product.html">
+                                                        Lenovo Ideacentre
+                                                        300
+                                                    </a>
+                                                </h5>
+                                                <span class="product-quantity">1 ×</span>
+                                                <span class="product-price">$23.39</span>
+                                            </div>
+                                            <div class="cart-item-remove">
+                                                <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="cart-total">
+                                        <h5>Subtotal :<span class="float-right">$39.79</span></h5>
+                                        <h5>Eco Tax (-2.00) :<span class="float-right">$7.00</span></h5>
+                                        <h5>VAT (20%) : <span class="float-right">$0.00</span></h5>
+                                        <h5>Total : <span class="float-right">$46.79</span></h5>
+                                    </div>
+                                    <div class="cart-btn">
+                                        <a href="cart.html">View Cart</a>
+                                        <a href="checkout.html">checkout</a>
+                                    </div>
+                                </div>
+                                <!--Mini Cart Dropdown End-->
+                            </div>
+                        </div>
+                        <!--Search Cart End-->
+                    </div>
 
+                    <!--Mobile Menu start-->
+                    <div class="row">
+                        <div class="col-12 d-flex d-lg-none">
+                            <div class="mobile-menu"></div>
+                        </div>
+                    </div>
+                    <!--Mobile Menu end-->
+
+                </div>
+            </div>
+        </header>
+        <!--Header section end-->
+        @RenderBody();
+        <!-- Footer -->
+        @{Html.RenderAction("Footer", "Home");}
+
+    </div>
+        <!-- end Footer -->
+        <!-- All jquery file included here -->
+        <script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="~/Asset/Client/js/popper.min.js"></script>
+        <script src="~/Asset/Client/js/bootstrap.min.js"></script>
+        <script src="~/Asset/Client/js/plugins.js"></script>
+        <script src="~/Asset/Client/js/main.js"></script>
 </body>
 </html>

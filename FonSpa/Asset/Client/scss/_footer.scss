@@ -1,0 +1,164 @@
+/*----------------------------------------*/
+/*  23. Footer CSS
+/*----------------------------------------*/
+
+/*-- Footer Widget --*/
+.footer-widget {
+    // Title
+    & .title {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 600;
+        color: $body-color-light;
+        white-space: nowrap;
+        text-transform: uppercase;
+        margin-bottom: 30px;
+        // Responsive
+        @media #{$tablet-device}{
+            margin-bottom: 15px;
+        }
+        @media #{$large-mobile}{
+            margin-bottom: 15px;
+        }
+        & .text {
+            margin-right: 10px;
+        }
+        & .shape {
+            height: 5px;
+            display: block;
+            background-color: rgba($white, 0.3);
+            flex: 1 0 auto;
+        }
+    }
+    & p {
+        margin-top: 13px;
+        color: #d8d8d8;
+        line-height: 24px;
+        // Responsive
+        @media #{$large-mobile}{
+            width: auto;
+        }
+    }
+    & ul.address {
+        & li {
+            color: $body-color-light;
+            display: flex;
+            font-size: 14px;
+            line-height: 22px;
+            margin-bottom: 12px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            
+            & i {
+                margin-right: 15px;
+                line-height: 28px;
+                font-size: 18px;
+            }
+            & span {
+                overflow: hidden;
+            }
+            & a {
+                display: block;
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+    }
+    & > .ft-menu{
+        display: inline-block;
+        margin-left: 10px;
+        & > li{
+            line-height: 24px;
+            & > a{
+                list-style-type: square;
+                text-transform: capitalize;
+                text-decoration: none;
+                color: #d8d8d8;
+                display: inherit;
+                transition: all 0.4s ease-out;
+                &:hover{
+                    padding-left: 15px;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+/*-- Footer Social --*/
+.footer-social {
+    display: flex;
+    & a {
+        text-align: center;
+        border-radius: 50px;
+        color: #d8d8d8;
+        margin: 10px 18px 0 0;
+        display: block;
+        &:last-child {
+            margin-right: 0;
+        }
+        &:hover {
+            color: $theme-color;
+        }
+        & i {
+            display: block;
+            font-size: 20px;
+            line-height: 20px;
+        }
+    }
+}
+/*-- Footer News Letter --*/
+.footer-newsletter {
+    display: flex;
+    flex-wrap: wrap;
+    & input {
+        width: calc(100% - 40px);
+        max-width: 250px;
+        border: 1px solid rgba($white, 0.3);
+        background-color: transparent;
+        color: $white;
+        line-height: 24px;
+        padding: 7px 15px;
+        font-size: 13px;
+    }
+    & button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-color: $theme-color;
+        color: $white;
+    }
+}
+
+/*-- Footer Bottom --*/
+/*-- Copyright --*/
+.copyright {
+    // Responsive
+    @media #{$small-mobile}{
+        text-align: center !important;
+    }
+    & p {
+        line-height: 30px;
+        color: #d8d8d8;
+        font-size: 14px;
+        // Responsive
+        @media #{$small-mobile}{
+            font-size: 12px;
+        }
+        & a {
+            &:hover {
+                color: $theme-color;
+            }
+        }
+    }
+}
+.footer-logo{
+    // Responsive
+    @media #{$small-mobile}{
+        text-align: center !important;
+    }
+}

@@ -1,0 +1,75 @@
+/*----------------------------------------*/
+/*  06. Feature CSS
+/*----------------------------------------*/
+
+.single-feature{
+    display: flex;
+    border-right: 1px solid #e5e5e5;
+    // Responsive
+    @media #{$large-mobile}{
+        justify-content: center;
+    }
+    @media #{$small-mobile}{
+        justify-content: center;
+        border-right: 0;
+    }
+    &.feature-style-2{
+        text-align: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        border-right: 0;
+        background-color: #f2f2f2;
+        padding: 40px 0;
+        & .icon{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            margin: 2px 12px 23px 2px;
+        }
+    }
+    & .icon{
+        width: 50px;
+        height: 40px;
+        line-height: 40px;
+        text-align: right;
+        font-size: 46px;
+        font-style: normal;
+        vertical-align: top;
+        margin: 2px 12px 2px 2px;
+        color: $theme-color;
+    }
+    & .content{
+        // Responsive
+        @media #{$large-mobile}{
+            text-align: center;
+        }
+        & h2{
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 16px;
+            margin: 0;
+            line-height: 24px;
+            color: $heading-color;
+            // Responsive
+            @media #{$large-mobile}{
+                font-size: 12px;
+            }
+            @media #{$small-mobile}{
+                font-size: 14px;
+            }
+        }
+        & p{
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: lowercase;
+            color: $heading-color;
+            // Responsive
+            @media #{$large-mobile}{
+                font-size: 12px;
+            }
+        }
+    }
+}

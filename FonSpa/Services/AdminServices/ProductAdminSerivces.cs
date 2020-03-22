@@ -38,8 +38,12 @@ namespace FonNature.Services.Services
                 return new List<string>();
             }
             var products = _productAdminRepository.GetListProduct();
-            return new List<string>();
-
+            var imageList = new List<string>();
+            foreach(var product in products)
+            {
+                imageList.Add(product.image);
+            }
+            return imageList;
         }
 
         public List<ProductCategory> GetProductCategory()

@@ -15,7 +15,7 @@ namespace Models.Entity
         public string name { get; set; }
 
         [StringLength(250)]
-        public string metaTitle { get; set; }
+        public string MetaTitle { get; set; }
 
         [StringLength(250)]
         public string MetaKeyword { get; set; }
@@ -23,7 +23,7 @@ namespace Models.Entity
         [StringLength(250)]
         public string MetaDescription { get; set; }
 
-        [StringLength(250)]
+        [StringLength(999)]
         public string description { get; set; }
 
         [StringLength(100)]
@@ -54,6 +54,6 @@ namespace Models.Entity
         [Column(TypeName = "date")]
         public DateTime? topHot { get; set; }
 
-        public int? viewCount { get; set; }
+        public int AmountSold { get; set; }
     }
 }
