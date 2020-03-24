@@ -10,7 +10,7 @@ namespace FonNature.Areas.Admin.Controllers
     {
        
         //GET: Admin/HomeAdmin
-        public ActionResult Index()
+        public ActionResult HomeAdmin()
         {
             ViewBag.Visitor = new IPAddressRepository().CountVisitor();
             ViewBag.Customer = new CustomerAdminRepository().Count();

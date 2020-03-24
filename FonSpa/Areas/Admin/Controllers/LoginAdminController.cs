@@ -57,7 +57,7 @@ namespace FonNature.Areas.Admin.Controllers
                 {
 
                     Session[CommonConstants.UserSession.USER_SESSION_ADMIN] = "USER_SESSION_ADMIN";
-                    return RedirectToAction("Index", "HomeAdmin");
+                    return RedirectToAction("HomeAdmin", "HomeAdmin");
 
                 }
                 else if (checklogin == 0)

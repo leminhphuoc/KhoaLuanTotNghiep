@@ -8,8 +8,6 @@ namespace FonNature.Controllers
     [CountVisitor]
     public class HomeController : Controller
     {
-     
-
         private readonly IHomeServices _homeServices;
 
         public HomeController(IHomeServices homeServices)

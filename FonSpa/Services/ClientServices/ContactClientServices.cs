@@ -1,7 +1,6 @@
 ﻿using FonNature.Services.IServices;
 using Models.Entity;
 using Models.IRepository;
-using System.Collections.Generic;
 
 namespace FonNature.Services.Services
 {
@@ -19,18 +18,10 @@ namespace FonNature.Services.Services
             return _seoRepository.GetSEO(5);
         }
 
-        public List<Contact> GetContacts()
+        public Contact GetContact()
         {
-            var listContact = _contactAdminRepository.GetListContact();
-            var listContactDisplay = new List<Contact>();
-            foreach(Contact contact in listContact)
-            {
-                if(contact.status == true)
-                {
-                    listContactDisplay.Add(contact);
-                }
-            }
-            return listContactDisplay;
+            var contact = _contactAdminRepository.GetContact();
+            return contact;
         }
 
     }

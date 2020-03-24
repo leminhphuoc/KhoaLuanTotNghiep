@@ -22,30 +22,47 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Status</th>
+                            <th>About Type</th>
                             <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
                         @{ if (Model != null)
                             {
+                                var stt = 1;
                                 foreach (var item in Model)
                                 {
-                                    <tr id="row_@item.id">
-                                        <td>@item.id</td>
-                                        <td>@item.name</td>
-                                        <td><a href="#" class="btn-active" data-id="@item.id">@(item.status == true ? "Kích hoạt" : "Khóa")</a></td>
-                                        <td>
-                                            <a href="/Admin/AboutAdmin/Edit/@item.id">Sửa</a>
-                                            /
-                                            @Ajax.ActionLink("Xóa", "Delete", new {@id = item.id} ,new AjaxOptions
-                                       {
-                                           Confirm = "Bạn có muốn xoá bản ghi này?",
-                                           OnComplete = "$('#row_" + @item.id + "').remove()",
-                                           HttpMethod = "Delete"
-                                       })
-                                        </td>
-                                    </tr>
+                                    if (item.Category == 1)
+                                    {
+                                        <tr id="row_@item.Id">
+                                            <td><a href="/Admin/AboutAdmin/Edit/@item.Id">@stt</a></td>
+                                            <td>@item.Name</td>
+                                            <td>Our Company</td>
+                                            <td>
+                                                <a href="/Admin/AboutAdmin/Edit/@item.Id">Sửa</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr id="row_@item.Id">
+                                            <td><a href="/Admin/AboutAdmin/Edit/@item.Id">@stt</a></td>
+                                            <td>@item.Name</td>
+                                            <td>Testimonial</td>
+                                            <td>
+                                                <a href="/Admin/AboutAdmin/Edit/@item.Id">Sửa</a>
+                                                /
+                                                @Ajax.ActionLink("Xóa", "Delete", new {@id = item.Id} ,new AjaxOptions
+                                                {
+                                                    Confirm = "Bạn có muốn xoá bản ghi này?",
+                                                    OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                                    HttpMethod = "Delete"
+                                                })
+                                            </td>
+                                        </tr>
+                                    }
+
+                                    stt += 1;
                                 }
                             }
                         }

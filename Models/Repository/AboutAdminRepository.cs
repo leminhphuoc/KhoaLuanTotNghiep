@@ -32,22 +32,18 @@ namespace Models.Repository
 
         public long AddAbout(About about)
         {
-            about.createdDate = DateTime.Now;
+            about.Category = 2;
             var addAbout = _db.Abouts.Add(about);
             _db.SaveChanges();
-            return addAbout.id;
+            return addAbout.Id;
         }
 
         public bool EditAbout(About about)
         {
-            var aboutEdit = _db.Abouts.Where(x => x.id == about.id).SingleOrDefault();
-            aboutEdit.name = about.name;
-            aboutEdit.Title = about.Title;
-            aboutEdit.description = about.description;
-            aboutEdit.detail = about.detail;
-            aboutEdit.image = about.image;
-            aboutEdit.modifiedDate = DateTime.Now;
-            aboutEdit.status = about.status;
+            var aboutEdit = _db.Abouts.Where(x => x.Id == about.Id).SingleOrDefault();
+            aboutEdit.Name = about.Name;
+            aboutEdit.Description = about.Description;
+            aboutEdit.Image = about.Image;
             _db.SaveChanges();
             return true;
         }
@@ -65,24 +61,20 @@ namespace Models.Repository
 
         public bool? ChangeStatus(long id)
         {
-            if (id == 0) return false;
-            var accountNeedChange = _db.Abouts.Find(id);
-            accountNeedChange.status = !accountNeedChange.status;
-            _db.SaveChanges();
-            return accountNeedChange.status;
+            return true;
         }
 
         public List<About> ListSearchAbout(string searchString)
         {
             if (searchString == null) return null;
 
-            var listAbout = _db.Abouts.Where(x => x.name.ToUpper() == searchString.ToUpper());
+            var listAbout = _db.Abouts.Where(x => x.Name.ToUpper() == searchString.ToUpper());
             return listAbout.ToList();
         }
 
         public bool CheckExits(string name)
         {
-            var about = _db.Abouts.Where(x => x.name == name).SingleOrDefault();
+            var about = _db.Abouts.Where(x => x.Name == name).SingleOrDefault();
             if (about != null) return true;
             return false;
         }

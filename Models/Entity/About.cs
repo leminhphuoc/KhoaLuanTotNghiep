@@ -9,32 +9,19 @@ namespace Models.Entity
     [Table("About")]
     public partial class About
     {
-        public long id { get; set; }
+        public long Id { get; set; }
 
         [StringLength(250)]
-        public string name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// 1: About, 2: Testimonial
         /// </summary>
         public int Category { get; set; }
 
-        [StringLength(500)]
-        public string Title { get; set; }
-
-        public string description { get; set; }
-
         [Column(TypeName = "ntext")]
-        public string detail { get; set; }
+        public string Description { get; set; }
 
         [StringLength(250)]
-        public string image { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? createdDate { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? modifiedDate { get; set; }
-
-        public bool? status { get; set; }
+        public string Image { get; set; }
     }
 }

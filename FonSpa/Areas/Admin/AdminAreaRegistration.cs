@@ -69,8 +69,17 @@ namespace FonNature.Areas.Admin
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 
-            //Admin Account
+            context.MapRoute(
+                "Admin_default",
+                "Admin/{controller}/{action}/{id}",
+                new { action = "Home{controller}", id = UrlParameter.Optional }
+            );
 
+            context.MapRoute(
+                "Admin_default_home",
+                "admin",
+                new { controller = "HomeAdmin",action = "HomeAdmin", id = UrlParameter.Optional }
+            );
         }
     }
 }

@@ -248,6 +248,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Enum\AboutType.cs" />
     <Compile Include="Filter\AuthData.cs" />
     <Compile Include="Filter\CountVisitor.cs" />
     <Compile Include="Global.asax.cs">
@@ -2297,7 +2298,7 @@
     <Content Include="Asset\Admin\fonts\FontAwesome.otf" />
     <Content Include="Asset\Admin\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Asset\Admin\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\HomeAdmin\HomeAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_sidebar.cshtml" />
     <Content Include="Areas\Admin\Views\AccountAdmin\Index.cshtml" />
@@ -2378,8 +2379,6 @@
     <Content Include="Areas\Admin\Views\FooterAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\FooterAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\FooterAdmin\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\ContactAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\ContactAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ContactAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SlideAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\SlideAdmin\Create.cshtml" />
@@ -2491,7 +2490,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
-    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\ContactHome.cshtml" />
     <Content Include="Views\About\AboutHome.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
@@ -2504,6 +2503,8 @@
     <Content Include="Views\Product\CheckOut.cshtml" />
     <Content Include="Views\Product\Order.cshtml" />
     <Content Include="Views\CustomError\DefaultError.cshtml" />
+    <Content Include="Views\About\AboutTeamList.cshtml" />
+    <Content Include="Views\About\AboutTestimonial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

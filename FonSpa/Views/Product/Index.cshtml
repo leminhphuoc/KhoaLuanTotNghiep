@@ -2,10 +2,8 @@
 @using PagedList
 @using PagedList.Mvc
 @{
-                /**/
-
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section ProductJs{
@@ -93,9 +91,9 @@
                                         <i class="zmdi zmdi-money-box"></i>
                                         @if (product.promotionPrice != null)
                                         {
-                                            <label style="text-decoration:line-through">@product.price.Value.ToString("N0") đ </label> 
+                                            <label style="text-decoration:line-through">@product.price.Value.ToString("N0") đ </label>
                                             <label style="color:red;font:bold;font-size:150%;margin-left:10px">@product.promotionPrice.Value.ToString("N0") đ</label>
-                                                                }
+                                        }
                                         else
                                         {
                                             <label style="color:red;font:bold;font-size:150%">@(product.price.Value.ToString("N0")) đ</label>

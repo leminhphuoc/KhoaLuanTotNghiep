@@ -1,10 +1,11 @@
 ﻿using FonNature.Services.ClientServices;
 using FonNature.Services.IServices;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers
 {
+    [RoutePrefix("contact")]
+    [Route("{action=ContactHome}")]
     public class ContactController : Controller
     {
         private readonly IContactClientServices _contactClientServices;
@@ -13,10 +14,10 @@ namespace FonNature.Controllers
             _contactClientServices = contactClientServices;
         }
         // GET: Contact
-        public ActionResult Index()
+        public ActionResult ContactHome()
         {
             ViewBag.Tittle = "Contact";
-            var listContact = _contactClientServices.GetContacts();
+            var listContact = _contactClientServices.GetContact();
             var seo = _contactClientServices.GetSeo();
             if (seo != null)
             {

@@ -11,9 +11,13 @@ namespace Models.Entity
     {
         public int id { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string content { get; set; }
+        [StringLength(250)]
+        public string Address { get; set; }
 
-        public bool? status { get; set; }
+        [StringLength(250)]
+        public string MobilePhone { get; set; }
+
+        [StringLength(250)]
+        public string Email { get; set; }
     }
 }

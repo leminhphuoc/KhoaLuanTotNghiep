@@ -17,8 +17,7 @@ namespace FonNature.Controllers
         public ActionResult AboutHome()
         {   
             ViewBag.Tittle = "About";
-            ViewBag.Staffs = _aboutServices.GetStaffs();
-            var model = _aboutServices.GetAbouts();
+            var model = _aboutServices.GetAboutMain();
             var seo = _aboutServices.GetSeo();
             if (seo != null)
             {
@@ -27,6 +26,18 @@ namespace FonNature.Controllers
                 ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
             }
             return View(model);
+        }
+
+        public PartialViewResult AboutTeamList()
+        {
+            var model = _aboutServices.GetStaffs();
+            return PartialView("AboutTeamList", model);
+        }
+
+        public PartialViewResult AboutTestimonial()
+        {
+            var model = _aboutServices.GetAboutsTestimonials();
+            return PartialView("AboutTestimonial", model);
         }
     }
 }

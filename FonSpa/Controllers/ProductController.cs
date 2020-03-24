@@ -10,6 +10,8 @@ using System.Web.Mvc;
 
 namespace FonNature.Controllers
 {
+    [RoutePrefix("contact")]
+    [Route("{action=ContactHome}")]
     public class ProductController : Controller
     {
         private readonly IProductServices _productServices;

@@ -1,4 +1,5 @@
-﻿using FonNature.Services.IClientServices;
+﻿using FonNature.Enum;
+using FonNature.Services.IClientServices;
 using Models.Entity;
 using Models.IRepository;
 using System.Collections.Generic;
@@ -30,9 +31,14 @@ namespace FonNature.Services.ClientServices
             return _aboutAdminRepository.GetDetail(id);
         }
 
-        public List<About> GetAbouts()
+        public List<About> GetAboutsTestimonials()
         {
-            return _aboutAdminRepository.GetListAbout().Where(x=>x.status == true).OrderBy(x=>x.id).ToList();
+            return _aboutAdminRepository.GetListAbout().Where(x=>x.Category == (int)AboutType.Testimonial).ToList();
+        }
+
+        public About GetAboutMain()
+        {
+            return _aboutAdminRepository.GetListAbout().FirstOrDefault(x => x.Category == (int)AboutType.OurCompany);
         }
 
         public List<Staff> GetStaffs()

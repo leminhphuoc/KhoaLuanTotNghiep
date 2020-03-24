@@ -1,0 +1,37 @@
+﻿@model List<Models.Entity.About>
+
+<div class="testimonial-area bg-gray-two section testimonial-bg pt-85 pt-lg-65 pt-md-55 pt-sm-45 pt-xs-50 pb-95 pb-lg-75 pb-md-65 pb-sm-55 pb-xs-45">
+    <div class="container">
+        <div class="row tf-element-carousel" data-slick-options='{
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1,
+                    "infinite": true,
+                    "arrows": false,
+                    "autoplay": true
+                    }' data-slick-responsive='[
+                    {"breakpoint":768, "settings": {
+                    "slidesToShow": 1
+                    }},
+                    {"breakpoint":575, "settings": {
+                    "slidesToShow": 1
+                    }}
+                    ]'>
+            @foreach (var item in Model)
+            {
+                <div class="col-12">
+                    <!--Single Testimonial Area Start-->
+                    <div class="single-testimonial-area">
+                        <div class="testimonial-image">
+                            <img src="@item.Image" alt="">
+                        </div>
+                        <div class="testimonial-content">
+                            <p class="author-desc">  @item.Description</p>
+                            <p class="testimonial-author">@item.Name</p>
+                        </div>
+                    </div>
+                    <!--Single Testimonial Area End-->
+                </div>
+            }
+        </div>
+    </div>
+</div>

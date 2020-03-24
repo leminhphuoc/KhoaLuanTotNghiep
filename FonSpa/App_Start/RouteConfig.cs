@@ -11,7 +11,7 @@ namespace FonNature
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
 
-            AreaRegistration.RegisterAllAreas();
+            //AreaRegistration.RegisterAllAreas();
             
             routes.MapRoute(
                 name: "Default",

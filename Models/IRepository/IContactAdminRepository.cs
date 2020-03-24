@@ -9,11 +9,7 @@ namespace Models.IRepository
 {
     public interface IContactAdminRepository
     {
-        Contact GetDetail(long id);
-        List<Contact> GetListContact();
-        bool? ChangeStatus(long id);
-        long AddContact(Contact contact);
+        Contact GetContact();
         bool EditContact(Contact contact);
-        bool Delete(long id);
     }
 }
