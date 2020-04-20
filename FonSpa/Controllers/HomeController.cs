@@ -24,11 +24,12 @@ namespace FonNature.Controllers
             ViewBag.About = _homeServices.ListAbout();
             ViewBag.Staffs = _homeServices.GetStaffs();
             var seo = _homeServices.GetHomeSeo();
+
             if(seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+                ViewBag.MetaDescription = seo.MetaDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.MetaKeyWord ?? string.Empty;
             }
             return View();
         }

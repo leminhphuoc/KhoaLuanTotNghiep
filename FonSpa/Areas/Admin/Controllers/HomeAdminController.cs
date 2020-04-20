@@ -26,8 +26,6 @@ namespace FonNature.Areas.Admin.Controllers
             ViewBag.CountCustomer7 = new CustomerAdminRepository().CountByMonth(DateTime.Now.AddMonths(-7).Month);
             ViewBag.CountCustomer8 = new CustomerAdminRepository().CountByMonth(DateTime.Now.AddMonths(-8).Month);
 
-
-
             ViewBag.CountVisitor = new IPAddressRepository().CountByMonth(DateTime.Now.Month);
             ViewBag.CountVisitor1 = new IPAddressRepository().CountByMonth(DateTime.Now.AddMonths(-1).Month);
             ViewBag.CountVisitor2 = new IPAddressRepository().CountByMonth(DateTime.Now.AddMonths(-2).Month);

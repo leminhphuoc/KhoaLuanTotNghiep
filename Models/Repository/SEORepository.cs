@@ -33,8 +33,8 @@ namespace Models.Repository
         {
             var source = _db.SEOs.SingleOrDefault(x => x.Id.Equals(seo.Id));
             source.MetaTitle = seo.MetaTitle;
-            source.SeoDescription = seo.SeoDescription;
-            source.SeoKeyWord = seo.SeoKeyWord;
+            source.MetaDescription = seo.MetaDescription;
+            source.MetaKeyWord = seo.MetaKeyWord;
             _db.SaveChanges();
             return source.Id;
         }

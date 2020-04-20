@@ -3,8 +3,10 @@ using FonNature.Common;
 using FonNature.Services.IServices;
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.SessionState;
 
 namespace FonNature.Areas.Admin.Controllers
 {
@@ -55,6 +57,7 @@ namespace FonNature.Areas.Admin.Controllers
                 var checklogin = _accountAdminServices.checkLoginAdmin(LoginModel);
                 if (checklogin == 1)
                 {
+                    ReGenerateSessionId();
 
                     Session[CommonConstants.UserSession.USER_SESSION_ADMIN] = "USER_SESSION_ADMIN";
                     return RedirectToAction("HomeAdmin", "HomeAdmin");
@@ -76,6 +79,45 @@ namespace FonNature.Areas.Admin.Controllers
             return View(LoginModel);
         }
 
+        protected void ReGenerateSessionId()
+        {
+            SessionIDManager manager = new SessionIDManager();
+            string oldId = manager.GetSessionID(System.Web.HttpContext.Current);
+            string newId = manager.CreateSessionID(System.Web.HttpContext.Current);
+            bool isAdd = false, isRedir = false;
+            manager.RemoveSessionID(System.Web.HttpContext.Current);
+            manager.SaveSessionID(System.Web.HttpContext.Current, newId, out isRedir, out isAdd);
 
+            //Store data from old session
+            HttpApplication ctx = System.Web.HttpContext.Current.ApplicationInstance;
+            HttpModuleCollection mods = ctx.Modules;
+            SessionStateModule ssm = (SessionStateModule)mods.Get("Session");
+            FieldInfo[] fields = ssm.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance);
+            SessionStateStoreProviderBase store = null;
+            FieldInfo rqIdField = null, rqLockIdField = null, rqStateNotFoundField = null;
+
+            SessionStateStoreData rqItem = null;
+            foreach (FieldInfo field in fields)
+            {
+                if (field.Name.Equals("_store")) store = (SessionStateStoreProviderBase)field.GetValue(ssm);
+                if (field.Name.Equals("_rqId")) rqIdField = field;
+                if (field.Name.Equals("_rqLockId")) rqLockIdField = field;
+                if (field.Name.Equals("_rqSessionStateNotFound")) rqStateNotFoundField = field;
+
+                if ((field.Name.Equals("_rqItem")))
+                {
+                    rqItem = (SessionStateStoreData)field.GetValue(ssm);
+                }
+            }
+            object lockId = rqLockIdField.GetValue(ssm);
+
+            if ((lockId != null) && (oldId != null))
+            {
+                store.RemoveItem(System.Web.HttpContext.Current, oldId, lockId, rqItem);
+            }
+
+            rqStateNotFoundField.SetValue(ssm, true);
+            rqIdField.SetValue(ssm, newId);
+        }
     }
 }

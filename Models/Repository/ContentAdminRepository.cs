@@ -32,7 +32,7 @@ namespace Models.Repository
 
         public long AddContent(Content content)
         {
-            
+            content.status = true;
             content.createdDate = DateTime.Now;
             var addContent = _db.Contents.Add(content);
             _db.SaveChanges();
@@ -44,8 +44,8 @@ namespace Models.Repository
             var contentEdit = _db.Contents.Where(x => x.id == content.id).SingleOrDefault();
             contentEdit.name = content.name;
             contentEdit.metatitle = content.metatitle;
-            contentEdit.SeoKeyWord = content.SeoKeyWord;
-            contentEdit.SeoDescription = content.SeoDescription;
+            contentEdit.MetaKeyWord = content.MetaKeyWord;
+            contentEdit.MetaDescription = content.MetaDescription;
             contentEdit.description = content.description;
             contentEdit.image = content.image;
             contentEdit.categoryID = content.categoryID;

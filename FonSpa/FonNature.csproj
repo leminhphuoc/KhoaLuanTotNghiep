@@ -2133,6 +2133,7 @@
     <Content Include="Asset\Client\css\iconfont.min.css" />
     <Content Include="Asset\Client\css\plugins.css" />
     <Content Include="Asset\Client\css\style.css" />
+    <Content Include="Asset\Client\css\styleError.css" />
     <Content Include="Asset\Client\css\_404.css" />
     <Content Include="Asset\Client\css\_my-account.css" />
     <Content Include="Asset\Client\css\_variabls.css" />
@@ -2226,6 +2227,7 @@
     <Content Include="Asset\Client\js\main.js" />
     <Content Include="Asset\Client\js\plugins.js" />
     <Content Include="Asset\Client\js\popper.min.js" />
+    <Content Include="Asset\Client\js\quickview.js" />
     <Content Include="Asset\Client\js\vendor\jquery-1.12.4.min.js" />
     <Content Include="Asset\Client\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="Asset\Client\Mail\Message.html" />
@@ -2460,6 +2462,7 @@
     <Content Include="Asset\Client\scss\_product.scss" />
     <Content Include="Asset\Client\scss\_sidebar.scss" />
     <Content Include="Asset\Client\scss\_variabls.scss" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - ReadOnly - FTP.pubxml" />
@@ -2484,20 +2487,21 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Content\Site.css" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\MainMenu.cshtml" />
     <Content Include="Views\Contact\ContactHome.cshtml" />
     <Content Include="Views\About\AboutHome.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Product\ProductHome.cshtml" />
+    <Content Include="Views\Blog\BlogHome.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Blog\Detail.cshtml" />
     <Content Include="Views\Blog\ListByCategory.cshtml" />
-    <Content Include="Views\Product\ListByCategory.cshtml" />
+    <Content Include="Views\Product\ProductListByCategory.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
     <Content Include="Views\Product\CheckOut.cshtml" />

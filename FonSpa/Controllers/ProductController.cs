@@ -10,8 +10,8 @@ using System.Web.Mvc;
 
 namespace FonNature.Controllers
 {
-    [RoutePrefix("contact")]
-    [Route("{action=ContactHome}")]
+    [RoutePrefix("product")]
+    [Route("{action=ProductHome}")]
     public class ProductController : Controller
     {
         private readonly IProductServices _productServices;
@@ -22,23 +22,23 @@ namespace FonNature.Controllers
             _orderServices = orderServices;
         }
         // GET: Product
-        public ActionResult Index(int? page, string searchString = null)
+        public ActionResult ProductHome(int? page, string searchString = null)
         {
-            var listProduct = _productServices.ListAll();
+            var productList = _productServices.ListAll();
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var listProductPaged = listProduct.ToPagedList(pageNumber, pageSize);
+            var productListPaged = productList.ToPagedList(pageNumber, pageSize);
             var seo = _productServices.GetProductSeo();
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+                ViewBag.MetaDescription = seo.MetaDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.MetaKeyWord ?? string.Empty;
             }
-            return View(listProductPaged);
+            return View(productListPaged);
         }
 
-        public ActionResult ListByCategory(int? page, string searchString = null, int idCategory = 0)
+        public ActionResult ProductListByCategory(int? page, string searchString = null, int idCategory = 0)
         {
             var listProduct = _productServices.ListByCategory(idCategory);
             int pageSize = 6;
@@ -48,8 +48,8 @@ namespace FonNature.Controllers
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+                ViewBag.MetaDescription = seo.MetaDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.MetaKeyWord ?? string.Empty;
             }
             return View(listProductPaged);
         }
@@ -57,6 +57,8 @@ namespace FonNature.Controllers
         public ActionResult Detail(long id)
         {
             var product = _productServices.GetDetail(id);
+            ViewBag.categoryName = _productServices.GetCategoryName(product.idCategory.Value);
+            ViewBag.RealtedProduct = _productServices.GetRelatedProduct(product);
             ViewBag.ListImage = _productServices.GetImagesList(id);
             ViewBag.MetaTitle = product.MetaTitle ?? string.Empty;
             ViewBag.MetaDescription = product.MetaKeyword ?? string.Empty;

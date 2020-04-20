@@ -10,11 +10,13 @@ namespace FonNature.Services.ClientServices
     public class ProductServices : IProductServices
     {
         private readonly IProductAdminRepository _productAdminRepository;
+        private readonly IProductCategoryAdminRepository _productCateAdminRepository;
         private readonly ISEORepository _seoRepository;
-        public ProductServices(IProductAdminRepository productAdminRepository , ISEORepository seoRepository)
+        public ProductServices(IProductAdminRepository productAdminRepository , ISEORepository seoRepository, IProductCategoryAdminRepository productCateAdminRepository)
         {
             _productAdminRepository = productAdminRepository;
             _seoRepository = seoRepository;
+            _productCateAdminRepository = productCateAdminRepository;
         }
         public SEO GetProductSeo()
         {
@@ -49,6 +51,20 @@ namespace FonNature.Services.ClientServices
                 imagesList.Add(node.Value);
             }
             return imagesList;
+        }
+
+        public string GetCategoryName(long categoryId)
+        {
+            var categoryList = _productCateAdminRepository.GetListProductCategory();
+            var result = categoryList.SingleOrDefault(x => x.id == categoryId);
+            return result.name;
+        }
+
+        public List<Product> GetRelatedProduct(Product product)
+        {
+            var productList = _productAdminRepository.GetListProduct();
+            var result = productList.Where(x => x.id != product.id && x.idCategory == product.idCategory).ToList();
+            return result;
         }
 
     }

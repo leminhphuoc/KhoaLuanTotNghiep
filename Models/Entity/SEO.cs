@@ -18,9 +18,9 @@
         public string MetaTitle { get; set; }
 
         [StringLength(500)]
-        public string SeoKeyWord { get; set; }
+        public string MetaKeyWord { get; set; }
 
         [StringLength(500)]
-        public string SeoDescription { get; set; }
+        public string MetaDescription { get; set; }
     }
 }

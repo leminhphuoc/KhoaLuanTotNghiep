@@ -5,6 +5,8 @@ using System.Web.Mvc;
 
 namespace FonNature.Controllers
 {
+    [RoutePrefix("blog")]
+    [Route("{action=BlogHome}")]
     public class BlogController : Controller
     {
         private readonly IBlogServices _blogServices;
@@ -13,7 +15,7 @@ namespace FonNature.Controllers
             _blogServices = blogServices;
         }
         // GET: Blog
-        public ActionResult Index(int? page, string searchString = null)
+        public ActionResult BlogHome(int? page, string searchString = null)
         {
             ViewBag.Tittle = "Blog";
             ViewBag.ListContentCategory = _blogServices.ListContentCategory();
@@ -27,8 +29,8 @@ namespace FonNature.Controllers
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+                ViewBag.MetaDescription = seo.MetaDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.MetaKeyWord ?? string.Empty;
             }
             return View(blogListPaged);
         }
@@ -48,8 +50,8 @@ namespace FonNature.Controllers
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+                ViewBag.MetaDescription = seo.MetaDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.MetaKeyWord ?? string.Empty;
             }
             return View(blogListPaged);
         }
@@ -61,9 +63,10 @@ namespace FonNature.Controllers
             ViewBag.RecentBlog = _blogServices.ListRecentBlog();
             ViewBag.BlogsList = _blogServices.ListAll(null);
             var blog = _blogServices.GetDetail(id);
+            if (blog == null) return RedirectToAction("BlogHome");
             ViewBag.MetaTitle = blog.metatitle ?? string.Empty;
-            ViewBag.MetaDescription = blog.SeoKeyWord ?? string.Empty;
-            ViewBag.MetaKeyword = blog.SeoDescription ?? string.Empty;
+            ViewBag.MetaDescription = blog.MetaKeyWord ?? string.Empty;
+            ViewBag.MetaKeyword = blog.MetaDescription ?? string.Empty;
             return View(blog);
         }
 

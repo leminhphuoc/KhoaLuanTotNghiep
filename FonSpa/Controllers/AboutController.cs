@@ -22,8 +22,8 @@ namespace FonNature.Controllers
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
-                ViewBag.MetaDescription = seo.SeoDescription ?? string.Empty;
-                ViewBag.MetaKeyword = seo.SeoKeyWord ?? string.Empty;
+                ViewBag.MetaDescription = seo.MetaDescription ?? string.Empty;
+                ViewBag.MetaKeyword = seo.MetaKeyWord ?? string.Empty;
             }
             return View(model);
         }

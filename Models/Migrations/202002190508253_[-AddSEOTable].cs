@@ -14,8 +14,8 @@ namespace Models.Migrations
                         Id = c.Long(nullable: false, identity: true),
                         Name = c.String(maxLength: 100),
                         MetaTitle = c.String(maxLength: 500),
-                        SeoKeyWord = c.String(maxLength: 500),
-                        SeoDescription = c.String(maxLength: 500),
+                        MetaKeyWord = c.String(maxLength: 500),
+                        MetaDescription = c.String(maxLength: 500),
                     })
                 .PrimaryKey(t => t.Id);
             

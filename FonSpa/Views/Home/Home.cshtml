@@ -2,10 +2,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var listMenu = ViewBag.ListMenu;
     List<Models.Entity.Slide> listSlide = ViewBag.SlideList;
-    List<Models.Entity.FooterCategory> footerCategories = ViewBag.FooterCategories;
-    List<Models.Entity.Footer> footers = ViewBag.Footers;
-    List<Models.Entity.About> abouts = ViewBag.About;
-    List<Models.Entity.Staff> staffsList = ViewBag.Staffs;
 }
 
 <!--slider section start-->
@@ -27,50 +23,32 @@
         "autoplay": true
         }}
         ]'>
-        <!--Hero Item start-->
-        <div class="hero-item bg-image" data-bg="/Asset/Client/images/hero/hero-3.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
 
-                        <!--Hero Content start-->
-                        <div class="hero-content-3">
+        @foreach (var slide in listSlide)
+        {
+            <!--Hero Item start-->
+            <div class="hero-item bg-image" data-bg="@slide.image">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
 
-                            <h2>Save Now Beauty of Life</h2>
-                            <h1>treatments For all</h1>
-                            <h3>Spa Cosmetics</h3>
-                            <a href="shop.html">Shop collection now!</a>
+                            <!--Hero Content start-->
+                            <div class="hero-content-3">
+
+                                @*<h2></h2>*@
+                                <h1>@slide.title</h1>
+                                <h3>@slide.subtitle</h3>
+                                <a href="/product">Shop collection now!</a>
+
+                            </div>
+                            <!--Hero Content end-->
 
                         </div>
-                        <!--Hero Content end-->
-
                     </div>
                 </div>
             </div>
-        </div>
-        <!--Hero Item end-->
-        <!--Hero Item start-->
-        <div class="hero-item bg-image" data-bg="/Asset/Client/images/hero/hero-4.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-
-                        <!--Hero Content start-->
-                        <div class="hero-content-3">
-
-                            <h2>Book your appointment</h2>
-                            <h1>Light Spring</h1>
-                            <h3>Makeup / Cosmetics</h3>
-                            <a href="shop.html">Shop collection now!</a>
-
-                        </div>
-                        <!--Hero Content end-->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Hero Item end-->
+            <!--Hero Item end-->
+        }
     </div>
 
 </div>
@@ -818,269 +796,6 @@
     </div>
 </div>
 <!-- Banner Section End -->
-<!--Product section start-->
-<div class="product-section section pt-100 pt-lg-70 pt-md-65 pt-sm-60 pt-xs-45 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
-    <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
-        <div class="row">
-
-            <div class="col-lg-3 col-xl-2">
-                <!-- Section Title Start -->
-                <div class="section-title-two mb-40 mb-xs-20">
-                    <span>our</span>
-                    <h2>2019 trend</h2>
-                    <span>proucts</span>
-                </div>
-                <!-- Section Title End -->
-            </div>
-
-            <div class="col-lg-9 col-xl-10">
-                <div class="row tf-element-carousel product-nav-two" data-slick-options='{
-                            "slidesToShow": 5,
-                            "slidesToScroll": 1,
-                            "infinite": true,
-                            "arrows": true,
-                            "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
-                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
-                            }' data-slick-responsive='[
-                            {"breakpoint":1899, "settings": {
-                            "slidesToShow": 4
-                            }},
-                            {"breakpoint":1400, "settings": {
-                            "slidesToShow": 3
-                            }},
-                            {"breakpoint":1199, "settings": {
-                            "slidesToShow": 2
-                            }},
-                            {"breakpoint":992, "settings": {
-                            "slidesToShow": 2
-                            }},
-                            {"breakpoint":768, "settings": {
-                            "slidesToShow": 2,
-                            "arrows": false,
-                            "autoplay": true
-                            }},
-                            {"breakpoint":576, "settings": {
-                            "slidesToShow": 1,
-                            "arrows": false,
-                            "autoplay": true
-                            }}
-                            ]'>
-                    <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/Asset/Client/images/product/product-15.jpg" alt="">
-                                </a>
-                                <span class="descount-sticker">-10%</span>
-                                <span class="sticker">New</span>
-                                
-                            </div>
-                            <div class="product-content text-left">
-                                <h3><a href="single-product.html">White Shave Bruk</a></h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h4 class="price"><span class="new">€115.00</span></h4>
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
-                    </div>
-                    <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/Asset/Client/images/product/product-16.jpg" alt="">
-                                </a>
-                                <span class="descount-sticker">-10%</span>
-                                <span class="sticker">New</span>
-                                
-                            </div>
-                            <div class="product-content text-left">
-                                <h3><a href="single-product.html">White Shave Brush</a></h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h4 class="price"><span class="new">€130.00</span></h4>
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
-                    </div>
-                    <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/Asset/Client/images/product/product-17.jpg" alt="">
-                                </a>
-                                <span class="descount-sticker">-10%</span>
-                                <span class="sticker">New</span>
-                                
-                            </div>
-                            <div class="product-content text-left">
-                                <h3><a href="single-product.html">White Shave Brug</a></h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h4 class="price">
-                                    <span class="new">€70.00</span><span class="old">€100.00</span>
-                                </h4>
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
-                    </div>
-                    <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/Asset/Client/images/product/product-18.jpg" alt="">
-                                </a>                             
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
-                    </div>
-                    <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/Asset/Client/images/product/product-8.jpg" alt="">
-                                </a>             
-                            </div>
-                         
-                        </div>
-                        <!-- Single Product End -->
-                    </div>
-                    <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/Asset/Client/images/product/product-12.jpg" alt="">
-                                </a>
-                                <span class="descount-sticker">-10%</span>
-                                <span class="sticker">New</span>
-                                
-                            </div>
-                            <div class="product-content text-left">
-                                <h3><a href="single-product.html">White Shave Brush</a></h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h4 class="price">
-                                    <span class="new">€110.00</span><span class="old">€130.00</span>
-                                </h4>
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
-                    </div>
-                    <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/Asset/Client/images/product/product-13.jpg" alt="">
-                                </a>
-                                <span class="descount-sticker">-10%</span>
-                                <span class="sticker">New</span>
-                                
-                            </div>
-                            <div class="product-content text-left">
-                                <h3><a href="single-product.html">White Shave Brux</a></h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h4 class="price"><span class="new">€130.00</span></h4>
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
-                    </div>
-                    <div class="col-lg-3">
-                        <!-- Single Product Start -->
-                        <div class="single-product mb-30">
-                            <div class="product-img">
-                                <a href="single-product.html">
-                                    <img src="/Asset/Client/images/product/product-14.jpg" alt="">
-                                </a>
-                                <span class="descount-sticker">-10%</span>
-                                <span class="sticker">New</span>
-                            </div>
-                            <div class="product-content text-left">
-                                <h3><a href="single-product.html">White Shave Bruz</a></h3>
-                                <div class="ratting">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <h4 class="price"><span class="new">€130.00</span></h4>
-                            </div>
-                        </div>
-                        <!-- Single Product End -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!--Product section end-->
-<!--Call To Action section start-->
-<div class="cta-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-40"
-     data-bg="/Asset/Client/images/bg/cta-bg.jpg">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-12">
-                <div class="cta-content">
-                    <h3>Get <span>10%</span> Discount</h3>
-                    <p>
-                        <span>Subcribe to the TheFace mailing list to receive update on mnew arrivals,</span>
-                        <span>special offers and other discount information.</span>
-                    </p>
-                    <div class="cta-form">
-                        <form id="mc-form" class="mc-form">
-                            <input id="mc-email" type="email" autocomplete="off"
-                                   placeholder="Your email address here" />
-                            <button id="mc-submit" class="cta-btn">Subscribe</button>
-                        </form>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts text-centre">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div><!-- mailchimp-alerts end -->
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!--Call To Action section end-->
 <!--Blog section start-->
 <div class="blog-section section bg-gray pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-75 pb-lg-55 pb-md-45 pb-sm-35 pb-xs-30">
     <div class="container">
@@ -1097,7 +812,7 @@
 
         <div class="row tf-element-carousel" data-slick-options='{
                     "slidesToShow": 3,
-                    "slidesToScroll": 1,
+                    "slidesToScroll": 3,
                     "infinite": true,
                     "arrows": true,
                     "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
@@ -1184,53 +899,36 @@
     </div>
 </div>
 <!--Blog section end-->
-<!--Categorie Product section start-->
-<div class="categorie-product-section section">
-    <div class="container-fluid pl-0 pr-0">
-        <div class="row no-gutters">
-            <div class="col-lg-4 col-md-4">
-                <!-- Single Categorie Product Start -->
-                <div class="single-categorie">
-                    <div class="categorie-image">
-                        <img src="/Asset/Client/images/categorie/cate-1.png" alt="">
-                    </div>
-                    <div class="categorie-content">
-                        <h3>Now introducing</h3>
-                        <a class="shop-btn" href="#">Shop now</a>
-                        <h1>Spa Optima+</h1>
-                    </div>
-                </div>
-                <!-- Single Categorie Product End -->
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <!-- Single Categorie Product Start -->
-                <div class="single-categorie">
-                    <div class="categorie-image">
-                        <img src="/Asset/Client/images/categorie/cate-2.png" alt="">
-                    </div>
-                    <div class="categorie-content">
-                        <h3>Wrinkle cure</h3>
-                        <a class="shop-btn" href="#">Shop now</a>
-                        <h1>Time Revolution</h1>
+<!--Call To Action section start-->
+<div class="cta-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-40"
+     data-bg="/Asset/Client/images/bg/cta-bg.jpg">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <div class="cta-content">
+                    <h3>Get <span>10%</span> Discount</h3>
+                    <p>
+                        <span>Subcribe to the TheFace mailing list to receive update on mnew arrivals,</span>
+                        <span>special offers and other discount information.</span>
+                    </p>
+                    <div class="cta-form">
+                        <form id="mc-form" class="mc-form">
+                            <input id="mc-email" type="email" autocomplete="off"
+                                   placeholder="Your email address here" />
+                            <button id="mc-submit" class="cta-btn">Subscribe</button>
+                        </form>
+                        <!-- mailchimp-alerts Start -->
+                        <div class="mailchimp-alerts text-centre">
+                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                        </div><!-- mailchimp-alerts end -->
                     </div>
                 </div>
-                <!-- Single Categorie Product End -->
             </div>
-            <div class="col-lg-4 col-md-4">
-                <!-- Single Categorie Product Start -->
-                <div class="single-categorie">
-                    <div class="categorie-image">
-                        <img src="/Asset/Client/images/categorie/cate-3.png" alt="">
-                    </div>
-                    <div class="categorie-content">
-                        <h3>Pretty perks for every point you earn</h3>
-                        <a class="shop-btn" href="#">Shop now</a>
-                        <h1>Beauty Squad</h1>
-                    </div>
-                </div>
-                <!-- Single Categorie Product End -->
-            </div>
+
         </div>
     </div>
 </div>
-<!--Categorie Product section end-->
+<!--Call To Action section end-->
