@@ -3,7 +3,7 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     List<Models.Entity.ProductCategory> listCategory = ViewBag.ProductCategory;
-    
+
 }
 
 @section jsFooter{
@@ -17,12 +17,22 @@
             finder.popup();
         })
 
-        var editor = CKEDITOR.replace('txtcontent', {
-            customConfig: '~/Assets/js/Plugin/ckeditor/config.js',
+        //var editor = CKEDITOR.replace('txtcontent', {
+        //    customConfig: '~/Assets/js/Plugin/ckeditor/config.js',
+        //});
+
+        //CKFinder.setupCKEditor(null, '/Assets/js/Plugin/ckfinder');
+
+    </script>
+
+    <script src="https://cdn.tiny.cloud/1/xalcuf9zmr0ptoxgqfuipmy807xvpd8t3j9ygip5ehv2n4k6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '#mytextarea',
+            plugins: 'advlist link image lists a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinymcespellchecker',
+            toolbar: 'align image bold italic underline fontselect fontsizeselect forecolor backcolor casechange checklist table',
+            toolbar_mode: 'floating'
         });
-
-        CKFinder.setupCKEditor(null, '/Assets/js/Plugin/ckfinder');
-
     </script>
 }
 
@@ -50,14 +60,28 @@
                                     <div class="col-lg-6">
                                         @*<input class="form-control " id="username" name="username" type="text">*@
                                         @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
-                                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @type = "text" , @required = "required" } })
+                                        @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "required" } })
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="MetaTitle" class="control-label col-lg-3" >Meta Title</label>
+                                    <label for="MetaTitle" class="control-label col-lg-3">Meta Title</label>
                                     <div class="col-lg-6">
-                                        @Html.ValidationMessageFor(model => model.metaTitle, "", new { @class = "text-danger" })
-                                        @Html.EditorFor(model => model.metaTitle, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "required" } })
+                                        @Html.ValidationMessageFor(model => model.MetaTitle, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.MetaTitle, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "required" } })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="MetaTitle" class="control-label col-lg-3">Meta Description</label>
+                                    <div class="col-lg-6">
+                                        @Html.ValidationMessageFor(model => model.MetaDescription, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.MetaDescription, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "required" } })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="MetaTitle" class="control-label col-lg-3">Meta Keyword</label>
+                                    <div class="col-lg-6">
+                                        @Html.ValidationMessageFor(model => model.MetaKeyword, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.MetaKeyword, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "required" } })
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -114,14 +138,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label class="control-label col-lg-3">Detail</label>
-                                    <div class="col-lg-6">
-                                        @Html.TextAreaFor(model => model.detail, new { htmlAttributes = new { @class = "form-control" }, id = "txtcontent" })
-                                        @Html.ValidationMessageFor(model => model.detail, "", new { @class = "text-danger", @required = "required" })
+                                    <div class="col-lg-12">
+                                        @Html.TextAreaFor(model => model.detail, new { htmlAttributes = new { @class = "form-control" }, id = "mytextarea" })
+                                        @Html.ValidationMessageFor(model => model.detail, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-
-
                                 <div class="form-group">
                                     <label class="control-label col-lg-3">Status</label>
                                     <div class="col-lg-6">
