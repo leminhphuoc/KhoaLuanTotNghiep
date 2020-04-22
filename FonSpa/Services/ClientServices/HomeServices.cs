@@ -1,6 +1,7 @@
 ﻿using FonNature.Services.IClientServices;
 using Models.Entity;
 using Models.IRepository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,8 +18,9 @@ namespace FonNature.Services.ClientServices
         private readonly IFooterAdminRepository _footerAdminRepository;
         private readonly IAboutAdminRepository _aboutAdminRepository;
         private readonly ISEORepository _seoRepository;
+        private readonly IProductAdminRepository _productAdminRepository;
         public HomeServices(IMenuAdminRepository menuAdminRepository, ISlideAdminRepository slideAdminRepository, IProductCategoryAdminRepository productCategoryAdminRepository ,IContentCategoryAdminRepository contentCategoryAdminRepository, IFooterAdminRepository footerAdminRepository, IFooterCategoryAdminRepository footerCategoryAdminRepository, IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository
-            , ISEORepository seoRepository)
+            , ISEORepository seoRepository, IProductAdminRepository productAdminRepository)
         {
             _menuAdminRepository = menuAdminRepository;
             _slideAdminRepository = slideAdminRepository;
@@ -29,6 +31,7 @@ namespace FonNature.Services.ClientServices
             _footerAdminRepository = footerAdminRepository;
             _aboutAdminRepository = aboutAdminRepository;
             _seoRepository = seoRepository;
+            _productAdminRepository = productAdminRepository;
         }
 
         public List<Menu> ListMenu()
@@ -74,6 +77,21 @@ namespace FonNature.Services.ClientServices
         public List<Staff> GetStaffs()
         {
             return _staffAdminRepository.GetListStaff().Where(x => x.status == true && x.ShowOnHome == true).OrderBy(x => x.createdDate).Take(3).ToList();
+        }
+
+        public List<Product> GetFeaturedProducts()
+        {
+            return _productAdminRepository.GetListProduct().Where(x => x.isDisplayHomePage).ToList();
+        }
+
+        public List<Product> GetBestSellerProducts()
+        {
+            return _productAdminRepository.GetListProduct().OrderByDescending(x=>x.AmountSold).Take(8).ToList();
+        }
+
+        public Product GetTopHot()
+        {
+            return _productAdminRepository.GetListProduct().SingleOrDefault(x=>x.topHot >= DateTime.Now);
         }
     }
 }

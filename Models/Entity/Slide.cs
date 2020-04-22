@@ -28,6 +28,9 @@ namespace Models.Entity
         public bool? status { get; set; }
 
         //[StringLength(250)]
+        public string YellowTitle { get; set; }
+    
+        //[StringLength(250)]
         public string title { get; set; }
 
         //[StringLength(250)]
@@ -35,5 +38,8 @@ namespace Models.Entity
 
         //[StringLength(250)]
         public string TextButton { get; set; }
+
+        // 1 = home, 2 = other
+        public int SlideType { get; set; }
     }
 }

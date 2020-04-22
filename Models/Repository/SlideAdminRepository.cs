@@ -53,6 +53,8 @@ namespace Models.Repository
             SlideEdit.subtitle = slide.subtitle;
             SlideEdit.modifiedDate = DateTime.Now;
             SlideEdit.status = slide.status;
+            SlideEdit.YellowTitle = slide.YellowTitle;
+            SlideEdit.SlideType = slide.SlideType;
             _db.SaveChanges();
             return true;
         }

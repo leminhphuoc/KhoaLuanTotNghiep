@@ -70,6 +70,7 @@ namespace Models.Repository
             productEdit.modifiDate = DateTime.Now;
             productEdit.status = true;
             productEdit.topHot = product.topHot;
+            productEdit.isDisplayHomePage = product.isDisplayHomePage;
             _db.SaveChanges();
             return true;
         }

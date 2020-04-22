@@ -19,13 +19,11 @@ namespace FonNature.Controllers
         {
             ViewBag.Title = "Home Page";
             ViewBag.SlideList = _homeServices.ListSlide();
-            ViewBag.FooterCategories = _homeServices.ListFooterCategory();
-            ViewBag.Footers = _homeServices.ListFooter();
-            ViewBag.About = _homeServices.ListAbout();
-            ViewBag.Staffs = _homeServices.GetStaffs();
             var seo = _homeServices.GetHomeSeo();
-
-            if(seo != null)
+            ViewBag.featuredProduct = _homeServices.GetFeaturedProducts();
+            ViewBag.topHotProduct = _homeServices.GetTopHot();
+            ViewBag.bestSellerProduct = _homeServices.GetBestSellerProducts();
+            if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
                 ViewBag.MetaDescription = seo.MetaDescription ?? string.Empty;

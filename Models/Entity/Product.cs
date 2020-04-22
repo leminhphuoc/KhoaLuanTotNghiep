@@ -54,6 +54,8 @@ namespace Models.Entity
         [Column(TypeName = "date")]
         public DateTime? topHot { get; set; }
 
+        public bool isDisplayHomePage { get; set; }
+
         public int AmountSold { get; set; }
     }
 }

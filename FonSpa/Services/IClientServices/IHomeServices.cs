@@ -15,5 +15,8 @@ namespace FonNature.Services.IClientServices
         List<About> ListAbout();
         List<Staff> GetStaffs();
         SEO GetHomeSeo();
+        List<Product> GetFeaturedProducts();
+        Product GetTopHot();
+        List<Product> GetBestSellerProducts();
     }
 }
