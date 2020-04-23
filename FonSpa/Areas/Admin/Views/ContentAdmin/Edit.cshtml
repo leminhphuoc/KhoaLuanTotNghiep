@@ -10,11 +10,23 @@
     <script>
         $('#btnSelectImage').on('click', function (e) {
             e.preventDefault();
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (url) {
-                $('#txtImage').val(url);
-            };
-            finder.popup();
+            //var finder = new CKFinder();
+            //finder.selectActionFunction = function (url) {
+            //    $('#txtImage').val(url);
+            //};
+            //finder.popup();
+            CKFinder.popup({
+                chooseFiles: true,
+                onInit: function (finder) {
+                    finder.on('files:choose', function (evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById('txtImage').value = file.getUrl();
+                    });
+                    finder.on('file:choose:resizedImage', function (evt) {
+                        document.getElementById('txtImage').value = evt.data.resizedUrl;
+                    });
+                }
+            });
         })
 
         //var editor = CKEDITOR.replace('txtcontent', {
@@ -22,6 +34,7 @@
         //});
 
         //CKFinder.setupCKEditor(null, '/Assets/js/Plugin/ckfinder');
+
     </script>
 
     <script src="https://cdn.tiny.cloud/1/xalcuf9zmr0ptoxgqfuipmy807xvpd8t3j9ygip5ehv2n4k6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
