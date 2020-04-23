@@ -59,6 +59,11 @@ namespace FonNature.Areas.Admin.Controllers
                 {
                     ReGenerateSessionId();
 
+                    HttpCookie cookies = new HttpCookie("ck_authorized");
+                    cookies.Value = "true";
+                    cookies.Expires = DateTime.Now.AddHours(1);
+                    Response.Cookies.Add(cookies);
+
                     Session[CommonConstants.UserSession.USER_SESSION_ADMIN] = "USER_SESSION_ADMIN";
                     return RedirectToAction("HomeAdmin", "HomeAdmin");
 

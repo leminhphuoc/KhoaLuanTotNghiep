@@ -1,5 +1,4 @@
 ﻿using Models.Entity;
-using System.Collections.Generic;
 
 namespace FonNature.Services.IServices
 {

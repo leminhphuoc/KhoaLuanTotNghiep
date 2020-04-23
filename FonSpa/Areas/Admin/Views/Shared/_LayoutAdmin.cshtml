@@ -46,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </div>
             </div>
             <!--logo end-->
-            
+
             <div class="top-nav clearfix">
                 <!--search & user info start-->
                 <ul class="nav pull-right top-menu">
@@ -92,7 +92,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </section>
     <script src="~/Asset/Admin/js/jquery.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-    <script src="~/Asset/Admin/js/Plugin/ckfinder/ckfinder.js"></script>
+    <script src="@Url.Content("~/CKFinderScripts/ckfinder.js")" type="text/javascript"></script>
+    @*<script>
+        CKFinder.popup({
+            height: 600
+        });
+    </script>*@
     <script src="~/Asset/Admin/js/Plugin/ckeditor/ckeditor.js"></script>
     <script src="/Asset/Admin/js/bootstrap.js"></script>
     <script src="/Asset/Admin/js/jquery.dcjqaccordion.2.7.js"></script>
@@ -102,7 +107,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
     <script src="/Asset/Admin/js/jquery.scrollTo.js"></script>
     <!-- morris JavaScript -->
-
     <!-- calendar -->
     <script type="text/javascript" src="/Asset/Admin/js/monthly.js"></script>
     <script type="text/javascript">

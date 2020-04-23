@@ -1,7 +1,6 @@
 ﻿using FonNature.Services.IServices;
 using Models.Entity;
 using Models.IRepository;
-using System.Collections.Generic;
 
 namespace FonNature.Services.Services
 {
