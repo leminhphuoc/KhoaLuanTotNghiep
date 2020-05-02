@@ -26,7 +26,11 @@
 
         $('.btn-image').off('click').on('click', function (e) {
             e.preventDefault();
-            $('#btn-multi-image').modal('show');
+            //$('#btn-multi-image').modal('show');
+            $('#btn-multi-image').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
             $('#hidProductId').val($(this).data('id'))
             product.loadImage();
            
@@ -34,14 +38,20 @@
 
         $('#btnChooseImage').off('click').on('click', function (e) {
             e.preventDefault();
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (url) {
-                $('#imageList').append('<div class="col-md-4"><img style="margin-bottom:10px;max-height:100px" width="100" src="' + url + '" /><a class="btnDelImage" style="margin-left:5px" href="#"><i class ="fa fa-times"><i/></a></div>');
-                $('.btnDelImage').off('click').on('click', function (e) {
-                    e.preventDefault();
-                    $(this).parent().remove();
-                });
-            };
+            CKFinder.popup({
+                chooseFiles: true,
+                onInit: function (finder) {
+                    finder.on('files:choose', function (evt) {
+                        var file = evt.data.files.first();
+                        $('#imageList').append('<div class="col-md-4"><img style="margin-bottom:10px;max-height:100px" width="100" src="' + file.getUrl() + '" /><a class="btnDelImage" style="margin-left:5px" href="#"><i class ="fa fa-times"><i/></a></div>');
+                        $('.btnDelImage').off('click').on('click', function (e) {
+                            e.preventDefault();
+                            $(this).parent().remove();
+                        });
+                    });
+                }
+            });
+            
             finder.popup();
         })
 
