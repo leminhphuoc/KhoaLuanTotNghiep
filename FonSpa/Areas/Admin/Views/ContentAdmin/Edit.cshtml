@@ -124,6 +124,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="control-label col-lg-3">Display In Homepage</label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.IsDisplayInHomePage, new[] { new SelectListItem { Text = "Active", Value = "true" }, new SelectListItem { Text = "Disable", Value = "false" } }, new { @class = "form-control m-bot15" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="control-label col-lg-3">Status</label>
                                     <div class="col-lg-6">
                                         @Html.DropDownListFor(model => model.status, new[] { new SelectListItem { Text = "Active", Value = "true" }, new SelectListItem { Text = "Disable", Value = "false" } }, new { @class = "form-control m-bot15" })

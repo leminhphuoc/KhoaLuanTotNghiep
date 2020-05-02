@@ -19,6 +19,7 @@ namespace FonNature.Controllers
             ViewBag.Tittle = "About";
             var model = _aboutServices.GetAboutMain();
             var seo = _aboutServices.GetSeo();
+            ViewBag.banner = _aboutServices.GetBanner();
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;

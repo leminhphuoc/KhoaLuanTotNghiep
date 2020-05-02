@@ -54,7 +54,8 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IMenuTypeAdminRepository, MenuTypeAdminRepository>();
             container.RegisterType<IFooterCategoryAdminServices, FooterCategoryAdminServices>();
             container.RegisterType<IFooterCategoryAdminRepository, FooterCategoryAdminRepository>();
-            container.RegisterType<IIPAddressRepository, IPAddressRepository>();    
+            container.RegisterType<IIPAddressRepository, IPAddressRepository>();
+            container.RegisterType<IBannerRepository, BannerRepository>();
             // Client
             container.RegisterType<IContactClientServices, ContactClientServices>();
             container.RegisterType<IHomeServices, HomeServices>();
@@ -66,6 +67,8 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IOrderAdminServices, OrderAdminServices>();
 
             container.RegisterType<ISEORepository, SEORepository>();
+
+            container.RegisterType<ISearchService, SearchService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 

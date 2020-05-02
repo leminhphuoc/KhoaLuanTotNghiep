@@ -6,5 +6,6 @@ namespace FonNature.Services.IServices
     {
         Contact GetContact();
         SEO GetSeo();
+        Banner GetBanner();
     }
 }

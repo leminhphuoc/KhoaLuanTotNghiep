@@ -10,5 +10,6 @@ namespace FonNature.Services.IClientServices
         About GetAboutMain();
         List<Staff> GetStaffs();
         SEO GetSeo();
+        Banner GetBanner();
     }
 }

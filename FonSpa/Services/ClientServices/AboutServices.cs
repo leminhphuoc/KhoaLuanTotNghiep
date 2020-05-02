@@ -12,12 +12,14 @@ namespace FonNature.Services.ClientServices
         private readonly IAboutAdminRepository _aboutAdminRepository;
         private readonly IStaffAdminRepository _staffAdminRepository;
         private readonly ISEORepository _seoRepository;
+        private readonly IBannerRepository _bannerRepository;
         public AboutServices(IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository,
-            ISEORepository seoRepository)
+            ISEORepository seoRepository, IBannerRepository bannerRepository)
         {
             _aboutAdminRepository = aboutAdminRepository;
             _staffAdminRepository = staffAdminRepository;
             _seoRepository = seoRepository;
+            _bannerRepository = bannerRepository;
         }
 
         public SEO GetSeo()
@@ -46,5 +48,9 @@ namespace FonNature.Services.ClientServices
             return _staffAdminRepository.GetListStaff().Where(x => x.status == true && x.ShowOnHome == true).OrderBy(x => x.createdDate).Take(3).ToList();
         }
 
+        public Banner GetBanner()
+        {
+            return _bannerRepository.GetList().SingleOrDefault(x => x.Location == (int)BannerLocation.AboutUs);
+        }
     }
 }

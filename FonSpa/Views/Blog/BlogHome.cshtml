@@ -5,10 +5,12 @@
     List<Models.Entity.ContentCategory> contentCategories = ViewBag.ListContentCategory;
     List<Models.Entity.Content> recentBlog = ViewBag.RecentBlog;
     List<Models.Entity.Content> blogList = ViewBag.BlogList;
+    Models.Entity.Banner banner = ViewBag.banner;
 }
 
 <!-- Page Banner Section Start -->
-<div class="page-banner-section section bg-gray">
+<div style="background-image: url('@(banner != null? banner.Image : "")');
+" class="page-banner-section section bg-gray">
     <div class="container">
         <div class="row">
             <div class="col">

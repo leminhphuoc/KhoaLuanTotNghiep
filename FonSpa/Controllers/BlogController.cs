@@ -21,8 +21,9 @@ namespace FonNature.Controllers
             ViewBag.ListContentCategory = _blogServices.ListContentCategory();
             ViewBag.RecentBlog = _blogServices.ListRecentBlog();
             ViewBag.BlogList = _blogServices.ListAll(null);
+            ViewBag.banner = _blogServices.GetBanner();
             var blogList = _blogServices.ListAll(searchString);
-            int pageSize = 4;
+            int pageSize = 9;
             int pageNumber = (page ?? 1);
             var blogListPaged = blogList.ToPagedList(pageNumber, pageSize);
             var seo = _blogServices.GetSeo();
@@ -42,6 +43,7 @@ namespace FonNature.Controllers
             ViewBag.ListContentCategory = _blogServices.ListContentCategory();
             ViewBag.RecentBlog = _blogServices.ListRecentBlog();
             ViewBag.BlogList = _blogServices.ListAll(null);
+            ViewBag.banner = _blogServices.GetBanner();
             var blogList = _blogServices.ListAllByCategory(searchString,idCategory);
             int pageSize = 4;
             int pageNumber = (page ?? 1);
@@ -62,6 +64,7 @@ namespace FonNature.Controllers
             ViewBag.ListContentCategory = _blogServices.ListContentCategory();
             ViewBag.RecentBlog = _blogServices.ListRecentBlog();
             ViewBag.BlogsList = _blogServices.ListAll(null);
+            ViewBag.banner = _blogServices.GetBanner();
             var blog = _blogServices.GetDetail(id);
             if (blog == null) return RedirectToAction("BlogHome");
             ViewBag.MetaTitle = blog.metatitle ?? string.Empty;

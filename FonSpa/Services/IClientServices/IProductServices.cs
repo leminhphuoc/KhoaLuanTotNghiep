@@ -12,5 +12,7 @@ namespace FonNature.Services.IClientServices
         string GetCategoryName(long categoryId);
         List<string> GetImagesList(long id);
         List<Product> GetRelatedProduct(Product product);
+        List<Banner> GetProductBanner();
+        List<ProductCategory> GetProductCategories();
     }
 }

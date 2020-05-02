@@ -1,6 +1,8 @@
-﻿using FonNature.Services.IServices;
+﻿using FonNature.Enum;
+using FonNature.Services.IServices;
 using Models.Entity;
 using Models.IRepository;
+using System.Linq;
 
 namespace FonNature.Services.Services
 {
@@ -8,10 +10,12 @@ namespace FonNature.Services.Services
     {
         private readonly IContactAdminRepository _contactAdminRepository;
         private readonly ISEORepository _seoRepository;
-        public ContactClientServices(IContactAdminRepository contactAdminRepository , ISEORepository seoRepository)
+        private readonly IBannerRepository _bannerRepository;
+        public ContactClientServices(IContactAdminRepository contactAdminRepository , ISEORepository seoRepository, IBannerRepository bannerRepository)
         {
             _contactAdminRepository = contactAdminRepository;
             _seoRepository = seoRepository;
+            _bannerRepository = bannerRepository;
         }
         public SEO GetSeo()
         {
@@ -22,6 +26,11 @@ namespace FonNature.Services.Services
         {
             var contact = _contactAdminRepository.GetContact();
             return contact;
+        }
+
+        public Banner GetBanner()
+        {
+            return _bannerRepository.GetList().SingleOrDefault(x => x.Location == (int)BannerLocation.Contact);
         }
 
     }

@@ -76,8 +76,8 @@ namespace FonNature
                             Fragment = null
                         };
                         string url = urlBuilder.ToString();
-                        config.AddBackend("default1", new LocalStorage(url));
-                        config.AddResourceType("images", builder => builder.SetBackend("default", "images"));
+                        //config.AddBackend("default1", new LocalStorage(url));
+                        //config.AddResourceType("images", builder => builder.SetBackend("default", "images"));
                         config.AddAclRule(new AclRule(
                             new StringMatcher("*"),
                             new StringMatcher("*"),

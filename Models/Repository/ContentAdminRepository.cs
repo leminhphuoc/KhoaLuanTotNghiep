@@ -1,4 +1,5 @@
-﻿using Models.Entity;
+﻿using HelperLibrary;
+using Models.Entity;
 using Models.IRepository;
 using System;
 using System.Collections.Generic;
@@ -53,6 +54,7 @@ namespace Models.Repository
             contentEdit.modifiedDate = DateTime.Now;
             contentEdit.topHot = content.topHot;
             contentEdit.status = content.status;
+            contentEdit.IsDisplayInHomePage = content.IsDisplayInHomePage;
             _db.SaveChanges();
             return true;
         }
@@ -84,7 +86,15 @@ namespace Models.Repository
 
         public List<Content> ListSearchContent(string searchString)
         {
-            return _db.Contents.Where(x => x.name.ToUpper() == searchString.ToUpper()).ToList();
+            if (searchString == null) return null;
+
+            var listProduct = _db.Contents.Where(Predicate(searchString));
+            return listProduct.ToList();
+        }
+
+        private static Func<Content, bool> Predicate(string searchString)
+        {
+            return x => Helper.RemoveSign4VietnameseString(x.name).ToUpper().Contains(Helper.RemoveSign4VietnameseString(searchString).ToUpper());
         }
 
     }

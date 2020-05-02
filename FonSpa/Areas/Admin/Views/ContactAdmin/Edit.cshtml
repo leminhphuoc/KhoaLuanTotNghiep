@@ -7,21 +7,40 @@
 
 @section jsFooter{
     <script>
-        $('#btnSelectImage').on('click', function (e) {
+        $('#btnHeaderSelectImage').on('click', function (e) {
             e.preventDefault();
-            var finder = new CKFinder();
-            finder.selectActionFunction = function (url) {
-                $('#txtImage').val(url);
-            };
-            finder.popup();
+            CKFinder.popup({
+                chooseFiles: true,
+                language: 'en',
+                onInit: function (finder) {
+                    finder.on('files:choose', function (evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById('txtHeaderImage').value = file.getUrl();
+                    });
+                    finder.on('file:choose:resizedImage', function (evt) {
+                        document.getElementById('txtHeaderImage').value = evt.data.resizedUrl;
+                    });
+                }
+            });
         })
-
-        var editor = CKEDITOR.replace('txtContact', {
-            customConfig: '/Asset/Admin/js/Plugin/ckeditor/config.js',
-        });
-
-        CKFinder.setupCKEditor(null, '/Assets/js/Plugin/ckfinder');
-
+    </script>
+    <script>
+        $('#btnFooterSelectImage').on('click', function (e) {
+            e.preventDefault();
+            CKFinder.popup({
+                chooseFiles: true,
+                language: 'en',
+                onInit: function (finder) {
+                    finder.on('files:choose', function (evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById('txtFooterImage').value = file.getUrl();
+                    });
+                    finder.on('file:choose:resizedImage', function (evt) {
+                        document.getElementById('txtFooterImage').value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        })
     </script>
     <!--Alert success-->
     <script>
@@ -30,10 +49,12 @@
                 var Address = $("#Address").val();
                 var MobilePhone = $("#MobilePhone").val();
                 var Email = $("#Email").val();
-                console.log(Address);
-                console.log(MobilePhone);
-                console.log(Email);
-                var model = { Address, MobilePhone, Email };
+                var LinkFaceBook = $("#LinkFaceBook").val();
+                var LinkInstagram = $("#LinkInstagram").val();
+                var LogoHeader = $("#txtHeaderImage").val();
+                var LogoFooter = $("#txtFooterImage").val();
+                console.log(LinkFaceBook);
+                var model = { Address, MobilePhone, Email, LinkFaceBook, LinkInstagram, LogoHeader, LogoFooter};
                 console.log(model);
                 $.ajax({
                     url: "/Admin/ContactAdmin/Edit",
@@ -42,7 +63,7 @@
                     type: "POST",
                     success: function (status) {
                         console.log(status);
-                        if (status == true) {
+                        if (status) {
                             $("#alertContactStatus").removeClass("hidden");
                             $("#alertContactStatus").delay(2000).slideUp().promise().done(function () {
                                 $("#alertContactStatus").hide().slideDown();
@@ -87,7 +108,7 @@
                             @*<form  method="get" action="" novalidate="novalidate">*@
                             <div class="cmxform form-horizontal" id="signupForm">
                                 @*@using (Html.BeginForm("Edit", "ContactAdmin", FormMethod.Post, new { @class = "cmxform form-horizontal", @id = "signupForm" }))
-                {*@
+                                    {*@
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group ">
                                     <label for="MetaTitle" class="control-label col-lg-3">Address</label>
@@ -108,6 +129,37 @@
                                     <div class="col-lg-6">
                                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email" }, @id = "email" })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="MetaTitle" class="control-label col-lg-3">Link FaceBook</label>
+                                    <div class="col-lg-6">
+                                        @Html.ValidationMessageFor(model => model.LinkFaceBook, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.LinkFaceBook, new { htmlAttributes = new { @class = "form-control", @type = "text" }, @id = "faceLink" })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label for="MetaTitle" class="control-label col-lg-3">Link Instagram</label>
+                                    <div class="col-lg-6">
+                                        @Html.ValidationMessageFor(model => model.LinkInstagram, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.LinkInstagram, new { htmlAttributes = new { @class = "form-control", @type = "text" }, @id = "instagramLink" })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Header Logo</label>
+                                    <div class="col-lg-6">
+                                        @Html.EditorFor(model => model.LogoHeader, new { htmlAttributes = new { @class = "form-control", @id = "txtHeaderImage" }, @id = "txtHeaderImage" })
+                                        <a id="btnHeaderSelectImage" href="#">Chọn Ảnh</a>
+                                        @Html.ValidationMessageFor(model => model.LogoHeader, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Footer Logo</label>
+                                    <div class="col-lg-6">
+                                        @Html.EditorFor(model => model.LogoFooter, new { htmlAttributes = new { @class = "form-control", @id = "txtFooterImage" }, @id = "txtFooterImage" })
+                                        <a id="btnFooterSelectImage" href="#">Chọn Ảnh</a>
+                                        @Html.ValidationMessageFor(model => model.LogoFooter, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="form-group">

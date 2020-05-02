@@ -3,8 +3,11 @@
     var listMenu = ViewBag.ListMenu;
     List<Models.Entity.Slide> listSlide = ViewBag.SlideList;
     List<Models.Entity.Product> featuredProductList = ViewBag.featuredProduct;
-    Models.Entity.Product topHotProduct = ViewBag.topHotProduct;
+    List<Models.Entity.Product> topHotProduct = ViewBag.topHotProduct;
     List<Models.Entity.Product> bestSellerProductList = ViewBag.bestSellerProduct;
+    Models.Entity.Slide otherSlide = ViewBag.otherSlide;
+    List<Models.Entity.Content> contentList = ViewBag.contentList;
+    Models.Entity.Banner bannerHome = ViewBag.bannerHome;
 }
 
 <!--slider section start-->
@@ -38,7 +41,7 @@
                             <!--Hero Content start-->
                             <div class="hero-content-3">
 
-                                @*<h2></h2>*@
+                                <h2>@slide.YellowTitle</h2>
                                 <h1>@slide.title</h1>
                                 <h3>@slide.subtitle</h3>
                                 <a href="/product">@slide.TextButton</a>
@@ -75,7 +78,7 @@
 
                 <div class="col-lg-9 col-xl-10">
                     <div class="row tf-element-carousel product-nav-two" data-slick-options='{
-                            "slidesToShow": 5,
+                            "slidesToShow": @(featuredProductList.Count <= 5 ? featuredProductList.Count : 5 ),
                             "slidesToScroll": 1,
                             "infinite": true,
                             "arrows": true,
@@ -83,7 +86,7 @@
                             "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
                             }' data-slick-responsive='[
                             {"breakpoint":1899, "settings": {
-                            "slidesToShow": 4
+                            "slidesToShow": @(featuredProductList.Count <= 4 ? featuredProductList.Count : 4 )
                             }},
                             {"breakpoint":1400, "settings": {
                             "slidesToShow": 3
@@ -109,7 +112,7 @@
                                 <!-- Single Product Start -->
                                 <div class="single-product mb-30">
                                     <div class="product-img">
-                                        <a href="single-product.html">
+                                        <a href="/product/detail?id=@product.id">
                                             <img src="@product.image" alt="">
                                         </a>
                                         @if (product.promotionPrice != null && product.promotionPrice != 0)
@@ -127,12 +130,13 @@
                                             }
                                         }
                                         <div class="product-action d-flex justify-content-between">
-                                            <a class="product-btn" href="#">Add to Cart</a>
-                                            <ul class="d-flex">
-                                                <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-exchange"></i></a></li>
-                                            </ul>
+                                            @*<a class="product-btn" href="#">Add to Cart</a>*@
+                                            <a class="product-btn" href="/product/Detail?id=@product.id"></a>
+                                            @*<ul class="d-flex">
+                                                    <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-exchange"></i></a></li>
+                                                </ul>*@
                                         </div>
                                     </div>
                                     <div class="product-content text-left">
@@ -194,75 +198,32 @@
                         "autoplay": true
                         }}
                         ]'>
-                        <!-- Single Deal Product Start -->
-                        <div class="single-deal-product">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="deal-product-img">
-                                        <a href="single-product.html">
-                                            <img src="@topHotProduct.image" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="deal-product-title">
-                                        <h2><span>Hot</span><span>Deal</span></h2>
-                                        <p>@topHotProduct.description</p>
-                                        <div class="cs-countdown black-color">
-                                            <div class="pro-countdown" data-countdown="@topHotProduct.topHot.Value.ToString("yyyy/MM/dd")"></div>
+                        @foreach (var product in topHotProduct)
+                        {
+                            <!-- Single Deal Product Start -->
+                            <div class="single-deal-product">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="deal-product-img">
+                                            <a href="/product/detail?id=@product.id">
+                                                <img src="@product.image" alt="">
+                                            </a>
                                         </div>
-                                        <a href="/product/detail?id=@topHotProduct.id">Shop collection now!</a>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="deal-product-title">
+                                            <h2><span>Hot</span><span>Deal</span></h2>
+                                            <p>@product.description</p>
+                                            <div class="cs-countdown black-color">
+                                                <div class="pro-countdown" data-countdown="@product.topHot.Value.ToString("yyyy/MM/dd")"></div>
+                                            </div>
+                                            <a href="/product/detail?id=@product.id">Shop collection now!</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Single Deal Product End -->
-                        <!-- Single Deal Product Start -->
-                        <div class="single-deal-product">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="deal-product-img">
-                                        <a href="single-product.html">
-                                            <img src="/Asset/Client/images/deal-product/product-2.jpg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="deal-product-title">
-                                        <h2><span>Hot</span><span>Deal</span></h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut..</p>
-                                        <div class="cs-countdown black-color">
-                                            <div class="pro-countdown" data-countdown="2021/01/10"></div>
-                                        </div>
-                                        <a href="shop.html">Shop collection now!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Deal Product End -->
-                        <!-- Single Deal Product Start -->
-                        <div class="single-deal-product">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="deal-product-img">
-                                        <a href="single-product.html">
-                                            <img src="/Asset/Client/images/deal-product/product-3.jpg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="deal-product-title">
-                                        <h2><span>Hot</span><span>Deal</span></h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut..</p>
-                                        <div class="cs-countdown black-color">
-                                            <div class="pro-countdown" data-countdown="2021/01/10"></div>
-                                        </div>
-                                        <a href="shop.html">Shop collection now!</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Deal Product End -->
+                            <!-- Single Deal Product End -->
+                        }
                     </div>
                 </div>
             </div>
@@ -271,7 +232,7 @@
 }
 <!--Deal Of Product section end-->
 <!--Product section start-->
-@if (featuredProductList.Any())
+@if (bestSellerProductList.Any())
 {
     <div class="product-section section pt-100 pt-lg-70 pt-md-65 pt-sm-60 pt-xs-45 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
         <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
@@ -289,7 +250,7 @@
 
                 <div class="col-xl-10 col-lg-9">
                     <div class="row tf-element-carousel product-nav-two" data-slick-options='{
-                            "slidesToShow": 5,
+                            "slidesToShow": @(bestSellerProductList.Count <= 5 ? bestSellerProductList.Count : 5 ),
                             "slidesToScroll": 1,
                             "infinite": true,
                             "arrows": true,
@@ -297,7 +258,7 @@
                             "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
                             }' data-slick-responsive='[
                             {"breakpoint":1899, "settings": {
-                            "slidesToShow": 4
+                            "slidesToShow": @(bestSellerProductList.Count <= 4 ? bestSellerProductList.Count : 4 )
                             }},
                             {"breakpoint":1400, "settings": {
                             "slidesToShow": 3
@@ -325,7 +286,7 @@
                                 <!-- Single Product Start -->
                                 <div class="single-product mb-30">
                                     <div class="product-img">
-                                        <a href="single-product.html">
+                                        <a href="/product/detail?id=@product.id">
                                             <img src="@product.image" alt="">
                                         </a>
                                         @if (product.promotionPrice != null && product.promotionPrice != 0)
@@ -343,12 +304,13 @@
                                             }
                                         }
                                         <div class="product-action d-flex justify-content-between">
-                                            <a class="product-btn" href="#">Add to Cart</a>
-                                            <ul class="d-flex">
-                                                <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-exchange"></i></a></li>
-                                            </ul>
+                                            @*<a class="product-btn" href="#">Add to Cart</a>*@
+                                            <a class="product-btn" href="/product/Detail?id=@product.id"></a>
+                                            @*<ul class="d-flex">
+                                                    <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-exchange"></i></a></li>
+                                                </ul>*@
                                         </div>
                                     </div>
                                     <div class="product-content text-left">
@@ -382,41 +344,49 @@
         </div>
     </div>
 }
-    <!--Product section end-->
-    <!-- Banner Section Start -->
-    <div class="banner-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-95 pb-lg-75 pb-md-65 pb-sm-55 pb-xs-45" data-bg="/Asset/Client/images/banner/img_bannermid.jpg">
+<!--Product section end-->
+<!-- Banner Section Start -->
+@if (otherSlide != null)
+{
+    <div class="banner-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-95 pb-lg-75 pb-md-65 pb-sm-55 pb-xs-45" data-bg="@otherSlide.image">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="banner-content">
 
-                        <h2>A Single Step Skin Perfector!</h2>
-                        <h1>Makeup melt</h1>
-                        <h3>cleansing balm</h3>
-                        <a href="shop.html">Shop collection now!</a>
+                        <h2>@otherSlide.YellowTitle</h2>
+                        <h1>@otherSlide.title</h1>
+                        <h3>@otherSlide.subtitle</h3>
+                        <a href="@otherSlide.link">@otherSlide.TextButton</a>
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Banner Section End -->
-    <!--Blog section start-->
-    <div class="blog-section section bg-gray pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-75 pb-lg-55 pb-md-45 pb-sm-35 pb-xs-30">
-        <div class="container">
+}
 
-            <div class="row">
-                <!-- Section Title Start -->
-                <div class="col">
-                    <div class="section-title mb-40 mb-xs-20">
-                        <h2>From the blog</h2>
+<!-- Banner Section End -->
+<!--Blog section start-->
+@if (contentList != null)
+{
+    if (contentList.Any())
+    {
+        <div class="blog-section section bg-gray pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-75 pb-lg-55 pb-md-45 pb-sm-35 pb-xs-30">
+            <div class="container">
+
+                <div class="row">
+                    <!-- Section Title Start -->
+                    <div class="col">
+                        <div class="section-title mb-40 mb-xs-20">
+                            <h2>From the blog</h2>
+                        </div>
                     </div>
+                    <!-- Section Title End -->
                 </div>
-                <!-- Section Title End -->
-            </div>
 
-            <div class="row tf-element-carousel" data-slick-options='{
-                    "slidesToShow": 3,
+                <div class="row tf-element-carousel" data-slick-options='{
+                    "slidesToShow": @(contentList.Count <= 3 ? contentList.Count : 3),
                     "slidesToScroll": 3,
                     "infinite": true,
                     "arrows": true,
@@ -440,100 +410,61 @@
                     "autoplay": true
                     }}
                     ]'>
-                <!-- Single Blog Start -->
-                <div class="blog col">
-                    <div class="blog-inner">
-                        <div class="media"><a href="blog-details.html" class="image"><img src="/Asset/Client/images/blog/blog1.png" alt=""></a></div>
-                        <div class="content">
-                            <h3 class="title"><a href="blog-details.html">Cool boy with tattoo</a></h3>
-                            <ul class="meta">
-                                <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">20</span><span class="separator">-</span><span class="month">Jul</span></span></li>
-                            </ul>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
-                            <a class="readmore" href="blog-details.html">Read more</a>
+                    @foreach (var content in contentList)
+                    {
+                        <!-- Single Blog Start -->
+                        <div class="blog col">
+                            <div class="blog-inner">
+                                <div class="media"><a href="/blog/detail?id=@content.id" class="image"><img src="@content.image" alt=""></a></div>
+                                <div class="content">
+                                    <h3 class="title"><a href="blog-details.html">@content.name</a></h3>
+                                    <ul class="meta">
+                                        <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">@content.createdDate.Value.Day</span><span class="separator">-</span><span class="month">@content.createdDate.Value.ToString("MMMM")</span></span></li>
+                                    </ul>
+                                    <p>@content.description </p>
+                                    <a class="readmore" href="/blog/detail?id=@content.id">Read more</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <!-- Single Blog End -->
+                    }
                 </div>
-                <!-- Single Blog End -->
-                <!-- Single Blog Start -->
-                <div class="blog col">
-                    <div class="blog-inner">
-                        <div class="media"><a href="blog-details.html" class="image"><img src="/Asset/Client/images/blog/blog2.png" alt=""></a></div>
-                        <div class="content">
-                            <h3 class="title"><a href="blog-details.html">Blog image post</a></h3>
-                            <ul class="meta">
-                                <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">20</span><span class="separator">-</span><span class="month">Jul</span></span></li>
-                            </ul>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
-                            <a class="readmore" href="blog-details.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Blog End -->
-                <!-- Single Blog Start -->
-                <div class="blog col">
-                    <div class="blog-inner">
-                        <div class="media"><a href="blog-details.html" class="image"><img src="/Asset/Client/images/blog/blog3.png" alt=""></a></div>
-                        <div class="content">
-                            <h3 class="title"><a href="blog-details.html">Blog Audio post</a></h3>
-                            <ul class="meta">
-                                <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">20</span><span class="separator">-</span><span class="month">Jul</span></span></li>
-                            </ul>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
-                            <a class="readmore" href="blog-details.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Blog End -->
-                <!-- Single Blog Start -->
-                <div class="blog col">
-                    <div class="blog-inner">
-                        <div class="media"><a href="blog-details.html" class="image"><img src="/Asset/Client/images/blog/blog1.png" alt=""></a></div>
-                        <div class="content">
-                            <h3 class="title"><a href="blog-details.html">Blog Video post</a></h3>
-                            <ul class="meta">
-                                <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">20</span><span class="separator">-</span><span class="month">Jul</span></span></li>
-                            </ul>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat </p>
-                            <a class="readmore" href="blog-details.html">Read more</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Blog End -->
             </div>
         </div>
-    </div>
-    <!--Blog section end-->
-    <!--Call To Action section start-->
-    <div class="cta-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-40"
-         data-bg="/Asset/Client/images/bg/cta-bg.jpg">
-        <div class="container">
-            <div class="row">
+    }
+}
 
-                <div class="col-12">
-                    <div class="cta-content">
-                        <h3>Get <span>10%</span> Discount</h3>
-                        <p>
-                            <span>Subcribe to the TheFace mailing list to receive update on mnew arrivals,</span>
-                            <span>special offers and other discount information.</span>
-                        </p>
-                        <div class="cta-form">
-                            <form id="mc-form" class="mc-form">
-                                <input id="mc-email" type="email" autocomplete="off"
-                                       placeholder="Your email address here" />
-                                <button id="mc-submit" class="cta-btn">Subscribe</button>
-                            </form>
-                            <!-- mailchimp-alerts Start -->
-                            <div class="mailchimp-alerts text-centre">
-                                <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                            </div><!-- mailchimp-alerts end -->
-                        </div>
+<!--Blog section end-->
+<!--Call To Action section start-->
+<div class="cta-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-40"
+     data-bg="@(bannerHome == null? "/Asset/Client/images/bg/cta-bg.jpg": bannerHome.Image)">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <div class="cta-content">
+                    <h3>Get <span>10%</span> Discount</h3>
+                    <p>
+                        <span>Subcribe to the TheFace mailing list to receive update on mnew arrivals,</span>
+                        <span>special offers and other discount information.</span>
+                    </p>
+                    <div class="cta-form">
+                        <form id="mc-form" class="mc-form" action="/Home/SendMessage" method="post">
+                            <input name="email" id="mc-email email" type="email" autocomplete="off"
+                                   placeholder="Your email address here" />
+                            <button id="mc-submit" class="cta-btn">Subscribe</button>
+                        </form>
+                        <!-- mailchimp-alerts Start -->
+                        <div class="mailchimp-alerts text-centre">
+                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                        </div><!-- mailchimp-alerts end -->
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
-    <!--Call To Action section end-->
+</div>
+<!--Call To Action section end-->

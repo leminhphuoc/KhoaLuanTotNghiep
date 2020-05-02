@@ -19,5 +19,17 @@ namespace Models.Entity
 
         [StringLength(250)]
         public string Email { get; set; }
+
+        [StringLength(250)]
+        public string LinkFaceBook { get; set; }
+
+        [StringLength(250)]
+        public string LinkInstagram { get; set; }
+
+        [StringLength(250)]
+        public string LogoHeader { get; set; }
+
+        [StringLength(250)]
+        public string LogoFooter { get; set; }
     }
 }

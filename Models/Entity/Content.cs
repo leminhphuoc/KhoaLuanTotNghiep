@@ -46,5 +46,6 @@ namespace Models.Entity
         public int? viewCount { get; set; }
 
         public bool? status { get; set; }
+        public bool IsDisplayInHomePage { get; set; }
     }
 }

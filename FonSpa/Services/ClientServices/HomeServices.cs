@@ -1,4 +1,5 @@
-﻿using FonNature.Services.IClientServices;
+﻿using FonNature.Enum;
+using FonNature.Services.IClientServices;
 using Models.Entity;
 using Models.IRepository;
 using System;
@@ -19,8 +20,12 @@ namespace FonNature.Services.ClientServices
         private readonly IAboutAdminRepository _aboutAdminRepository;
         private readonly ISEORepository _seoRepository;
         private readonly IProductAdminRepository _productAdminRepository;
+        private readonly IContentAdminRepository _contentAdminRepository;
+        private readonly IBannerRepository _bannerRepository;
+        private readonly IContactAdminRepository _contactAdminRepository;
         public HomeServices(IMenuAdminRepository menuAdminRepository, ISlideAdminRepository slideAdminRepository, IProductCategoryAdminRepository productCategoryAdminRepository ,IContentCategoryAdminRepository contentCategoryAdminRepository, IFooterAdminRepository footerAdminRepository, IFooterCategoryAdminRepository footerCategoryAdminRepository, IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository
-            , ISEORepository seoRepository, IProductAdminRepository productAdminRepository)
+            , ISEORepository seoRepository, IProductAdminRepository productAdminRepository, IContentAdminRepository contentAdminRepository, IBannerRepository bannerRepository,
+             IContactAdminRepository contactAdminRepository)
         {
             _menuAdminRepository = menuAdminRepository;
             _slideAdminRepository = slideAdminRepository;
@@ -32,6 +37,9 @@ namespace FonNature.Services.ClientServices
             _aboutAdminRepository = aboutAdminRepository;
             _seoRepository = seoRepository;
             _productAdminRepository = productAdminRepository;
+            _contentAdminRepository = contentAdminRepository;
+            _bannerRepository = bannerRepository;
+            _contactAdminRepository = contactAdminRepository;
         }
 
         public List<Menu> ListMenu()
@@ -89,9 +97,29 @@ namespace FonNature.Services.ClientServices
             return _productAdminRepository.GetListProduct().OrderByDescending(x=>x.AmountSold).Take(8).ToList();
         }
 
-        public Product GetTopHot()
+        public List<Product> GetTopHot()
         {
-            return _productAdminRepository.GetListProduct().SingleOrDefault(x=>x.topHot >= DateTime.Now);
+            return _productAdminRepository.GetListProduct().Where(x=>x.topHot >= DateTime.Now).OrderBy(x=>x.topHot).ToList();
+        }
+
+        public Slide GetOtherSlide()
+        {
+            return _slideAdminRepository.GetListSlide().SingleOrDefault(x => x.SlideType == 2);
+        }
+        
+        public List<Content> GetHomeContent()
+        {
+            return _contentAdminRepository.GetListContent().Where(x => x.IsDisplayInHomePage).OrderByDescending(x=>x.createdDate).ToList();
+        }
+        
+        public Banner GetBannerHome()
+        {
+            return _bannerRepository.GetList().SingleOrDefault(x=>x.Location == (int)BannerLocation.Home);
+        }
+
+        public Contact GetContactHome()
+        {
+            return _contactAdminRepository.GetContact();
         }
     }
 }

@@ -1,0 +1,76 @@
+﻿@model Models.Entity.Banner
+@{
+    ViewBag.Title = "BannerEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section jsFooter{
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            CKFinder.popup({
+                chooseFiles: true,
+                language: 'en',
+                onInit: function (finder) {
+                    finder.on('files:choose', function (evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById('txtImage').value = file.getUrl();
+                    });
+                    finder.on('file:choose:resizedImage', function (evt) {
+                        document.getElementById('txtImage').value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        })
+    </script>
+}
+<section class="wrapper">
+    <div class="form-w3layouts">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Edit New Banner
+                        <span class="tools pull-right">
+                        </span>
+                    </header>
+                    <div class="panel-body">
+                        <div class="form">
+
+                            @*<div class="form">*@
+
+                            @*<form  method="get" action="" novalidate="novalidate">*@
+                            @using (Html.BeginForm("BannerEdit", "BannerAdmin", FormMethod.Post, new { @class = "cmxform form-horizontal", @id = "signupForm" }))
+                            {
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label class="control-label col-lg-3">Location</label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.Location, new[] { new SelectListItem { Text = "Trang chủ", Value = "1" }, new SelectListItem { Text = "Đầu trang sản phẩm", Value = "2" }, new SelectListItem { Text = "Bên trái trang sản phẩm", Value = "3" }, new SelectListItem { Text = "Trang blog", Value = "4" }, new SelectListItem { Text = "Trang về chúng tôi", Value = "5" }, new SelectListItem { Text = "Trang liên hệ", Value = "6" } }, new { @class = "form-control m-bot15" })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Image</label>
+                                    <div class="col-lg-6">
+                                        @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", @id = "txtImage" }, @id = "txtImage" })
+                                        <a id="btnSelectImage" href="#">Chọn Ảnh</a>
+                                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-3 col-lg-6">
+                                        <button class="btn btn-primary" type="submit">Save</button>
+                                        <form>
+                                            <input class="btn btn-default" type="button" onclick="window.location.href = '/Admin/ProductAdmin/Index';" value="Cancel" />
+                                        </form>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+

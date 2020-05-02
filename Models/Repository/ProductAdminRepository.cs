@@ -122,7 +122,7 @@ namespace Models.Repository
 
         private static Func<Product, bool> Predicate(string searchString)
         {
-            return x => Helper.RemoveSign4VietnameseString(x.name).ToUpper().Contains(searchString.ToUpper());
+            return x => Helper.RemoveSign4VietnameseString(x.name).ToUpper().Contains(Helper.RemoveSign4VietnameseString(searchString).ToUpper());
         }
     }
 }

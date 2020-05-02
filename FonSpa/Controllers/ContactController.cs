@@ -19,6 +19,7 @@ namespace FonNature.Controllers
             ViewBag.Tittle = "Contact";
             var listContact = _contactClientServices.GetContact();
             var seo = _contactClientServices.GetSeo();
+            ViewBag.banner = _contactClientServices.GetBanner();
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
@@ -29,9 +30,8 @@ namespace FonNature.Controllers
         }
         public ActionResult SendMessage(string name, string email, string comment)
         {
-            ViewBag.Tittle = "Contact";
             SendMail.SendMailFromCustomer(name, email, comment);
-            return View("~/Views/Shared/Success");
+            return RedirectToAction("SuccessPage", "success", new { message = "Thank you ! " });
         }
 
     }

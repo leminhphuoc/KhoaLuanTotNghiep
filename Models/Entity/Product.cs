@@ -11,6 +11,7 @@ namespace Models.Entity
     {
         public long id { get; set; }
 
+        [Required]
         [StringLength(250)]
         public string name { get; set; }
 
@@ -26,7 +27,6 @@ namespace Models.Entity
         [StringLength(999)]
         public string description { get; set; }
 
-        [StringLength(100)]
         public string image { get; set; }
 
         [Column(TypeName = "xml")]
@@ -36,8 +36,9 @@ namespace Models.Entity
 
         public decimal? promotionPrice { get; set; }
 
-        public int quantity { get; set; }
+        public int? quantity { get; set; }
 
+        [Required]
         public int? idCategory { get; set; }
 
         [Column(TypeName = "ntext")]

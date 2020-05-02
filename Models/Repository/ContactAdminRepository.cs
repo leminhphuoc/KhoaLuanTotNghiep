@@ -30,6 +30,10 @@ namespace Models.Repository
             contactEdit.Address = contact.Address;
             contactEdit.Email = contact.Email;
             contactEdit.MobilePhone = contact.MobilePhone;
+            contactEdit.LinkFaceBook = contact.LinkFaceBook;
+            contactEdit.LinkInstagram = contact.LinkInstagram;
+            contactEdit.LogoHeader = contact.LogoHeader;
+            contactEdit.LogoFooter = contact.LogoFooter;
             _db.SaveChanges();
             return true;
         }

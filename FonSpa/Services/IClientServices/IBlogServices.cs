@@ -11,5 +11,6 @@ namespace FonNature.Services.IClientServices
         Content GetDetail(long id);
         List<Content> ListAllByCategory(string searchString, int idCategory);
         SEO GetSeo();
+        Banner GetBanner();
     }
 }

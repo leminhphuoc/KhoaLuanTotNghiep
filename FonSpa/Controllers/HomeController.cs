@@ -1,4 +1,5 @@
 ﻿using FonNature.Filter;
+using FonNature.Services.ClientServices;
 using FonNature.Services.IClientServices;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -23,6 +24,9 @@ namespace FonNature.Controllers
             ViewBag.featuredProduct = _homeServices.GetFeaturedProducts();
             ViewBag.topHotProduct = _homeServices.GetTopHot();
             ViewBag.bestSellerProduct = _homeServices.GetBestSellerProducts();
+            ViewBag.otherSlide = _homeServices.GetOtherSlide();
+            ViewBag.contentList = _homeServices.GetHomeContent();
+            ViewBag.bannerHome = _homeServices.GetBannerHome();
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
@@ -45,8 +49,38 @@ namespace FonNature.Controllers
         public ActionResult Footer()
         {
             ViewBag.FooterCategories = _homeServices.ListFooterCategory();
+            ViewBag.Contact = _homeServices.GetContactHome();
             var footers = _homeServices.ListFooter();
             return PartialView(footers);
+        }
+
+        [ChildActionOnly]
+        public ActionResult ContactHome()
+        {
+            var contact = _homeServices.GetContactHome();
+            return PartialView(contact);
+        }
+
+        [ChildActionOnly]
+        public ActionResult HeaderLogo()
+        {
+            var contact = _homeServices.GetContactHome();
+            return PartialView(contact);
+        }
+
+        [ChildActionOnly]
+        public ActionResult FooterLogo()
+        {
+
+            var contact = _homeServices.GetContactHome();
+            return PartialView(contact);
+        }
+
+        [HttpPost]
+        public ActionResult SendMessage(string email)
+        {
+            SendMail.SendMailSubcribe(email);
+            return RedirectToAction("SuccessPage", "success", new { message = "Thank you ! " });
         }
     }
 }

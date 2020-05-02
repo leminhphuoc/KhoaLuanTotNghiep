@@ -29,6 +29,8 @@ namespace FonNature.Controllers
             int pageNumber = (page ?? 1);
             var productListPaged = productList.ToPagedList(pageNumber, pageSize);
             var seo = _productServices.GetProductSeo();
+            ViewBag.banner = _productServices.GetProductBanner();
+            ViewBag.categories = _productServices.GetProductCategories();
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
@@ -44,6 +46,8 @@ namespace FonNature.Controllers
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             var listProductPaged = listProduct.ToPagedList(pageNumber, pageSize);
+            ViewBag.banner = _productServices.GetProductBanner();
+            ViewBag.categories = _productServices.GetProductCategories();
             var seo = _productServices.GetProductSeo();
             if (seo != null)
             {

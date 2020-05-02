@@ -1,4 +1,5 @@
-﻿using FonNature.Services.IClientServices;
+﻿using FonNature.Enum;
+using FonNature.Services.IClientServices;
 using Models.Entity;
 using Models.IRepository;
 using System.Collections.Generic;
@@ -11,12 +12,14 @@ namespace FonNature.Services.ClientServices
         private readonly IContentAdminRepository _contentAdminRepository;
         private readonly IContentCategoryAdminRepository _contentCategoryAdminRepository;
         private readonly ISEORepository _seoRepository;
+        private readonly IBannerRepository _bannerRepository;
         public BlogServices(IContentAdminRepository contentAdminRepository, IContentCategoryAdminRepository contentCategoryAdminRepository, 
-            ISEORepository seoRepository)
+            ISEORepository seoRepository, IBannerRepository bannerRepository)
         {
             _contentAdminRepository = contentAdminRepository;
             _contentCategoryAdminRepository = contentCategoryAdminRepository;
             _seoRepository = seoRepository;
+            _bannerRepository = bannerRepository;
         }
         public SEO GetSeo()
         {
@@ -54,6 +57,11 @@ namespace FonNature.Services.ClientServices
         {
             if (id == 0) return null;
             return _contentAdminRepository.GetDetail(id);
+        }
+
+        public Banner GetBanner()
+        {
+            return _bannerRepository.GetList().SingleOrDefault(x => x.Location == (int)BannerLocation.Blog);
         }
 
     }

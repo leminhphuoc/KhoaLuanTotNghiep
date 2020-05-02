@@ -2,10 +2,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    Models.Entity.Banner banner = ViewBag.banner;
 }
 
 <!-- Page Banner Section Start -->
-<div class="page-banner-section section bg-gray">
+<div style="background-image: url('@(banner != null? banner.Image : "")');
+" class="page-banner-section section bg-gray">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -13,7 +15,7 @@
                 <div class="page-banner text-center">
                     <h1>Contact</h1>
                     <ul class="page-breadcrumb">
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li>Contact</li>
                     </ul>
                 </div>

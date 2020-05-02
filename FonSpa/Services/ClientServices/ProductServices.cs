@@ -1,4 +1,5 @@
-﻿using FonNature.Services.IClientServices;
+﻿using FonNature.Enum;
+using FonNature.Services.IClientServices;
 using Models.Entity;
 using Models.IRepository;
 using System.Collections.Generic;
@@ -12,11 +13,13 @@ namespace FonNature.Services.ClientServices
         private readonly IProductAdminRepository _productAdminRepository;
         private readonly IProductCategoryAdminRepository _productCateAdminRepository;
         private readonly ISEORepository _seoRepository;
-        public ProductServices(IProductAdminRepository productAdminRepository , ISEORepository seoRepository, IProductCategoryAdminRepository productCateAdminRepository)
+        private readonly IBannerRepository _bannerRepository;
+        public ProductServices(IProductAdminRepository productAdminRepository , ISEORepository seoRepository, IProductCategoryAdminRepository productCateAdminRepository, IBannerRepository bannerRepository)
         {
             _productAdminRepository = productAdminRepository;
             _seoRepository = seoRepository;
             _productCateAdminRepository = productCateAdminRepository;
+            _bannerRepository = bannerRepository;
         }
         public SEO GetProductSeo()
         {
@@ -67,5 +70,14 @@ namespace FonNature.Services.ClientServices
             return result;
         }
 
+        public List<Banner> GetProductBanner()
+        {
+            return _bannerRepository.GetList().Where(x => x.Location != (int)BannerLocation.Home).ToList();
+        }
+
+        public List<ProductCategory> GetProductCategories()
+        {
+            return _productCateAdminRepository.GetListProductCategory().ToList();
+        }
     }
 }

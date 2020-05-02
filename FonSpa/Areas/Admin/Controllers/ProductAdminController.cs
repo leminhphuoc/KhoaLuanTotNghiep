@@ -68,6 +68,7 @@ namespace FonNature.Areas.Admin.Controllers
                 if (!editProductSuccess) ModelState.AddModelError("", "Sửa sản phẩm không thành công !");
                 return RedirectToAction("Index");
             }
+            ViewBag.ProductCategory = _productAdminServices.GetProductCategory();
             return View(product);
         }
 

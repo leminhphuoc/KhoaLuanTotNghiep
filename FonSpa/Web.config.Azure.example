@@ -16,11 +16,13 @@
     <add key="UnobtrusiveJavaScriptEnabled" value="true" />
     <!--Email Config-->
     <add key="FromEmailAddress" value="kevinle02109797@gmail.com" />
+    <add key="ToEmailAddress" value="kevinle021097@gmail.com" />
     <add key="FromEmailDisplayName" value="Libanon" />
     <add key="FromEmailPassword" value="Foreveronelove1" />
     <add key="SMTPHost" value="smtp.gmail.com" />
     <add key="SMTPPort" value="587" />
     <add key="EnabledSSL" value="true" />
+    <add key="owin:appStartup" value="FonNature.Startup-" />
   </appSettings>
   <system.web>
     <compilation debug="true" targetFramework="4.6" />
@@ -33,6 +35,9 @@
       timeout="30" />-->
   </system.web> 
   <system.webServer>
+    <staticContent>
+      <mimeMap fileExtension=".json" mimeType="application/json" />
+    </staticContent>
     <handlers>
       <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
       <remove name="OPTIONSVerbHandler" />
@@ -86,8 +91,8 @@
     </assemblyBinding>
   </runtime>
   <connectionStrings>
-    <!--<add name="FonNatureDbContext" connectionString="Server=tcp:fonnature.database.windows.net,1433;Initial Catalog=FonNature;Persist Security Info=False;User ID=kevinle021097;Password=Foreveronelove1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />-->
-    <add name="FonNatureDbContext" connectionString="data source=.\SQLEXPRESS;initial catalog=FonNature1;integrated security=True;MultipleActiveResultSets=True;Application Name=EntityFramework;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="FonNatureDbContext" connectionString="Server=tcp:fonnature.database.windows.net,1433;Initial Catalog=FonNature;Persist Security Info=False;User ID=kevinle021097;Password=Foreveronelove1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
+    <!--<add name="FonNatureDbContext" connectionString="data source=.\SQLEXPRESS;initial catalog=FonNature1;integrated security=True;MultipleActiveResultSets=True;Application Name=EntityFramework;App=EntityFramework" providerName="System.Data.SqlClient" />-->
   </connectionStrings>
   <entityFramework>
     <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
