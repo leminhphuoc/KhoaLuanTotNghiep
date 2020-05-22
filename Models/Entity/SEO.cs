@@ -22,5 +22,7 @@
 
         [StringLength(500)]
         public string MetaDescription { get; set; }
+
+        public int TypeId { get; set; }
     }
 }

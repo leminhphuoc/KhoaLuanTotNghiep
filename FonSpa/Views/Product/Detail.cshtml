@@ -126,7 +126,7 @@
                                 <input value="1" type="number">
                             </div>
                             <div class="add-to-link">
-                                <button class="product-add-btn" data-text="add to cart">add to cart</button>
+                                <button data-id="@Model.id" class="product-add-btn addToCart" data-text="add to cart">add to cart</button>
                             </div>
                         </form>
                     </div>
@@ -251,7 +251,6 @@
         </div>
     </div>
 </div>
-        </div>
 <!--Product Description Review Section Start-->
 @if (relatedProduct != null)
 {

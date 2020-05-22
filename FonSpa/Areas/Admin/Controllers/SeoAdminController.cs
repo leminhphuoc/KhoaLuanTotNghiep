@@ -24,9 +24,9 @@ namespace FonNature.Areas.Admin.Controllers
             return View(seoListPaged);
         }
 
-        public ActionResult SeoDetail(long id)
+        public ActionResult SeoDetail(int id)
         {
-            var seo = _seoRepository.GetSEO(id);
+            var seo = _seoRepository.GetSEODetail(id);
             return View(seo);
         }
 

@@ -24,7 +24,12 @@ namespace Models.Repository
         {
             return _db.SEOs.ToList();
         }
-        public SEO GetSEO(long id)
+        public SEO GetSEO(int typeId)
+        {
+            return _db.SEOs.SingleOrDefault(x => x.TypeId.Equals(typeId));
+        }
+
+        public SEO GetSEODetail(long id)
         {
             return _db.SEOs.SingleOrDefault(x => x.Id.Equals(id));
         }

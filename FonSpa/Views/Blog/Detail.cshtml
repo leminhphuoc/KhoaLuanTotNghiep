@@ -45,18 +45,18 @@
                                     }
                                 }
                             </span>
-                            <h2 class="entry-title">
+                            <h1 class="entry-title">
                                 @Model.name
-                            </h2>
+                            </h1>
                             <span class="post-author">
                                 <span class="post-by"> Posts by : </span> admin
                             </span>
                             <span class="post-separator">|</span>
                             <span class="post-date"><i class="fas fa-calendar-alt"></i>On @Model.createdDate.Value.ToString("dd MMMM yyyy") </span>
                         </header>
-                        <div class="post-thumbnail img-full">
+                        @*<div class="post-thumbnail img-full">
                             <img src="@Model.image" alt="">
-                        </div>
+                        </div>*@
                         <div class="postinfo-wrapper">
                             <div class="post-info">
                                 <div class="entry-summary blog-post-description">

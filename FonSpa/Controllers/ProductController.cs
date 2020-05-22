@@ -4,8 +4,6 @@ using Models.Model;
 using PagedList;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers
@@ -70,21 +68,21 @@ namespace FonNature.Controllers
             return View(product);
         }
 
-        public ActionResult CheckOut()
+        public ActionResult CartPreview()
         {
-            var idProductsFromCart = Request.Form["id"];
-            if (idProductsFromCart == null) return View();
-            var idProductsSplit = idProductsFromCart.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            int productTotal = idProductsSplit.Count();
-            if (productTotal == 0) return View();
-            List<ProductInCart> cart = new List<ProductInCart>();
-            for (int i = 1; i <= productTotal; i++)
-            {
-                var product = new ProductInCart(long.Parse(idProductsSplit[i - 1])) { ProductId = long.Parse(idProductsSplit[i - 1]), Count = int.Parse(Request.Form["quantity_" + i]) };
-                cart.Add(product);
-            }
-            Session[Constant.Cart_Sesion] = cart;
-            return View(cart);
+            //var idProductsFromCart = Request.Form["id"];
+            //if (idProductsFromCart == null) return View();
+            //var idProductsSplit = idProductsFromCart.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            //int productTotal = idProductsSplit.Count();
+            //if (productTotal == 0) return View();
+            //List<ProductInCart> cart = new List<ProductInCart>();
+            //for (int i = 1; i <= productTotal; i++)
+            //{
+            //    var product = new ProductInCart(long.Parse(idProductsSplit[i - 1])) { ProductId = long.Parse(idProductsSplit[i - 1]), Count = int.Parse(Request.Form["quantity_" + i]) };
+            //    cart.Add(product);
+            //}
+            //Session[Constant.Cart_Sesion] = cart;
+            return View();
         }
 
         [HttpPost]
@@ -109,6 +107,17 @@ namespace FonNature.Controllers
             var cart = new Cart() { productInCarts = productInCarts, customer = customerInfor };
             if (idOrder > 0) ViewBag.idOrder = idOrder;
             return View(cart);
+        }
+
+        [HttpPost]
+        public JsonResult GetDetailJson(long id)
+        {
+            var product = _productServices.GetDetail(id);
+            return Json(new
+            {
+                product = product
+            }
+            );
         }
     }
 }

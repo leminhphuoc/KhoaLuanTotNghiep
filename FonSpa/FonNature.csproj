@@ -941,6 +941,8 @@
     <Content Include="Asset\Client\images\team\team-2.jpg" />
     <Content Include="Asset\Client\images\team\team-3.jpg" />
     <Content Include="Asset\Client\js\bootstrap.min.js" />
+    <Content Include="Asset\Client\js\CartPreview.js" />
+    <Content Include="Asset\Client\js\HandlerCart.js" />
     <Content Include="Asset\Client\js\main.js" />
     <Content Include="Asset\Client\js\plugins.js" />
     <Content Include="Asset\Client\js\popper.min.js" />
@@ -1841,6 +1843,8 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Shared\MiniCart.cshtml" />
+    <Content Include="Views\Product\CartPreview.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

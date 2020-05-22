@@ -130,7 +130,7 @@
                                             }
                                         }
                                         <div class="product-action d-flex justify-content-between">
-                                            @*<a class="product-btn" href="#">Add to Cart</a>*@
+                                            <a data-id="@product.id" class="product-btn addToCart" href="#">Add to Cart</a>
                                             <a class="product-btn" href="/product/Detail?id=@product.id"></a>
                                             @*<ul class="d-flex">
                                                     <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
@@ -140,7 +140,7 @@
                                         </div>
                                     </div>
                                     <div class="product-content text-left">
-                                        <h3><a href="single-product.html">@product.name</a></h3>
+                                        <h3><a href="/product/detail?id=@product.id">@product.name</a></h3>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -304,7 +304,7 @@
                                             }
                                         }
                                         <div class="product-action d-flex justify-content-between">
-                                            @*<a class="product-btn" href="#">Add to Cart</a>*@
+                                            <a data-id="@product.id"  class="product-btn addToCart" href="#">Add to Cart</a>
                                             <a class="product-btn" href="/product/Detail?id=@product.id"></a>
                                             @*<ul class="d-flex">
                                                     <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
@@ -314,7 +314,7 @@
                                         </div>
                                     </div>
                                     <div class="product-content text-left">
-                                        <h3><a href="single-product.html">@product.name</a></h3>
+                                        <h3><a href="/product/detail?id=@product.id">@product.name</a></h3>
                                         <div class="ratting">
                                             <i class="fa fa-star"></i>
                                             <i class="fa fa-star"></i>
@@ -417,7 +417,7 @@
                             <div class="blog-inner">
                                 <div class="media"><a href="/blog/detail?id=@content.id" class="image"><img src="@content.image" alt=""></a></div>
                                 <div class="content">
-                                    <h3 class="title"><a href="blog-details.html">@content.name</a></h3>
+                                    <h3 class="title"><a href="/blog/detail?id=@content.id">@content.name</a></h3>
                                     <ul class="meta">
                                         <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">@content.createdDate.Value.Day</span><span class="separator">-</span><span class="month">@content.createdDate.Value.ToString("MMMM")</span></span></li>
                                     </ul>

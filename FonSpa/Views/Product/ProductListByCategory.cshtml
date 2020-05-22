@@ -190,14 +190,15 @@
                                                                     <span class="sticker">New</span>
                                                                 }
                                                             }
-                                                            @*<div class="product-action d-flex justify-content-between">
-                                                                    <a class="product-btn" href="#">Add to Cart</a>
-                                                                    <ul class="d-flex">
+                                                            <div class="product-action d-flex justify-content-between">
+                                                                <a data-id="@product.id" class="product-btn addToCart" href="#">Add to Cart</a>
+                                                                <a class="product-btn" href="/product/Detail?id=@product.id"></a>
+                                                                @*<ul class="d-flex">
                                                                         <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
                                                                         <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
                                                                         <li><a href="#"><i class="fa fa-exchange"></i></a></li>
-                                                                    </ul>
-                                                                </div>*@
+                                                                    </ul>*@
+                                                            </div>
                                                         </div>
                                                         <div class="product-content">
                                                             <h3><a href="single-product.html">@product.name</a></h3>
@@ -277,14 +278,14 @@
                                                                     <i class="fa fa-star"></i>
                                                                 </div>
                                                                 <p>@product.description</p>
-                                                                @*<div class="product-action d-flex justify-content-between">
-                                                                        <a class="product-btn" href="#">Add to Cart</a>
-                                                                        <ul class="d-flex">
+                                                                <div class="product-action d-flex justify-content-between">
+                                                                    <a data-id="@product.id" class="product-btn addToCart" href="#">Add to Cart</a>
+                                                                    @*<ul class="d-flex">
                                                                             <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
                                                                             <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
                                                                             <li><a href="#"><i class="fa fa-exchange"></i></a></li>
-                                                                        </ul>
-                                                                    </div>*@
+                                                                        </ul>*@
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

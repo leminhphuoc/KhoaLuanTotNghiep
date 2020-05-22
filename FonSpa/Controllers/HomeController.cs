@@ -76,6 +76,12 @@ namespace FonNature.Controllers
             return PartialView(contact);
         }
 
+        [ChildActionOnly]
+        public ActionResult MiniCart()
+        {
+            return PartialView();
+        }
+
         [HttpPost]
         public ActionResult SendMessage(string email)
         {

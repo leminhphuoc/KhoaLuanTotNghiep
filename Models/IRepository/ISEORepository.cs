@@ -10,7 +10,8 @@ namespace Models.IRepository
     public interface ISEORepository
     {
         List<SEO> GetSEOs();
-        SEO GetSEO(long id);
+        SEO GetSEO(int typeId);
+        SEO GetSEODetail(long id);
         long EditSEO(SEO seo);
     }
 }

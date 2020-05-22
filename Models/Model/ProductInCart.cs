@@ -17,10 +17,10 @@ namespace Models.Model
             ProductPrice = product.promotionPrice != null ? product.promotionPrice.Value : product.price.Value;
             ProductImage = product.image == null ? "" : product.image;
         }
-        public long ProductId { get; set; }
+        public long itemId { get; set; }
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
         public string ProductImage { get; set; }
-        public int Count { get; set; }
+        public int quantity { get; set; }
     }
 }

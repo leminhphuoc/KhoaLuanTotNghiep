@@ -37,20 +37,20 @@
 
                         @{Html.RenderAction("ContactHome", "Home");}
                         @*<div class="col-xl-6 col-lg-4">
-            <div class="ht-right d-flex justify-content-lg-end justify-content-center">
-                <ul class="ht-us-menu d-flex">
-                    <li>
-                        <a href="#"><i class="fa fa-user-circle-o"></i>Login</a>
-                        <ul class="ht-dropdown right">
-                            <li><a href="compare.html">Compare Products</a></li>
-                            <li><a href="my-account.html">My Account</a></li>
-                            <li><a href="wishlist.html">My Wish List</a></li>
-                            <li><a href="login-register.html">Sign In</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>*@
+                                <div class="ht-right d-flex justify-content-lg-end justify-content-center">
+                                    <ul class="ht-us-menu d-flex">
+                                        <li>
+                                            <a href="#"><i class="fa fa-user-circle-o"></i>Login</a>
+                                            <ul class="ht-dropdown right">
+                                                <li><a href="compare.html">Compare Products</a></li>
+                                                <li><a href="my-account.html">My Account</a></li>
+                                                <li><a href="wishlist.html">My Wish List</a></li>
+                                                <li><a href="login-register.html">Sign In</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>*@
                     </div>
 
                 </div>
@@ -74,61 +74,7 @@
                                     </form>
                                 </div>
                             </div>
-                            @*<div class="header-cart">
-                <a href="cart.html"><i class="fa fa-shopping-cart"></i><span>3</span></a>
-                <!--Mini Cart Dropdown Start-->
-                <div class="header-cart-dropdown">
-                    <ul class="cart-items">
-                        <li class="single-cart-item">
-                            <div class="cart-img">
-                                <a href="cart.html"><img src="/Asset/Client/images/cart/cart-1.jpg" alt=""></a>
-                            </div>
-                            <div class="cart-content">
-                                <h5 class="product-name">
-                                    <a href="single-product.html">
-                                        Dell Inspiron
-                                        24
-                                    </a>
-                                </h5>
-                                <span class="product-quantity">1 ×</span>
-                                <span class="product-price">$278.00</span>
-                            </div>
-                            <div class="cart-item-remove">
-                                <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
-                            </div>
-                        </li>
-                        <li class="single-cart-item">
-                            <div class="cart-img">
-                                <a href="cart.html"><img src="/Asset/Client/images/cart/cart-2.jpg" alt=""></a>
-                            </div>
-                            <div class="cart-content">
-                                <h5 class="product-name">
-                                    <a href="single-product.html">
-                                        Lenovo Ideacentre
-                                        300
-                                    </a>
-                                </h5>
-                                <span class="product-quantity">1 ×</span>
-                                <span class="product-price">$23.39</span>
-                            </div>
-                            <div class="cart-item-remove">
-                                <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="cart-total">
-                        <h5>Subtotal :<span class="float-right">$39.79</span></h5>
-                        <h5>Eco Tax (-2.00) :<span class="float-right">$7.00</span></h5>
-                        <h5>VAT (20%) : <span class="float-right">$0.00</span></h5>
-                        <h5>Total : <span class="float-right">$46.79</span></h5>
-                    </div>
-                    <div class="cart-btn">
-                        <a href="cart.html">View Cart</a>
-                        <a href="checkout.html">checkout</a>
-                    </div>
-                </div>
-                <!--Mini Cart Dropdown End-->
-            </div>*@
+                            @{Html.RenderAction("MiniCart", "Home");}
                         </div>
                         <!--Search Cart End-->
                     </div>
@@ -157,6 +103,10 @@
     <script src="~/Asset/Client/js/popper.min.js"></script>
     <script src="~/Asset/Client/js/bootstrap.min.js"></script>
     <script src="~/Asset/Client/js/plugins.js"></script>
+    @RenderSection("jsFooter", required: false)
     <script src="~/Asset/Client/js/main.js"></script>
+    <script src="~/Asset/Client/js/HandlerCart.js"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=2399606136744047&autoLogAppEvents=1"></script>
 </body>
 </html>

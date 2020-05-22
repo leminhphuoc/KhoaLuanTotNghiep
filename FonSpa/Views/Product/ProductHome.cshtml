@@ -191,7 +191,7 @@
                                                                 }
                                                             }
                                                             <div class="product-action d-flex justify-content-between">
-                                                                @*<a class="product-btn" href="#">Add to Cart</a>*@
+                                                                <a data-id="@product.id"  class="product-btn addToCart" href="#">Add to Cart</a>
                                                                 <a class="product-btn" href="/product/Detail?id=@product.id"></a>
                                                                 @*<ul class="d-flex">
                                                                     <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
@@ -201,7 +201,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="product-content">
-                                                            <h3><a href="single-product.html">@product.name</a></h3>
+                                                            <h3><a href="/product/Detail?id=@product.id">@product.name</a></h3>
                                                             <div class="ratting">
                                                                 <i class="fa fa-star"></i>
                                                                 <i class="fa fa-star"></i>
@@ -259,7 +259,7 @@
                                                     <div class="col-md-8 col-sm-6">
                                                         <div class="product-content-shop-list">
                                                             <div class="product-content">
-                                                                <h3><a href="single-product.html">@product.name</a></h3>
+                                                                <h3><a href="/product/Detail?id=@product.id">@product.name</a></h3>
                                                                 @if (product.promotionPrice == null || product.price == 0)
                                                                 {
                                                                     <h4 class="price"><span class="new">@product.price.Value.ToString("N0") đ</span></h4>
@@ -279,8 +279,8 @@
                                                                 </div>
                                                                 <p>@product.description</p>
                                                                 <div class="product-action d-flex justify-content-between">
-                                                                    @*<a class="product-btn" href="#">Add to Cart</a>
-                                                                    <ul class="d-flex">
+                                                                    <a data-id="@product.id"  class="product-btn addToCart" href="#">Add to Cart</a>
+                                                                    @*<ul class="d-flex">
                                                                         <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
                                                                         <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
                                                                         <li><a href="#"><i class="fa fa-exchange"></i></a></li>
