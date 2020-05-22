@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using PagedList;
 using Models.Entity;
+using FonNature.Filter;
 
 namespace FonNature.Areas.Admin.Controllers
 {
+    [AuthData]
     public class SeoAdminController : Controller
     {
         private readonly ISEORepository _seoRepository;

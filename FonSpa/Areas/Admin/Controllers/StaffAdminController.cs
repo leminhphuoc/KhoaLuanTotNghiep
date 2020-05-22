@@ -1,4 +1,5 @@
-﻿using FonNature.Services.IServices;
+﻿using FonNature.Filter;
+using FonNature.Services.IServices;
 using Models.Entity;
 using PagedList;
 using System;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
 {
+    [AuthData]
     public class StaffAdminController : Controller
     {
         private readonly IStaffAdminServices _staffAdminServices;

@@ -1,4 +1,5 @@
-﻿using FonNature.Services.IAdminServices;
+﻿using FonNature.Filter;
+using FonNature.Services.IAdminServices;
 using Models.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
 {
+    [AuthData]
     public class OrderAdminController : Controller
     {
         private readonly IOrderAdminServices _orderAdminServices;

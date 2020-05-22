@@ -16,6 +16,7 @@
             //finder.popup();
             CKFinder.popup({
                 chooseFiles: true,
+                language: 'en',
                 onInit: function (finder) {
                     finder.on('files:choose', function (evt) {
                         var file = evt.data.files.first();
@@ -27,13 +28,89 @@
                 }
             });
         })
-
-        var editor = CKEDITOR.replace('txtcontent', {
-            customConfig: '~/Assets/js/Plugin/ckeditor/config.js',
-        });
-
-        CKFinder.setupCKEditor(null, '/Assets/js/Plugin/ckfinder');
-
+    </script>
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            //var finder = new CKFinder();
+            //finder.selectActionFunction = function (url) {
+            //    $('#txtImage').val(url);
+            //};
+            //finder.popup();
+            CKFinder.popup({
+                chooseFiles: true,
+                language: 'en',
+                onInit: function (finder) {
+                    finder.on('files:choose', function (evt) {
+                        var file = evt.data.files.first();
+                        document.getElementById('txtImage').value = file.getUrl();
+                    });
+                    finder.on('file:choose:resizedImage', function (evt) {
+                        document.getElementById('txtImage').value = evt.data.resizedUrl;
+                    });
+                }
+            });
+        })
+    </script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                toolbar: {
+                    items: [
+                        '|',
+                        '|',
+                        'blockQuote',
+                        'bold',
+                        'CKFinder',
+                        'heading',
+                        'fontFamily',
+                        'fontSize',
+                        'fontColor',
+                        'imageUpload',
+                        'indent',
+                        'outdent',
+                        'italic',
+                        'link',
+                        'numberedList',
+                        'bulletedList',
+                        'mediaEmbed',
+                        'insertTable',
+                        'alignment',
+                        'specialCharacters',
+                        'underline',
+                        'code',
+                        'undo',
+                        'redo'
+                    ]
+                },
+                language: 'en',
+                image: {
+                    toolbar: [
+                        'imageTextAlternative',
+                        'imageStyle:full',
+                        'imageStyle:side'
+                    ]
+                },
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells',
+                        'tableProperties'
+                    ]
+                },
+                ckfinder: {
+                    uploadUrl: '/ckfinder/connector?command=QuickUpload&type=Images&responseType=json',
+                    // Open the file manager in the pop-up window.
+                    openerMethod: 'popup'
+                }
+            })
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 }
 
@@ -86,7 +163,7 @@
                                     <div class="form-group ">
                                         <label class="control-label col-lg-3">Description</label>
                                         <div class="col-lg-6">
-                                            @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, id = "txtcontent" })
+                                            @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" }, id = "editor" })
                                             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
