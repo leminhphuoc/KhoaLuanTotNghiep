@@ -115,13 +115,54 @@ function myFunction() {
         });
     });
     $(".cartcounter").html(totalQuantityInCart);
+
+    //Load cart Preview Item
+    var pathname = window.location.pathname;
+    if (pathname === "/product/CartPreview") {
+        var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
+        if (cartItemsList == null) return;
+        var totalAmount = 0;
+        $.each(cartItemsList, function (index, value) {
+            $.ajax({
+                url: "/product/GetDetailJson",
+                data: { id: value.itemId },
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    if (res.product != null) {
+                        var price = res.product.promotionPrice;
+                        if (price === 0 || price == null) {
+                            price = res.product.price;
+                        }
+                        var amount = price * value.quantity;
+                        var htmlString = `<tr id="previewItemRow_${value.itemId}"><td class="pro-thumbnail"><a href="#"><img src="${res.product.image}" alt="Product"></a></td><td class="pro-title"><a href="#">${res.product.name}</a></td><td class="pro-price"><span class="cartPreviewPrice_${value.itemId}">${price} Vnđ</span></td><td class="pro-quantity"><div class="pro-qty"><input data-id="${value.itemId}" onchange="changeQuantity(this)" min="1" max="9999" type="number" value="${value.quantity}"></div></td><td class="pro-subtotal"><span class="cartPreviewTotal_${value.itemId}">${amount} vnđ</span></td><td class="pro-remove_${res.product.id}"><a data-ispreviewitem="true" data-id="${res.product.id}" onClick="removeFunction(this)" href="javascript:void(0);"><i class="fa fa-trash-o"></i></a></td></tr>`;
+                        $(".cartPreviewTable").append(htmlString);
+                        totalAmount += amount;
+                        //$("#amountCart").html(amount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+                    }
+                    else {
+                        console.log(res.product);
+                    }
+                }
+            });
+        });
+        $(document).ajaxStop(function () {
+            $("#cartSubTotal").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            $("#cartGrandTotal").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+        });
+    }
 }
+
+
 
 function removeFunction(elem) {
     var btn = $(elem);
     var id = btn.data('id');
+    var isPreviewItem = btn.data('ispreviewitem');
     var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
+    var totalQuantityInCart = 0;
     $.each(cartItemsList, function (index, value) {
+        totalQuantityInCart += 1;
         if (value !== undefined) {
             if (value.itemId == id) {
                 cartItemsList.splice(index, 1);
@@ -151,5 +192,68 @@ function removeFunction(elem) {
             }
         }
     });
+    $(".cartcounter").html(totalQuantityInCart - 1);
     localStorage.setItem("cartItemsList", JSON.stringify(cartItemsList));
+    updateGrandTotalFromStorage();
+    $('#previewItemRow_' + id).remove();
 }
+
+function changeQuantity(elem) {
+    var input = $(elem);
+    var id = input.data('id');
+    var priceText = $('.cartPreviewPrice_' + id).text();
+    var price = changeTextToNumber(priceText);
+    var quantity = input.val();
+    var total = price * quantity;
+    $('.cartPreviewTotal_' + id).html(total.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+    var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
+    if (cartItemsList == null) return;
+    $.each(cartItemsList, function (index, value) {
+        if (value.itemId == id) {
+            cartItemsList[index].quantity = Number(quantity.replace(/[^0-9.-]+/g, ""));
+            localStorage.setItem("cartItemsList", JSON.stringify(cartItemsList));
+        }
+    });
+    $("#quantityCart_" + id).html(quantity.toString() + " x ");
+    updateGrandTotalFromStorage();
+}
+
+function changeTextToNumber(text) {
+    var number = text.slice(0, text.indexOf("v") - 1);
+    return Number(number.replace(/[^0-9.-]+/g, ""));
+}
+
+function updateGrandTotalFromStorage() {
+    var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
+    if (cartItemsList == null) return;
+    var grandTotal = 0;
+    $.each(cartItemsList, function (index, value) {
+        $.ajax({
+            url: "/product/GetDetailJson",
+            data: { id: value.itemId },
+            dataType: "json",
+            type: "POST",
+            success: function (res) {
+                if (res.product != null) {
+                    var price = res.product.promotionPrice;
+                    if (price === 0 || price == null) {
+                        price = res.product.price;
+                    }
+                    var total = price * value.quantity;
+                    grandTotal += total;
+                }
+                else {
+                    console.log(res.product);
+                }
+            }
+        });
+    });
+    $(document).ajaxStop(function () {
+        console.log(grandTotal);
+        $("#cartSubTotal").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+        $("#cartGrandTotal").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+        $("#amountCart").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
+    });
+}
+
+

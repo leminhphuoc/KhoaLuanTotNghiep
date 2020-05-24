@@ -4,25 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section jsFooter{
-    <script>
-        $('.pro-qty').prepend('<button class="dec qtybtn">-</button>');
-        $('.pro-qty').append('<button class="inc qtybtn">+</button>');
-        $('.qtybtn').on('click', function () {
-            var $button = $(this);
-            var oldValue = $button.parent().find('input').val();
-            if ($button.hasClass('inc')) {
-                var newVal = parseFloat(oldValue) + 1;
-            } else {
-                // Don't allow decrementing below zero
-                if (oldValue > 0) {
-                    var newVal = parseFloat(oldValue) - 1;
-                } else {
-                    newVal = 0;
-                }
-            }
-            $button.parent().find('input').val(newVal);
-        }); 
-    </script>
     <script src="~/Asset/Client/js/CartPreview.js"></script>
     }
 <!-- Page Banner Section Start -->
@@ -70,53 +51,7 @@
 
                 <div class="row">
 
-                    <div class="col-lg-6 col-12 mb-5">
-                        <!-- Calculate Shipping -->
-                        @*<div class="calculate-shipping">
-                            <h4>Calculate Shipping</h4>
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <select class="nice-select">
-                                            <option>Bangladesh</option>
-                                            <option>China</option>
-                                            <option>country</option>
-                                            <option>India</option>
-                                            <option>Japan</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <select class="nice-select">
-                                            <option>Dhaka</option>
-                                            <option>Barisal</option>
-                                            <option>Khulna</option>
-                                            <option>Comilla</option>
-                                            <option>Chittagong</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <input type="text" placeholder="Postcode / Zip">
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <button class="btn">Estimate</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>*@
-                        <!-- Discount Coupon -->
-                        @*<div class="discount-coupon">
-                            <h4>Discount Coupon Code</h4>
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <input type="text" placeholder="Coupon Code">
-                                    </div>
-                                    <div class="col-md-6 col-12 mb-25">
-                                        <button class="btn">Apply Code</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>*@
+                    <div class="col-lg-6 col-12 mb-5">  
                     </div>
 
                     <!-- Cart Summary -->
@@ -124,9 +59,9 @@
                         <div class="cart-summary">
                             <div class="cart-summary-wrap">
                                 <h4>Cart Summary</h4>
-                                <p>Sub Total <span>$75.00</span></p>
-                                <p>Shipping Cost <span>$00.00</span></p>
-                                <h2>Grand Total <span>$75.00</span></h2>
+                                <p>Sub Total <span id="cartSubTotal">0 vnđ</span></p>
+                                <p>Shipping Cost <span>0 vnđ</span></p>
+                                <h2>Grand Total <span id="cartGrandTotal">0 vnđ</span></h2>
                             </div>
                             <div class="cart-summary-button">
                                 <button class="btn">Checkout</button>

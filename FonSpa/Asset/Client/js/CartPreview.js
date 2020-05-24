@@ -1,6 +1,5 @@
 ﻿var cartPreview = {
     init: function () {
-        cartPreview.loadCart();
         cartPreview.registerEvents();
     },
     loadCart: function () {
