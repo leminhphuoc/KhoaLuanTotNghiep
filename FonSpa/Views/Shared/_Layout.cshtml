@@ -27,7 +27,7 @@
     <!-- Modernizr JS -->
     <script src="~/Asset/Client/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body class="animsition">
+<body id="body" onload="myFunction()" class="animsition">
     <div id="main-wrapper">
         <!--Header section start-->
         <header class="header header-transparent header-sticky">
@@ -100,13 +100,15 @@
     <!-- All jquery file included here -->
     <script async defer src="https://maps.google.com/maps/api/js?v=3.22&key=AIzaSyB2-FTfalYzmj_0Ie_1x1Xpa7dbHQEOAJo&callback=initMap"></script>
     <script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/Asset/Client/js/HandlerCart.js"></script>
     <script src="~/Asset/Client/js/popper.min.js"></script>
     <script src="~/Asset/Client/js/bootstrap.min.js"></script>
     <script src="~/Asset/Client/js/plugins.js"></script>
     @RenderSection("jsFooter", required: false)
     <script src="~/Asset/Client/js/main.js"></script>
-    <script src="~/Asset/Client/js/HandlerCart.js"></script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=2399606136744047&autoLogAppEvents=1"></script>
+    <script>
+    </script>
 </body>
 </html>
