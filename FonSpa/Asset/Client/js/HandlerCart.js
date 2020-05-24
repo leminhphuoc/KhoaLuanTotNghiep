@@ -87,7 +87,6 @@
                 dataType: "json",
                 type: "POST",
                 success: function (res) {
-                    console.log(res);
                     if (res.product != null) {
                         var price = res.product.promotionPrice;
                         if (price === 0 || price == null) {
@@ -97,11 +96,9 @@
                             oldAmount = oldAmount.slice(0, oldAmount.indexOf("v") - 1);
                             oldAmount = Number(oldAmount.replace(/[^0-9.-]+/g, ""));
                         }
-                        console.log(price);
                         if (checkExits == true) {
                             console.log(quantity);
                             $("#quantityCart_" + res.product.id).html(quantity.toString() + " x ");
-                            console.log(quantity.toString());
                             var totalAmount = oldAmount + price;
                             $("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
                             //$("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
@@ -110,9 +107,7 @@
 
                         var htmlString = `<li class="single-cart -item"><div class="cart-img"> <a href="cart.html"><img src="${res.product.image}"></a> </div><div class="cart-content"><h5 class="product-name"><a href="single-product.html">${res.product.name}</a></h5><span id="quantityCart_${res.product.id}" class="product-quantity">${quantity} ×</span><span class="product-price">${price.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span> </div></li>`;
                         $(".cart-items").append(htmlString);
-                        console.log(oldAmount);
                         var totalAmount = oldAmount + price;
-                        console.log(totalAmount);
                         //console.log("a");
                         //if (oldAmount != NaN) {
                         //    totalAmount += oldAmount;
