@@ -1520,7 +1520,7 @@
     <Content Include="Views\CustomError\DefaultError.cshtml" />
     <Content Include="Views\About\AboutTeamList.cshtml" />
     <Content Include="Views\About\AboutTestimonial.cshtml" />
-    <Content Include="Web.config" />
+    <None Include="Web.config" />
     <None Include="Web.config.Azure.example">
       <SubType>Designer</SubType>
     </None>

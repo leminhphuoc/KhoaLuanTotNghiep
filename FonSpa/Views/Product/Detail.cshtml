@@ -7,29 +7,6 @@
     var relatedProduct = ViewBag.RealtedProduct as List<Models.Entity.Product>;
 }
 
-@*@section ProductJs{
-
-        <!-- cart-js -->
-
-        <script src="~/Asset/Cartpage/web/js/minicart.js"></script>
-        <script>
-            toys.render();
-
-            toys.cart.on('toys_checkout', function (evt) {
-                var items, len, i;
-
-                if (this.subtotal() > 0) {
-                    items = this.items();
-                    console.log(items)
-                    for (i = 0, len = items.length; i < len; i++) { }
-                }
-            });
-        </script>
-
-        <!--    //cart-js -->
-        <script src="/Asset/Client/js/bootstrap-3.1.1.min.js"></script>
-    }*@
-
 <!-- Single Product Section Start -->
 <div class="single-product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
     <div class="container">
@@ -123,7 +100,7 @@
                     <div class="single-product-quantity">
                         <form class="add-quantity" action="#">
                             <div class="product-quantity">
-                                <input value="1" type="number">
+                                <input id="productDetailQuantity" min="1" max="999" value="1" type="number">
                             </div>
                             <div class="add-to-link">
                                 <button data-id="@Model.id" class="product-add-btn addToCart" data-text="add to cart">add to cart</button>
@@ -198,12 +175,14 @@
                                                 <p class="meta">
                                                     <strong>admin</strong> - <span>November 22, 2018</span>
                                                     <div class="description">
-                                                <p>Good Product</p>
+                                                        Good Product
+                                                        </div>
                                             </div>
                                         </div>
+                                    </li>
+
+                                </ul>
                             </div>
-                            </li>
-                            </ul>
                             <div class="review-form-wrapper">
                                 <div class="review-form">
                                     <span class="comment-reply-title">Add a review </span>

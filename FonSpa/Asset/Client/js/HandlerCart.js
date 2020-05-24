@@ -8,8 +8,12 @@
             var btn = $(this);
             var id = btn.data('id');
             var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
-            console.log(cartItemsList);
             var quantity = 1;
+            var addedQuantity = 1;
+            if ($('#productDetailQuantity').val() > 1) {
+                addedQuantity = $('#productDetailQuantity').val();
+                addedQuantity = Number(addedQuantity.replace(/[^0-9.-]+/g, ""));
+            }
             var totalQuantityInCart = 0;
             var oldAmount = 0;
             var checkExits = false;
@@ -17,7 +21,7 @@
                 cartItemsList = new Array();
                 var cartItem = {
                     itemId: id,
-                    quantity: 1
+                    quantity: addedQuantity
                 };
                 totalQuantityInCart = 1;
                 cartItemsList.push(cartItem);
@@ -27,7 +31,7 @@
                 oldAmount = $("#amountCart").text();
                 $.each(cartItemsList, function (index, value) {
                     if (value.itemId == id) {
-                        value.quantity += 1;
+                        value.quantity += addedQuantity;
                         quantity = value.quantity;
                         localStorage.setItem("cartItemsList", JSON.stringify(cartItemsList));
                         checkExits = true;
@@ -37,7 +41,7 @@
                 if (checkExits == false) {
                     var cartItem = {
                         itemId: id,
-                        quantity: 1
+                        quantity: addedQuantity
                     };
                     totalQuantityInCart += 1;
                     cartItemsList.push(cartItem);
@@ -63,16 +67,18 @@
                         }
                         if (checkExits == true) {
                             $("#quantityCart_" + res.product.id).html(quantity.toString() + " x ");
-                            var totalAmount = oldAmount + price;
+                            var totalAmount = oldAmount + (price * addedQuantity);
                             $("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
                             //$("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
                             return;
                         }
-
-                        var htmlString = `<li id="cartItem_${res.product.id}" class="single-cart-item"><div class="cart-img"> <a href="/product/Detail?id=${id}"><img src="${res.product.image}"></a> </div><div class="cart-content"><h5 class="product-name"><a href="single-product.html">${res.product.name}</a></h5><span id="quantityCart_${res.product.id}" class="product-quantity">${quantity} ×</span><span class="product-price">${price.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span> </div><div class="cart-item-remove"><a onClick="removeFunction(this)" data-id="${id}" class="removeMiniCart" title="Remove" href="javascript:void(0);"><i class="fa fa-trash"></i></a></div> </li>`;
+                        var htmlString = `<li id="cartItem_${res.product.id}" class="single-cart-item"><div class="cart-img"> <a href="/product/Detail?id=${id}"><img src="${res.product.image}"></a> </div><div class="cart-content"><h5 class="product-name"><a href="single-product.html">${res.product.name}</a></h5><span id="quantityCart_${res.product.id}" class="product-quantity">${addedQuantity} ×</span><span class="product-price">${price.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span> </div><div class="cart-item-remove"><a onClick="removeFunction(this)" data-id="${id}" class="removeMiniCart" title="Remove" href="javascript:void(0);"><i class="fa fa-trash"></i></a></div> </li>`;
                         $(".cart-items").append(htmlString);
-                        var totalAmount = oldAmount + price;
-                        $("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
+                        var totalAmount = oldAmount + (price * addedQuantity);
+                        console.log(totalAmount);
+                        $(document).ajaxStop(function () {
+                            $("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
+                        });
                     }
                     else {
                         console.log(res.product);
@@ -152,8 +158,6 @@ function myFunction() {
         });
     }
 }
-
-
 
 function removeFunction(elem) {
     var btn = $(elem);
@@ -249,7 +253,6 @@ function updateGrandTotalFromStorage() {
         });
     });
     $(document).ajaxStop(function () {
-        console.log(grandTotal);
         $("#cartSubTotal").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
         $("#cartGrandTotal").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
         $("#amountCart").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
