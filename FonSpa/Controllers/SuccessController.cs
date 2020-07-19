@@ -12,5 +12,11 @@ namespace FonNature.Controllers
             ViewBag.message = message;
             return View();
         }
+
+        public ActionResult OrderSuccessPage(long orderID)
+        {
+            ViewBag.orderID = orderID;
+            return View();
+        }
     }
 }

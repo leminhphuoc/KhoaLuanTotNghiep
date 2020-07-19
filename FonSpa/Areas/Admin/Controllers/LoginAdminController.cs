@@ -1,6 +1,7 @@
 ﻿using FonNature.Areas.Admin.Models;
 using FonNature.Common;
 using FonNature.Services.IServices;
+using HelperLibrary;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -39,7 +40,6 @@ namespace FonNature.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Index(LoginModel LoginModel)
         {
-
             if (LoginModel != null && ModelState.IsValid)
             {
                 if (LoginModel.RememberMe)
@@ -65,8 +65,35 @@ namespace FonNature.Areas.Admin.Controllers
                     Response.Cookies.Add(cookies);
 
                     Session[CommonConstants.UserSession.USER_SESSION_ADMIN] = "USER_SESSION_ADMIN";
-                    return RedirectToAction("HomeAdmin", "HomeAdmin");
-
+                    var returnUrl = HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["returnUrl"];
+                    if(Request.QueryString["returnUrl"] != null)
+                    {
+                        returnUrl = Request.QueryString["returnUrl"];
+                    }
+                    if (returnUrl != null)
+                    {
+                        if (returnUrl.IsAbsoluteUrl())
+                        {
+                            Uri myUri = new Uri(returnUrl);
+                            string host = myUri.Host;
+                            if (Constant.whiteListWebsite.Contains(host))
+                            {
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                return RedirectToAction("HomeAdmin", "HomeAdmin");
+                            }
+                        }
+                        else
+                        {
+                            return Redirect(returnUrl);
+                        }
+                    } 
+                    else
+                    {
+                        return RedirectToAction("HomeAdmin", "HomeAdmin");
+                    }
                 }
                 else if (checklogin == 0)
                 {

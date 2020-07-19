@@ -125,8 +125,6 @@ function myFunction() {
     //Load cart Preview Item
     var pathname = window.location.pathname;
     if (pathname === "/product/CartPreview") {
-        var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
-        if (cartItemsList == null) return;
         var totalAmount = 0;
         $.each(cartItemsList, function (index, value) {
             $.ajax({
@@ -141,7 +139,7 @@ function myFunction() {
                             price = res.product.price;
                         }
                         var amount = price * value.quantity;
-                        var htmlString = `<tr id="previewItemRow_${value.itemId}"><td class="pro-thumbnail"><a href="#"><img src="${res.product.image}" alt="Product"></a></td><td class="pro-title"><a href="#">${res.product.name}</a></td><td class="pro-price"><span class="cartPreviewPrice_${value.itemId}">${price} Vnđ</span></td><td class="pro-quantity"><div class="pro-qty"><input data-id="${value.itemId}" onchange="changeQuantity(this)" min="1" max="9999" type="number" value="${value.quantity}"></div></td><td class="pro-subtotal"><span class="cartPreviewTotal_${value.itemId}">${amount} vnđ</span></td><td class="pro-remove_${res.product.id}"><a data-ispreviewitem="true" data-id="${res.product.id}" onClick="removeFunction(this)" href="javascript:void(0);"><i class="fa fa-trash-o"></i></a></td></tr>`;
+                        var htmlString = `<tr id="previewItemRow_${value.itemId}"><td class="pro-thumbnail"><a href="#"><img src="${res.product.image}" alt="Product"></a></td><td class="pro-title"><a href="#">${res.product.name}</a></td><td class="pro-price"><span class="cartPreviewPrice_${value.itemId}">${price.toLocaleString(undefined, { minimumFractionDigits: 0 })} Vnđ</span></td><td class="pro-quantity"><div class="pro-qty"><input data-id="${value.itemId}" onchange="changeQuantity(this)" min="1" max="9999" type="number" value="${value.quantity}"></div></td><td class="pro-subtotal"><span class="cartPreviewTotal_${value.itemId}">${amount.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span></td><td class="pro-remove_${res.product.id}"><a data-ispreviewitem="true" data-id="${res.product.id}" onClick="removeFunction(this)" href="javascript:void(0);"><i class="fa fa-trash-o"></i></a></td></tr>`;
                         $(".cartPreviewTable").append(htmlString);
                         totalAmount += amount;
                         //$("#amountCart").html(amount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
@@ -155,6 +153,39 @@ function myFunction() {
         $(document).ajaxStop(function () {
             $("#cartSubTotal").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
             $("#cartGrandTotal").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+        });
+    }
+
+    //Load cart item in checkout
+    if (pathname.toUpperCase() === "/Product/CheckOut".toUpperCase()) {
+        var totalAmount = 0;
+        $.each(cartItemsList, function (index, value) {
+            $.ajax({
+                url: "/product/GetDetailJson",
+                data: { id: value.itemId },
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    if (res.product != null) {
+                        var price = res.product.promotionPrice;
+                        if (price === 0 || price == null) {
+                            price = res.product.price;
+                        }
+                        var amount = price * value.quantity;
+                        var htmlString = `<li>${res.product.name} X ${value.quantity} <span>${amount.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span></li>`;
+                        $("#checkoutCartItem").append(htmlString);
+                        totalAmount += amount;
+                        //$("#amountCart").html(amount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+                    }
+                    else {
+                        console.log(res.product);
+                    }
+                }
+            });
+        });
+        $(document).ajaxStop(function () {
+            $("#subTotalInCheckout").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            $("#grandTotalInCheckout").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
         });
     }
 }

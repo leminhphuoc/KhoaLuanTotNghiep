@@ -73,5 +73,11 @@ namespace HelperLibrary
             }
             return string.Empty;
         }
+
+        public static bool IsAbsoluteUrl(this string url)
+        {
+            Uri result;
+            return Uri.TryCreate(url, UriKind.Absolute, out result);
+        }
     }
 }

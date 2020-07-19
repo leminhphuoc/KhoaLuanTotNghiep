@@ -1,9 +1,11 @@
 ﻿using FonNature.Services.IClientServices;
 using Models.Entity;
 using Models.Model;
+using Newtonsoft.Json;
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers
@@ -70,18 +72,6 @@ namespace FonNature.Controllers
 
         public ActionResult CartPreview()
         {
-            //var idProductsFromCart = Request.Form["id"];
-            //if (idProductsFromCart == null) return View();
-            //var idProductsSplit = idProductsFromCart.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            //int productTotal = idProductsSplit.Count();
-            //if (productTotal == 0) return View();
-            //List<ProductInCart> cart = new List<ProductInCart>();
-            //for (int i = 1; i <= productTotal; i++)
-            //{
-            //    var product = new ProductInCart(long.Parse(idProductsSplit[i - 1])) { ProductId = long.Parse(idProductsSplit[i - 1]), Count = int.Parse(Request.Form["quantity_" + i]) };
-            //    cart.Add(product);
-            //}
-            //Session[Constant.Cart_Sesion] = cart;
             return View();
         }
 
@@ -93,21 +83,21 @@ namespace FonNature.Controllers
             );
         }
 
-        [HttpPost]
-        public ActionResult Order(Customer customerInfor)
-        {
-            var orderInformations = TempData["OrderInformation"] as List<OrderInformation>;
-            var idOrder = _orderServices.CreateOrder(orderInformations,customerInfor);
-            var productInCarts = new List<ProductInCart>();
-            foreach(var order in orderInformations)
-            {
-                var product = new ProductInCart(order.IdProduct);
-                productInCarts.Add(product);
-            }
-            var cart = new Cart() { productInCarts = productInCarts, customer = customerInfor };
-            if (idOrder > 0) ViewBag.idOrder = idOrder;
-            return View(cart);
-        }
+        //[HttpPost]
+        //public ActionResult Order(Customer customerInfor)
+        //{
+        //    var orderInformations = TempData["OrderInformation"] as List<OrderInformation>;
+        //    var idOrder = _orderServices.CreateOrder(orderInformations,customerInfor);
+        //    var productInCarts = new List<ProductInCart>();
+        //    foreach(var order in orderInformations)
+        //    {
+        //        var product = new ProductInCart(order.IdProduct);
+        //        productInCarts.Add(product);
+        //    }
+        //    var cart = new Cart() { productInCarts = productInCarts, customer = customerInfor };
+        //    if (idOrder > 0) ViewBag.idOrder = idOrder;
+        //    return View(cart);
+        //}
 
         [HttpPost]
         public JsonResult GetDetailJson(long id)
@@ -118,6 +108,45 @@ namespace FonNature.Controllers
                 product = product
             }
             );
+        }
+
+        [HttpPost]
+        public JsonResult AddCart(string data)
+        {
+            var ProductInCart = JsonConvert.DeserializeObject<List<ProductInCart>>(data);
+            if(ProductInCart != null)
+            {
+                Session["cart"] = ProductInCart;
+                return Json(new
+                {
+                    res = true
+                });
+            }
+            else
+            {
+                return Json(new
+                {
+                    res = false
+                });
+            }
+        }
+
+        public ActionResult Checkout()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Checkout(Customer customer)
+        {
+            if(ModelState.IsValid)
+            {
+                var cartItem = Session["cart"];
+                if (cartItem == null && customer == null) return View(customer);
+                var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, customer);
+                return RedirectToAction("OrderSuccessPage","Success", new { orderID = orderID });
+            }
+            return View(customer);
         }
     }
 }

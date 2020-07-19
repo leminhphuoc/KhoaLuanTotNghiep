@@ -1,6 +1,7 @@
 ﻿using FonNature.Services.IClientServices;
 using Models.Entity;
 using Models.IRepository;
+using Models.Model;
 using System;
 using System.Collections.Generic;
 
@@ -16,18 +17,29 @@ namespace FonNature.Services.ClientServices
             _customerAdminRepository = customerAdminRepository;
         }
 
-        public long CreateOrder(List<OrderInformation> orderInformations, Customer customer)
+        public long CreateOrder(List<ProductInCart> productInCarts, Customer customer)
         {
-            var idCustomer = _customerAdminRepository.AddCustomer(customer);
-            var order = new Order() { IdCustomer = idCustomer };
-            var idOrder = _orderRepository.CreateOrder(order);
-            foreach(var infor in orderInformations)
+            try
             {
-                infor.IdOrder = idOrder;
-                _orderRepository.CreateOrderInformation(infor);
+                var idCustomer = _customerAdminRepository.AddCustomer(customer);
+                var order = new Order() { IdCustomer = idCustomer };
+                var idOrder = _orderRepository.CreateOrder(order);
+                foreach (var product in productInCarts)
+                {
+                    var orderInformation = new OrderInformation()
+                    {
+                        IdOrder = idOrder,
+                        IdProduct = product.itemId,
+                        Quantity = product.quantity
+                    };
+                    _orderRepository.CreateOrderInformation(orderInformation);
+                }
+                return idOrder;
             }
-            return idOrder;
+            catch
+            {
+                return 0;
+            }
         }
-
     }
 }

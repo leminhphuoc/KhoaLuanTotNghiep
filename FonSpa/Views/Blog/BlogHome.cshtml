@@ -45,7 +45,7 @@
                                 <ul class="meta">
                                     <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">@item.createdDate.Value.Day</span><span class="separator">-</span><span class="month">@item.createdDate.Value.ToString("MMMM")</span></span></li>
                                 </ul>
-                                <p>@item.description</p>
+                                <p>@Html.Raw(@item.description)</p>
                                 <a class="readmore" href="/blog/detail?id=@item.id">Read more</a>
                             </div>
                         </div>

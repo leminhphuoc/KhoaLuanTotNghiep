@@ -39,10 +39,25 @@ namespace FonNature.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var addContent = _contentServices.AddContent(content);
-                var idContent = addContent;
-                if (idContent == 0) ModelState.AddModelError("", "Cannot Add Content!");
-                return RedirectToAction("Index");
+                foreach (var tag in Constant.HtmlTagWhiteList)
+                {
+                    content.description = content.description.Replace("</" + tag + ">", "&lt;" + tag + "/&gt;");
+                }
+                if (content.description.Contains("</")) ModelState.AddModelError("", "Invalid Description!");
+                else
+                {
+                    foreach (var tag in Constant.HtmlTagWhiteList)
+                    {
+                        content.description = content.description.Replace("&lt;" + tag + "/&gt;", "</" + tag + ">");
+                    }
+                    var addContent = _contentServices.AddContent(content);
+                    var idContent = addContent;
+                    if (idContent == 0) ModelState.AddModelError("", "Cannot Add Content!");
+                    else
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
             }
             ViewBag.ContentCategory = _contentServices.GetContentCategory();
             return View(content);

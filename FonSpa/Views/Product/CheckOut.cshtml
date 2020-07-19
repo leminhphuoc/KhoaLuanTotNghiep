@@ -1,257 +1,222 @@
-﻿    @model List<Models.Model.ProductInCart>
+﻿@model Models.Entity.Customer
 @{
     ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@section ProductJs{
-    <!-- cart-js -->
-    <script src="~/Asset/Cartpage/web/js/minicart.js"></script>
+@section jsFooter{
     <script>
-        toys.render();
-    </script>
-    <!--// cart-js -->
-    <!--quantity-->
-    <script>
-        $('.value-plus').on('click', function () {
-            var divUpd = $(this).parent().find('.value'),
-                newVal = parseInt(divUpd.text(), 10) + 1;
-            divUpd.text(newVal);
-            var idx = $(this).data("id");
-            console.log(idx);
-            var price = parseInt($('#price_' + idx).text(), 10);
-            var totalPriceNew = price * newVal;
-            $('#totalPrice_' + idx).text(totalPriceNew + " Vnđ");
-            $('#span_' + idx).text(totalPriceNew + " Vnđ");
-            var product = toys.cart.items(idx - 1);
-            product.set('quantity', newVal);
-            $('#SumPrice').text(toys.cart.total() + " Vnđ");
-        });
-
-        $('.value-minus').on('click', function () {
-            var divUpd = $(this).parent().find('.value'),
-                newVal = parseInt(divUpd.text(), 10) - 1;
-            var idx = $(this).data("id");
-            if (newVal >= 1) {
-                divUpd.text(newVal);
-                var price = parseInt($('#price_' + idx).text(), 10);
-                var totalPriceNew = price * newVal;
-                $('#totalPrice_' + idx).text(totalPriceNew + " Vnđ");
-                $('#span_' + idx).text(totalPriceNew + " Vnđ");
-                var product = toys.cart.items(idx - 1);
-                product.set('quantity', newVal);
-                $('#SumPrice').text(toys.cart.total() + " Vnđ");
-            }
-        });
-    </script>
-    <!--quantity-->
-    <!--closed-->
-    <script>
-        $(document).ready(function (c) {
-            $('.close3').on('click', function (c) {
-                var btn = $(this);
-                var idx = btn.data("id")
-                toys.cart.remove(idx - 1);
-                $('#row_' + idx).fadeOut('slow', function (c) {
-                    $('#row_' + idx).remove();
-                });
-            });
-        });
-    </script>
-    <!--//closed-->
-    <!--Order-->
-    <script>
-        $(document).ready(function (c) {
-            $('#order').on('click', function (c) {
-                var length = toys.cart._items.length;
-                var arr = new Array();
-                for (i = 0; i < length; i++) {
-                    var obj = toys.cart.items(i);
-                    arr[i] = { IdProduct: obj._data.id, Quantity: obj._data.quantity };
-                    console.log(arr);
-                }
-                $.ajax({
-                    url: "/Product/OrderInformation",
-                    data: { orderInformations: arr },
-                    dataType: "json",
-                    type: "POST",
-                    success: function (orderInformations) {
-                        console.log(orderInformations);
+        $('#orderButtonAjax').off('click').on('click', function (e) {
+            var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
+            if (cartItemsList == null) return;
+            $.ajax({
+                url: "/Product/AddCart",
+                data: { data: JSON.stringify(cartItemsList) },
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    if (res) {
+                        $('#orderButtonPostBack').click();
+                        console.log(res);
                     }
-                });
+                    else {
+                        console.log(res.product);
+                    }
+                }
             });
-        });
-    </script>
-    <!--Order-->
-    <!--Reset Cart-->
-    <script>
-        $(document).ready(function (c) {
-            $('#order').on('click', function (c) {
-                toys.reset();
-            });
-        });
-    </script>
-    <!--Order-->
-    <!-- start-smoth-scrolling -->
-    <script src="~/Asset/Cartpage/web/js/move-top.js"></script>
-    <script src="~/Asset/Cartpage/web/js/easing.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-    <!-- start-smoth-scrolling -->
-    <!-- here stars scrolling icon -->
-    <script>
-        $(document).ready(function () {
-
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
         });
     </script>
 }
-<section class="checkout py-lg-4 py-md-3 py-sm-3 py-3">
-    <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
-        <div class="shop_inner_inf">
-            <div class="privacy about">
-                <h3>Chec<span>kout</span></h3>
-                <div class="checkout-right">
-                    <h4>Giỏ hàng hiện có: <span>@(Model == null ? 0 : Model.Count ) sản phẩm</span></h4>
-                    <table class="timetable_sub">
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Hình ảnh</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Số lượng</th>
-                                <th>Đơn giá</th>
-                                <th>Thành tiền</th>
-                                <th>Xóa</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @{
-                                int stt = 1;
-                                if (Model != null)
-                                {
-                                    foreach (var item in Model)
-                                    {
+<!-- Page Banner Section Start -->
+<div class="page-banner-section section bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col">
 
-                                        <tr id="row_@stt">
-                                            <td class="invert">@stt</td>
-                                            <td class="invert-image"><a href="single.html"><img style="max-width:200px;" src="@item.ProductImage" alt="error" class="img-responsive"></a></td>
-                                            <td width="300px" style="overflow: hidden;text-overflow: ellipsis;" class="invert">
-                                                @item.ProductName
-                                            </td>
-                                            <td class="invert">
-                                                <div class="quantity">
-                                                    <div class="quantity-select">
-                                                        <div data-id="@stt" class="entry value-minus">&nbsp;</div>
-                                                        <div class="entry value"><span>@item.Count</span></div>
-                                                        <div data-id="@stt" class="entry value-plus active">&nbsp;</div>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td id="price_@stt" class="invert">@item.ProductPrice Vnđ</td>
-                                            <td id="totalPrice_@stt" class="invert">@(item.ProductPrice * item.Count) Vnđ</td>
-                                            <td width="70px" class="invert">
-                                                <div id="rem_@stt" class="rem">
-                                                    <div data-id="@stt" class="close3"> </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        stt++;
-                                    }
-                                }
-
-                            }
-
-                        </tbody>
-                    </table>
+                <div class="page-banner text-center">
+                    <h1>Checkout</h1>
+                    <ul class="page-breadcrumb">
+                        <li><a href="/">Home</a></li>
+                        <li>Checkout</li>
+                    </ul>
                 </div>
-                <div class="checkout-left">
-                    <div class="col-md-4 checkout-left-basket">
-                        <h4>Thông tin đơn hàng</h4>
-                        <ul>
-                            @{
-                                decimal totalPrice = 0;
-                                var idx = 1;
-                                if (Model != null)
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        totalPrice += item.ProductPrice * item.Count;
-                                        <li class="invert">@(item.ProductName.Length >= 35 ? item.ProductName.Substring(0, 35) : item.ProductName )  <i>-</i> <span id="span_@idx">@(item.ProductPrice * item.Count) Vnđ </span></li>
-                                        idx++;
-                                    }
-                                }
-                            }
-                            <li>Tổng cộng <i>-</i> <span id="SumPrice">@totalPrice Vnđ</span></li>
-                        </ul>
-                    </div>
-                    @if (Model != null)
-                    {
-                        <div class="col-md-8 address_form">
-                            <h4>Thông tin đặt hàng</h4>
-                            <form action="@Url.Action("Order", "Product")" method="post" class="creditly-card-form agileinfo_form">
-                                <section class="creditly-wrapper wrapper">
-                                    <div class="information-wrapper">
-                                        <div class="first-row form-group">
-                                            <div class="controls">
-                                                <label class="control-label">Họ và tên *</label>
-                                                <input class="billing-address-name form-control" type="text" id="Name" name="Name" placeholder="Họ và tên">
-                                            </div>
-                                            <div class="card_number_grids">
-                                                <div class="card_number_grid_left">
-                                                    <div class="controls">
-                                                        <label class="control-label">Số điện thoại *</label>
-                                                        <input class="form-control" id="phone" name="phone" type="text" placeholder="Số điện thoại">
-                                                    </div>
-                                                </div>
-                                                <div class="card_number_grid_right">
-                                                    <div class="controls">
-                                                        <label class="control-label">Địa chỉ *</label>
-                                                        <input class="form-control" id="address" name="address" type="text" placeholder="Địa chỉ">
-                                                    </div>
-                                                </div>
-                                                <div class="card_number_grid_right">
-                                                    <div class="controls">
-                                                        <label class="control-label">Email</label>
-                                                        <input class="form-control" id="email" name="email" type="text" placeholder="Email">
-                                                    </div>
-                                                </div>
-                                                <div class="clear"> </div>
-                                            </div>
-                                        </div>
-                                        <button id="order" class="submit check_out">Đặt hàng</button>
-                                    </div>
-                                </section>
-                            </form>
 
-                            @*<div class="checkout-right-basket">
-                    <a href="payment.html">Thanh toán</a>
-                </div>*@
-                        </div>
-                    }
-                    <div class="clearfix"> </div>
-                    <div class="clearfix"></div>
-                </div>
             </div>
         </div>
-        <!-- //top products -->
     </div>
-</section>
+</div>
+<!-- Page Banner Section End -->
+<!--Checkout section start-->
+<div class="checkout-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
 
+                <!-- Checkout Form Start-->
+                @using (Html.BeginForm("Checkout", "Product", FormMethod.Post, new { @class = "checkout-form" }))
+                {
+                    <div class="row row-40">
+
+                        <div class="col-lg-7">
+
+                            <!-- Billing Address -->
+                            <div id="billing-form" class="mb-10">
+                                <h4 class="checkout-title">Thông tin khách hàng</h4>
+
+                                <div class="row">
+
+                                    <div class="col-12 mb-20">
+                                        <label>Họ và tên*</label>
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @placeholder = "Họ và tên", @type = "text" } })
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb-20">
+                                        <label>Email*</label>
+                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @placeholder = "Email", @type = "email" } })
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb-20">
+                                        <label>Số điện thoại*</label>
+                                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @placeholder = "Số điện thoại", @type = "phone" } })
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <label>Địa chỉ*</label>
+                                        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @placeholder = "Địa chỉ", @type = "text" } })
+                                    </div>
+
+                                    @*<div class="col-md-6 col-12 mb-20">
+                                            <label>Thành phố*</label>
+                                            <input type="text" placeholder="Town/City">
+                                        </div>*@
+                                </div>
+                            </div>
+
+                            <!-- Shipping Address -->
+                            @*<div id="shipping-form">
+                                    <h4 class="checkout-title">Shipping Address</h4>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>First Name*</label>
+                                            <input type="text" placeholder="First Name">
+                                        </div>
+
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Last Name*</label>
+                                            <input type="text" placeholder="Last Name">
+                                        </div>
+
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Email Address*</label>
+                                            <input type="email" placeholder="Email Address">
+                                        </div>
+
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Phone no*</label>
+                                            <input type="text" placeholder="Phone number">
+                                        </div>
+
+                                        <div class="col-12 mb-20">
+                                            <label>Company Name</label>
+                                            <input type="text" placeholder="Company Name">
+                                        </div>
+
+                                        <div class="col-12 mb-20">
+                                            <label>Address*</label>
+                                            <input type="text" placeholder="Address line 1">
+                                            <input type="text" placeholder="Address line 2">
+                                        </div>
+
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Country*</label>
+                                            <select class="nice-select">
+                                                <option>Bangladesh</option>
+                                                <option>China</option>
+                                                <option>country</option>
+                                                <option>India</option>
+                                                <option>Japan</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Town/City*</label>
+                                            <input type="text" placeholder="Town/City">
+                                        </div>
+
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>State*</label>
+                                            <input type="text" placeholder="State">
+                                        </div>
+
+                                        <div class="col-md-6 col-12 mb-20">
+                                            <label>Zip Code*</label>
+                                            <input type="text" placeholder="Zip Code">
+                                        </div>
+
+                                    </div>
+
+                                </div>*@
+
+                        </div>
+
+                        <div class="col-lg-5">
+                            <div class="row">
+
+                                <!-- Cart Total -->
+                                <div class="col-12 mb-60">
+
+                                    <h4 class="checkout-title">Tóm tắt đơn hàng</h4>
+
+                                    <div class="checkout-cart-total">
+
+                                        <h4>Sản phẩm <span>Thành tiền</span></h4>
+
+                                        <ul id="checkoutCartItem"></ul>
+
+                                        <p>Tổng đơn hàng <span id="subTotalInCheckout">0 vnđ</span></p>
+                                        <p>Phí ship <span>0 vnđ</span></p>
+
+                                        <h4>Tổng cộng <span id="grandTotalInCheckout">0 vnđ</span></h4>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- Payment Method -->
+                                <div class="col-12 mb-30">
+
+                                    <h4 class="checkout-title">Hình thức thanh toán</h4>
+
+                                    <div class="checkout-payment-method">
+                                        <div class="single-method">
+                                            <input type="radio" id="payment_bank" name="payment-method" value="bank">
+                                            <label for="payment_bank">Chuyển khoản</label>
+                                            <p data-method="bank">Vui lòng chuyển khoản theo thông tin: <br />Số tài khoản:xxxxxxx <br /> Ngân hàng:xxxx <br />Chủ tài khoản: xxx</p>
+                                        </div>
+
+                                        <div class="single-method">
+                                            <input type="checkbox" id="accept_terms">
+                                            <label for="accept_terms"><a target="_blank" href="/">Tôi đã đồng ý với điều khoản và điều kiện</a></label>
+                                        </div>
+
+                                    </div>
+                                    <a id="orderButtonAjax" href="#" class="place-order btn btn-lg btn-round">Đặt hàng</a>
+                                    <button hidden id="orderButtonPostBack" class="place-order btn btn-lg btn-round">Đặt hàng</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--Checkout section end-->

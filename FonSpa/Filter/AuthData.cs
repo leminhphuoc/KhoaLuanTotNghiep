@@ -1,5 +1,6 @@
 ﻿using FonNature.Common;
 using System;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Filters;
 using System.Web.Routing;
@@ -19,8 +20,10 @@ namespace FonNature.Filter
         {
             if (filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
             {
+                //  filterContext.Result = new RedirectToRouteResult(
+                //new RouteValueDictionary(new { Controller = "LoginAdmin", Action = "Index", Area = "Admin", returnUrl = filterContext.HttpContext.Request.Url}));
                 filterContext.Result = new RedirectToRouteResult(
-              new RouteValueDictionary(new { Controller = "LoginAdmin", Action = "Index", Area = "Admin" }));
+                new RouteValueDictionary(new { Controller = "LoginAdmin", Action = "Index", Area = "Admin", returnUrl = filterContext.HttpContext.Request.Url.GetComponents(UriComponents.PathAndQuery, UriFormat.SafeUnescaped) }));
             }
         }
        
