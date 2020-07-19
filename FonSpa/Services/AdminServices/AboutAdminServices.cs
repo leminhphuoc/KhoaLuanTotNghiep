@@ -1,7 +1,7 @@
 ﻿using FonNature.Services.IServices;
 using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 
@@ -9,10 +9,10 @@ namespace FonNature.Services.Services
 {
     public class AboutAdminServices : IAboutAdminServices
     {
-        private readonly IAboutAdminRepository _aboutAdminRepository;
-        public AboutAdminServices(IAboutAdminRepository aboutAdminRepository)
+        private readonly AboutAdminRepository _aboutAdminRepository;
+        public AboutAdminServices()
         {
-            _aboutAdminRepository = aboutAdminRepository;
+            _aboutAdminRepository = AboutAdminRepository.getInstance();
         }
 
         public List<About> ListAllByName(string searchString)

@@ -1,7 +1,7 @@
 ﻿using FonNature.Enum;
 using FonNature.Services.IClientServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
@@ -10,16 +10,16 @@ namespace FonNature.Services.ClientServices
 {
     public class ProductServices : IProductServices
     {
-        private readonly IProductAdminRepository _productAdminRepository;
-        private readonly IProductCategoryAdminRepository _productCateAdminRepository;
-        private readonly ISEORepository _seoRepository;
-        private readonly IBannerRepository _bannerRepository;
-        public ProductServices(IProductAdminRepository productAdminRepository , ISEORepository seoRepository, IProductCategoryAdminRepository productCateAdminRepository, IBannerRepository bannerRepository)
+        private readonly ProductAdminRepository _productAdminRepository;
+        private readonly ProductCategoryAdminRepository _productCateAdminRepository;
+        private readonly SEORepository _seoRepository;
+        private readonly BannerRepository _bannerRepository;
+        public ProductServices()
         {
-            _productAdminRepository = productAdminRepository;
-            _seoRepository = seoRepository;
-            _productCateAdminRepository = productCateAdminRepository;
-            _bannerRepository = bannerRepository;
+            _productAdminRepository = ProductAdminRepository.getInstance();
+            _seoRepository = SEORepository.getInstance();
+            _productCateAdminRepository = ProductCategoryAdminRepository.getInstance();
+            _bannerRepository = BannerRepository.getInstance();
         }
         public SEO GetProductSeo()
         {

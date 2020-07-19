@@ -1,23 +1,25 @@
 ﻿using Models.Entity;
-using Models.IRepository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class SEORepository : ISEORepository
+    public class SEORepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public SEORepository()
+        private static SEORepository instance = new SEORepository();
+
+        private SEORepository()
         {
             _db = new FonNatureDbContext();
+        }
 
+        public static SEORepository getInstance()
+        {
+            return instance;
         }
 
         public List<SEO> GetSEOs()

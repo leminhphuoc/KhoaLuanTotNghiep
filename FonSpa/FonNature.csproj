@@ -277,7 +277,6 @@
     <Compile Include="Services\IAdminServices\IStaffAdminServices.cs" />
     <Compile Include="Services\AdminServices\AboutAdminServices.cs" />
     <Compile Include="Services\AdminServices\AccountAdminServices.cs" />
-    <Compile Include="Services\AdminServices\ChartAdminServices.cs" />
     <Compile Include="Services\AdminServices\ContactAdminServices.cs" />
     <Compile Include="Services\ClientServices\ContactClientServices.cs" />
     <Compile Include="Services\AdminServices\ContentCategoryAdminServices.cs" />
@@ -297,6 +296,8 @@
     <Compile Include="Services\IClientServices\IOrderServices.cs" />
     <Compile Include="Services\IClientServices\IProductServices.cs" />
     <Compile Include="Services\IClientServices\ISearchService.cs" />
+    <Compile Include="Services\IObserver.cs" />
+    <Compile Include="Services\ISubject.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

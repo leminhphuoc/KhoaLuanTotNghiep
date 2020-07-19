@@ -1,22 +1,26 @@
 ﻿using Models.Entity;
-using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class BannerRepository : IBannerRepository
+    public class BannerRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public BannerRepository()
+        private static BannerRepository instance = new BannerRepository();
+
+        private BannerRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static BannerRepository getInstance()
+        {
+            return instance;
         }
 
         public long Add(Banner banner)

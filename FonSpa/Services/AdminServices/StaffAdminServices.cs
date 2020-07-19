@@ -1,7 +1,7 @@
 ﻿using FonNature.Services.IServices;
 using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 
@@ -9,10 +9,10 @@ namespace FonNature.Services.Services
 {
     public class StaffAdminServices : IStaffAdminServices
     {
-        private readonly IStaffAdminRepository _staffAdminRepository;
-        public StaffAdminServices(IStaffAdminRepository staffAdminRepository)
+        private readonly StaffAdminRepository _staffAdminRepository;
+        public StaffAdminServices()
         {
-            _staffAdminRepository = staffAdminRepository;
+            _staffAdminRepository = StaffAdminRepository.getInstance();
         }
 
         public List<Staff> ListAllByName(string searchString)

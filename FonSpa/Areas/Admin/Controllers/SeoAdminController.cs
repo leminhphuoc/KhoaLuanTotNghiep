@@ -1,20 +1,20 @@
-﻿using Models.IRepository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using PagedList;
 using Models.Entity;
 using FonNature.Filter;
+using Models.Repository;
 
 namespace FonNature.Areas.Admin.Controllers
 {
     [AuthData]
     public class SeoAdminController : Controller
     {
-        private readonly ISEORepository _seoRepository;
-        public SeoAdminController(ISEORepository seoRepository)
+        private readonly SEORepository _seoRepository;
+        public SeoAdminController()
         {
-            _seoRepository = seoRepository;
+            _seoRepository = SEORepository.getInstance();
         }
         // GET: Admin/SeoAdmin
         public ActionResult SeoList(int? page, string searchString = null)

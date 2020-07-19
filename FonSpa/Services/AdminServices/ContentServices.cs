@@ -1,18 +1,17 @@
 ﻿using FonNature.Services.IServices;
 using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
-using System;
+using Models.Repository;
 using System.Collections.Generic;
 
 namespace FonNature.Services.Services
 {
     public class ContentServices : IContentServices
     {
-        private readonly IContentAdminRepository _contentAdminRepository;
-        public ContentServices(IContentAdminRepository contentAdminRepository)
+        private readonly ContentAdminRepository _contentAdminRepository;
+        public ContentServices()
         {
-            _contentAdminRepository = contentAdminRepository;
+            _contentAdminRepository = ContentAdminRepository.getInstance();
         }
 
         public Content GetDetail(long id)

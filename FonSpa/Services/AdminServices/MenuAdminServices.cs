@@ -1,6 +1,6 @@
 ﻿using FonNature.Services.IServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 
@@ -8,10 +8,10 @@ namespace FonNature.Services.Services
 {
     public class MenuAdminServices : IMenuAdminServices
     {
-        private readonly IMenuAdminRepository _menuAdminRepository;
-        public MenuAdminServices(IMenuAdminRepository menuAdminRepository)
+        private readonly MenuAdminRepository _menuAdminRepository;
+        public MenuAdminServices()
         {
-            _menuAdminRepository = menuAdminRepository;
+            _menuAdminRepository = MenuAdminRepository.getInstance();
         }
 
         public List<Menu> ListMenuByText(string searchString)

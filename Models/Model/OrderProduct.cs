@@ -11,7 +11,7 @@ namespace Models.Model
     {
         public OrderProduct(long productId, int quantity)
         {
-            var product = new ProductAdminRepository().GetDetail(productId);
+            var product = ProductAdminRepository.getInstance().GetDetail(productId);
             Id = product.id;
             ProductName = product.name;
             Quantity = quantity;

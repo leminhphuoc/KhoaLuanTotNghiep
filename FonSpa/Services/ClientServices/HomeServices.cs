@@ -1,7 +1,7 @@
 ﻿using FonNature.Enum;
 using FonNature.Services.IClientServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,36 +10,34 @@ namespace FonNature.Services.ClientServices
 {
     public class HomeServices : IHomeServices
     {
-        private readonly IMenuAdminRepository _menuAdminRepository;
-        private readonly ISlideAdminRepository _slideAdminRepository;
-        private readonly IProductCategoryAdminRepository _productCategoryAdminRepository;
-        private readonly IStaffAdminRepository _staffAdminRepository;
-        private readonly IContentCategoryAdminRepository _contentCategoryAdminRepository;
-        private readonly IFooterCategoryAdminRepository _footerCategoryAdminRepository;
-        private readonly IFooterAdminRepository _footerAdminRepository;
-        private readonly IAboutAdminRepository _aboutAdminRepository;
-        private readonly ISEORepository _seoRepository;
-        private readonly IProductAdminRepository _productAdminRepository;
-        private readonly IContentAdminRepository _contentAdminRepository;
-        private readonly IBannerRepository _bannerRepository;
-        private readonly IContactAdminRepository _contactAdminRepository;
-        public HomeServices(IMenuAdminRepository menuAdminRepository, ISlideAdminRepository slideAdminRepository, IProductCategoryAdminRepository productCategoryAdminRepository ,IContentCategoryAdminRepository contentCategoryAdminRepository, IFooterAdminRepository footerAdminRepository, IFooterCategoryAdminRepository footerCategoryAdminRepository, IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository
-            , ISEORepository seoRepository, IProductAdminRepository productAdminRepository, IContentAdminRepository contentAdminRepository, IBannerRepository bannerRepository,
-             IContactAdminRepository contactAdminRepository)
+        private readonly MenuAdminRepository _menuAdminRepository;
+        private readonly SlideAdminRepository _slideAdminRepository;
+        private readonly ProductCategoryAdminRepository _productCategoryAdminRepository;
+        private readonly StaffAdminRepository _staffAdminRepository;
+        private readonly ContentCategoryAdminRepository _contentCategoryAdminRepository;
+        private readonly FooterCategoryAdminRepository _footerCategoryAdminRepository;
+        private readonly FooterAdminRepository _footerAdminRepository;
+        private readonly AboutAdminRepository _aboutAdminRepository;
+        private readonly SEORepository _seoRepository;
+        private readonly ProductAdminRepository _productAdminRepository;
+        private readonly ContentAdminRepository _contentAdminRepository;
+        private readonly BannerRepository _bannerRepository;
+        private readonly ContactAdminRepository _contactAdminRepository;
+        public HomeServices()
         {
-            _menuAdminRepository = menuAdminRepository;
-            _slideAdminRepository = slideAdminRepository;
-            _productCategoryAdminRepository = productCategoryAdminRepository;
-            _contentCategoryAdminRepository = contentCategoryAdminRepository;
-            _staffAdminRepository = staffAdminRepository;
-            _footerCategoryAdminRepository = footerCategoryAdminRepository;
-            _footerAdminRepository = footerAdminRepository;
-            _aboutAdminRepository = aboutAdminRepository;
-            _seoRepository = seoRepository;
-            _productAdminRepository = productAdminRepository;
-            _contentAdminRepository = contentAdminRepository;
-            _bannerRepository = bannerRepository;
-            _contactAdminRepository = contactAdminRepository;
+            _menuAdminRepository = MenuAdminRepository.getInstance();
+            _slideAdminRepository = SlideAdminRepository.getInstance();
+            _productCategoryAdminRepository = ProductCategoryAdminRepository.getInstance();
+            _contentCategoryAdminRepository = ContentCategoryAdminRepository.getInstance();
+            _staffAdminRepository = StaffAdminRepository.getInstance();
+            _footerCategoryAdminRepository = FooterCategoryAdminRepository.getInstance();
+            _footerAdminRepository = FooterAdminRepository.getInstance();
+            _aboutAdminRepository = AboutAdminRepository.getInstance();
+            _seoRepository = SEORepository.getInstance();
+            _productAdminRepository = ProductAdminRepository.getInstance();
+            _contentAdminRepository = ContentAdminRepository.getInstance();
+            _bannerRepository = BannerRepository.getInstance();
+            _contactAdminRepository = ContactAdminRepository.getInstance();
         }
 
         public List<Menu> ListMenu()

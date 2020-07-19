@@ -1,9 +1,4 @@
 ﻿using Models.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -13,12 +8,16 @@ namespace Models.Repository
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public VisitorRepository()
+        private static VisitorRepository instance = new VisitorRepository();
+
+        private VisitorRepository()
         {
             _db = new FonNatureDbContext();
-
         }
 
-        
+        public static VisitorRepository getInstance()
+        {
+            return instance;
+        }
     }
 }

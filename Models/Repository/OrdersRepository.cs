@@ -1,22 +1,26 @@
 ﻿using Models.Entity;
-using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class OrdersRepository : IOrderRepository
+    public class OrdersRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public OrdersRepository()
+        private static OrdersRepository instance = new OrdersRepository();
+
+        private OrdersRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static OrdersRepository getInstance()
+        {
+            return instance;
         }
 
         public long CreateOrder(Order order)

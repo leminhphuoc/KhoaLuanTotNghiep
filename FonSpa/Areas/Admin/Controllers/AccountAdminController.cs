@@ -1,7 +1,7 @@
 ﻿using FonNature.Filter;
 using FonNature.Services.IServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
@@ -9,11 +9,11 @@ namespace FonNature.Areas.Admin.Controllers
     [AuthData]
     public class AccountAdminController : Controller
     {
-        private readonly IAccountAdminRepository _accountAdminRepository;
+        private readonly AccountAdminRepository _accountAdminRepository;
         private readonly IAccountAdminServices _accountAdminServices;
-        public AccountAdminController(IAccountAdminRepository accountAdminRepository, IAccountAdminServices accountAdminServices)
+        public AccountAdminController(IAccountAdminServices accountAdminServices)
         {
-            _accountAdminRepository = accountAdminRepository;
+            _accountAdminRepository = AccountAdminRepository.getInstance();
             _accountAdminServices = accountAdminServices;
         }
         // GET: Admin/AccountAdmin

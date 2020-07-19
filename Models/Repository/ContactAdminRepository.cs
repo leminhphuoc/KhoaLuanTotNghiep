@@ -1,5 +1,4 @@
 ﻿using Models.Entity;
-using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +7,22 @@ using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class ContactAdminRepository : IContactAdminRepository
+    public class ContactAdminRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public ContactAdminRepository()
+        private static ContactAdminRepository instance = new ContactAdminRepository();
+
+        private ContactAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static ContactAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public Contact GetContact()

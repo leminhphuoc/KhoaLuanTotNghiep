@@ -1,22 +1,26 @@
 ﻿using Models.Entity;
-using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class ProductCategoryAdminRepository : IProductCategoryAdminRepository
+    public class ProductCategoryAdminRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public ProductCategoryAdminRepository()
+        private static ProductCategoryAdminRepository instance = new ProductCategoryAdminRepository();
+
+        private ProductCategoryAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static ProductCategoryAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public ProductCategory GetDetail(long id)

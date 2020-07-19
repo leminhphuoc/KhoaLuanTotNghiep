@@ -1,22 +1,25 @@
 ﻿using Models.Entity;
-using Models.IRepository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class FooterCategoryAdminRepository : IFooterCategoryAdminRepository
+    public class FooterCategoryAdminRepository 
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public FooterCategoryAdminRepository()
+        private static FooterCategoryAdminRepository instance = new FooterCategoryAdminRepository();
+
+        private FooterCategoryAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static FooterCategoryAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public FooterCategory GetDetail(long id)

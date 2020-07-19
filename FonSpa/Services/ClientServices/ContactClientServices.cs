@@ -1,21 +1,21 @@
 ﻿using FonNature.Enum;
 using FonNature.Services.IServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System.Linq;
 
 namespace FonNature.Services.Services
 {
     public class ContactClientServices : IContactClientServices
     {
-        private readonly IContactAdminRepository _contactAdminRepository;
-        private readonly ISEORepository _seoRepository;
-        private readonly IBannerRepository _bannerRepository;
-        public ContactClientServices(IContactAdminRepository contactAdminRepository , ISEORepository seoRepository, IBannerRepository bannerRepository)
+        private readonly ContactAdminRepository _contactAdminRepository;
+        private readonly SEORepository _seoRepository;
+        private readonly BannerRepository _bannerRepository;
+        public ContactClientServices()
         {
-            _contactAdminRepository = contactAdminRepository;
-            _seoRepository = seoRepository;
-            _bannerRepository = bannerRepository;
+            _contactAdminRepository = ContactAdminRepository.getInstance();
+            _seoRepository = SEORepository.getInstance();
+            _bannerRepository = BannerRepository.getInstance();
         }
         public SEO GetSeo()
         {

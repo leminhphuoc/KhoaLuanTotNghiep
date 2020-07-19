@@ -1,18 +1,17 @@
 ﻿using FonNature.Services.IServices;
 using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
-using System;
+using Models.Repository;
 using System.Collections.Generic;
 
 namespace FonNature.Services.Services
 {
     public class ContentCategoryAdminServices : IContentCategoryAdminServices
     {
-        private readonly IContentCategoryAdminRepository _contentCategoryAdminRepository;
-        public ContentCategoryAdminServices(IContentCategoryAdminRepository contentCategoryAdminRepository)
+        private readonly ContentCategoryAdminRepository _contentCategoryAdminRepository;
+        public ContentCategoryAdminServices()
         {
-            _contentCategoryAdminRepository = contentCategoryAdminRepository;
+            _contentCategoryAdminRepository = ContentCategoryAdminRepository.getInstance();
         }
 
         public List<ContentCategory> ListAllByName(string searchString)

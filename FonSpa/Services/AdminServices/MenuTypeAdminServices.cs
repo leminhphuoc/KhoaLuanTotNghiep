@@ -1,7 +1,7 @@
 ﻿using FonNature.Services.IServices;
 using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 
@@ -10,10 +10,10 @@ namespace FonNature.Services.Services
 {
     public class MenuTypeAdminServices : IMenuTypeSerivces
     {
-        private readonly IMenuTypeAdminRepository _menuTypeAdminRepository;
-        public MenuTypeAdminServices(IMenuTypeAdminRepository menuTypeAdminRepository)
+        private readonly MenuTypeAdminRepository _menuTypeAdminRepository;
+        public MenuTypeAdminServices()
         {
-            _menuTypeAdminRepository = menuTypeAdminRepository;
+            _menuTypeAdminRepository = MenuTypeAdminRepository.getInstance();
         }
 
         public List<MenuType> ListAllByName(string searchString)

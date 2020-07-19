@@ -1,17 +1,16 @@
 ﻿using FonNature.Areas.Admin.Models;
 using FonNature.Services.IServices;
 using Models.Entity;
-using Models.IRepository;
-using System;
+using Models.Repository;
 
 namespace FonNature.Services.Services
 {
     public class AccountAdminServices : IAccountAdminServices
     {
-        private readonly IAccountAdminRepository _accountAdminRepository;
-        public AccountAdminServices(IAccountAdminRepository accountAdminRepository )
+        private readonly AccountAdminRepository _accountAdminRepository;
+        public AccountAdminServices()
         {
-            _accountAdminRepository = accountAdminRepository;
+            _accountAdminRepository = AccountAdminRepository.getInstance();
         }
         public int checkLoginAdmin(LoginModel loginModel)
         {

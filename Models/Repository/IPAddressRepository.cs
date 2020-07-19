@@ -1,22 +1,25 @@
 ﻿using Models.Entity;
-using Models.IRepository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class IPAddressRepository : IIPAddressRepository
+    public class IPAddressRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public IPAddressRepository()
+        private static IPAddressRepository instance = new IPAddressRepository();
+
+        private IPAddressRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static IPAddressRepository getInstance()
+        {
+            return instance;
         }
 
         public bool AddIpAddress(string IpAddress)

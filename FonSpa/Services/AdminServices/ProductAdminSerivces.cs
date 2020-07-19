@@ -1,7 +1,7 @@
 ﻿using FonNature.Services.IServices;
 using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
@@ -11,10 +11,10 @@ namespace FonNature.Services.Services
 {
     public class ProductAdminSerivces : IProductAdminSerivces
     {
-        private readonly IProductAdminRepository _productAdminRepository;
-        public ProductAdminSerivces(IProductAdminRepository productAdminRepository)
+        private readonly ProductAdminRepository _productAdminRepository;
+        public ProductAdminSerivces()
         {
-            _productAdminRepository = productAdminRepository;
+            _productAdminRepository = ProductAdminRepository.getInstance();
         }
 
         public List<Product> ListAllByName(string searchString)

@@ -1,22 +1,26 @@
 ﻿using Models.Entity;
-using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class StaffAdminRepository : IStaffAdminRepository
+    public class StaffAdminRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public StaffAdminRepository()
+        private static StaffAdminRepository instance = new StaffAdminRepository();
+
+        private StaffAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static StaffAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public Staff GetDetail(long id)

@@ -64,6 +64,7 @@
     <Compile Include="Entity\IPAddress.cs" />
     <Compile Include="Entity\Menu.cs" />
     <Compile Include="Entity\MenuType.cs" />
+    <Compile Include="Entity\Message.cs" />
     <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\OrderInformation.cs" />
     <Compile Include="Entity\OrderStatus.cs" />
@@ -74,24 +75,6 @@
     <Compile Include="Entity\Staff.cs" />
     <Compile Include="Entity\UsefulInformation.cs" />
     <Compile Include="Entity\VisitorByTime.cs" />
-    <Compile Include="IRepository\IAboutAdminRepository.cs" />
-    <Compile Include="IRepository\IAccountAdminRepository.cs" />
-    <Compile Include="IRepository\IBannerRepository.cs" />
-    <Compile Include="IRepository\IContactAdminRepository.cs" />
-    <Compile Include="IRepository\IContentAdminRepository.cs" />
-    <Compile Include="IRepository\IContentCategoryAdminRepository.cs" />
-    <Compile Include="IRepository\ICustomerAdminRepository.cs" />
-    <Compile Include="IRepository\IFooterAdminRepository.cs" />
-    <Compile Include="IRepository\IFooterCategoryAdminRepository.cs" />
-    <Compile Include="IRepository\IMenuAdminRepository.cs" />
-    <Compile Include="IRepository\IMenuTypeAdminRepository.cs" />
-    <Compile Include="IRepository\IIPAddressRepository.cs" />
-    <Compile Include="IRepository\IOrderRepository.cs" />
-    <Compile Include="IRepository\IProductAdminRepository.cs" />
-    <Compile Include="IRepository\IProductCategoryAdminRepository.cs" />
-    <Compile Include="IRepository\ISEORepository.cs" />
-    <Compile Include="IRepository\ISlideAdminRepository.cs" />
-    <Compile Include="IRepository\IStaffAdminRepository.cs" />
     <Compile Include="Migrations\201912240333276_Initial.cs" />
     <Compile Include="Migrations\201912240333276_Initial.Designer.cs">
       <DependentUpon>201912240333276_Initial.cs</DependentUpon>
@@ -111,6 +94,10 @@
     <Compile Include="Migrations\202004281002462_[-AddBanner].cs" />
     <Compile Include="Migrations\202004281002462_[-AddBanner].Designer.cs">
       <DependentUpon>202004281002462_[-AddBanner].cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007191305240_Add Message.cs" />
+    <Compile Include="Migrations\202007191305240_Add Message.Designer.cs">
+      <DependentUpon>202007191305240_Add Message.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cart.cs" />
@@ -163,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004281002462_[-AddBanner].resx">
       <DependentUpon>202004281002462_[-AddBanner].cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007191305240_Add Message.resx">
+      <DependentUpon>202007191305240_Add Message.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

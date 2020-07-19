@@ -1,10 +1,8 @@
 ﻿using FonNature.Filter;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
@@ -12,10 +10,10 @@ namespace FonNature.Areas.Admin.Controllers
     [AuthData]
     public class BannerAdminController : Controller
     {
-        private readonly IBannerRepository _bannerRepository;
-        public BannerAdminController(IBannerRepository bannerRepository)
+        private readonly BannerRepository _bannerRepository;
+        public BannerAdminController()
         {
-            _bannerRepository = bannerRepository;
+            _bannerRepository = BannerRepository.getInstance();
         }
         // GET: Admin/Banner
         public ActionResult BannerList()

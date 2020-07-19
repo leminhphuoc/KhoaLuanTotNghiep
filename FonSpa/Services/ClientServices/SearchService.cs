@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using FonNature.Services.IClientServices;
-using Models.IRepository;
 using Models.Model;
+using Models.Repository;
 
 namespace FonNature.Services.ClientServices
 {
     public class SearchService : ISearchService
     {
-        private readonly IProductAdminRepository _productAdminRepository;
-        private readonly IContentAdminRepository _contentAdminRepository;
-        public SearchService(IProductAdminRepository productAdminRepository, IContentAdminRepository contentAdminRepository)
+        private readonly ProductAdminRepository _productAdminRepository;
+        private readonly ContentAdminRepository _contentAdminRepository;
+        public SearchService()
         {
-            _productAdminRepository = productAdminRepository;
-            _contentAdminRepository = contentAdminRepository;
+            _productAdminRepository = ProductAdminRepository.getInstance();
+            _contentAdminRepository = ContentAdminRepository.getInstance();
         }
         public List<SearchItem> GetResults(string searchString)
         {

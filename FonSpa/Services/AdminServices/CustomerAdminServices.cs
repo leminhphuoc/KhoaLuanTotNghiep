@@ -1,18 +1,17 @@
 ﻿using FonNature.Services.IServices;
 using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
-using System;
+using Models.Repository;
 using System.Collections.Generic;
 
 namespace FonNature.Services.Services
 {
     public class CustomerAdminServices : ICustomerAdminServices
     {
-        private readonly ICustomerAdminRepository _customerAdminRepository;
-        public CustomerAdminServices(ICustomerAdminRepository customerAdminRepository)
+        private readonly CustomerAdminRepository _customerAdminRepository;
+        public CustomerAdminServices()
         {
-            _customerAdminRepository = customerAdminRepository;
+            _customerAdminRepository = CustomerAdminRepository.getInstance();
         }
 
         public List<Customer> ListAllByName(string searchString)

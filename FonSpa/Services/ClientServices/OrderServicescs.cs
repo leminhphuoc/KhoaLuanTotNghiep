@@ -1,20 +1,19 @@
 ﻿using FonNature.Services.IClientServices;
 using Models.Entity;
-using Models.IRepository;
 using Models.Model;
-using System;
+using Models.Repository;
 using System.Collections.Generic;
 
 namespace FonNature.Services.ClientServices
 {
     public class OrderServicescs : IOrderServices
     {
-        private readonly IOrderRepository _orderRepository;
-        private readonly ICustomerAdminRepository _customerAdminRepository;
-        public OrderServicescs(IOrderRepository orderRepository, ICustomerAdminRepository customerAdminRepository)
+        private readonly OrdersRepository _orderRepository;
+        private readonly CustomerAdminRepository _customerAdminRepository;
+        public OrderServicescs()
         {
-            _orderRepository = orderRepository;
-            _customerAdminRepository = customerAdminRepository;
+            _orderRepository = OrdersRepository.getInstance();
+            _customerAdminRepository = CustomerAdminRepository.getInstance();
         }
 
         public long CreateOrder(List<ProductInCart> productInCarts, Customer customer)

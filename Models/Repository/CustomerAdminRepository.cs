@@ -1,22 +1,26 @@
 ﻿using Models.Entity;
-using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class CustomerAdminRepository : ICustomerAdminRepository
+    public class CustomerAdminRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public CustomerAdminRepository()
+        private static CustomerAdminRepository instance = new CustomerAdminRepository();
+
+        private CustomerAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static CustomerAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public Customer GetDetail(long id)

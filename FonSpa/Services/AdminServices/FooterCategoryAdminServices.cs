@@ -1,7 +1,7 @@
 ﻿using FonNature.Services.IServices;
 using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 
@@ -9,10 +9,10 @@ namespace FonNature.Services.Services
 {
     public class FooterCategoryAdminServices : IFooterCategoryAdminServices
     {
-        private readonly IFooterCategoryAdminRepository _footerCategoryAdminRepository;
-        public FooterCategoryAdminServices(IFooterCategoryAdminRepository footerCategoryAdminRepository)
+        private readonly FooterCategoryAdminRepository _footerCategoryAdminRepository;
+        public FooterCategoryAdminServices()
         {
-            _footerCategoryAdminRepository = footerCategoryAdminRepository;
+            _footerCategoryAdminRepository = FooterCategoryAdminRepository.getInstance();
         }
 
         public List<FooterCategory> ListAllByName(string searchString)

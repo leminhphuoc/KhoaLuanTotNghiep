@@ -1,22 +1,27 @@
 ﻿using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace Models.Repository
 {
-    public class ProductAdminRepository : IProductAdminRepository
+    public class ProductAdminRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public ProductAdminRepository()
+        private static ProductAdminRepository instance = new ProductAdminRepository();
+
+        private ProductAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static ProductAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public Product GetDetail(long id)

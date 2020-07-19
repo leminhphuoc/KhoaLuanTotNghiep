@@ -1,23 +1,27 @@
 ﻿using HelperLibrary;
 using Models.Entity;
-using Models.IRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class ContentAdminRepository : IContentAdminRepository
+    public class ContentAdminRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public ContentAdminRepository()
+        private static ContentAdminRepository instance = new ContentAdminRepository();
+
+        private ContentAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static ContentAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public Content GetDetail(long id)

@@ -1,6 +1,6 @@
 ﻿using FonNature.Services.IServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 
@@ -8,10 +8,10 @@ namespace FonNature.Services.Services
 {
     public class SlideAdminServices : ISlideAdminServices
     {
-        private readonly ISlideAdminRepository _slideAdminRepository;
-        public SlideAdminServices(ISlideAdminRepository slideAdminRepository)
+        private readonly SlideAdminRepository _slideAdminRepository;
+        public SlideAdminServices()
         {
-            _slideAdminRepository = slideAdminRepository;
+            _slideAdminRepository = SlideAdminRepository.getInstance();
         }
 
         public List<Slide> GetListSlide()

@@ -1,23 +1,25 @@
 ﻿using Models.Entity;
-using Models.IRepository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class AccountAdminRepository : IAccountAdminRepository
+    public class AccountAdminRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public AccountAdminRepository()
+        private static AccountAdminRepository instance = new AccountAdminRepository();
+
+        private AccountAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
 
+        public static AccountAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public AccountAdmin GetDetail(long id)

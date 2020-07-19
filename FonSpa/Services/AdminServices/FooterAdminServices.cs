@@ -1,17 +1,16 @@
 ﻿using FonNature.Services.IServices;
 using Models.Entity;
-using Models.IRepository;
-using System;
+using Models.Repository;
 using System.Collections.Generic;
 
 namespace FonNature.Services.Services
 {
     public class FooterAdminServices : IFooterAdminServices
     {
-        private readonly IFooterAdminRepository _footerAdminRepository;
-        public FooterAdminServices(IFooterAdminRepository footerAdminRepository)
+        private readonly FooterAdminRepository _footerAdminRepository;
+        public FooterAdminServices()
         {
-            _footerAdminRepository = footerAdminRepository;
+            _footerAdminRepository = FooterAdminRepository.getInstance();
         }
 
         public List<FooterCategory> GetFooterCategory()

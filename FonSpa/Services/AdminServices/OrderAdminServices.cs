@@ -1,18 +1,18 @@
 ﻿using FonNature.Services.IAdminServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System.Collections.Generic;
 
 namespace FonNature.Services.AdminServices
 {
     public class OrderAdminServices : IOrderAdminServices
     {
-        private readonly IOrderRepository _orderRepository;
-        private readonly ICustomerAdminRepository _customerAdminRepository;
-        public OrderAdminServices(IOrderRepository orderRepository, ICustomerAdminRepository customerAdminRepository)
+        private readonly OrdersRepository _orderRepository;
+        private readonly CustomerAdminRepository _customerAdminRepository;
+        public OrderAdminServices()
         {
-            _orderRepository = orderRepository;
-            _customerAdminRepository = customerAdminRepository;
+            _orderRepository = OrdersRepository.getInstance();
+            _customerAdminRepository = CustomerAdminRepository.getInstance();
         }
 
         public List<Order> GetOrders()

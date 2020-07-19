@@ -1,15 +1,15 @@
 ﻿using FonNature.Services.IServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 
 namespace FonNature.Services.Services
 {
     public class ContactAdminServices : IContactAdminServices
     {
-        private readonly IContactAdminRepository _contactAdminRepository;
-        public ContactAdminServices(IContactAdminRepository contactAdminRepository)
+        private readonly ContactAdminRepository _contactAdminRepository;
+        public ContactAdminServices()
         {
-            _contactAdminRepository = contactAdminRepository;
+            _contactAdminRepository = ContactAdminRepository.getInstance();
         }
 
 

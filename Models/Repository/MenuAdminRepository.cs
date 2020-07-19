@@ -1,22 +1,25 @@
 ﻿using Models.Entity;
-using Models.IRepository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
-    public class MenuAdminRepository : IMenuAdminRepository
+    public class MenuAdminRepository
     {
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
 
-        public MenuAdminRepository()
+        private static MenuAdminRepository instance = new MenuAdminRepository();
+
+        private MenuAdminRepository()
         {
             _db = new FonNatureDbContext();
+        }
+
+        public static MenuAdminRepository getInstance()
+        {
+            return instance;
         }
 
         public Menu GetDetail(long id)

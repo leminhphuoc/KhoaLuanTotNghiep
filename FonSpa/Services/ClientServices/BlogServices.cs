@@ -1,7 +1,7 @@
 ﻿using FonNature.Enum;
 using FonNature.Services.IClientServices;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,17 +9,16 @@ namespace FonNature.Services.ClientServices
 {
     public class BlogServices : IBlogServices
     {
-        private readonly IContentAdminRepository _contentAdminRepository;
-        private readonly IContentCategoryAdminRepository _contentCategoryAdminRepository;
-        private readonly ISEORepository _seoRepository;
-        private readonly IBannerRepository _bannerRepository;
-        public BlogServices(IContentAdminRepository contentAdminRepository, IContentCategoryAdminRepository contentCategoryAdminRepository, 
-            ISEORepository seoRepository, IBannerRepository bannerRepository)
+        private readonly ContentAdminRepository _contentAdminRepository;
+        private readonly ContentCategoryAdminRepository _contentCategoryAdminRepository;
+        private readonly SEORepository _seoRepository;
+        private readonly BannerRepository _bannerRepository;
+        public BlogServices()
         {
-            _contentAdminRepository = contentAdminRepository;
-            _contentCategoryAdminRepository = contentCategoryAdminRepository;
-            _seoRepository = seoRepository;
-            _bannerRepository = bannerRepository;
+            _contentAdminRepository = ContentAdminRepository.getInstance();
+            _contentCategoryAdminRepository = ContentCategoryAdminRepository.getInstance();
+            _seoRepository = SEORepository.getInstance();
+            _bannerRepository = BannerRepository.getInstance();
         }
         public SEO GetSeo()
         {
