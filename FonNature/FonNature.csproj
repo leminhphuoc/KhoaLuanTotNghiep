@@ -85,16 +85,16 @@
       <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.1.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Facebook">
-      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\Microsoft.Owin.Security.Facebook.dll</HintPath>
+      <HintPath>..\..\FonNature\FonNature\bin\Microsoft.Owin.Security.Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Google">
-      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\Microsoft.Owin.Security.Google.dll</HintPath>
+      <HintPath>..\..\FonNature\FonNature\bin\Microsoft.Owin.Security.Google.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
-      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+      <HintPath>..\..\FonNature\FonNature\bin\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Twitter">
-      <HintPath>..\..\Tieuluanchuyennganh\FonSpa\FonSpa\bin\Microsoft.Owin.Security.Twitter.dll</HintPath>
+      <HintPath>..\..\FonNature\FonNature\bin\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
