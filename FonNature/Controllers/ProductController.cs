@@ -1,11 +1,9 @@
-﻿using FonNature.Services.IClientServices;
+﻿using FonNature.Services;
 using Models.Entity;
 using Models.Model;
 using Newtonsoft.Json;
 using PagedList;
-using System;
 using System.Collections.Generic;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers
@@ -82,22 +80,6 @@ namespace FonNature.Controllers
             return Json(new { orderInformations }
             );
         }
-
-        //[HttpPost]
-        //public ActionResult Order(Customer customerInfor)
-        //{
-        //    var orderInformations = TempData["OrderInformation"] as List<OrderInformation>;
-        //    var idOrder = _orderServices.CreateOrder(orderInformations,customerInfor);
-        //    var productInCarts = new List<ProductInCart>();
-        //    foreach(var order in orderInformations)
-        //    {
-        //        var product = new ProductInCart(order.IdProduct);
-        //        productInCarts.Add(product);
-        //    }
-        //    var cart = new Cart() { productInCarts = productInCarts, customer = customerInfor };
-        //    if (idOrder > 0) ViewBag.idOrder = idOrder;
-        //    return View(cart);
-        //}
 
         [HttpPost]
         public JsonResult GetDetailJson(long id)

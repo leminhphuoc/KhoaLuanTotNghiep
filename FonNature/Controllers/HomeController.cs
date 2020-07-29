@@ -1,7 +1,5 @@
 ﻿using FonNature.Filter;
-using FonNature.Services.ClientServices;
-using FonNature.Services.IClientServices;
-using System.Collections.Generic;
+using FonNature.Services;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers

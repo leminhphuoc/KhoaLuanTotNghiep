@@ -37,6 +37,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -74,24 +77,24 @@
     <Compile Include="Entity\Staff.cs" />
     <Compile Include="Entity\UsefulInformation.cs" />
     <Compile Include="Entity\VisitorByTime.cs" />
-    <Compile Include="IRepository\IAboutAdminRepository.cs" />
-    <Compile Include="IRepository\IAccountAdminRepository.cs" />
-    <Compile Include="IRepository\IBannerRepository.cs" />
-    <Compile Include="IRepository\IContactAdminRepository.cs" />
-    <Compile Include="IRepository\IContentAdminRepository.cs" />
-    <Compile Include="IRepository\IContentCategoryAdminRepository.cs" />
-    <Compile Include="IRepository\ICustomerAdminRepository.cs" />
-    <Compile Include="IRepository\IFooterAdminRepository.cs" />
-    <Compile Include="IRepository\IFooterCategoryAdminRepository.cs" />
-    <Compile Include="IRepository\IMenuAdminRepository.cs" />
-    <Compile Include="IRepository\IMenuTypeAdminRepository.cs" />
-    <Compile Include="IRepository\IIPAddressRepository.cs" />
-    <Compile Include="IRepository\IOrderRepository.cs" />
-    <Compile Include="IRepository\IProductAdminRepository.cs" />
-    <Compile Include="IRepository\IProductCategoryAdminRepository.cs" />
-    <Compile Include="IRepository\ISEORepository.cs" />
-    <Compile Include="IRepository\ISlideAdminRepository.cs" />
-    <Compile Include="IRepository\IStaffAdminRepository.cs" />
+    <Compile Include="Repository\IAboutAdminRepository.cs" />
+    <Compile Include="Repository\IAccountAdminRepository.cs" />
+    <Compile Include="Repository\IBannerRepository.cs" />
+    <Compile Include="Repository\IContactAdminRepository.cs" />
+    <Compile Include="Repository\IContentAdminRepository.cs" />
+    <Compile Include="Repository\IContentCategoryAdminRepository.cs" />
+    <Compile Include="Repository\ICustomerAdminRepository.cs" />
+    <Compile Include="Repository\IFooterAdminRepository.cs" />
+    <Compile Include="Repository\IFooterCategoryAdminRepository.cs" />
+    <Compile Include="Repository\IMenuAdminRepository.cs" />
+    <Compile Include="Repository\IMenuTypeAdminRepository.cs" />
+    <Compile Include="Repository\IIPAddressRepository.cs" />
+    <Compile Include="Repository\IOrderRepository.cs" />
+    <Compile Include="Repository\IProductAdminRepository.cs" />
+    <Compile Include="Repository\IProductCategoryAdminRepository.cs" />
+    <Compile Include="Repository\ISEORepository.cs" />
+    <Compile Include="Repository\ISlideAdminRepository.cs" />
+    <Compile Include="Repository\IStaffAdminRepository.cs" />
     <Compile Include="Migrations\201912240333276_Initial.cs" />
     <Compile Include="Migrations\201912240333276_Initial.Designer.cs">
       <DependentUpon>201912240333276_Initial.cs</DependentUpon>
@@ -140,6 +143,9 @@
     <Compile Include="Repository\VisitorRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="log4net.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>

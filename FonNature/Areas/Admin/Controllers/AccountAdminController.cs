@@ -1,7 +1,7 @@
 ﻿using FonNature.Filter;
-using FonNature.Services.IServices;
+using FonNature.Services;
 using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers

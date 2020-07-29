@@ -20,8 +20,6 @@ namespace FonNature.Filter
         {
             if (filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
             {
-                //  filterContext.Result = new RedirectToRouteResult(
-                //new RouteValueDictionary(new { Controller = "LoginAdmin", Action = "Index", Area = "Admin", returnUrl = filterContext.HttpContext.Request.Url}));
                 filterContext.Result = new RedirectToRouteResult(
                 new RouteValueDictionary(new { Controller = "LoginAdmin", Action = "Index", Area = "Admin", returnUrl = filterContext.HttpContext.Request.Url.GetComponents(UriComponents.PathAndQuery, UriFormat.SafeUnescaped) }));
             }

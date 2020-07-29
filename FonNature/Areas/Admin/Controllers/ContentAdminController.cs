@@ -1,4 +1,4 @@
-﻿using FonNature.Services.IServices;
+﻿using FonNature.Services;
 using System.Web.Mvc;
 using PagedList;
 using Models.Entity;

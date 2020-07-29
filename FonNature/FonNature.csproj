@@ -77,6 +77,9 @@
     <Reference Include="ImageProcessor, Version=2.6.1.19, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ImageProcessor.2.6.1.19\lib\net452\ImageProcessor.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
@@ -251,52 +254,52 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\AdminServices\OrderAdminServices.cs" />
-    <Compile Include="Services\ClientServices\AboutServices.cs" />
-    <Compile Include="Services\ClientServices\BlogServices.cs" />
-    <Compile Include="Services\ClientServices\HomeServices.cs" />
-    <Compile Include="Services\ClientServices\OrderServicescs.cs" />
-    <Compile Include="Services\ClientServices\ProductServices.cs" />
-    <Compile Include="Services\ClientServices\SearchService.cs" />
-    <Compile Include="Services\ClientServices\SendMail.cs" />
-    <Compile Include="Services\IAdminServices\IAboutAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IAccountAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IContactAdminServices.cs" />
-    <Compile Include="Services\IClientServices\IContactClientServices.cs" />
-    <Compile Include="Services\IAdminServices\IContentCategoryAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IContentServices.cs" />
-    <Compile Include="Services\IAdminServices\ICustomerAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IFooterAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IFooterCategoryAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IMenuAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IMenuTypeSerivces.cs" />
-    <Compile Include="Services\IAdminServices\IOrderAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IProductAdminSerivces.cs" />
-    <Compile Include="Services\IAdminServices\IProductCategoryAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\ISlideAdminServices.cs" />
-    <Compile Include="Services\IAdminServices\IStaffAdminServices.cs" />
-    <Compile Include="Services\AdminServices\AboutAdminServices.cs" />
-    <Compile Include="Services\AdminServices\AccountAdminServices.cs" />
-    <Compile Include="Services\AdminServices\ChartAdminServices.cs" />
-    <Compile Include="Services\AdminServices\ContactAdminServices.cs" />
-    <Compile Include="Services\ClientServices\ContactClientServices.cs" />
-    <Compile Include="Services\AdminServices\ContentCategoryAdminServices.cs" />
-    <Compile Include="Services\AdminServices\ContentServices.cs" />
-    <Compile Include="Services\AdminServices\CustomerAdminServices.cs" />
-    <Compile Include="Services\AdminServices\FooterAdminServices.cs" />
-    <Compile Include="Services\AdminServices\FooterCategoryAdminServices.cs" />
-    <Compile Include="Services\AdminServices\MenuAdminServices.cs" />
-    <Compile Include="Services\AdminServices\MenuTypeAdminServices.cs" />
-    <Compile Include="Services\AdminServices\ProductAdminSerivces.cs" />
-    <Compile Include="Services\AdminServices\ProductCategoryAdminService.cs" />
-    <Compile Include="Services\AdminServices\SlideAdminServices.cs" />
-    <Compile Include="Services\AdminServices\StaffAdminServices.cs" />
-    <Compile Include="Services\IClientServices\IAboutServices.cs" />
-    <Compile Include="Services\IClientServices\IBlogServices.cs" />
-    <Compile Include="Services\IClientServices\IHomeServices.cs" />
-    <Compile Include="Services\IClientServices\IOrderServices.cs" />
-    <Compile Include="Services\IClientServices\IProductServices.cs" />
-    <Compile Include="Services\IClientServices\ISearchService.cs" />
+    <Compile Include="Services\OrderAdminServices.cs" />
+    <Compile Include="Services\AboutServices.cs" />
+    <Compile Include="Services\BlogServices.cs" />
+    <Compile Include="Services\HomeServices.cs" />
+    <Compile Include="Services\OrderServicescs.cs" />
+    <Compile Include="Services\ProductServices.cs" />
+    <Compile Include="Services\SearchService.cs" />
+    <Compile Include="Services\SendMail.cs" />
+    <Compile Include="Services\IAboutAdminServices.cs" />
+    <Compile Include="Services\IAccountAdminServices.cs" />
+    <Compile Include="Services\IContactAdminServices.cs" />
+    <Compile Include="Services\IContactClientServices.cs" />
+    <Compile Include="Services\IContentCategoryAdminServices.cs" />
+    <Compile Include="Services\IContentServices.cs" />
+    <Compile Include="Services\ICustomerAdminServices.cs" />
+    <Compile Include="Services\IFooterAdminServices.cs" />
+    <Compile Include="Services\IFooterCategoryAdminServices.cs" />
+    <Compile Include="Services\IMenuAdminServices.cs" />
+    <Compile Include="Services\IMenuTypeSerivces.cs" />
+    <Compile Include="Services\IOrderAdminServices.cs" />
+    <Compile Include="Services\IProductAdminSerivces.cs" />
+    <Compile Include="Services\IProductCategoryAdminServices.cs" />
+    <Compile Include="Services\ISlideAdminServices.cs" />
+    <Compile Include="Services\IStaffAdminServices.cs" />
+    <Compile Include="Services\AboutAdminServices.cs" />
+    <Compile Include="Services\AccountAdminServices.cs" />
+    <Compile Include="Services\ChartAdminServices.cs" />
+    <Compile Include="Services\ContactAdminServices.cs" />
+    <Compile Include="Services\ContactClientServices.cs" />
+    <Compile Include="Services\ContentCategoryAdminServices.cs" />
+    <Compile Include="Services\ContentServices.cs" />
+    <Compile Include="Services\CustomerAdminServices.cs" />
+    <Compile Include="Services\FooterAdminServices.cs" />
+    <Compile Include="Services\FooterCategoryAdminServices.cs" />
+    <Compile Include="Services\MenuAdminServices.cs" />
+    <Compile Include="Services\MenuTypeAdminServices.cs" />
+    <Compile Include="Services\ProductAdminSerivces.cs" />
+    <Compile Include="Services\ProductCategoryAdminService.cs" />
+    <Compile Include="Services\SlideAdminServices.cs" />
+    <Compile Include="Services\StaffAdminServices.cs" />
+    <Compile Include="Services\IAboutServices.cs" />
+    <Compile Include="Services\IBlogServices.cs" />
+    <Compile Include="Services\IHomeServices.cs" />
+    <Compile Include="Services\IOrderServices.cs" />
+    <Compile Include="Services\IProductServices.cs" />
+    <Compile Include="Services\ISearchService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1480,6 +1483,10 @@
     <Content Include="Asset\Admin\js\Plugin\ckeditor5\LICENSE.md" />
     <Content Include="Asset\Admin\js\Plugin\ckeditor5\package.json" />
     <Content Include="Asset\Admin\js\Plugin\ckeditor5\README.md" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP1.pubxml" />
@@ -1489,6 +1496,8 @@
     <None Include="Properties\PublishProfiles\fondekao - Web Deploy1.pubxml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Properties\PublishProfiles\monsbakery.com.publishsettings" />
+    <None Include="Properties\PublishProfiles\monsbakery.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1523,28 +1532,28 @@
     <Content Include="Views\CustomError\DefaultError.cshtml" />
     <Content Include="Views\About\AboutTeamList.cshtml" />
     <Content Include="Views\About\AboutTestimonial.cshtml" />
+    <None Include="Web.config.Client.example">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web.config.Azure.example">
-      <SubType>Designer</SubType>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.config.Azure.Debug.example">
-      <DependentUpon>Web.config.Azure.example</DependentUpon>
-    </None>
-    <None Include="Web.config.Azure.Release.example">
-      <DependentUpon>Web.config.Azure.example</DependentUpon>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Views\Shared\ContactHome.cshtml" />
     <Content Include="Views\Shared\HeaderLogo.cshtml" />
     <Content Include="Views\Shared\FooterLogo.cshtml" />
     <Content Include="Views\Success\SuccessPage.cshtml" />
     <Content Include="Views\SearchResult\SearchResults.cshtml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="Web.config.Client.Debug.example">
+      <DependentUpon>Web.config.Client.example</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="Web.config.Client.Release.example">
+      <DependentUpon>Web.config.Client.example</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

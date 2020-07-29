@@ -1,10 +1,6 @@
 ﻿using FonNature.Filter;
 using Models.Entity;
-using Models.IRepository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Models.Repository;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers

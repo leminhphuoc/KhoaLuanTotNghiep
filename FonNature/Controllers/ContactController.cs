@@ -1,5 +1,4 @@
-﻿using FonNature.Services.ClientServices;
-using FonNature.Services.IServices;
+﻿using FonNature.Services;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers

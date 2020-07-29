@@ -1,12 +1,8 @@
 ﻿using System.Web.Mvc;
 using Unity.Mvc5;
 using Unity;
-using Models.IRepository;
 using Models.Repository;
-using FonNature.Services.IServices;
-using FonNature.Services.Services;
-using FonNature.Services.IClientServices;
-using FonNature.Services.ClientServices;
+using FonNature.Services;
 using FonNature.Services.IAdminServices;
 using FonNature.Services.AdminServices;
 

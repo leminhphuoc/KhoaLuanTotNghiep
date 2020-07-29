@@ -1,6 +1,4 @@
-using FonNature.Services.IServices;
-using FonNature.Services.Services;
-using Models.IRepository;
+using FonNature.Services;
 using Models.Repository;
 using System.Web.Mvc;
 using Unity;

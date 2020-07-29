@@ -6,9 +6,7 @@ using CKSource.CKFinder.Connector.KeyValue.FileSystem;
 using CKSource.FileSystem.Local;
 using Microsoft.Owin;
 using Owin;
-using System;
 using System.Collections.Generic;
-using System.Web;
 
 [assembly: OwinStartup(typeof(FonNature.Startup))]
 namespace FonNature
@@ -42,13 +40,6 @@ namespace FonNature
 
 
             connectorBuilder
-                /*
-                 * Provide the global configuration.
-                 *
-                 * If you installed CKSource.CKFinder.Connector.Config, you should load the static configuration
-                 * from XML:
-                 * connectorBuilder.LoadConfig();
-                 */
                 .LoadConfig()
                 .SetAuthenticator(customAuthenticator)
                 .SetRequestConfiguration(
@@ -68,16 +59,6 @@ namespace FonNature
                          *
                          * For example:
                          */
-                        var urlBuilder =
-                        new UriBuilder(HttpContext.Current.Request.Url.AbsoluteUri)
-                        {
-                            Path = HttpContext.Current.Request.ApplicationPath,
-                            Query = null,
-                            Fragment = null
-                        };
-                        string url = urlBuilder.ToString();
-                        //config.AddBackend("default1", new LocalStorage(url));
-                        //config.AddResourceType("images", builder => builder.SetBackend("default", "images"));
                         config.AddAclRule(new AclRule(
                             new StringMatcher("*"),
                             new StringMatcher("*"),
