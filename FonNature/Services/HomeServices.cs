@@ -113,7 +113,7 @@ namespace FonNature.Services
         
         public Banner GetBannerHome()
         {
-            return _bannerRepository.GetList().SingleOrDefault(x=>x.Location == (int)BannerLocation.Home);
+            return _bannerRepository.GetList().FirstOrDefault(x=>x.Location == (int)BannerLocation.Home);
         }
 
         public Contact GetContactHome()

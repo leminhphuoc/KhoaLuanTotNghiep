@@ -71,7 +71,7 @@ namespace FonNature.Services
 
         public List<Banner> GetProductBanner()
         {
-            return _bannerRepository.GetList().Where(x => x.Location != (int)BannerLocation.Home).ToList();
+            return _bannerRepository.GetList().Where(x => x.Location == (int)BannerLocation.HeaderProduct || x.Location == (int)BannerLocation.SideProduct).ToList();
         }
 
         public List<ProductCategory> GetProductCategories()

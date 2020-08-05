@@ -1498,6 +1498,7 @@
     </None>
     <Content Include="Properties\PublishProfiles\monsbakery.com.publishsettings" />
     <None Include="Properties\PublishProfiles\monsbakery.com - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\monsbakery.com - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1511,9 +1512,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Views\Product\Checkout.cshtml" />
     <Content Include="Views\Success\OrderSuccessPage.cshtml" />
-    <None Include="Views\Web.config">
+    <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
-    </None>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1532,28 +1533,28 @@
     <Content Include="Views\CustomError\DefaultError.cshtml" />
     <Content Include="Views\About\AboutTeamList.cshtml" />
     <Content Include="Views\About\AboutTestimonial.cshtml" />
-    <None Include="Web.config.Client.example">
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.config.Azure.example">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Web.config">
-      <SubType>Designer</SubType>
+    <None Include="Web.config.Azure.Debug.example">
+      <DependentUpon>Web.config.Azure.example</DependentUpon>
     </None>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
+    <None Include="Web.config.Azure.Release.example">
+      <DependentUpon>Web.config.Azure.example</DependentUpon>
     </None>
     <Content Include="Views\Shared\ContactHome.cshtml" />
     <Content Include="Views\Shared\HeaderLogo.cshtml" />
     <Content Include="Views\Shared\FooterLogo.cshtml" />
     <Content Include="Views\Success\SuccessPage.cshtml" />
     <Content Include="Views\SearchResult\SearchResults.cshtml" />
-    <None Include="Web.config.Client.Debug.example">
-      <DependentUpon>Web.config.Client.example</DependentUpon>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.config.Client.Release.example">
-      <DependentUpon>Web.config.Client.example</DependentUpon>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -1629,9 +1630,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55981</DevelopmentServerPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55981/</IISUrl>
+          <IISUrl>http://localhost:56080/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

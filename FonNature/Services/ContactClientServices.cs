@@ -29,7 +29,7 @@ namespace FonNature.Services
 
         public Banner GetBanner()
         {
-            return _bannerRepository.GetList().SingleOrDefault(x => x.Location == (int)BannerLocation.Contact);
+            return _bannerRepository.GetList().FirstOrDefault(x => x.Location == (int)BannerLocation.Contact);
         }
 
     }

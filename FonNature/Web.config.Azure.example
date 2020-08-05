@@ -22,7 +22,7 @@
     <add key="SMTPHost" value="smtp.gmail.com" />
     <add key="SMTPPort" value="587" />
     <add key="EnabledSSL" value="true" />
-    <add key="owin:appStartup" value="FonNature.Startup" />
+    <add key="owin:appStartup" value="FonNature.Startup-" />
   </appSettings>
   <system.web>
     <compilation debug="true" targetFramework="4.6" />
@@ -35,9 +35,9 @@
       timeout="30" />-->
   </system.web> 
   <system.webServer>
-    <!--<staticContent>
+    <staticContent>
       <mimeMap fileExtension=".json" mimeType="application/json" />
-    </staticContent>-->
+    </staticContent>
     <handlers>
       <remove name="ExtensionlessUrlHandler-Integrated-4.0" />
       <remove name="OPTIONSVerbHandler" />
@@ -92,7 +92,7 @@
   </runtime>
   <connectionStrings>
     <!--<add name="FonNatureDbContext" connectionString="Server=tcp:fonnature.database.windows.net,1433;Initial Catalog=FonNature;Persist Security Info=False;User ID=kevinle021097;Password=Foreveronelove1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />-->
-    <add name="FonNatureDbContext" connectionString="data source=.\SQLEXPRESS;initial catalog=FonNature1;integrated security=True;MultipleActiveResultSets=True;Application Name=EntityFramework;App=EntityFramework" providerName="System.Data.SqlClient" />
+    <add name="FonNatureDbContext" connectionString="data source=112.78.2.30,1433;Initial Catalog=mon60410_FonNature;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|aspnetdb.mdf;User Instance=true;User ID=mon60410_phuoc;Password=Foreveronelove1!" providerName="System.Data.SqlClient" />
   </connectionStrings>
   <entityFramework>
     <defaultConnectionFactory type="System.Data.Entity.Infrastructure.SqlConnectionFactory, EntityFramework" />
@@ -101,8 +101,8 @@
     </providers>
   </entityFramework>
   <ckfinder overwriteOnUpload="false" checkDoubleExtension="true" disallowUnsafeCharacters="false" secureImageUploads="true" checkSizeAfterScaling="true" xmlns="https://cksource.com/ckfinder-net/schema/CKFinderConnector.xsd">
-  	<license name="localhost" key="RTUUC6QR1ET6E2V5A48A2V61LG5GLVF8" />
-    <!--<license name="fondekao.azurewebsites.net" key="7WUWU9B6LM2P4MEVHNMDEB8PFM3J7" />-->
+  	<!--<license name="localhost" key="RTUUC6QR1ET6E2V5A48A2V61LG5GLVF8" />-->
+    <license name="fondekao.azurewebsites.net" key="7WUWU9B6LM2P4MEVHNMDEB8PFM3J7" />
     <images maxWidth="1600" maxHeight="1200" quality="80">
   		<sizes>
   			<size name="small" width="480" height="320" quality="80" />
