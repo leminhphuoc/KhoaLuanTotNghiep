@@ -34,6 +34,7 @@ namespace Models.Repository
             contactEdit.LinkInstagram = contact.LinkInstagram;
             contactEdit.LogoHeader = contact.LogoHeader;
             contactEdit.LogoFooter = contact.LogoFooter;
+            contactEdit.FacebookPagePlugin = contact.FacebookPagePlugin;
             _db.SaveChanges();
             return true;
         }

@@ -23,6 +23,7 @@ namespace FonNature.Areas.Admin.Controllers
 
         [HttpPost]
         [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateInput(false)]
         public JsonResult Edit(Contact Contact)
         {
             if (ModelState.IsValid)

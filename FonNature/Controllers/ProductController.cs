@@ -64,7 +64,7 @@ namespace FonNature.Controllers
             ViewBag.ListImage = _productServices.GetImagesList(id);
             ViewBag.MetaTitle = product.MetaTitle ?? string.Empty;
             ViewBag.MetaDescription = product.MetaKeyword ?? string.Empty;
-            ViewBag.MetaKeyword = product.MetaDescription ?? string.Empty;zz
+            ViewBag.MetaKeyword = product.MetaDescription ?? string.Empty;
             return View(product);
         }
 
