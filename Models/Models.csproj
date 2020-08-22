@@ -61,6 +61,7 @@
     <Compile Include="Entity\ContentCategory.cs" />
     <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\CustomerAccount.cs" />
+    <Compile Include="Entity\Dictionary.cs" />
     <Compile Include="Entity\FonNatureDbContext.cs" />
     <Compile Include="Entity\Footer.cs" />
     <Compile Include="Entity\FooterCategory.cs" />

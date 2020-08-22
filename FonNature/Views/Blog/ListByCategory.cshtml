@@ -32,27 +32,27 @@
 <div class="blog-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-65 pb-lg-45 pb-md-35 pb-sm-25 pb-xs-15">
     <div class="container">
         <div class="row">
-            <!-- Single Blog Start -->
             @if (Model != null)
             {
                 foreach (var item in Model)
                 {
-                    <div class="blog col-lg-4 col-md-6 col-sm-6">
+                    <!-- Single Blog Start -->
+                    <div class="blog col-lg-6 col-md-6 col-sm-6">
                         <div class="blog-inner mb-20">
                             <div class="media"><a href="/blog/detail?id=@item.id" class="image"><img src="@item.image" alt=""></a></div>
                             <div class="content">
-                                <h3 class="title"><a href="blog-details.html">@item.name</a></h3>
+                                <h3 class="title"><a href="/blog/detail?id=@item.id">@item.name</a></h3>
                                 <ul class="meta">
                                     <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">@item.createdDate.Value.Day</span><span class="separator">-</span><span class="month">@item.createdDate.Value.ToString("MMMM")</span></span></li>
                                 </ul>
-                                <p>@item.description</p>
+                                <p>@Html.Raw(item.description)</p>
                                 <a class="readmore" href="/blog/detail?id=@item.id">Read more</a>
                             </div>
                         </div>
                     </div>
+                    <!-- Single Blog End -->
                 }
             }
-
         </div>
         <div class="row mb-35">
             <div class="col">
@@ -93,4 +93,4 @@
         </div>
     </div>
 </div>
-<!-- Blog Section End -->
+<!-- Blog Section End -->   
