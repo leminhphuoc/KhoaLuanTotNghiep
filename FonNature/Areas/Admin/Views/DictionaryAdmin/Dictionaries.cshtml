@@ -16,7 +16,7 @@
                 <div class="col-sm-4">
                 </div>
                 <div class="col-sm-3">
-                    @using (Html.BeginForm("Dicionaries", "DictionaryAdmin", FormMethod.Get, new { @class = "input-group" }))
+                    @using (Html.BeginForm("Dictionaries", "DictionaryAdmin", FormMethod.Get, new { @class = "input-group" }))
                     {
                         <input name="searchString" id="searchString" value="@ViewBag.SearchString" type="text" class="input-sm form-control" placeholder="Search">
                         <span class="input-group-btn">
@@ -98,7 +98,7 @@
                 }
             </footer>
         </div>
-        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "ProductAdmin")'">
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("CreateDictionary", "DictionaryAdmin")'">
             Tạo mới
         </button>
     </div>

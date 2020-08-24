@@ -246,6 +246,7 @@
     <Compile Include="Controllers\SuccessController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="CustomCKFinderAuthenticator .cs" />
+    <Compile Include="Dictionaries.cs" />
     <Compile Include="Enum\AboutType.cs" />
     <Compile Include="Enum\BannerLocation.cs" />
     <Compile Include="Filter\AuthData.cs" />
@@ -255,6 +256,7 @@
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DictionaryService.cs" />
     <Compile Include="Services\OrderAdminServices.cs" />
     <Compile Include="Services\AboutServices.cs" />
     <Compile Include="Services\BlogServices.cs" />
@@ -1488,6 +1490,8 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Admin\Views\DictionaryAdmin\Dictionaries.cshtml" />
+    <Content Include="Areas\Admin\Views\DictionaryAdmin\CreateDictionary.cshtml" />
+    <Content Include="Areas\Admin\Views\DictionaryAdmin\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />

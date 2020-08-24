@@ -90,6 +90,8 @@ namespace Models.Repository
             try
             {
                 var addedDictionary = _db.Dictionaries.Add(dictionary);
+                _db.SaveChanges();
+
                 if (addedDictionary == null)
                 {
                     log.Error($"{nameof(AddDictionary)} return null");
@@ -118,7 +120,6 @@ namespace Models.Repository
                     return 0;
                 }
 
-                updateDictionary.Key = dictionary.Key;
                 updateDictionary.Value = dictionary.Value;
                 _db.SaveChanges();
 
@@ -133,14 +134,14 @@ namespace Models.Repository
             }
         }
 
-        public bool RemoveDictionary(Dictionary dictionary)
+        public bool RemoveDictionary(long id)
         {
             try
             {
-                var removeDictionary = _db.Dictionaries.Find(dictionary.Id);
+                var removeDictionary = _db.Dictionaries.Find(id);
                 if (removeDictionary == null)
                 {
-                    log.Error($"{nameof(RemoveDictionary)} cannot find dictionary with id {dictionary.Id}");
+                    log.Error($"{nameof(RemoveDictionary)} cannot find dictionary with id {id}");
                     return false;
                 }
 
@@ -155,6 +156,28 @@ namespace Models.Repository
             {
                 log.Error($"Error at {nameof(RemoveDictionary)}: {ex.Message}");
                 return false;
+            }
+        }
+
+        public string GetDictionaryByKey(string key)
+        {
+            try
+            {
+                var dictionary = _db.Dictionaries.SingleOrDefault(x=>x.Key.Equals(key, StringComparison.OrdinalIgnoreCase));
+                if (dictionary == null)
+                {
+                    log.Error($"{nameof(GetDictionaryByKey)} cannot find dictionary with key {key}");
+                    return string.Empty;
+                }
+
+                log.Info($"{nameof(GetDictionaryByKey)} success with id : {key}");
+
+                return dictionary.Value;
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error at {nameof(GetDictionaryByKey)}: {ex.Message}");
+                return string.Empty;
             }
         }
     }
