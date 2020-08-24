@@ -25,7 +25,6 @@ namespace Models.Repository
             {
                 var addedBanner = _db.Banners.Add(banner);
                 Db.SaveChanges();
-                log.Info($"Add Banner Success with information: {addedBanner.Id}, {addedBanner.Image}, {addedBanner.Location}");
                 return addedBanner.Id;
             }
             catch(Exception e)
@@ -43,7 +42,6 @@ namespace Models.Repository
                 var removeBanner = _db.Banners.Find(id);
                 Db.Banners.Remove(removeBanner);
                 Db.SaveChanges();
-                log.Info($"Edit Banner Success with information: {removeBanner.Id}, {removeBanner.Image}, {removeBanner.Location}");
                 return true;
             }
             catch (Exception e)
@@ -61,7 +59,6 @@ namespace Models.Repository
                 banner.Image = editBanner.Image;
                 banner.Location = editBanner.Location;
                 Db.SaveChanges();
-                log.Info($"Edit Banner Success with information: {banner.Id}, {banner.Image}, {banner.Location}");
                 return true;
             }
             catch (Exception e)
@@ -76,7 +73,6 @@ namespace Models.Repository
             try
             {
                 var banner = _db.Banners.Find(id);
-                log.Info($"Get Banner Success with information: {banner.Id}, {banner.Image}, {banner.Location}");
                 return banner;
             }
             catch (Exception e)
@@ -90,7 +86,6 @@ namespace Models.Repository
         {
             try
             {
-                log.Info($"Get Banners Success");
                 return _db.Banners.ToList();
             }
             catch (Exception e)

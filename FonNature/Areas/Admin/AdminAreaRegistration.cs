@@ -52,6 +52,7 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IFooterCategoryAdminRepository, FooterCategoryAdminRepository>();
             container.RegisterType<IIPAddressRepository, IPAddressRepository>();
             container.RegisterType<IBannerRepository, BannerRepository>();
+            container.RegisterType<IDictionaryRepository, DictionaryRepository>();
             // Client
             container.RegisterType<IContactClientServices, ContactClientServices>();
             container.RegisterType<IHomeServices, HomeServices>();

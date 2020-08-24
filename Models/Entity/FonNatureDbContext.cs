@@ -36,6 +36,7 @@ namespace Models.Entity
         public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
         public virtual DbSet<SEO> SEOs { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
+        public virtual DbSet<Dictionary> Dictionaries { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
