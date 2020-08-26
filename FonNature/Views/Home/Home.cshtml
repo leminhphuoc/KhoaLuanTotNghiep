@@ -1,4 +1,5 @@
-﻿@{
+﻿@using FonNature.Services;
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     var listMenu = ViewBag.ListMenu;
     List<Models.Entity.Slide> listSlide = ViewBag.SlideList;
@@ -69,8 +70,8 @@
                         <i class="fa-truck fa"></i>
                     </div>
                     <div class="content">
-                        <h2>Free shipping worldwide</h2>
-                        <p>On order over $200</p>
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FreeshipTitle)</h2>
+                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FreeshipSubTitle)</p>
                     </div>
                 </div>
                 <!-- Single Faeture End -->
@@ -82,8 +83,8 @@
                         <i class="fa fa-undo"></i>
                     </div>
                     <div class="content">
-                        <h2>30 days free return</h2>
-                        <p>Money back guarantee</p>
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.ReturnTitle)</h2>
+                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.ReturnSubTitle)</p>
                     </div>
                 </div>
                 <!-- Single Faeture End -->
@@ -95,8 +96,8 @@
                         <i class="fa fa-thumbs-o-up"></i>
                     </div>
                     <div class="content">
-                        <h2>Member safe shopping</h2>
-                        <p>Safe shopping guarantee</p>
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.SafeTitle)</h2>
+                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.SafeSubTitle)</p>
                     </div>
                 </div>
                 <!-- Single Faeture End -->
@@ -114,9 +115,9 @@
                 <div class="col-lg-3 col-xl-2">
                     <!-- Section Title Start -->
                     <div class="section-title-two mb-40 mb-xs-20">
-                        <span>our</span>
-                        <h2>Featured</h2>
-                        <span>proucts</span>
+                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureOurTitle)</span>
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureTitle)</h2>
+                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureProductsTitle)</span>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -286,9 +287,9 @@
                 <div class="col-xl-2 col-lg-3">
                     <!-- Section Title Start -->
                     <div class="section-title-two mb-40 mb-xs-20">
-                        <span>our</span>
-                        <h2>Best seller</h2>
-                        <span>proucts</span>
+                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerOurTitle)</span>
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerTitle)</h2>
+                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerProductsTitle)</span>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -424,7 +425,7 @@
                     <!-- Section Title Start -->
                     <div class="col">
                         <div class="section-title mb-40 mb-xs-20">
-                            <h2>From the blog</h2>
+                            <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FromTheBlog)</h2>
                         </div>
                     </div>
                     <!-- Section Title End -->
@@ -467,7 +468,7 @@
                                         <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">@content.createdDate.Value.Day</span><span class="separator">-</span><span class="month">@content.createdDate.Value.ToString("MMMM")</span></span></li>
                                     </ul>
                                     <p>@content.description </p>
-                                    <a class="readmore" href="/blog/detail?id=@content.id">Read more</a>
+                                    <a class="readmore" href="/blog/detail?id=@content.id">@DictionaryService.GetDictionaryValue(Dictionaries.Blog.Readmore)</a>
                                 </div>
                             </div>
                         </div>
