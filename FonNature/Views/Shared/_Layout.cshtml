@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@(ViewBag.MetaTitle ?? ViewBag.Tittle)</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="title" content="@(ViewBag.MetaTitle ?? string.Empty)" />
+    <meta name="description" content="@(ViewBag.MetaDescription ?? string.Empty)" />
+    <meta name="keywords" content="@(ViewBag.MetaKeyword ?? string.Empty)" />
+    <meta property="og:title" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
+    <meta property="og:type" content="Website" />
+    <meta property="og:url" content="@Context.Request.Url.AbsoluteUri" />
+    <meta property="og:description" content="@(ViewBag.MetaDescription ?? string.Empty)" />
+    <meta property="og:site_name" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
+    <meta name="google-site-verification" content="b32z8I1U65G5SAsbWbGk_zZuawyKZQEQ5M2NQdLgnGM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="~/Asset/Client/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
+    <!-- All css files are included here. -->
+    <link href="~/Asset/Client/css/styleError.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Asset/Client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Asset/Client/css/iconfont.min.css">
+    <link rel="stylesheet" href="~/Asset/Client/css/plugins.css">
+    <link rel="stylesheet" href="~/Asset/Client/css/helper.css">
+    <link rel="stylesheet" href="~/Asset/Client/css/style.css">
+    <!-- Modernizr JS -->
+    <script src="~/Asset/Client/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body id="body" onload="myFunction()" class="animsition">
+    <div id="main-wrapper">
+        <!--Header section start-->
+        <header class="header header-transparent header-sticky">
+            <div class="header-top">
+                <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
+                    <div class="row align-items-center">
+
+                        @{Html.RenderAction("ContactHome", "Home");}
+                        @*<div class="col-xl-6 col-lg-4">
+                                <div class="ht-right d-flex justify-content-lg-end justify-content-center">
+                                    <ul class="ht-us-menu d-flex">
+                                        <li>
+                                            <a href="#"><i class="fa fa-user-circle-o"></i>Login</a>
+                                            <ul class="ht-dropdown right">
+                                                <li><a href="compare.html">Compare Products</a></li>
+                                                <li><a href="my-account.html">My Account</a></li>
+                                                <li><a href="wishlist.html">My Wish List</a></li>
+                                                <li><a href="login-register.html">Sign In</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>*@
+                    </div>
+
+                </div>
+            </div>
+            <div class="header-bottom menu-right">
+                <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
+                    <div class="row align-items-center">
+
+                        <!--Logo start-->
+                        @{Html.RenderAction("HeaderLogo", "Home");}
+                        <!--Logo end-->
+                        @{Html.RenderAction("MainMenu", "Home");}
+                        <!--Search Cart Start-->
+                        <div class="col-lg-3 col-md-3 col-6 order-lg-3 order-md-3 order-2 d-flex justify-content-end">
+                            <div class="header-search">
+                                <button class="header-search-toggle"><i class="fa fa-search"></i></button>
+                                <div class="header-search-form">
+                                    <form action="/search">
+                                        <input id="searchString" name="searchString" type="text" placeholder="Type and hit enter">
+                                        <button><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            @{Html.RenderAction("MiniCart", "Home");}
+                        </div>
+                        <!--Search Cart End-->
+                    </div>
+
+                    <!--Mobile Menu start-->
+                    <div class="row">
+                        <div class="col-12 d-flex d-lg-none">
+                            <div class="mobile-menu"></div>
+                        </div>
+                    </div>
+                    <!--Mobile Menu end-->
+
+                </div>
+            </div>
+        </header>
+        <!--Header section end-->
+        @RenderBody();
+        <!-- Footer -->
+        @{Html.RenderAction("Footer", "Home");}
+
+    </div>
+    <!-- end Footer -->
+    <!-- All jquery file included here -->
+    <script async defer src="https://maps.google.com/maps/api/js?v=3.22&key=AIzaSyB2-FTfalYzmj_0Ie_1x1Xpa7dbHQEOAJo&callback=initMap"></script>
+    <script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="~/Asset/Client/js/HandlerCart.js"></script>
+    <script src="~/Asset/Client/js/popper.min.js"></script>
+    <script src="~/Asset/Client/js/bootstrap.min.js"></script>
+    <script src="~/Asset/Client/js/plugins.js"></script>
+    @RenderSection("jsFooter", required: false)
+    <script src="~/Asset/Client/js/main.js"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=2399606136744047&autoLogAppEvents=1"></script>
+    <script>
+    </script>
+    <div class="fb-customerchat"
+         page_id="1897363613844865"
+         minimized="true">
+    </div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '2399606136744047',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.11'
+            });
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</body>
+</html>

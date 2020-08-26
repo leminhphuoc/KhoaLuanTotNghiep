@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FonNature", "FonSpa\FonNature.csproj", "{825E233F-DB0C-4185-B5B9-B818BD4B873B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FonNature", "FonNature\FonNature.csproj", "{825E233F-DB0C-4185-B5B9-B818BD4B873B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{EBF779B1-BCA6-4F3B-A34A-1F48563558C3}"
 EndProject

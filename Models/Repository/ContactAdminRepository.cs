@@ -1,5 +1,5 @@
 ﻿using Models.Entity;
-using Models.IRepository;
+using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +34,7 @@ namespace Models.Repository
             contactEdit.LinkInstagram = contact.LinkInstagram;
             contactEdit.LogoHeader = contact.LogoHeader;
             contactEdit.LogoFooter = contact.LogoFooter;
+            contactEdit.FacebookPagePlugin = contact.FacebookPagePlugin;
             _db.SaveChanges();
             return true;
         }

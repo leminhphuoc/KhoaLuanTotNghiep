@@ -31,5 +31,8 @@ namespace Models.Entity
 
         [StringLength(250)]
         public string LogoFooter { get; set; }
+
+        [StringLength(1000)]
+        public string FacebookPagePlugin { get; set; }
     }
 }

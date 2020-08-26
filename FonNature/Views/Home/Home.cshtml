@@ -1,0 +1,516 @@
+﻿@using FonNature.Services;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listMenu = ViewBag.ListMenu;
+    List<Models.Entity.Slide> listSlide = ViewBag.SlideList;
+    List<Models.Entity.Product> featuredProductList = ViewBag.featuredProduct;
+    List<Models.Entity.Product> topHotProduct = ViewBag.topHotProduct;
+    List<Models.Entity.Product> bestSellerProductList = ViewBag.bestSellerProduct;
+    Models.Entity.Slide otherSlide = ViewBag.otherSlide;
+    List<Models.Entity.Content> contentList = ViewBag.contentList;
+    Models.Entity.Banner bannerHome = ViewBag.bannerHome;
+}
+
+<!--slider section start-->
+<div class="hero-section section position-relative">
+
+    <div class="tf-element-carousel slider-nav" data-slick-options='{
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "infinite": true,
+        "arrows": true,
+        "dots": true
+        }' data-slick-responsive='[
+        {"breakpoint":768, "settings": {
+        "slidesToShow": 1
+        }},
+        {"breakpoint":575, "settings": {
+        "slidesToShow": 1,
+        "arrows": false,
+        "autoplay": true
+        }}
+        ]'>
+
+        @foreach (var slide in listSlide)
+        {
+            <!--Hero Item start-->
+            <div class="hero-item bg-image" data-bg="@slide.image">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <!--Hero Content start-->
+                            <div class="hero-content-3">
+
+                                <h2>@slide.YellowTitle</h2>
+                                <h1>@slide.title</h1>
+                                <h3>@slide.subtitle</h3>
+                                <a href="/product">@slide.TextButton</a>
+
+                            </div>
+                            <!--Hero Content end-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Hero Item end-->
+        }
+    </div>
+
+</div>
+<!--slider section end-->
+<div class="feature-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <!-- Single Faeture Start -->
+                <div class="single-feature mb-30">
+                    <div class="icon">
+                        <i class="fa-truck fa"></i>
+                    </div>
+                    <div class="content">
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FreeshipTitle)</h2>
+                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FreeshipSubTitle)</p>
+                    </div>
+                </div>
+                <!-- Single Faeture End -->
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <!-- Single Faeture Start -->
+                <div class="single-feature mb-30">
+                    <div class="icon">
+                        <i class="fa fa-undo"></i>
+                    </div>
+                    <div class="content">
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.ReturnTitle)</h2>
+                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.ReturnSubTitle)</p>
+                    </div>
+                </div>
+                <!-- Single Faeture End -->
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <!-- Single Faeture Start -->
+                <div class="single-feature mb-30 br-0">
+                    <div class="icon">
+                        <i class="fa fa-thumbs-o-up"></i>
+                    </div>
+                    <div class="content">
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.SafeTitle)</h2>
+                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.SafeSubTitle)</p>
+                    </div>
+                </div>
+                <!-- Single Faeture End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--Product section start-->
+@if (featuredProductList.Any())
+{
+    <div class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-50 pt-xs-40 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+        <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
+            <div class="row">
+
+                <div class="col-lg-3 col-xl-2">
+                    <!-- Section Title Start -->
+                    <div class="section-title-two mb-40 mb-xs-20">
+                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureOurTitle)</span>
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureTitle)</h2>
+                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureProductsTitle)</span>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+
+                <div class="col-lg-9 col-xl-10">
+                    <div class="row tf-element-carousel product-nav-two" data-slick-options='{
+                            "slidesToShow": @(featuredProductList.Count <= 5 ? featuredProductList.Count : 5 ),
+                            "slidesToScroll": 1,
+                            "infinite": true,
+                            "arrows": true,
+                            "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
+                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
+                            }' data-slick-responsive='[
+                            {"breakpoint":1899, "settings": {
+                            "slidesToShow": @(featuredProductList.Count <= 4 ? featuredProductList.Count : 4 )
+                            }},
+                            {"breakpoint":1400, "settings": {
+                            "slidesToShow": 3
+                            }},
+                            {"breakpoint":1199, "settings": {
+                            "slidesToShow": 2
+                            }},
+                            {"breakpoint":992, "settings": {
+                            "slidesToShow": 2
+                            }},
+                            {"breakpoint":768, "settings": {
+                            "slidesToShow": 2,
+                            "arrows": false,
+                            "autoplay": true
+                            }},
+                            {"breakpoint":576, "settings": {
+                            "slidesToShow": 1
+                            }}
+                            ]'>
+                        @foreach (var product in featuredProductList)
+                        {
+                            <div class="col-lg-3">
+                                <!-- Single Product Start -->
+                                <div class="single-product mb-30">
+                                    <div class="product-img">
+                                        <a href="/product/detail?id=@product.id">
+                                            <img src="@product.image" alt="">
+                                        </a>
+                                        @if (product.promotionPrice != null && product.promotionPrice != 0)
+                                        {
+                                            var percent = (int)(((product.price - product.promotionPrice) / product.price) * 100);
+                                            <span class="descount-sticker">-@percent %</span>
+                                        }
+
+
+                                        @{
+                                            var changeValue = DateTime.Now.Date - product.createdDate.Value.Date;
+                                            if (changeValue.TotalDays <= 7)
+                                            {
+                                                <span class="sticker">New</span>
+                                            }
+                                        }
+                                        <div class="product-action d-flex justify-content-between">
+                                            <a data-id="@product.id" class="product-btn addToCart" href="javascript:void(0);">Add to Cart</a>
+                                            <a class="product-btn" href="/product/Detail?id=@product.id"></a>
+                                            @*<ul class="d-flex">
+                                                    <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-exchange"></i></a></li>
+                                                </ul>*@
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-left">
+                                        <h3><a href="/product/detail?id=@product.id">@product.name</a></h3>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        @if (product.promotionPrice == null || product.price == 0)
+                                        {
+                                            <h4 class="price"><span class="new">@product.price.Value.ToString("N0") đ</span></h4>
+                                        }
+                                        else
+                                        {
+                                            <h4 class="price">
+                                                <span class="new">@product.promotionPrice.Value.ToString("N0") đ</span><span style="text-decoration-line:line-through" class="old">@product.price.Value.ToString("N0") đ</span>
+                                            </h4>
+                                        }
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+<!--Product section end-->
+<!--Deal Of Product section start-->
+@if (topHotProduct != null)
+{
+    <div class="deal-product-section section bg-gray-two pt-0 pt-sm-5 pb-20 pb-sm-0 pb-xs-25">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tf-element-carousel" data-slick-options='{
+                        "slidesToShow": 1,
+                        "slidesToScroll": 1,
+                        "infinite": true,
+                        "arrows": false,
+                        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
+                        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
+                        }' data-slick-responsive='[
+                        {"breakpoint":768, "settings": {
+                        "slidesToShow": 1,
+                        "arrows": false,
+                        "autoplay": true
+                        }},
+                        {"breakpoint":575, "settings": {
+                        "slidesToShow": 1,
+                        "arrows": false,
+                        "autoplay": true
+                        }}
+                        ]'>
+                        @foreach (var product in topHotProduct)
+                        {
+                            <!-- Single Deal Product Start -->
+                            <div class="single-deal-product">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="deal-product-img">
+                                            <a href="/product/detail?id=@product.id">
+                                                <img src="@product.image" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="deal-product-title">
+                                            <h2><span>Hot</span><span>Deal</span></h2>
+                                            <p>@product.description</p>
+                                            <div class="cs-countdown black-color">
+                                                <div class="pro-countdown" data-countdown="@product.topHot.Value.ToString("yyyy/MM/dd")"></div>
+                                            </div>
+                                            <a href="/product/detail?id=@product.id">Shop collection now!</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Deal Product End -->
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<!--Deal Of Product section end-->
+<!--Product section start-->
+@if (bestSellerProductList.Any())
+{
+    <div class="product-section section pt-100 pt-lg-70 pt-md-65 pt-sm-60 pt-xs-45 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+        <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
+            <div class="row">
+
+                <div class="col-xl-2 col-lg-3">
+                    <!-- Section Title Start -->
+                    <div class="section-title-two mb-40 mb-xs-20">
+                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerOurTitle)</span>
+                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerTitle)</h2>
+                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerProductsTitle)</span>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+
+                <div class="col-xl-10 col-lg-9">
+                    <div class="row tf-element-carousel product-nav-two" data-slick-options='{
+                            "slidesToShow": @(bestSellerProductList.Count <= 5 ? bestSellerProductList.Count : 5 ),
+                            "slidesToScroll": 1,
+                            "infinite": true,
+                            "arrows": true,
+                            "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
+                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
+                            }' data-slick-responsive='[
+                            {"breakpoint":1899, "settings": {
+                            "slidesToShow": @(bestSellerProductList.Count <= 4 ? bestSellerProductList.Count : 4 )
+                            }},
+                            {"breakpoint":1400, "settings": {
+                            "slidesToShow": 3
+                            }},
+                            {"breakpoint":1199, "settings": {
+                            "slidesToShow": 2
+                            }},
+                            {"breakpoint":992, "settings": {
+                            "slidesToShow": 2
+                            }},
+                            {"breakpoint":768, "settings": {
+                            "slidesToShow": 2,
+                            "arrows": false,
+                            "autoplay": true
+                            }},
+                            {"breakpoint":576, "settings": {
+                            "slidesToShow": 1,
+                            "arrows": false,
+                            "autoplay": true
+                            }}
+                            ]'>
+                        @foreach (var product in bestSellerProductList)
+                        {
+                            <div class="col-lg-3">
+                                <!-- Single Product Start -->
+                                <div class="single-product mb-30">
+                                    <div class="product-img">
+                                        <a href="/product/detail?id=@product.id">
+                                            <img src="@product.image" alt="">
+                                        </a>
+                                        @if (product.promotionPrice != null && product.promotionPrice != 0)
+                                        {
+                                            var percent = (int)(((product.price - product.promotionPrice) / product.price) * 100);
+                                            <span class="descount-sticker">-@percent %</span>
+                                        }
+
+
+                                        @{
+                                            var changeValue = DateTime.Now.Date - product.createdDate.Value.Date;
+                                            if (changeValue.TotalDays <= 7)
+                                            {
+                                                <span class="sticker">New</span>
+                                            }
+                                        }
+                                        <div class="product-action d-flex justify-content-between">
+                                            <a data-id="@product.id"  class="product-btn addToCart" href="#">Add to Cart</a>
+                                            <a class="product-btn" href="/product/Detail?id=@product.id"></a>
+                                            @*<ul class="d-flex">
+                                                    <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-exchange"></i></a></li>
+                                                </ul>*@
+                                        </div>
+                                    </div>
+                                    <div class="product-content text-left">
+                                        <h3><a href="/product/detail?id=@product.id">@product.name</a></h3>
+                                        <div class="ratting">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        @if (product.promotionPrice == null || product.price == 0)
+                                        {
+                                            <h4 class="price"><span class="new">@product.price.Value.ToString("N0") đ</span></h4>
+                                        }
+                                        else
+                                        {
+                                            <h4 class="price">
+                                                <span class="new">@product.promotionPrice.Value.ToString("N0") đ</span><span style="text-decoration-line:line-through" class="old">@product.price.Value.ToString("N0") đ</span>
+                                            </h4>
+                                        }
+                                    </div>
+                                </div>
+                                <!-- Single Product End -->
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+<!--Product section end-->
+<!-- Banner Section Start -->
+@if (otherSlide != null)
+{
+    <div class="banner-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-95 pb-lg-75 pb-md-65 pb-sm-55 pb-xs-45" data-bg="@otherSlide.image">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="banner-content">
+
+                        <h2>@otherSlide.YellowTitle</h2>
+                        <h1>@otherSlide.title</h1>
+                        <h3>@otherSlide.subtitle</h3>
+                        <a href="@otherSlide.link">@otherSlide.TextButton</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Banner Section End -->
+<!--Blog section start-->
+@if (contentList != null)
+{
+    if (contentList.Any())
+    {
+        <div class="blog-section section bg-gray pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-75 pb-lg-55 pb-md-45 pb-sm-35 pb-xs-30">
+            <div class="container">
+
+                <div class="row">
+                    <!-- Section Title Start -->
+                    <div class="col">
+                        <div class="section-title mb-40 mb-xs-20">
+                            <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FromTheBlog)</h2>
+                        </div>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+
+                <div class="row tf-element-carousel" data-slick-options='{
+                    "slidesToShow": @(contentList.Count <= 3 ? contentList.Count : 3),
+                    "slidesToScroll": 3,
+                    "infinite": true,
+                    "arrows": true,
+                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
+                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
+                    }' data-slick-responsive='[
+                    {"breakpoint":1199, "settings": {
+                    "slidesToShow": 3
+                    }},
+                    {"breakpoint":992, "settings": {
+                    "slidesToShow": 2
+                    }},
+                    {"breakpoint":768, "settings": {
+                    "slidesToShow": 2,
+                    "arrows": false,
+                    "autoplay": true
+                    }},
+                    {"breakpoint":575, "settings": {
+                    "slidesToShow": 1,
+                    "arrows": false,
+                    "autoplay": true
+                    }}
+                    ]'>
+                    @foreach (var content in contentList)
+                    {
+                        <!-- Single Blog Start -->
+                        <div class="blog col">
+                            <div class="blog-inner">
+                                <div class="media"><a href="/blog/detail?id=@content.id" class="image"><img src="@content.image" alt=""></a></div>
+                                <div class="content">
+                                    <h3 class="title"><a href="/blog/detail?id=@content.id">@content.name</a></h3>
+                                    <ul class="meta">
+                                        <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">@content.createdDate.Value.Day</span><span class="separator">-</span><span class="month">@content.createdDate.Value.ToString("MMMM")</span></span></li>
+                                    </ul>
+                                    <p>@content.description </p>
+                                    <a class="readmore" href="/blog/detail?id=@content.id">@DictionaryService.GetDictionaryValue(Dictionaries.Blog.Readmore)</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Blog End -->
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<!--Blog section end-->
+<!--Call To Action section start-->
+<div class="cta-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-40"
+     data-bg="@(bannerHome == null? "/Asset/Client/images/bg/cta-bg.jpg": bannerHome.Image)">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <div class="cta-content">
+                    <h3>Get <span>10%</span> Discount</h3>
+                    <p>
+                        <span>Subcribe to the TheFace mailing list to receive update on mnew arrivals,</span>
+                        <span>special offers and other discount information.</span>
+                    </p>
+                    <div class="cta-form">
+                        <form id="mc-form" class="mc-form" action="/Home/SendMessage" method="post">
+                            <input name="email" id="mc-email email" type="email" autocomplete="off"
+                                   placeholder="Your email address here" />
+                            <button id="mc-submit" class="cta-btn">Subscribe</button>
+                        </form>
+                        <!-- mailchimp-alerts Start -->
+                        <div class="mailchimp-alerts text-centre">
+                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                        </div><!-- mailchimp-alerts end -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Call To Action section end-->

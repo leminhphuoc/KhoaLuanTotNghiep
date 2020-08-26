@@ -11,12 +11,15 @@ namespace Models.Entity
     {
         public long id { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string email { get; set; }
 
+        [Required]
         [StringLength(20)]
         public string phone { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string address { get; set; }
 
