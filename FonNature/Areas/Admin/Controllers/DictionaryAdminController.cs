@@ -8,6 +8,7 @@ using PagedList;
 
 namespace FonNature.Areas.Admin.Controllers
 {
+    [AuthData]
     public class DictionaryAdminController : Controller
     {
         private readonly IDictionaryRepository _repository;
