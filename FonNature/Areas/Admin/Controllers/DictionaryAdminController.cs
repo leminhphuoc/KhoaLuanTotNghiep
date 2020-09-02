@@ -79,7 +79,7 @@ namespace FonNature.Areas.Admin.Controllers
         public ActionResult Delete(long id)
         {
             _repository.RemoveDictionary(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("Dictionaries");
         }
     }
 }

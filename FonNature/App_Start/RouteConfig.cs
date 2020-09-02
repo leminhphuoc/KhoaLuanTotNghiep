@@ -10,11 +10,17 @@ namespace FonNature
             
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapMvcAttributeRoutes();
-            
+
+            routes.MapRoute(
+                name: "PageRoute",
+                url: "{pageUrl}",
+                defaults: new { controller = "Default", action = "CommonPage"}
+            );
+
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Home", id = UrlParameter.Optional }
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Home"}
             );
         }
     }
