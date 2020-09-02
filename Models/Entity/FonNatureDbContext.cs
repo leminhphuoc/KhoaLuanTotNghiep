@@ -37,6 +37,7 @@ namespace Models.Entity
         public virtual DbSet<SEO> SEOs { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
         public virtual DbSet<Dictionary> Dictionaries { get; set; }
+        public virtual DbSet<Page> Pages { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

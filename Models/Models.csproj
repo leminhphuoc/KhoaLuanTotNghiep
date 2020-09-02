@@ -71,6 +71,7 @@
     <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\OrderInformation.cs" />
     <Compile Include="Entity\OrderStatus.cs" />
+    <Compile Include="Entity\Page.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\ProductCategory.cs" />
     <Compile Include="Entity\SEO.cs" />
@@ -81,6 +82,10 @@
     <Compile Include="Migrations\202008220403371_Add-Dictionary.cs" />
     <Compile Include="Migrations\202008220403371_Add-Dictionary.Designer.cs">
       <DependentUpon>202008220403371_Add-Dictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008271507506_CreatePageTable.cs" />
+    <Compile Include="Migrations\202008271507506_CreatePageTable.Designer.cs">
+      <DependentUpon>202008271507506_CreatePageTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\DictionaryRepository.cs" />
     <Compile Include="Repository\IAboutAdminRepository.cs" />
@@ -97,6 +102,7 @@
     <Compile Include="Repository\IMenuTypeAdminRepository.cs" />
     <Compile Include="Repository\IIPAddressRepository.cs" />
     <Compile Include="Repository\IOrderRepository.cs" />
+    <Compile Include="Repository\IPageRepository.cs" />
     <Compile Include="Repository\IProductAdminRepository.cs" />
     <Compile Include="Repository\IProductCategoryAdminRepository.cs" />
     <Compile Include="Repository\ISEORepository.cs" />
@@ -142,6 +148,7 @@
     <Compile Include="Repository\MenuAdminRepository.cs" />
     <Compile Include="Repository\MenuTypeAdminRepository.cs" />
     <Compile Include="Repository\OrdersRepository.cs" />
+    <Compile Include="Repository\PageRepository.cs" />
     <Compile Include="Repository\ProductAdminRepository.cs" />
     <Compile Include="Repository\ProductCategoryAdminRepository.cs" />
     <Compile Include="Repository\SEORepository.cs" />
@@ -179,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008220403371_Add-Dictionary.resx">
       <DependentUpon>202008220403371_Add-Dictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008271507506_CreatePageTable.resx">
+      <DependentUpon>202008271507506_CreatePageTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

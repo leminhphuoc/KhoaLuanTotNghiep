@@ -95,7 +95,7 @@ namespace Models.Repository
                 if (addedDictionary == null)
                 {
                     log.Error($"{nameof(AddDictionary)} return null");
-                    return addedDictionary;
+                    return null;
                 }
 
                 log.Info($"{nameof(AddDictionary)} result is {addedDictionary}");
