@@ -57,10 +57,10 @@
             <div class="col">
 
                 <div class="page-banner text-center">
-                    <h1>Checkout</h1>
+                    <h1>Thông tin đơn hàng</h1>
                     <ul class="page-breadcrumb">
                         <li><a href="/">Home</a></li>
-                        <li>Checkout</li>
+                        <li>Thông tin đơn hàng</li>
                     </ul>
                 </div>
 
@@ -146,14 +146,13 @@
 
                                     <div class="checkout-cart-total">
 
-                                        <h4>Sản phẩm <span>Thành tiền</span></h4>
+                                        <h4>Sản phẩm <span>Giá tiền</span></h4>
 
                                         <ul id="checkoutCartItem"></ul>
 
-                                        <p>Tổng đơn hàng <span id="subTotalInCheckout">0 vnđ</span></p>
+                                        <p>Tạm tính <span id="subTotalInCheckout">0 vnđ</span></p>
                                         <p>Phí ship <span>0 vnđ</span></p>
-
-                                        <h4>Tổng cộng <span id="grandTotalInCheckout">0 vnđ</span></h4>
+                                        <h4>Thành tiền <span id="grandTotalInCheckout">0 vnđ</span></h4>
 
                                     </div>
 
@@ -170,11 +169,12 @@
                                             <label for="payment_bank">Chuyển khoản</label>
                                             <p data-method="bank">Vui lòng chuyển khoản theo thông tin: <br />Số tài khoản: 0231000582588 <br /> Ngân hàng: Techcombank <br />Chủ tài khoản: Phạm Thùy Vân</p>
                                         </div>
-
                                         <div class="single-method">
-                                            @*<input type="checkbox" id="accept_terms">
-                                            <label for="accept_terms">    
-                                            </label>*@
+                                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                                            <label for="payment_cash">Thanh toán khi nhận hàng</label>
+                                            <p data-method="cash">Thanh toán qua dịch vụ COD, lưu ý phí phát sinh do COD sẽ được cộng thêm vào tổng tiền</p>
+                                        </div>
+                                        <div class="single-method">
                                             <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                                             <label class="form-check-label" for="invalidCheck">
                                                 <a target="_blank" href="/dieu-khoan-mua-ban-hang-hoa">Tôi đã đồng ý với chính sách mua bán hàng hóa</a>
