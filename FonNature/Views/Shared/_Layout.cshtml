@@ -14,15 +14,16 @@
     <meta property="og:site_name" content="@(ViewBag.MetaTitle ?? ViewBag.Tittle)" />
     <meta name="google-site-verification" content="b32z8I1U65G5SAsbWbGk_zZuawyKZQEQ5M2NQdLgnGM" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" href="~/Asset/Client/images/favicon.ico" type="img/x-icon" rel="shortcut icon">
     <!-- All css files are included here. -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link href="~/Asset/Client/css/styleError.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/Asset/Client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Asset/MdBootrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Asset/Client/css/iconfont.min.css">
     <link rel="stylesheet" href="~/Asset/Client/css/plugins.css">
     <link rel="stylesheet" href="~/Asset/Client/css/helper.css">
+    <link rel="stylesheet" href="~/Asset/MdBootrap/css/mdb.min.css">
+    <link href="~/Asset/noty/lib/themes/metroui.css" rel="stylesheet" />
+    <link href="~/Asset/noty/lib/noty.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Asset/Client/css/style.css">
     <!-- Modernizr JS -->
     <script src="~/Asset/Client/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -99,11 +100,14 @@
     <!-- end Footer -->
     <!-- All jquery file included here -->
     <script async defer src="https://maps.google.com/maps/api/js?v=3.22&key=AIzaSyB2-FTfalYzmj_0Ie_1x1Xpa7dbHQEOAJo&callback=initMap"></script>
-    <script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>
+    @*<script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>*@
+    <script type="text/javascript" src="~/Asset/MdBootrap/js/jquery.min.js"></script>
     <script src="~/Asset/Client/js/HandlerCart.js"></script>
     <script src="~/Asset/Client/js/popper.min.js"></script>
     <script src="~/Asset/Client/js/bootstrap.min.js"></script>
     <script src="~/Asset/Client/js/plugins.js"></script>
+    <script type="text/javascript" src="~/Asset/MdBootrap/js/mdb.min.js"></script>
+    <script src="~/Asset/noty/lib/noty.js"></script>
     @RenderSection("jsFooter", required: false)
     <script src="~/Asset/Client/js/main.js"></script>
     <div id="fb-root"></div>

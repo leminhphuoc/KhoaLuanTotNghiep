@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -24,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.9</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -616,6 +618,7 @@
     <Content Include="Asset\Client\js\CartPreview.js" />
     <Content Include="Asset\Client\js\HandlerCart.js" />
     <Content Include="Asset\Client\js\main.js" />
+    <Content Include="Asset\Client\js\notify.js" />
     <Content Include="Asset\Client\js\plugins.js" />
     <Content Include="Asset\Client\js\popper.min.js" />
     <Content Include="Asset\Client\js\quickview.js" />
@@ -625,6 +628,97 @@
     <Content Include="Asset\Client\Mail\Subscribe.html" />
     <Content Include="Asset\Client\Mail\Message.html" />
     <Content Include="Asset\Client\php\mail.php" />
+    <Content Include="Asset\MdBootrap\css\addons\datatables-select.min.css" />
+    <Content Include="Asset\MdBootrap\css\addons\datatables-select2.min.css" />
+    <Content Include="Asset\MdBootrap\css\addons\datatables.min.css" />
+    <Content Include="Asset\MdBootrap\css\addons\datatables2.min.css" />
+    <Content Include="Asset\MdBootrap\css\addons\directives.min.css" />
+    <Content Include="Asset\MdBootrap\css\addons\flag.min.css" />
+    <Content Include="Asset\MdBootrap\css\addons\jquery.zmd.hierarchical-display.min.css" />
+    <Content Include="Asset\MdBootrap\css\addons\rating.min.css" />
+    <Content Include="Asset\MdBootrap\css\bootstrap.css" />
+    <Content Include="Asset\MdBootrap\css\bootstrap.min.css" />
+    <Content Include="Asset\MdBootrap\css\mdb.css" />
+    <Content Include="Asset\MdBootrap\css\mdb.lite.css" />
+    <Content Include="Asset\MdBootrap\css\mdb.lite.min.css" />
+    <Content Include="Asset\MdBootrap\css\mdb.min.css" />
+    <Content Include="Asset\MdBootrap\css\modules\animations-extended.min.css" />
+    <Content Include="Asset\MdBootrap\css\style.css" />
+    <Content Include="Asset\MdBootrap\exclusive-templates\unlock-exclusive-freebies.html" />
+    <Content Include="Asset\MdBootrap\img\mdb-favicon.ico" />
+    <Content Include="Asset\MdBootrap\img\overlays\01.png" />
+    <Content Include="Asset\MdBootrap\img\overlays\02.png" />
+    <Content Include="Asset\MdBootrap\img\overlays\03.png" />
+    <Content Include="Asset\MdBootrap\img\overlays\04.png" />
+    <Content Include="Asset\MdBootrap\img\overlays\05.png" />
+    <Content Include="Asset\MdBootrap\img\overlays\06.png" />
+    <Content Include="Asset\MdBootrap\img\overlays\07.png" />
+    <Content Include="Asset\MdBootrap\img\overlays\08.png" />
+    <Content Include="Asset\MdBootrap\img\overlays\09.png" />
+    <Content Include="Asset\MdBootrap\img\svg\arrow_left.svg" />
+    <Content Include="Asset\MdBootrap\img\svg\arrow_right.svg" />
+    <Content Include="Asset\MdBootrap\index.html" />
+    <Content Include="Asset\MdBootrap\js\addons\datatables-select.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\datatables-select2.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\datatables.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\datatables2.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\directives.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\flag.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\imagesloaded.pkgd.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\jquery.zmd.hierarchical-display.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\masonry.pkgd.min.js" />
+    <Content Include="Asset\MdBootrap\js\addons\rating.min.js" />
+    <Content Include="Asset\MdBootrap\js\bootstrap.js" />
+    <Content Include="Asset\MdBootrap\js\bootstrap.min.js" />
+    <Content Include="Asset\MdBootrap\js\jquery.js" />
+    <Content Include="Asset\MdBootrap\js\jquery.min.js" />
+    <Content Include="Asset\MdBootrap\js\mdb.js" />
+    <Content Include="Asset\MdBootrap\js\mdb.min.js" />
+    <Content Include="Asset\MdBootrap\js\modules\animations-extended.min.js" />
+    <Content Include="Asset\MdBootrap\js\modules\forms-free.min.js" />
+    <Content Include="Asset\MdBootrap\js\modules\scrolling-navbar.min.js" />
+    <Content Include="Asset\MdBootrap\js\modules\treeview.min.js" />
+    <Content Include="Asset\MdBootrap\js\modules\wow.min.js" />
+    <Content Include="Asset\MdBootrap\js\popper.js" />
+    <Content Include="Asset\MdBootrap\js\popper.min.js" />
+    <Content Include="Asset\MdBootrap\README.txt" />
+    <Content Include="Asset\MdBootrap\src\js\free\forms-free.js" />
+    <Content Include="Asset\MdBootrap\src\js\free\scrolling-navbar.js" />
+    <Content Include="Asset\MdBootrap\src\js\free\treeview.js" />
+    <Content Include="Asset\MdBootrap\src\js\free\wow.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\addons\datatables-select.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\addons\datatables-select2.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\addons\datatables.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\addons\datatables2.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\addons\imagesloaded.pkgd.min.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\addons\jquery.zmd.hierarchical-display.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\addons\masonry.pkgd.min.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\addons\rating.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\free\bs-custom-file-input.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\free\chart.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\free\chartjs-datalabels.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\free\enhanced-modals.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\free\jquery.easing.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\free\velocity.js" />
+    <Content Include="Asset\MdBootrap\src\js\vendor\free\waves.js" />
+    <Content Include="Asset\noty\lib\noty.css" />
+    <Content Include="Asset\noty\lib\noty.js" />
+    <Content Include="Asset\noty\lib\noty.min.js" />
+    <Content Include="Asset\noty\lib\themes\bootstrap-v3.css" />
+    <Content Include="Asset\noty\lib\themes\bootstrap-v4.css" />
+    <Content Include="Asset\noty\lib\themes\light.css" />
+    <Content Include="Asset\noty\lib\themes\metroui.css" />
+    <Content Include="Asset\noty\lib\themes\mint.css" />
+    <Content Include="Asset\noty\lib\themes\nest.css" />
+    <Content Include="Asset\noty\lib\themes\relax.css" />
+    <Content Include="Asset\noty\lib\themes\semanticui.css" />
+    <Content Include="Asset\noty\lib\themes\sunset.css" />
+    <Content Include="Asset\noty\LICENSE.txt" />
+    <Content Include="Asset\noty\src\api.js" />
+    <Content Include="Asset\noty\src\button.js" />
+    <Content Include="Asset\noty\src\index.js" />
+    <Content Include="Asset\noty\src\push.js" />
+    <Content Include="Asset\noty\src\utils.js" />
     <Content Include="bin\FonNature.dll" />
     <Content Include="bin\HelperLibrary.dll" />
     <Content Include="bin\Models.dll" />
@@ -1497,6 +1591,95 @@
     <Content Include="Areas\Admin\Views\PageAdmin\PageList.cshtml" />
     <Content Include="Areas\Admin\Views\PageAdmin\CreatePage.cshtml" />
     <Content Include="Areas\Admin\Views\PageAdmin\EditPage.cshtml" />
+    <Content Include="Asset\MdBootrap\css\addons\datatables-select.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\addons\datatables-select2.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\addons\datatables.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\addons\datatables2.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\addons\directives.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\addons\flag.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\addons\jquery.zmd.hierarchical-display.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\addons\rating.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\mdb.lite.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\mdb.min.css.map" />
+    <Content Include="Asset\MdBootrap\css\modules\animations-extended.min.css.map" />
+    <Content Include="Asset\MdBootrap\js\addons\datatables-select.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\datatables-select2.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\datatables.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\datatables2.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\directives.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\flag.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\imagesloaded.pkgd.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\jquery.zmd.hierarchical-display.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\masonry.pkgd.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\addons\rating.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\mdb.lite.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\mdb.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\modules\animations-extended.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\modules\forms-free.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\modules\scrolling-navbar.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\modules\treeview.min.js.map" />
+    <Content Include="Asset\MdBootrap\js\modules\wow.min.js.map" />
+    <Content Include="Asset\MdBootrap\License.pdf" />
+    <Content Include="Asset\MdBootrap\scss\addons\_datatables-select.scss" />
+    <Content Include="Asset\MdBootrap\scss\addons\_datatables-select2.scss" />
+    <Content Include="Asset\MdBootrap\scss\addons\_datatables.scss" />
+    <Content Include="Asset\MdBootrap\scss\addons\_datatables2.scss" />
+    <Content Include="Asset\MdBootrap\scss\addons\_directives.scss" />
+    <Content Include="Asset\MdBootrap\scss\addons\_flag.scss" />
+    <Content Include="Asset\MdBootrap\scss\addons\_hierarchical-display.scss" />
+    <Content Include="Asset\MdBootrap\scss\addons\_rating.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\bootstrap\_functions.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\bootstrap\_rfs.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\bootstrap\_variables.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\_colors.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\_global.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\_helpers.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\_masks.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\_mixins.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\_typography.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\_variables.scss" />
+    <Content Include="Asset\MdBootrap\scss\core\_waves.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\modules\animations-extended\animations-extended.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\modules\animations-extended\_module.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_animations-basic.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_badges.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_buttons.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_cards.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_carousels.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_depreciated.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_dropdowns.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_footers.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_forms.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_input-group.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_list-group.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_loader.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_modals.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_msc.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_navbars.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_pagination.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_steppers.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_tables.scss" />
+    <Content Include="Asset\MdBootrap\scss\free\_treeview.scss" />
+    <Content Include="Asset\MdBootrap\scss\mdb-free.scss" />
+    <Content Include="Asset\MdBootrap\scss\mdb-lite-free.scss" />
+    <Content Include="Asset\MdBootrap\scss\_custom-styles.scss" />
+    <Content Include="Asset\MdBootrap\scss\_custom-variables.scss" />
+    <Content Include="Asset\MdBootrap\Useful_Resources.pdf" />
+    <Content Include="Asset\noty\lib\noty.css.map" />
+    <Content Include="Asset\noty\lib\noty.js.map" />
+    <Content Include="Asset\noty\lib\noty.min.js.map" />
+    <Content Include="Asset\noty\package.json" />
+    <Content Include="Asset\noty\README.markdown" />
+    <Content Include="Asset\noty\src\noty.scss" />
+    <Content Include="Asset\noty\src\themes\bootstrap-v3.scss" />
+    <Content Include="Asset\noty\src\themes\bootstrap-v4.scss" />
+    <Content Include="Asset\noty\src\themes\light.scss" />
+    <Content Include="Asset\noty\src\themes\metroui.scss" />
+    <Content Include="Asset\noty\src\themes\mint.scss" />
+    <Content Include="Asset\noty\src\themes\nest.scss" />
+    <Content Include="Asset\noty\src\themes\relax.scss" />
+    <Content Include="Asset\noty\src\themes\semanticui.scss" />
+    <Content Include="Asset\noty\src\themes\sunset.scss" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />
@@ -1605,6 +1788,7 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -1626,11 +1810,15 @@
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\SonarAnalyzer.CSharp.dll" />
     <Analyzer Include="..\packages\SonarAnalyzer.CSharp.8.3.0.14607\analyzers\SonarAnalyzer.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Asset\noty\index.d.ts" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

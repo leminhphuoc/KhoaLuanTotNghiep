@@ -9,11 +9,26 @@
             var id = btn.data('id');
             var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
             var quantity = 1;
-            var addedQuantity = 1;
+            var addedQuantity = 1; 
             if ($('#productDetailQuantity').val() > 1) {
                 addedQuantity = $('#productDetailQuantity').val();
                 addedQuantity = Number(addedQuantity.replace(/[^0-9.-]+/g, ""));
             }
+            var oldQuantity = $(".cartcounter").html();
+            $(".cartcounter").html(Number(oldQuantity) + addedQuantity);
+            var n = new Noty({
+                text: 'Bạn đã thêm sản phẩm vào giỏ hàng thành công',
+                animation: {
+                    open: 'animated bounceInRight', // Animate.css class names
+                    close: 'animated bounceOutRight' // Animate.css class names
+                },
+                type: 'success',
+                layout: 'topRight',
+                theme: 'metroui',
+                timeout: 2000,
+                progressBar: true
+            }).show();
+
             var totalQuantityInCart = 0;
             var oldAmount = 0;
             var checkExits = false;
@@ -48,7 +63,6 @@
                     localStorage.setItem("cartItemsList", JSON.stringify(cartItemsList));
                 }
             }
-            $(".cartcounter").html(totalQuantityInCart);
            
             $.ajax({
                 url: "/product/GetDetailJson",
@@ -79,6 +93,7 @@
                         $(document).ajaxStop(function () {
                             $("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
                         });
+                        $(".cartcounter").removeAttr('hidden');
                     }
                     else {
                         console.log(res.product);
@@ -94,8 +109,10 @@ function myFunction() {
     var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
     if (cartItemsList == null) return;
     var amount = 0;
+    var totalQuantityEachProduct = 0;
     var totalQuantityInCart = 0;
     $.each(cartItemsList, function (index, value) {
+        totalQuantityEachProduct += value.quantity;
         totalQuantityInCart += 1;
         $.ajax({
             url: "/product/GetDetailJson",
@@ -120,7 +137,8 @@ function myFunction() {
             }
         });
     });
-    $(".cartcounter").html(totalQuantityInCart);
+    if (totalQuantityInCart > 0) $(".cartcounter").removeAttr('hidden');
+    $(".cartcounter").html(totalQuantityEachProduct);
 
     //Load cart Preview Item
     var pathname = window.location.pathname;
@@ -228,6 +246,7 @@ function removeFunction(elem) {
         }
     });
     $(".cartcounter").html(totalQuantityInCart - 1);
+    if (totalQuantityInCart - 1 == 0) $(".cartcounter").attr('hidden', true);
     localStorage.setItem("cartItemsList", JSON.stringify(cartItemsList));
     updateGrandTotalFromStorage();
     $('#previewItemRow_' + id).remove();
@@ -289,5 +308,3 @@ function updateGrandTotalFromStorage() {
         $("#amountCart").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
     });
 }
-
-
