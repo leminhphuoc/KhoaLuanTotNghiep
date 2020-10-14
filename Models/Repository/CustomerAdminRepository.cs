@@ -1,10 +1,7 @@
 ﻿using Models.Entity;
-using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -88,7 +85,7 @@ namespace Models.Repository
 
         public int CountByMonth(int month)
         {
-            return _db.Customers.Where(x=>x.createdDate.Value.Month == month).Count();
+            return _db.Customers.Where(x => x.createdDate.Value.Month == month).Count();
         }
     }
 }

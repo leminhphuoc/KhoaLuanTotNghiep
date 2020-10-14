@@ -35,7 +35,7 @@ namespace FonNature.Areas.Admin.Controllers
             ViewBag.customer = customersList.SingleOrDefault(x => x.id == order.IdCustomer);
             var orderInforsList = _orderAdminServices.GetOrderInfors(id);
             List<OrderProduct> orderProducts = new List<OrderProduct>();
-            foreach(var infor in orderInforsList)
+            foreach (var infor in orderInforsList)
             {
                 var product = new OrderProduct(infor.IdProduct, infor.Quantity);
                 orderProducts.Add(product);

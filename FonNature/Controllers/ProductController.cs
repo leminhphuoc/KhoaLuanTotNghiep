@@ -96,7 +96,7 @@ namespace FonNature.Controllers
         public JsonResult AddCart(string data)
         {
             var ProductInCart = JsonConvert.DeserializeObject<List<ProductInCart>>(data);
-            if(ProductInCart != null)
+            if (ProductInCart != null)
             {
                 Session["cart"] = ProductInCart;
                 return Json(new
@@ -121,12 +121,12 @@ namespace FonNature.Controllers
         [HttpPost]
         public ActionResult Checkout(Customer customer)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var cartItem = Session["cart"];
                 if (cartItem == null && customer == null) return View(customer);
                 var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, customer);
-                return RedirectToAction("OrderSuccessPage","Success", new { orderID = orderID });
+                return RedirectToAction("OrderSuccessPage", "Success", new { orderID = orderID });
             }
             return View(customer);
         }

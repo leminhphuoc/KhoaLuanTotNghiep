@@ -1,8 +1,8 @@
-﻿using FonNature.Services;
-using System.Web.Mvc;
-using PagedList;
+﻿using FonNature.Filter;
+using FonNature.Services;
 using Models.Entity;
-using FonNature.Filter;
+using PagedList;
+using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
 {
@@ -76,10 +76,10 @@ namespace FonNature.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult Edit(Content content)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var editSuccess = _contentServices.EditContent(content);
-                if(editSuccess)
+                if (editSuccess)
                 {
                     return RedirectToAction("Index");
                 }

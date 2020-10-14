@@ -36,7 +36,7 @@ namespace FonNature.Services
 
         public List<ContentCategory> GetContentCategory()
         {
-            return _contentAdminRepository.GetContentCategories(); 
+            return _contentAdminRepository.GetContentCategories();
         }
 
         public long AddContent(Content content)

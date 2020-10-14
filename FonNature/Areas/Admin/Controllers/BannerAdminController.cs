@@ -29,10 +29,10 @@ namespace FonNature.Areas.Admin.Controllers
         [ValidateInput(false)]
         public ActionResult BannerCreate(Banner banner)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var idBanner = _bannerRepository.Add(banner);
-                if(idBanner == 0) ModelState.AddModelError("", "Cannot Add Banner!");
+                if (idBanner == 0) ModelState.AddModelError("", "Cannot Add Banner!");
                 return RedirectToAction("BannerList");
             }
             return View(banner);

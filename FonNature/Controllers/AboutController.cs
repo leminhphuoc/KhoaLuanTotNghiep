@@ -1,5 +1,4 @@
 ﻿using FonNature.Services;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers
@@ -15,7 +14,7 @@ namespace FonNature.Controllers
         }
         // GET: About
         public ActionResult AboutHome()
-        {   
+        {
             ViewBag.Tittle = "About";
             var model = _aboutServices.GetAboutMain();
             var seo = _aboutServices.GetSeo();

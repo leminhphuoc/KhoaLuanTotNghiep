@@ -2,8 +2,6 @@
 using FonNature.Services;
 using Models.Entity;
 using PagedList;
-using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers

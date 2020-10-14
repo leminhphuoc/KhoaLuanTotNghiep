@@ -9,6 +9,6 @@
         public int Id { get; set; }
         public int Location { get; set; }
         [StringLength(500)]
-        public string Image { get; set; } 
+        public string Image { get; set; }
     }
 }

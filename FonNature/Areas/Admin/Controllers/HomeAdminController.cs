@@ -8,14 +8,14 @@ namespace FonNature.Areas.Admin.Controllers
     [AuthData]
     public class HomeAdminController : Controller
     {
-       
+
         //GET: Admin/HomeAdmin
         public ActionResult HomeAdmin()
         {
             ViewBag.Visitor = new IPAddressRepository().CountVisitor();
             ViewBag.Customer = new CustomerAdminRepository().Count();
 
-           
+
             ViewBag.CountCustomer = new CustomerAdminRepository().CountByMonth(DateTime.Now.Month);
             ViewBag.CountCustomer1 = new CustomerAdminRepository().CountByMonth(DateTime.Now.AddMonths(-1).Month);
             ViewBag.CountCustomer2 = new CustomerAdminRepository().CountByMonth(DateTime.Now.AddMonths(-2).Month);

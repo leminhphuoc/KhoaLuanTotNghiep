@@ -13,7 +13,7 @@ namespace FonNature.Services
         private readonly IProductCategoryAdminRepository _productCateAdminRepository;
         private readonly ISEORepository _seoRepository;
         private readonly IBannerRepository _bannerRepository;
-        public ProductServices(IProductAdminRepository productAdminRepository , ISEORepository seoRepository, IProductCategoryAdminRepository productCateAdminRepository, IBannerRepository bannerRepository)
+        public ProductServices(IProductAdminRepository productAdminRepository, ISEORepository seoRepository, IProductCategoryAdminRepository productCateAdminRepository, IBannerRepository bannerRepository)
         {
             _productAdminRepository = productAdminRepository;
             _seoRepository = seoRepository;
@@ -22,12 +22,12 @@ namespace FonNature.Services
         }
         public SEO GetProductSeo()
         {
-            return  _seoRepository.GetSEO(2);
+            return _seoRepository.GetSEO(2);
         }
 
         public List<Product> ListAll()
         {
-            return _productAdminRepository.GetListProduct().Where(x=>x.status == true).OrderBy(x=>x.createdDate).ToList();
+            return _productAdminRepository.GetListProduct().Where(x => x.status == true).OrderBy(x => x.createdDate).ToList();
         }
 
         public List<Product> ListByCategory(int idCategory)

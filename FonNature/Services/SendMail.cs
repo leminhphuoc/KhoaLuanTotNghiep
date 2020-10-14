@@ -7,7 +7,7 @@ namespace FonNature.Services
     {
         public static bool SendMailFromCustomer(string name, string email, string message)
         {
-            if (email != null )
+            if (email != null)
             {
                 string content = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Asset/Client/Mail/Message.html"));
                 content = content.Replace("{{customer}}", name);

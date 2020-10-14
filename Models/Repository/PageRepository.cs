@@ -3,8 +3,6 @@ using Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -170,7 +168,7 @@ namespace Models.Repository
         {
             try
             {
-                var page = _db.Pages.SingleOrDefault(x=>x.Url.Equals(url, StringComparison.OrdinalIgnoreCase));
+                var page = _db.Pages.SingleOrDefault(x => x.Url.Equals(url, StringComparison.OrdinalIgnoreCase));
                 if (page == null)
                 {
                     log.Error($"{nameof(GetPageByUrl)} result is null or don't have item");

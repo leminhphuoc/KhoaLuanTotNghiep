@@ -66,7 +66,7 @@ namespace FonNature.Areas.Admin.Controllers
 
                     Session[CommonConstants.UserSession.USER_SESSION_ADMIN] = "USER_SESSION_ADMIN";
                     var returnUrl = HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["returnUrl"];
-                    if(Request.QueryString["returnUrl"] != null)
+                    if (Request.QueryString["returnUrl"] != null)
                     {
                         returnUrl = Request.QueryString["returnUrl"];
                     }
@@ -89,7 +89,7 @@ namespace FonNature.Areas.Admin.Controllers
                         {
                             return Redirect(returnUrl);
                         }
-                    } 
+                    }
                     else
                     {
                         return RedirectToAction("HomeAdmin", "HomeAdmin");

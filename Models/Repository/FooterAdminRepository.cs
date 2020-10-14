@@ -1,10 +1,6 @@
 ﻿using Models.Entity;
-using Models.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -32,7 +28,7 @@ namespace Models.Repository
 
         public long AddFooter(Footer footer)
         {
-            
+
             var addFooter = _db.Footers.Add(footer);
             _db.SaveChanges();
             return addFooter.id;

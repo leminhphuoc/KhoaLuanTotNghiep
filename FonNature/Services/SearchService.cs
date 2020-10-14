@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Models.Model;
 using Models.Repository;
-using Models.Model;
+using System.Collections.Generic;
 
 namespace FonNature.Services
 {
@@ -18,7 +18,7 @@ namespace FonNature.Services
             var productInSearchResult = _productAdminRepository.ListSearchProduct(searchString);
             var contentInSearchResult = _contentAdminRepository.ListSearchContent(searchString);
             var searchResults = new List<SearchItem>();
-            foreach(var product in productInSearchResult)
+            foreach (var product in productInSearchResult)
             {
                 var result = new SearchItem();
                 result.Name = product.name;

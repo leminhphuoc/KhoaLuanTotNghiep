@@ -10,7 +10,7 @@ namespace FonNature.Services
         private readonly IContactAdminRepository _contactAdminRepository;
         private readonly ISEORepository _seoRepository;
         private readonly IBannerRepository _bannerRepository;
-        public ContactClientServices(IContactAdminRepository contactAdminRepository , ISEORepository seoRepository, IBannerRepository bannerRepository)
+        public ContactClientServices(IContactAdminRepository contactAdminRepository, ISEORepository seoRepository, IBannerRepository bannerRepository)
         {
             _contactAdminRepository = contactAdminRepository;
             _seoRepository = seoRepository;

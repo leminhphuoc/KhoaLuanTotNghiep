@@ -1,5 +1,4 @@
-﻿using FonNature.Filter;
-using Models.Entity;
+﻿using Models.Entity;
 using Models.Repository;
 using PagedList;
 using System.Web.Mvc;

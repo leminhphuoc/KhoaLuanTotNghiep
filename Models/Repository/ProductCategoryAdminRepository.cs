@@ -1,10 +1,7 @@
 ﻿using Models.Entity;
-using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -45,7 +42,7 @@ namespace Models.Repository
             productcategoryEdit.name = productcategory.name;
             productcategoryEdit.metatitle = productcategory.metatitle;
             productcategoryEdit.parentID = productcategory.parentID;
-            productcategoryEdit.displayOrder = productcategory.displayOrder;            
+            productcategoryEdit.displayOrder = productcategory.displayOrder;
             productcategoryEdit.modifiedDate = DateTime.Now;
             productcategoryEdit.status = productcategory.status;
             productcategoryEdit.showOnHome = productcategory.showOnHome;

@@ -1,10 +1,7 @@
 ﻿using Models.Entity;
-using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -22,10 +19,10 @@ namespace Models.Repository
         public long CreateOrder(Order order)
         {
             order.createdDate = DateTime.Now;
-            if(_db.OrderStatuses.ToList().Count != 0)
+            if (_db.OrderStatuses.ToList().Count != 0)
             {
                 order.IdStatus = _db.OrderStatuses.Take(1).Select(x => x.Id).SingleOrDefault();
-            } 
+            }
             var addOrder = _db.Orders.Add(order);
             _db.SaveChanges();
             return addOrder.Id;
@@ -38,7 +35,7 @@ namespace Models.Repository
         }
         public List<Order> GetOrders()
         {
-            return _db.Orders.OrderByDescending(x=>x.createdDate).ToList();
+            return _db.Orders.OrderByDescending(x => x.createdDate).ToList();
         }
 
         public Order GetOrder(long id)
@@ -53,7 +50,7 @@ namespace Models.Repository
 
         public List<OrderInformation> GetOrderInfors(long idOrder)
         {
-            return _db.OrderInformations.Where(x=>x.IdOrder == idOrder).ToList();
+            return _db.OrderInformations.Where(x => x.IdOrder == idOrder).ToList();
         }
 
     }

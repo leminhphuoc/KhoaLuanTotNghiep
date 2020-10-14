@@ -1,10 +1,7 @@
 ﻿using Models.Entity;
-using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -32,7 +29,7 @@ namespace Models.Repository
 
         public List<Slide> GetListTrue()
         {
-            return _db.Slides.Where(x=>x.status == true).OrderBy(x=>x.displayOrder).ToList();
+            return _db.Slides.Where(x => x.status == true).OrderBy(x => x.displayOrder).ToList();
         }
 
         public long AddSlide(Slide slide)

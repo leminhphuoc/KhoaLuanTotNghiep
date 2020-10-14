@@ -1,12 +1,4 @@
-﻿using Models.Entity;
-using Models.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models.Model
+﻿namespace Models.Model
 {
     public class ProductInCart
     {

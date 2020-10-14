@@ -19,7 +19,7 @@ namespace FonNature.Services
 
         public List<Footer> GetListFooter()
         {
-             return _footerAdminRepository.GetListFooter();
+            return _footerAdminRepository.GetListFooter();
         }
 
         public long AddFooter(Footer footer)

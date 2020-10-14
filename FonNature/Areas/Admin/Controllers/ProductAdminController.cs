@@ -1,10 +1,8 @@
-﻿using FonNature.Services;
-using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
-using PagedList;
+﻿using FonNature.Filter;
+using FonNature.Services;
 using Models.Entity;
-using FonNature.Filter;
+using PagedList;
+using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
 {
@@ -17,7 +15,7 @@ namespace FonNature.Areas.Admin.Controllers
             _productAdminServices = productAdminServices;
         }
         // GET: Admin/ProductAdmin
-        public ActionResult Index(int? page,string searchString = null)
+        public ActionResult Index(int? page, string searchString = null)
         {
             var listProduct = _productAdminServices.ListAllByName(searchString);
             int pageSize = 10;
@@ -26,21 +24,21 @@ namespace FonNature.Areas.Admin.Controllers
             ViewBag.ProductCategory = _productAdminServices.GetProductCategory();
             ViewBag.SearchString = searchString ?? string.Empty;
             return View(listProductPaged);
-        }   
+        }
 
         public ActionResult Create()
         {
             ViewBag.ProductCategory = _productAdminServices.GetProductCategory();
             return View();
         }
-       
+
         [HttpPost]
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateInput(false)]
         public ActionResult Create(Product product)
         {
-            
-            if(ModelState.IsValid)
+
+            if (ModelState.IsValid)
             {
                 var addProduct = _productAdminServices.AddProduct(product);
                 var idProduct = addProduct;
@@ -102,7 +100,7 @@ namespace FonNature.Areas.Admin.Controllers
                     Status = saveImages
                 });
             }
-            catch 
+            catch
             {
                 return Json(new
                 {

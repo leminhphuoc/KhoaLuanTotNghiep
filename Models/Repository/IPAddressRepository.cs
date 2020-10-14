@@ -1,10 +1,6 @@
 ﻿using Models.Entity;
-using Models.Repository;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -23,9 +19,9 @@ namespace Models.Repository
         {
             if (IpAddress == null) return false;
             if (_db.IPAddresses.Where(x => x.IP == IpAddress).SingleOrDefault() != null) return false;
-            var IP = new IPAddress() { IP = IpAddress , date = DateTime.Now};
+            var IP = new IPAddress() { IP = IpAddress, date = DateTime.Now };
             _db.IPAddresses.Add(IP);
-            var Visitor = _db.UsefulInformations.Where(x=>x.Name == "Visitor").SingleOrDefault();
+            var Visitor = _db.UsefulInformations.Where(x => x.Name == "Visitor").SingleOrDefault();
             Visitor.Value += 1;
             _db.SaveChanges();
             return true;

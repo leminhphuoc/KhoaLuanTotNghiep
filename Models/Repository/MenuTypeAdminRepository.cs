@@ -1,10 +1,6 @@
 ﻿using Models.Entity;
-using Models.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -41,7 +37,7 @@ namespace Models.Repository
         {
             var MenuTypeEdit = _db.MenuTypes.Where(x => x.id == menutype.id).SingleOrDefault();
             MenuTypeEdit.name = menutype.name;
-            
+
             _db.SaveChanges();
             return true;
         }

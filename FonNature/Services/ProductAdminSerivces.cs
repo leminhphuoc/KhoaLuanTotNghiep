@@ -37,7 +37,7 @@ namespace FonNature.Services
             }
             var products = _productAdminRepository.GetListProduct();
             var imageList = new List<string>();
-            foreach(var product in products)
+            foreach (var product in products)
             {
                 imageList.Add(product.image);
             }
@@ -45,10 +45,10 @@ namespace FonNature.Services
         }
 
         public List<ProductCategory> GetProductCategory()
-        { 
+        {
             return _productAdminRepository.GetProductCategories();
         }
-        
+
         public long AddProduct(Product product)
         {
             if (product == null) return 0;
@@ -84,7 +84,7 @@ namespace FonNature.Services
             return status;
         }
 
-        public bool SaveProductImage(string images ,long id)
+        public bool SaveProductImage(string images, long id)
         {
             if (id == 0) return false;
             var serializer = new JavaScriptSerializer();
@@ -8592,4 +8592,3 @@ namespace FonNature.Services
 
 
 
-            

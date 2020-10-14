@@ -7,7 +7,7 @@ namespace FonNature.Services
     public class AccountAdminServices : IAccountAdminServices
     {
         private readonly IAccountAdminRepository _accountAdminRepository;
-        public AccountAdminServices(IAccountAdminRepository accountAdminRepository )
+        public AccountAdminServices(IAccountAdminRepository accountAdminRepository)
         {
             _accountAdminRepository = accountAdminRepository;
         }
@@ -26,7 +26,7 @@ namespace FonNature.Services
             {
                 return false;
             }
-                
+
             var idAccount = _accountAdminRepository.AddAccount(accountAdmin);
             if (idAccount == 0) return false;
             return true;

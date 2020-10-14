@@ -1,10 +1,8 @@
-﻿using Models.Repository;
-using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
-using PagedList;
+﻿using FonNature.Filter;
 using Models.Entity;
-using FonNature.Filter;
+using Models.Repository;
+using PagedList;
+using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
 {
@@ -36,7 +34,7 @@ namespace FonNature.Areas.Admin.Controllers
         public ActionResult Edit(SEO seo)
         {
             var seoId = _seoRepository.EditSEO(seo);
-            return RedirectToAction("SeoDetail", new { id = seoId});
+            return RedirectToAction("SeoDetail", new { id = seoId });
         }
     }
 }

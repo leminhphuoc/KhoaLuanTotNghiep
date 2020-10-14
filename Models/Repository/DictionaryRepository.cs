@@ -24,7 +24,7 @@ namespace Models.Repository
             try
             {
                 var dictionaries = _db.Dictionaries;
-                if(dictionaries == null)
+                if (dictionaries == null)
                 {
                     log.Error($"{nameof(GetDictionaries)} result is null");
                     return new List<Dictionary>();
@@ -34,7 +34,7 @@ namespace Models.Repository
 
                 return dictionaries.ToList();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 log.Error($"Error at {nameof(GetDictionaries)}: {ex.Message}");
                 return new List<Dictionary>();
@@ -45,7 +45,7 @@ namespace Models.Repository
         {
             try
             {
-                var dictionaries = _db.Dictionaries.Where(x=> x.Key.ToLower().Contains(searchString.ToLower()) || x.Value.ToLower().Contains(searchString.ToLower()));
+                var dictionaries = _db.Dictionaries.Where(x => x.Key.ToLower().Contains(searchString.ToLower()) || x.Value.ToLower().Contains(searchString.ToLower()));
                 if (dictionaries == null)
                 {
                     log.Error($"{nameof(SearchDictionary)} result is null");
@@ -163,7 +163,7 @@ namespace Models.Repository
         {
             try
             {
-                var dictionary = _db.Dictionaries.SingleOrDefault(x=>x.Key.Equals(key, StringComparison.OrdinalIgnoreCase));
+                var dictionary = _db.Dictionaries.SingleOrDefault(x => x.Key.Equals(key, StringComparison.OrdinalIgnoreCase));
                 if (dictionary == null)
                 {
                     log.Error($"{nameof(GetDictionaryByKey)} cannot find dictionary with key {key}");

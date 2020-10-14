@@ -1,10 +1,6 @@
 ﻿using Models.Entity;
-using Models.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -50,7 +46,7 @@ namespace Models.Repository
         public bool Delete(long id)
         {
             var accountAdmin = _db.AccountAdmins.Find(id);
-            if(accountAdmin != null)
+            if (accountAdmin != null)
             {
                 _db.AccountAdmins.Remove(accountAdmin);
                 _db.SaveChanges();
@@ -71,9 +67,9 @@ namespace Models.Repository
         }
 
 
-      
+
         public bool CheckUserName(string userName)
-        {     
+        {
             var account = _db.AccountAdmins.Where(x => x.userName == userName).SingleOrDefault();
             if (account != null) return true;
             return false;
@@ -81,7 +77,7 @@ namespace Models.Repository
 
         public bool CheckPassword(string userName, string password)
         {
-            var account = _db.AccountAdmins.Where(x => x.userName == userName && x.passWord ==password).SingleOrDefault();
+            var account = _db.AccountAdmins.Where(x => x.userName == userName && x.passWord == password).SingleOrDefault();
             bool passwordExits = false;
             if (account != null) passwordExits = true;
             if (passwordExits) return true;
@@ -91,8 +87,8 @@ namespace Models.Repository
         public bool CheckStatusAccount(string userName, string password)
         {
             var account = _db.AccountAdmins.Where(x => x.userName == userName && x.passWord == password).SingleOrDefault();
-            if (account.STATUS != true ) return false;
-            return true;   
+            if (account.STATUS != true) return false;
+            return true;
         }
 
 

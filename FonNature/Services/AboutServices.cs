@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace FonNature.Services
 {
-    public class AboutServices: IAboutServices
+    public class AboutServices : IAboutServices
     {
         private readonly IAboutAdminRepository _aboutAdminRepository;
         private readonly IStaffAdminRepository _staffAdminRepository;
@@ -34,7 +34,7 @@ namespace FonNature.Services
 
         public List<About> GetAboutsTestimonials()
         {
-            return _aboutAdminRepository.GetListAbout().Where(x=>x.Category == (int)AboutType.Testimonial).ToList();
+            return _aboutAdminRepository.GetListAbout().Where(x => x.Category == (int)AboutType.Testimonial).ToList();
         }
 
         public About GetAboutMain()

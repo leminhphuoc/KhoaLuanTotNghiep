@@ -41,7 +41,7 @@ namespace FonNature.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Create(AccountAdmin accountAdmin, string confirmPassword)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (accountAdmin.passWord != confirmPassword) ModelState.AddModelError("", "Confirm password không chính xác !");
                 else
@@ -69,7 +69,7 @@ namespace FonNature.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(AccountAdmin account, string confirmPassword)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 if (account.passWord != confirmPassword) ModelState.AddModelError("", "Confirm password không chính xác !");
                 else
@@ -84,7 +84,7 @@ namespace FonNature.Areas.Admin.Controllers
             return View(account);
         }
 
- 
+
         [HttpDelete]
         public ActionResult DeleteAccount(int id)
         {

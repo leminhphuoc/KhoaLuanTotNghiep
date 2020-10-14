@@ -1,10 +1,7 @@
 namespace Models.Entity
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Slide")]
     public partial class Slide
@@ -29,7 +26,7 @@ namespace Models.Entity
 
         //[StringLength(250)]
         public string YellowTitle { get; set; }
-    
+
         //[StringLength(250)]
         public string title { get; set; }
 

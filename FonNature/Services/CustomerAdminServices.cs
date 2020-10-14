@@ -56,7 +56,7 @@ namespace FonNature.Services
             return true;
         }
 
-        public bool? ChangeStatus (int id)
+        public bool? ChangeStatus(int id)
         {
             var status = _customerAdminRepository.ChangeStatus(id);
             return status;

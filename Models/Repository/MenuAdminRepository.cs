@@ -1,10 +1,6 @@
 ﻿using Models.Entity;
-using Models.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -27,7 +23,7 @@ namespace Models.Repository
 
         public List<Menu> GetListMenu()
         {
-            return _db.Menus.OrderBy(x=>x.displayOrder).ToList();
+            return _db.Menus.OrderBy(x => x.displayOrder).ToList();
         }
 
         public List<Menu> GetMenusByText(string searchString)

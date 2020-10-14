@@ -12,7 +12,7 @@ namespace FonNature.Services
         private readonly IContentCategoryAdminRepository _contentCategoryAdminRepository;
         private readonly ISEORepository _seoRepository;
         private readonly IBannerRepository _bannerRepository;
-        public BlogServices(IContentAdminRepository contentAdminRepository, IContentCategoryAdminRepository contentCategoryAdminRepository, 
+        public BlogServices(IContentAdminRepository contentAdminRepository, IContentCategoryAdminRepository contentCategoryAdminRepository,
             ISEORepository seoRepository, IBannerRepository bannerRepository)
         {
             _contentAdminRepository = contentAdminRepository;
@@ -27,20 +27,20 @@ namespace FonNature.Services
 
         public List<Content> ListAll(string searchString)
         {
-            if(searchString != null)
+            if (searchString != null)
             {
                 return _contentAdminRepository.ListSearchContent(searchString).Where(x => x.status == true).OrderBy(x => x.createdDate).ToList();
             }
-            return _contentAdminRepository.GetListContent().Where(x=>x.status == true).OrderBy(x=>x.createdDate).ToList();
+            return _contentAdminRepository.GetListContent().Where(x => x.status == true).OrderBy(x => x.createdDate).ToList();
         }
 
-        public List<Content> ListAllByCategory(string searchString,int idCategory)
+        public List<Content> ListAllByCategory(string searchString, int idCategory)
         {
             if (searchString != null)
             {
                 return _contentAdminRepository.ListSearchContent(searchString).Where(x => x.categoryID == idCategory && x.status == true).OrderBy(x => x.createdDate).ToList();
             }
-            return _contentAdminRepository.GetListContent().Where(x => x.categoryID == idCategory && x.status == true).OrderBy(x=>x.createdDate).ToList();
+            return _contentAdminRepository.GetListContent().Where(x => x.categoryID == idCategory && x.status == true).OrderBy(x => x.createdDate).ToList();
         }
 
         public List<ContentCategory> ListContentCategory()

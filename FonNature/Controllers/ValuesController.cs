@@ -18,13 +18,13 @@ namespace FonNature.Controllers
         }
 
         // POST api/values
-        public void Post([FromBody]string value)
+        public void Post([FromBody] string value)
         {
             throw new System.NotSupportedException();
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] string value)
         {
             throw new System.NotSupportedException();
         }

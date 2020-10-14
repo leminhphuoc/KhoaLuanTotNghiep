@@ -1,10 +1,8 @@
 ﻿using FonNature.Filter;
-using Models.Repository;
-using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
 using Models.Entity;
+using Models.Repository;
 using PagedList;
+using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
 {
@@ -41,12 +39,12 @@ namespace FonNature.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult CreateDictionary(Dictionary dictionary)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var addedDictionary = _repository.AddDictionary(dictionary);
-                if(addedDictionary == null)
+                if (addedDictionary == null)
                 {
-                    ModelState.AddModelError("","Không thể thêm dictionary vào cơ sở dữ liệu!") ;
+                    ModelState.AddModelError("", "Không thể thêm dictionary vào cơ sở dữ liệu!");
                     return View(dictionary);
                 }
                 return RedirectToAction("Dictionaries");
