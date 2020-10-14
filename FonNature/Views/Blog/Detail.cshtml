@@ -7,120 +7,178 @@
     Models.Entity.Banner banner = ViewBag.banner;
 }
 
-<!-- Page Banner Section Start -->
-<div style="background-image: url('@(banner != null? banner.Image : "")');
-" class="page-banner-section section bg-gray">
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
     <div class="container">
-        <div class="row">
-            <div class="col">
+        <h1 class="main-title">
+            Blog
+        </h1>
 
-                <div class="page-banner text-center">
-                    <h1>Blog Details</h1>
-                    <ul class="page-breadcrumb">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li>Blog Details</li>
-                    </ul>
-                </div>
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
 
-            </div>
-        </div>
+            <li>
+                Blog Detail
+            </li>
+        </ul>
     </div>
 </div>
-<!-- Page Banner Section End -->
-<!-- Blog Section Start -->
-<div class="blog-section section pt-100 pt-lg-80 pt-md-70 pt-sm-50 pt-xs-40 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+<!-- end Title Page -->
+<!-- Content Page -->
+<div class="content-page have-sidebar-right">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 mb-sm-40 mb-xs-30">
-                <div class="blog_area">
-                    <article class="blog_single blog-details">
-                        <header class="entry-header">
-                            <span class="post-category">
-                                @foreach (var item in contentCategories)
+            <div class="col-lg-9">
+                <div class="main-content">
+                    <div class="hun-element-blog-detail layout-1">
+                        <div class="pic-blog">
+                            <img src="@Model.image" alt="IMG">
+                        </div>
+
+                        <div class="cat-blog">
+                            <a href="#" class="item-cat">
+                                @foreach (var category in contentCategories)
                                 {
-                                    if (item.id == Model.categoryID)
+                                    if (category.id == Model.categoryID)
                                     {
-                                        <a href="/blog/ListByCategory?idCategory=@item.id"> @item.name</a>
+                                        @: @category.name
                                     }
                                 }
-                            </span>
-                            <h1 class="entry-title">
-                                @Model.name
-                            </h1>
-                            <span class="post-author">
-                                <span class="post-by"> Posts by : </span> admin
-                            </span>
-                            <span class="post-separator">|</span>
-                            <span class="post-date"><i class="fas fa-calendar-alt"></i>On @Model.createdDate.Value.ToString("dd MMMM yyyy") </span>
-                        </header>
-                        @*<div class="post-thumbnail img-full">
-                            <img src="@Model.image" alt="">
-                        </div>*@
-                        <div class="postinfo-wrapper">
-                            <div class="post-info">
-                                <div class="entry-summary blog-post-description">
-                                    @Html.Raw(Model.detail)
-                                    <!--Blog Post Tag-->
-                                    @*<div class="single-post-tag">
-                                        <a href="#">3 comments</a>
-                                        Tags:
-                                        <a href="">fashion</a>,
-                                        <a href="">t-shirt</a>,
-                                        <a href="">white</a>,
-                                    </div>*@
-                                    <!--Blog Post Tag-->
-                                    <div class="social-sharing">
-                                        <div class="widget widget_socialsharing_widget">
-                                            <h3 class="widget-title">Share this post</h3>
-                                            <ul class="blog-social-icons">
-                                                <li>
-                                                    <a target="_blank" title="Facebook" href="#" class="facebook social-icon">
-                                                        <i class="fa fa-facebook"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank" title="twitter" href="#" class="twitter social-icon">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank" title="pinterest" href="#" class="pinterest social-icon">
-                                                        <i class="fa fa-pinterest"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a target="_blank" title="linkedin" href="#" class="linkedin social-icon">
-                                                        <i class="fa fa-linkedin"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                    </article>
-                    <div class="relatedposts">
-                        <h3>Related posts</h3>
-                        <div class="row">
-                            @foreach (var post in recentBlog)
+
+                        <h4 class="title-blog">
+                            @Model.name
+                        </h4>
+
+                        <div class="content-blog">
+                            @Html.Raw(Model.detail)
+                        </div>
+
+                        <div class="info-and-share">
+                            <div class="info-blog">
+                                <span class="item-info">@Model.createdDate.Value.ToString("MMMM d")</span>
+
+                                <span class="item-info">By <a href="#">Judith Obrien</a></span>
+                            </div>
+
+                            <ul class="share-link">
+                                <li>
+                                    <a href="#" class="item-share">
+                                        <i class="icon-social-facebook"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="item-share">
+                                        <i class="icon-social-twitter"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="item-share">
+                                        <i class="icon-social-dribbble"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="item-share">
+                                        <i class="icon-social-tumblr"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 js-call-sticky-sidebar">
+                <div class="main-sidebar">
+                    <div class="hun-widget-search layout-1">
+                        <form action="/blog/BlogHome">
+                            <input name="searchString" id="searchString" type="text" placeholder="Search" value="@ViewBag.SearchString">
+                            <button>
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="hun-widget-categories layout-1">
+                        <h3 class="title-widget">
+                            Categories
+                        </h3>
+
+                        <ul>
+                            @foreach (var category in contentCategories)
                             {
-                                <div class="col-md-4 col-sm-6">
-                                    <div class="relatedthumb mb-xs-30">
-                                        <div class="image">
-                                            <a href="/blog/detail?id=@post.id"><img src="@post.image" alt=""></a>
+                                <li>
+                                    <a href="#">
+                                        @category.name
+                                    </a>
+                                    @{
+                                        int count = 0;
+                                        foreach (var blog in ViewBag.BlogsList)
+                                        {
+                                            if (blog.categoryID == category.id)
+                                            {
+                                                count++;
+                                            }
+                                        }
+                                    }
+
+                                    <span class="count">
+                                        (@count)
+                                    </span>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <div class="hun-widget-posts layout-1">
+                        <h3 class="title-widget">
+                            Recent Posts
+                        </h3>
+
+                        <div class="list-post">
+                            @foreach (var item in recentBlog)
+                            {
+                                <div class="item-post">
+                                    <a href="#" class="pic-post">
+                                        <img src="@item.image" alt="IMG">
+                                    </a>
+
+                                    <div class="text-post">
+                                        <div class="date-post">
+                                            @item.createdDate.Value.ToString("MMMM d")
                                         </div>
-                                        <h4><a href="/blog/detail?id=@post.id">@post.name</a></h4>
-                                        <span class="rl-post-date">@post.createdDate.Value.ToString("dd MMMM yyyy")</span>
+
+                                        <h4 class="title-post">
+                                            <a href="/blogdetail?id=@item.id">
+                                                @item.name
+                                            </a>
+                                        </h4>
                                     </div>
                                 </div>
                             }
+
+
+
                         </div>
+                    </div>
+
+                    <div class="hun-widget-text">
+                        <a href="#">
+                            <img src="/Asset/Spa/images/insta-widget-01.jpg" alt="IMG">
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Blog Section End -->
+<!-- end Content Page -->

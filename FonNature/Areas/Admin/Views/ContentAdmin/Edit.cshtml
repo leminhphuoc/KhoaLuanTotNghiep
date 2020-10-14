@@ -139,12 +139,19 @@
                                     <div class="col-lg-6">
                                         @if (listCategory != null)
                                         {
-                                            <select id="categoryID" name="categoryID" class="form-control m-bot15">
-                                                @foreach (var item in listCategory)
+                                        <select id="categoryID" name="categoryID" class="form-control m-bot15">
+                                            @foreach (var item in listCategory)
+                                            {
+                                                if (Model.categoryID.Equals(item.id))
+                                                {
+                                                    <option selected value="@item.id">@item.name</option>
+                                                }
+                                                else
                                                 {
                                                     <option value="@item.id">@item.name</option>
                                                 }
-                                            </select>
+                                            }
+                                        </select>
                                         }
                                     </div>
                                 </div>

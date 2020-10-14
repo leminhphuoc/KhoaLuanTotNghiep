@@ -5,46 +5,58 @@
     Models.Entity.Banner banner = ViewBag.banner;
 }
 
-<!-- Page Banner Section Start -->
-<div style="background-image: url('@(banner != null? banner.Image : "")');
-" class="page-banner-section section bg-gray">
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
     <div class="container">
-        <div class="row">
-            <div class="col">
+        <h1 class="main-title">
+            About Us
+        </h1>
 
-                <div class="page-banner text-center">
-                    <h1>About</h1>
-                    <ul class="page-breadcrumb">
-                        <li><a href="/">Home</a></li>
-                        <li>About</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            <li>
+                About Us
+            </li>
+        </ul>
     </div>
 </div>
-<!-- Page Banner Section End -->
 <!--About Us Area Start-->
-<div class="about-us-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50">
+<div class="sec--our-story--about-page">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-12">
-                <!--About Us Image Start-->
-                <div class="about-us-img-wrapper mb-30 mb-xs-15">
-                    <div class="about-us-image img-full">
-                        <a href="#"><img src="@Model.Image" alt=""></a>
+            <div class="col-md-6 pb-5 pb-md-0 pr-md-4 pr-lg-5">
+                <div class="hun-element-image layout-1">
+                    <img src="@Model.Image" alt="IMG">
+                </div>
+            </div>
+
+            <div class="col-md-6 pt-4 pt-md-0 align-self-center pl-md-4 pl-lg-5">
+                <div class="hun-element-our-story layout-2">
+                    <div class="heading-element">
+                        <h3 class="title-element">
+                            @Model.Name
+                        </h3>
+
+                        <img class="line-heading" src="/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
+                    </div>
+
+                    <div class="content-element">
+                        @Html.Raw(Model.Description)
+                    </div>
+
+                    <div class="info-element">
+                        <div class="sign-element">
+                            <img src="@Model.Sign" alt="IMG">
+                        </div>
+
+                        <div class="author-element">
+                            <span class="name-author">@Model.Author</span> / @Model.Role
+                        </div>
                     </div>
                 </div>
-                <!--About Us Image End-->
-            </div>
-            <div class="col-lg-6 col-12">
-                <!--About Us Content Start-->
-                <div class="about-us-content">
-                    <h2>@Model.Name</h2>
-                    @Html.Raw(Model.Description)
-                </div>
-                <!--About Us Content End-->
             </div>
         </div>
     </div>
@@ -53,6 +65,3 @@
 <!--About Us Team Start-->
 @{Html.RenderAction("AboutTeamList");}
 <!--About Us Team End-->
-<!--Testimonial Area Start-->
-@{Html.RenderAction("AboutTestimonial");}
-<!--Testimonial Area End-->        

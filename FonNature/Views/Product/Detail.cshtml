@@ -8,9 +8,14 @@
     var banner = ViewBag.banner;
 }
 
+@section cssHeader{
+    <link href="~/Asset/Client/css/styleError.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Asset/Client/css/style.css">
+}
 <!-- Single Product Section Start -->
-<div class="single-product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
+<div style="margin-top:50px" class="single-product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-100 pb-lg-80 pb-md-70 pb-sm-30 pb-xs-20">
     <div class="container">
+        <p style="font-size:16px" class="text-black-50"><a href="/product"><i class="fa fa-chevron-left" aria-hidden="true"> Back to listing page</i></a></p>
         <div class="row">
             <div class="col-md-6">
                 <!-- Product Details Left -->
@@ -87,12 +92,12 @@
                     <div class="single-product-price">
                         @if (Model.promotionPrice == null || Model.price == 0)
                         {
-                            <span class="price new-price">@Model.price.Value.ToString("N0") đ</span>
+                            <span class="price new-price">$@Model.price.Value.ToString("N0")</span>
                         }
                         else
                         {
-                            <span class="price new-price">@Model.promotionPrice.Value.ToString("N0") đ</span>
-                            <span class="regular-price">@Model.price.Value.ToString("N0") đ</span>
+                            <span class="price new-price">$@Model.promotionPrice.Value.ToString("N0")</span>
+                            <span class="regular-price">$@Model.price.Value.ToString("N0")</span>
                         }
                     </div>
                     <div class="product-description">
@@ -177,7 +182,7 @@
                                                     <strong>admin</strong> - <span>November 22, 2018</span>
                                                     <div class="description">
                                                         Good Product
-                                                        </div>
+                                                    </div>
                                             </div>
                                         </div>
                                     </li>

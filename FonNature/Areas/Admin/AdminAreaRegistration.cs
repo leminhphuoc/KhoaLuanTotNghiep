@@ -1,25 +1,25 @@
-﻿using System.Web.Mvc;
-using Unity.Mvc5;
-using Unity;
-using Models.Repository;
-using FonNature.Services;
-using FonNature.Services.IAdminServices;
+﻿using FonNature.Services;
 using FonNature.Services.AdminServices;
+using FonNature.Services.IAdminServices;
+using Models.Repository;
+using System.Web.Mvc;
+using Unity;
+using Unity.Mvc5;
 
 namespace FonNature.Areas.Admin
 {
-    public class AdminAreaRegistration : AreaRegistration 
+    public class AdminAreaRegistration : AreaRegistration
     {
-       
-        public override string AreaName 
+
+        public override string AreaName
         {
-            get 
+            get
             {
                 return "Admin";
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             var container = new UnityContainer();
             container.RegisterType<IAccountAdminRepository, AccountAdminRepository>();
@@ -63,23 +63,22 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IOrderRepository, OrdersRepository>();
             container.RegisterType<IOrderServices, OrderServicescs>();
             container.RegisterType<IOrderAdminServices, OrderAdminServices>();
-
             container.RegisterType<ISEORepository, SEORepository>();
-
             container.RegisterType<ISearchService, SearchService>();
+            container.RegisterType<IBenefitRepository, BenefitRepository>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Home{controller}", id = UrlParameter.Optional }
+                new { action = "{controller}List", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
                 "Admin_default_home",
                 "admin",
-                new { controller = "HomeAdmin",action = "HomeAdmin", id = UrlParameter.Optional }
+                new { controller = "HomeAdmin", action = "HomeAdmin", id = UrlParameter.Optional }
             );
         }
     }

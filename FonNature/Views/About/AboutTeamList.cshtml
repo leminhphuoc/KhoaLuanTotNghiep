@@ -1,37 +1,54 @@
 ﻿@model List<Models.Entity.Staff>
 
-<div class="about-us-team-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+<div class="sec--our-team--about-page">
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="section-title text-center mb-40 mb-xs-20">
-                    <h2>our <span>exclusive</span> team</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt.</p>
-                </div>
+        <div class="hun-element-heading layout-1 text-center">
+            <h3 class="title-element">
+                Our team
+            </h3>
+
+            <div class="line-element">
+                <img src="/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
             </div>
         </div>
-        <div class="row">
-            @foreach (var staff in Model)
-            {
-                <div class="col-md-4 col-sm-6">
-                    <!--Single Team Start-->
-                    <div class="single-team mb-30">
-                        <div class="team-image img-full">
-                            <a href="#"><img src="@staff.image" alt=""></a>
-                        </div>
-                        <div class="team-content">
-                            <div class="team-hover-info">
-                                <h2><a href="#">@staff.Name (@staff.Position)</a></h2>
-                                <ul class="team-social">
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                </ul>
+
+        <div class="hun-element-team layout-1">
+            <div class="row justify-content-center">
+                @foreach (var staff in Model)
+                {
+                    <div class="col-md-9 col-lg-4">
+                        <div class="item-team">
+                            <a href="#"><img class="pic-item" src="@staff.image" alt="IMG"></a>
+
+                            <div class="content-item">
+                                <h4 class="name-item">
+                                    <a href="#">
+                                        @staff.Name
+                                    </a>
+                                </h4>
+
+                                <div class="info-item">
+                                    / @staff.Position
+                                </div>
+
+                                <div class="social-link">
+                                    <a href="#" class="item-social">
+                                        <i class="icon-social-facebook"></i>
+                                    </a>
+
+                                    <a href="#" class="item-social">
+                                        <i class="icon-social-twitter"></i>
+                                    </a>
+
+                                    <a href="#" class="item-social">
+                                        <i class="icon-social-dribbble"></i>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!--Single Team End-->
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 </div>

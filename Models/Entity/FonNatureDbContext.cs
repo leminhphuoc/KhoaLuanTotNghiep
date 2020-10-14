@@ -1,9 +1,6 @@
 namespace Models.Entity
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
     public partial class FonNatureDbContext : DbContext
     {
@@ -38,6 +35,7 @@ namespace Models.Entity
         public virtual DbSet<Banner> Banners { get; set; }
         public virtual DbSet<Dictionary> Dictionaries { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
+        public virtual DbSet<Benefit> Benefits { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

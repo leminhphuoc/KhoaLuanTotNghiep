@@ -1,10 +1,7 @@
 namespace Models.Entity
 {
-    using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("About")]
     public partial class About
@@ -23,5 +20,14 @@ namespace Models.Entity
 
         [StringLength(250)]
         public string Image { get; set; }
+
+        [StringLength(250)]
+        public string Author { get; set; }
+
+        [StringLength(250)]
+        public string Role { get; set; }
+
+        [StringLength(250)]
+        public string Sign { get; set; }
     }
 }

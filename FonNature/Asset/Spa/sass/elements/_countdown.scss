@@ -1,0 +1,96 @@
+/*[ hun-element-countdown ]
+//////////////////////////////////////////////////////////////////*/
+
+/*\
+ *
+ * layout-1
+ *
+\*/
+.hun-element-countdown.layout-1 {
+	.title-element {
+		font-weight: 400;
+		font-size: 120px;
+		line-height: 1;
+		color: #fff;
+		text-align: center;
+		margin-bottom: 28px;
+	}
+
+	.description-element {
+		font-weight: 400;
+		font-size: 17px;
+		line-height: 1.88;
+		color: #9999cc;
+		text-align: center;
+		margin-bottom: 27px;
+	}
+
+	.countdown-element {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: center;
+
+		.item-countdown {
+			flex-grow: 1;
+			flex-basis: 0;
+			font-family: $main-font-02;
+			font-size: 30px;
+			line-height: 1.8;
+			color: #9999cc;
+			text-align: center;
+			padding: 15px;
+
+			.number-item {
+				display: block;
+				font-size: 111px;
+				color: #fff;
+				line-height: 1;
+			}
+		}
+	}
+
+	@media (max-width: 991px) {
+		.title-element {
+			font-size: 80px;
+		}
+
+		.countdown-element {
+			.item-countdown {
+				.number-item {
+					font-size: 69px;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 767px) {
+		.title-element {
+			font-size: 60px;
+		}
+
+		.countdown-element {
+			.item-countdown {
+				.number-item {
+					font-size: 50px;
+				}
+			}
+		}
+	}
+
+	@media (max-width: 480px) {
+		.title-element {
+			font-size: 33px;
+		}
+
+		.countdown-element {
+			.item-countdown {
+				font-size: 17px;
+
+				.number-item {
+					font-size: 25px;
+				}
+			}
+		}
+	}
+}

@@ -5,105 +5,68 @@
     Models.Entity.Banner banner = ViewBag.banner;
 }
 
-<!-- Page Banner Section Start -->
-<div style="background-image: url('@(banner != null? banner.Image : "")');
-" class="page-banner-section section bg-gray">
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
     <div class="container">
-        <div class="row">
-            <div class="col">
+        <h1 class="main-title">
+            Contact
+        </h1>
 
-                <div class="page-banner text-center">
-                    <h1>Contact</h1>
-                    <ul class="page-breadcrumb">
-                        <li><a href="/">Home</a></li>
-                        <li>Contact</li>
-                    </ul>
-                </div>
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
 
-            </div>
-        </div>
+            <li>
+                Contact
+            </li>
+        </ul>
     </div>
 </div>
-<!-- Page Banner Section End -->
-<!--Contact Map section start-->
-<div class="contact-map-section section">
-    <div id="contact-map" class="contact-map"></div>
-</div>
-<script>
-      var map;
-      function initMap() {
-          var uluru = { lat: 10.806678, lng: 106.689841 };
-          var map = new google.maps.Map(
-              document.getElementById('contact-map'), { zoom: 16, center: uluru });
-          var marker = new google.maps.Marker({ position: uluru, map: map });
-      }
-</script>
-<!--Contact Map section End-->
-<!--Contact section start-->
-<div class="conact-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45  pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-50">
+<!-- end Title Page -->
+<!-- content contact-page -->
+<div class="sec--content--contact-page">
     <div class="container">
-
         <div class="row">
-            <div class="col-lg-3 col-12">
-                <div class="contact-information">
-                    <h3>Contact Information</h3>
-                        <ul>
-                            <li>
-                                <span class="icon"><i class="pe-7s-map"></i></span>
-                                <span class="text"><span>@Model.Address</span></span>
-                            </li>
-                            <li>
-                                <span class="icon"><i class="pe-7s-call"></i></span>
-                                <span class="text"><a href="#">@Model.MobilePhone</a></span>
-                            </li>
-                            <li>
-                                <span class="icon"><i class="pe-7s-mail-open"></i></span>
-                                <span class="text"><a href="#">@Model.Email</a></span>
-                            </li>
-                        </ul>
+            <div class="col-md-4 mb-5 mb-md-0">
+                <div class="hun-element-info-contact layout-1">
+                    <h3 class="title-element">
+                        Contact Details
+                    </h3>
+                    <div class="description-element">
+                        <p>ADDRESS: <br>@Model.Address </p>
+                        <p>PHONE: <br>@Model.MobilePhone </p>
+                        <p>E-MAIL: <br>@Model.Email</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-9 col-12">
-                <div class="contact-form-wrap">
-                    <h3 class="contact-title">Drop us a line</h3>
-                    @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new { @class = "contact-form-01" }))
-                    {
-                        @*<form id="contact-form" action="http://hasthemes.com/file/mail.php" method="post">*@
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="contact-form-style mb-20">
-                                    <input name="con_name" placeholder="First Name*" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="contact-form-style mb-20">
-                                    <input name="lastname" placeholder="Last Name*" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="contact-form-style mb-20">
-                                    <input name="con_email" placeholder="Email*" type="email">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="contact-form-style mb-20">
-                                    <input name="subject" placeholder="Subject*" type="text">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="contact-form-style">
-                                    <textarea name="con_message" placeholder="Type your message here.."></textarea>
-                                    <button class="btn" type="submit"><span>Send message</span></button>
-                                </div>
-                            </div>
+
+            <div class="col-md-8">
+                @using (Html.BeginForm("SendMessage", "Contact", FormMethod.Post, new { @class = "contact-form-01" }))
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input name="name" id="name" class="input-field" type="text" placeholder="Name *">
                         </div>
-                        @*</form>*@
-                    }
-                    <p class="form-messege"></p>
-                </div>
+
+                        <div class="col-sm-6">
+                            <input name="email" id="email" class="input-field" type="email" placeholder="E-mail *">
+                        </div>
+
+                        <div class="col-12">
+                            <textarea name="comment" id="comment" class="input-field" placeholder="Your Comments *"></textarea>
+
+                            <button class="hun-button size-normal shape-round style-fill-color">
+                                Send message
+                            </button>
+                        </div>
+                    </div>
+
+                }
             </div>
         </div>
-
     </div>
 </div>
-<!--Contact section end-->
+<!-- end content contact-page -->

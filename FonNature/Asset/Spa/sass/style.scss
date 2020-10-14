@@ -1,0 +1,94 @@
+/*------------------------------------------------------------------
+Project:  Labore
+Version:  1.0
+Last change:  23 October 2019
+Assigned to:  HunThemes
+Primary use:  HunThemes
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[LAYOUT]
+
+* body
+  + Header / header
+  + Content / .content-page
+        - Section Layouts / div .name-section
+        - Sidebar / .main-sidebar
+            - Search / .hun-widget-search
+            - Categories / .hun-widget-categories
+            - Post / .hun-widget-posts
+            - Tag / .hun-widget-tags
+        ...
+  + Footer / footer
+
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[COLOR CODES]
+
+# Text Color      :  #5e5e78
+# Primary Color 01:  #28c8db
+# Primary Color 02:  #020041
+
+------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[TYPOGRAPHY]
+
+Body            : 15px/1.8 'Nunito', Arial, sans-serif;
+Title           : 40px/1.1 'Alice', Arial, sans-serif;
+Paragrap        : 15px/1.8 'Nunito', Arial, sans-serif;
+Input, textarea : 15px/1.5 'Nunito', Arial, sans-serif;
+-------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Alice&display=swap');
+
+@import 'base/_mixins';
+@import 'base/_variables';
+@import 'base/_reset';
+
+@import 'header/_header';
+@import 'header/_menu-mobile';
+
+@import 'page-layout/_general';
+@import 'page-layout/_title-page';
+
+@import 'footer/_footer';
+@import 'forms/_forms';
+
+@import 'features/_back-to-top';
+@import 'features/_pre-loading';
+@import 'features/_style-select2';
+@import 'features/_style-datepicker';
+@import 'features/_style-magnific-popup';
+@import 'features/_hun-button';
+@import 'features/_pagination';
+
+@import 'elements/_others';
+@import 'elements/_widget';
+@import 'elements/_search';
+@import 'elements/_main-slider';
+@import 'elements/_social';
+@import 'elements/_heading';
+@import 'elements/_service';
+@import 'elements/_video';
+@import 'elements/_feature';
+@import 'elements/_testimonial';
+@import 'elements/_price-list';
+@import 'elements/_post';
+@import 'elements/_image';
+@import 'elements/_gallery';
+@import 'elements/_team';
+@import 'elements/_banner';
+@import 'elements/_pricing-table';
+@import 'elements/_instagram';
+@import 'elements/_progress';
+@import 'elements/_brand';
+@import 'elements/_blog';
+@import 'elements/_blog-detail';
+@import 'elements/_gallery-single';
+@import 'elements/_countdown';
+@import 'elements/_404error';
+@import 'elements/_newsletter';
+@import 'elements/_service-detail';
+
+@import 'sections/_sections';
+

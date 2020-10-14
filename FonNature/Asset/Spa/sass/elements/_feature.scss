@@ -1,0 +1,159 @@
+/*[ hun-element-feature ]
+//////////////////////////////////////////////////////////////////*/
+
+/*\
+ *
+ * hun-element-feature
+ *
+\*/
+.hun-element-feature.layout-1 {
+	text-align: center;
+
+	.icon-element {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 88px;
+		height: 88px;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 1px solid $main-color-01;
+		padding: 10px;
+		margin-bottom: 23px;
+
+		img {
+			max-width: 100%;
+		}
+	}
+
+	.title-element {
+		font-weight: 400;
+		font-size: 25px;
+		line-height: 1.2;
+		color: $main-color-02;
+		word-break: break-word;
+
+		a {
+			color: inherit;
+			transition: all .3s;
+
+			&:hover {
+				color: $main-color-01;
+			}
+		}
+	}
+
+	.description-element {
+		font-weight: 400;
+		font-size: 15px;
+		line-height: 1.8;
+		color: $text-color-01;
+		word-break: break-word;
+	}
+
+	&.align-left {
+		text-align: left;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		.icon-element {
+			margin-bottom: 0;
+			padding: 0;
+		}
+
+		.text-element {
+			width: calc(100% - 88px - 25px);
+			align-self: center;
+		}
+	}
+
+	&.align-right {
+		text-align: right;
+		display: flex;
+		flex-direction: row-reverse;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		.icon-element {
+			margin-bottom: 0;
+			padding: 0;
+		}
+
+		.text-element {
+			width: calc(100% - 88px - 25px);
+			align-self: center;
+		}
+	}
+
+	@media (max-width: 767px) {
+		&.align-right {
+			text-align: left;
+			flex-direction: row;
+		}
+	}
+}
+
+/*\
+ *
+ * layout-2
+ *
+\*/
+.hun-element-feature.layout-2 {
+	display: block;
+	height: 100%;
+	padding: 38px 10%;
+	background-color: $main-color-01;
+	border-radius: 10px;
+	text-align: center;
+
+	.icon-element {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		height: 120px;
+		margin-bottom: 27px;
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+	}
+
+	.text-element {
+		.title-element {
+			font-weight: 400;
+			font-size: 25px;
+			line-height: 1.2;
+			color: #fff;
+			word-break: break-word;
+			margin-bottom: 15px;
+
+			a {
+				color: inherit;
+				transition: all .3s;
+
+				&:hover {
+					color: $main-color-02;
+				}
+			}
+		}
+
+		.description-element {
+			font-weight: 400;
+			font-size: 15px;
+			line-height: 1.8;
+			color: #fff;
+			word-break: break-word;
+		}
+	}
+
+	&:hover {
+		.icon-element {
+			transition: all .9s ease;
+			transform: rotateY(360deg);
+		}
+	}
+}

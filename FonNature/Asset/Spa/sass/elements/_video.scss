@@ -1,0 +1,78 @@
+/*[ hun-element-video ]
+//////////////////////////////////////////////////////////////////*/
+
+/*\
+ *
+ * layout-1
+ *
+\*/
+.hun-element-video.layout-1 {
+	background-color: #fff;
+	padding: 15px;
+	box-shadow: 0px 0px 10px 0px rgba(2, 0, 65, 0.1);
+	position: relative;
+
+	.btn-play {
+		font-size: 25px;
+		color: #fff;
+		line-height: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 74px;
+		height: 74px;
+		border-radius: 50%;
+		background-color: $main-color-01;
+		position: absolute;
+		top: calc(50% - 37px);
+		left: calc(50% - 37px);
+		padding-left: 5px;
+		padding-top: 2px;
+		transition: all .3s;
+
+		&:hover {
+			background-color: $main-color-02;
+		}
+	}
+
+	img {
+		width: 100%;
+	}
+}
+
+/*\
+ *
+ * layout-2
+ *
+\*/
+.hun-element-video.layout-2 {
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding-top: 69%;
+	height: 100%;
+	position: relative;
+
+	.btn-play {
+		font-size: 25px;
+		color: #fff;
+		line-height: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 74px;
+		height: 74px;
+		border-radius: 50%;
+		background-color: $main-color-01;
+		position: absolute;
+		top: calc(50% - 37px);
+		left: calc(50% - 37px);
+		padding-left: 5px;
+		padding-top: 2px;
+		transition: all .3s;
+
+		&:hover {
+			background-color: $main-color-02;
+		}
+	}
+}

@@ -1,0 +1,63 @@
+/*[ hun-element-social ]
+//////////////////////////////////////////////////////////////////*/
+
+/*\
+ *
+ * layout-1
+ *
+\*/
+.hun-element-social.layout-1 {
+	letter-spacing: 7px;
+
+	.item-social {
+		font-size: 15px;
+		line-height: 1;
+		color: #9999cc;
+		letter-spacing: normal;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		background-color: rgba(255, 255, 255, .1);
+		margin: 5px 0px;
+		transition: all .3s;
+
+		&:hover {
+			background-color: $main-color-01;
+			color: #fff;
+		}
+	}
+}
+
+/*\
+ *
+ * layout-2
+ *
+\*/
+.hun-element-social.layout-2 {
+	letter-spacing: 7px;
+
+	.item-social {
+		font-size: 15px;
+		line-height: 1;
+		color: $text-color-02;
+		letter-spacing: normal;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 38px;
+		height: 38px;
+		border-radius: 50%;
+		border: 1px solid rgba(57, 56, 90, .3);
+		margin: 5px 0px;
+		transition: all .3s;
+
+		&:hover {
+			border-color: $main-color-01;
+			background-color: $main-color-01;
+			color: #fff;
+		}
+	}
+}

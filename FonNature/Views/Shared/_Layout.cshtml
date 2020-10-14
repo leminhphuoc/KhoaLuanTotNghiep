@@ -15,101 +15,135 @@
     <meta name="google-site-verification" content="b32z8I1U65G5SAsbWbGk_zZuawyKZQEQ5M2NQdLgnGM" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- All css files are included here. -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-    <link href="~/Asset/Client/css/styleError.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/Asset/Spa/images/icons/favicon-01.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/font-awesome-4/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/iconic-font/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/simple-line-icons/css/simple-line-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/linearicons/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/magnific-popup/magnific-popup.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/animsition/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/parallax100/parallax100.css">
+    <!--===============================================================================================-->
+    @RenderSection("cssHeader", required:false)
+    <link href="~/Asset/Client/css/plugins.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Asset/MdBootrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Asset/Client/css/iconfont.min.css">
-    <link rel="stylesheet" href="~/Asset/Client/css/plugins.css">
-    <link rel="stylesheet" href="~/Asset/Client/css/helper.css">
     <link rel="stylesheet" href="~/Asset/MdBootrap/css/mdb.min.css">
     <link href="~/Asset/noty/lib/themes/metroui.css" rel="stylesheet" />
     <link href="~/Asset/noty/lib/noty.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/Asset/Client/css/style.css">
-    <!-- Modernizr JS -->
-    <script src="~/Asset/Client/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/Asset/Spa/css/style.css">
+    <!--===============================================================================================-->
 </head>
 <body id="body" onload="myFunction()" class="animsition">
-    <div id="main-wrapper">
-        <!--Header section start-->
-        <header class="header header-transparent header-sticky">
-            <div class="header-top">
-                <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
-                    <div class="row align-items-center">
+    <!-- Header -->
+    <header class="hun-header style-sticky layout-2">
+        <div class="wrapper-header element-for-stick">
+            <div class="logo-header">
+                <a href="/" class="main-logo">
+                    <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                </a>
 
-                        @{Html.RenderAction("ContactHome", "Home");}
-                        @*<div class="col-xl-6 col-lg-4">
-                                <div class="ht-right d-flex justify-content-lg-end justify-content-center">
-                                    <ul class="ht-us-menu d-flex">
-                                        <li>
-                                            <a href="#"><i class="fa fa-user-circle-o"></i>Login</a>
-                                            <ul class="ht-dropdown right">
-                                                <li><a href="compare.html">Compare Products</a></li>
-                                                <li><a href="my-account.html">My Account</a></li>
-                                                <li><a href="wishlist.html">My Wish List</a></li>
-                                                <li><a href="login-register.html">Sign In</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>*@
+                <a href="/" class="mobile-logo">
+                    <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                </a>
+
+                <a href="/" class="sticky-logo">
+                    <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                </a>
+
+                <a href="/" class="retina-logo">
+                    <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                </a>
+            </div>
+
+            @{Html.RenderAction("MainMenu", "Home");}
+
+            <div class="group-feature">
+                <div class="buttons-header d-none d-sm-block">
+                    <a href="/booking" class="hun-button size-small shape-round style-fill-color">
+                        Book now
+                    </a>
+                </div>
+
+                <div class="hun-element-search layout-1">
+                    <span class="search-open">
+                        <i class="zmdi zmdi-search"></i>
+                    </span>
+
+                    <div class="search-form">
+                        <span class="search-close"></span>
+
+                        <form>
+                            <input type="text" class="search-field" />
+                            <span class="search-notice"> Hit enter to search or ESC to close</span>
+                        </form>
+
+                        <ul class="list-result"></ul>
                     </div>
+                </div>
 
+                <div class="hun-menu-mobile">
+                    <a href="#" class="btn-toggle-menu"></a>
+
+                    <nav class="mobile-navigation">
+                        <div class="logo-menu-mobile">
+                            <a href="/">
+                                <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                            </a>
+                        </div>
+                    </nav>
                 </div>
             </div>
-            <div class="header-bottom menu-right">
-                <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
-                    <div class="row align-items-center">
-
-                        <!--Logo start-->
-                        @{Html.RenderAction("HeaderLogo", "Home");}
-                        <!--Logo end-->
-                        @{Html.RenderAction("MainMenu", "Home");}
-                        <!--Search Cart Start-->
-                        <div class="col-lg-3 col-md-3 col-6 order-lg-3 order-md-3 order-2 d-flex justify-content-end">
-                            <div class="header-search">
-                                <button class="header-search-toggle"><i class="fa fa-search"></i></button>
-                                <div class="header-search-form">
-                                    <form action="/search">
-                                        <input id="searchString" name="searchString" type="text" placeholder="Type and hit enter">
-                                        <button><i class="fa fa-search"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                            @{Html.RenderAction("MiniCart", "Home");}
-                        </div>
-                        <!--Search Cart End-->
-                    </div>
-
-                    <!--Mobile Menu start-->
-                    <div class="row">
-                        <div class="col-12 d-flex d-lg-none">
-                            <div class="mobile-menu"></div>
-                        </div>
-                    </div>
-                    <!--Mobile Menu end-->
-
-                </div>
-            </div>
-        </header>
-        <!--Header section end-->
-        @RenderBody();
-        <!-- Footer -->
-        @{Html.RenderAction("Footer", "Home");}
-
-    </div>
+        </div>
+    </header>
+    <!-- end Header -->
+    @RenderBody();
+    <!-- Footer -->
+    @{Html.RenderAction("Footer", "Home");}
     <!-- end Footer -->
-    <!-- All jquery file included here -->
-    <script async defer src="https://maps.google.com/maps/api/js?v=3.22&key=AIzaSyB2-FTfalYzmj_0Ie_1x1Xpa7dbHQEOAJo&callback=initMap"></script>
     @*<script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>*@
     <script type="text/javascript" src="~/Asset/MdBootrap/js/jquery.min.js"></script>
     <script src="~/Asset/Client/js/HandlerCart.js"></script>
     <script src="~/Asset/Client/js/popper.min.js"></script>
-    <script src="~/Asset/Client/js/bootstrap.min.js"></script>
     <script src="~/Asset/Client/js/plugins.js"></script>
+    <!-- end Footer -->
+    <!--===============================================================================================-->
+    <script src="/Asset/Spa/libs/bootstrap/popper.js"></script>
+    <script src="/Asset/Spa/libs/bootstrap/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Spa/libs/slick/slick.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Spa/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Spa/libs/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Spa/libs/animsition/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Spa/libs/daterangepicker/moment.min.js"></script>
+    <script src="/Asset/Spa/libs/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/Asset/Spa/libs/parallax100/parallax100.js"></script>
+    <!--===============================================================================================-->
+
     <script type="text/javascript" src="~/Asset/MdBootrap/js/mdb.min.js"></script>
     <script src="~/Asset/noty/lib/noty.js"></script>
     @RenderSection("jsFooter", required: false)
-    <script src="~/Asset/Client/js/main.js"></script>
+    <script src="~/Asset/Spa/js/main.js"></script>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=2399606136744047&autoLogAppEvents=1"></script>
     <script>

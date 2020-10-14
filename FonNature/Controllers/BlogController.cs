@@ -1,6 +1,5 @@
 ﻿using FonNature.Services;
 using PagedList;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers
@@ -22,8 +21,9 @@ namespace FonNature.Controllers
             ViewBag.RecentBlog = _blogServices.ListRecentBlog();
             ViewBag.BlogList = _blogServices.ListAll(null);
             ViewBag.banner = _blogServices.GetBanner();
+            ViewBag.SearchString = searchString;
             var blogList = _blogServices.ListAll(searchString);
-            int pageSize = 9;
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
             var blogListPaged = blogList.ToPagedList(pageNumber, pageSize);
             var seo = _blogServices.GetSeo();
@@ -44,7 +44,7 @@ namespace FonNature.Controllers
             ViewBag.RecentBlog = _blogServices.ListRecentBlog();
             ViewBag.BlogList = _blogServices.ListAll(null);
             ViewBag.banner = _blogServices.GetBanner();
-            var blogList = _blogServices.ListAllByCategory(searchString,idCategory);
+            var blogList = _blogServices.ListAllByCategory(searchString, idCategory);
             int pageSize = 4;
             int pageNumber = (page ?? 1);
             var blogListPaged = blogList.ToPagedList(pageNumber, pageSize);

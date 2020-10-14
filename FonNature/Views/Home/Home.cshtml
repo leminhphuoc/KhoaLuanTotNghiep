@@ -9,507 +9,499 @@
     Models.Entity.Slide otherSlide = ViewBag.otherSlide;
     List<Models.Entity.Content> contentList = ViewBag.contentList;
     Models.Entity.Banner bannerHome = ViewBag.bannerHome;
+    var aboutUs = ViewBag.aboutUs as Models.Entity.About;
+    var benefits = ViewBag.benefits as List<Models.Entity.Benefit>;
 }
-<!--slider section start-->
-<div class="hero-section section position-relative">
-
-    <div class="tf-element-carousel slider-nav" data-slick-options='{
-        "slidesToShow": 1,
-        "slidesToScroll": 1,
-        "infinite": true,
-        "arrows": true,
-        "dots": true
-        }' data-slick-responsive='[
-        {"breakpoint":768, "settings": {
-        "slidesToShow": 1
-        }},
-        {"breakpoint":575, "settings": {
-        "slidesToShow": 1,
-        "arrows": false,
-        "autoplay": true
-        }}
-        ]'>
-
-        @foreach (var slide in listSlide)
-        {
-            <!--Hero Item start-->
-            <div class="hero-item bg-image" data-bg="@slide.image">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-
-                            <!--Hero Content start-->
-                            <div class="hero-content-3">
-
-                                <h2>@slide.YellowTitle</h2>
-                                <h1>@slide.title</h1>
-                                <h3>@slide.subtitle</h3>
-                                <a href="/product">@slide.TextButton</a>
-
+<!-- slider home-1 -->
+<div class="sec--main-slider--home-1">
+    <div class="hun-element-main-slider layout-1">
+        <div class="main-slider js-call-slick" data-animate="true">
+            <div class="slide-slick" data-slick='{"fade": true, "speed": 900, "dots": true, "arrows": false, "autoplay": true, "autoplaySpeed": 4500, "infinite": true, "slidesToShow": 1, "slidesToScroll": 1}'>
+                @foreach (var slide in listSlide)
+                {
+                    <div class="item-slick full-height-with-header" style="background-image: url('@slide.image');">
+                        <div class="content-slide">
+                            <div class="subtitle-slide" data-appear="slideInDown" data-delay="800">
+                                @slide.subtitle
                             </div>
-                            <!--Hero Content end-->
 
+                            <h2 class="title-slide" data-appear="slideInUp" data-delay="0">
+                                @slide.title
+                            </h2>
+
+                            <div class="buttons-slide" data-appear="zoomIn" data-delay="1600">
+                                <a href="@slide.link" class="hun-button size-normal style-border-light shape-round">
+                                    @slide.TextButton
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <!--Hero Item end-->
-        }
-    </div>
+                }
 
+
+
+            </div>
+
+            <div class="dots-slick"></div>
+        </div>
+
+        <div class="social-slider">
+        </div>
+    </div>
 </div>
-<!--slider section end-->
-<div class="feature-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50">
+<!-- end slider home-1 -->
+<!-- our-story home-2 -->
+<div class="sec--our-story--home-2">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <!-- Single Faeture Start -->
-                <div class="single-feature mb-30">
-                    <div class="icon">
-                        <i class="fa-truck fa"></i>
-                    </div>
-                    <div class="content">
-                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FreeshipTitle)</h2>
-                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FreeshipSubTitle)</p>
-                    </div>
+            <div class="col-md-6 pb-5 pb-md-0 pr-md-4 pr-lg-5">
+                <div class="hun-element-image layout-1">
+                    <img src="@aboutUs.Image" alt="IMG">
                 </div>
-                <!-- Single Faeture End -->
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <!-- Single Faeture Start -->
-                <div class="single-feature mb-30">
-                    <div class="icon">
-                        <i class="fa fa-undo"></i>
+
+            <div class="col-md-6 pt-4 pt-md-0 align-self-center pl-md-4 pl-lg-5">
+                <div class="hun-element-our-story layout-2">
+                    <div class="heading-element">
+                        <h3 class="title-element">
+                            @aboutUs.Name
+                        </h3>
+
+                        <img class="line-heading" src="~/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
                     </div>
-                    <div class="content">
-                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.ReturnTitle)</h2>
-                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.ReturnSubTitle)</p>
+
+                    <div class="content-element">
+                        @Html.Raw(aboutUs.Description)
+                    </div>
+
+                    <div class="info-element">
+                        <div class="sign-element">
+                            <img src="@aboutUs.Sign" alt="IMG">
+                        </div>
+
+                        <div class="author-element">
+                            <span class="name-author">@aboutUs.Author</span> / @aboutUs.Role
+                        </div>
                     </div>
                 </div>
-                <!-- Single Faeture End -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <!-- Single Faeture Start -->
-                <div class="single-feature mb-30 br-0">
-                    <div class="icon">
-                        <i class="fa fa-thumbs-o-up"></i>
-                    </div>
-                    <div class="content">
-                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.SafeTitle)</h2>
-                        <p>@DictionaryService.GetDictionaryValue(Dictionaries.Home.SafeSubTitle)</p>
-                    </div>
-                </div>
-                <!-- Single Faeture End -->
             </div>
         </div>
     </div>
 </div>
-<!--Product section start-->
-@if (featuredProductList.Any())
+<!-- end our-story home-2 -->
+@if (benefits != null && benefits.Any())
 {
-    <div class="product-section section pt-100 pt-lg-80 pt-md-70 pt-sm-50 pt-xs-40 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
-        <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
-            <div class="row">
-
-                <div class="col-lg-3 col-xl-2">
-                    <!-- Section Title Start -->
-                    <div class="section-title-two mb-40 mb-xs-20">
-                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureOurTitle)</span>
-                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureTitle)</h2>
-                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FeatureProductsTitle)</span>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-
-                <div class="col-lg-9 col-xl-10">
-                    <div class="row tf-element-carousel product-nav-two" data-slick-options='{
-                            "slidesToShow": @(featuredProductList.Count <= 5 ? featuredProductList.Count : 5 ),
-                            "slidesToScroll": 1,
-                            "infinite": true,
-                            "arrows": true,
-                            "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
-                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
-                            }' data-slick-responsive='[
-                            {"breakpoint":1899, "settings": {
-                            "slidesToShow": @(featuredProductList.Count <= 4 ? featuredProductList.Count : 4 )
-                            }},
-                            {"breakpoint":1400, "settings": {
-                            "slidesToShow": 3
-                            }},
-                            {"breakpoint":1199, "settings": {
-                            "slidesToShow": 2
-                            }},
-                            {"breakpoint":992, "settings": {
-                            "slidesToShow": 2
-                            }},
-                            {"breakpoint":768, "settings": {
-                            "slidesToShow": 2,
-                            "arrows": false,
-                            "autoplay": true
-                            }},
-                            {"breakpoint":576, "settings": {
-                            "slidesToShow": 1
-                            }}
-                            ]'>
-                        @foreach (var product in featuredProductList)
-                        {
-                            <div class="col-lg-3">
-                                <!-- Single Product Start -->
-                                <div class="single-product mb-30">
-                                    <div class="product-img">
-                                        <a href="/product/detail?id=@product.id">
-                                            <img src="@product.image" alt="">
-                                        </a>
-                                        @if (product.promotionPrice != null && product.promotionPrice != 0)
-                                        {
-                                            var percent = (int)(((product.price - product.promotionPrice) / product.price) * 100);
-                                            <span class="descount-sticker">-@percent %</span>
-                                        }
-
-
-                                        @{
-                                            var changeValue = DateTime.Now.Date - product.createdDate.Value.Date;
-                                            if (changeValue.TotalDays <= 7)
-                                            {
-                                                <span class="sticker">New</span>
-                                            }
-                                        }
-                                        <div class="product-action d-flex justify-content-between">
-                                            <a data-id="@product.id" class="product-btn addToCart" href="javascript:void(0);">Add to Cart</a>
-                                            <a class="product-btn" href="/product/Detail?id=@product.id"></a>
-                                            @*<ul class="d-flex">
-                                                    <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-exchange"></i></a></li>
-                                                </ul>*@
-                                        </div>
-                                    </div>
-                                    <div class="product-content text-left">
-                                        <h3><a href="/product/detail?id=@product.id">@product.name</a></h3>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        @if (product.promotionPrice == null || product.price == 0)
-                                        {
-                                            <h4 class="price"><span class="new">@product.price.Value.ToString("N0") đ</span></h4>
-                                        }
-                                        else
-                                        {
-                                            <h4 class="price">
-                                                <span class="new">@product.promotionPrice.Value.ToString("N0") đ</span><span style="text-decoration-line:line-through" class="old">@product.price.Value.ToString("N0") đ</span>
-                                            </h4>
-                                        }
-                                    </div>
-                                </div>
-                                <!-- Single Product End -->
-                            </div>
-                        }
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-}
-<!--Product section end-->
-<!--Deal Of Product section start-->
-@if (topHotProduct != null)
-{
-    <div class="deal-product-section section bg-gray-two pt-0 pt-sm-5 pb-20 pb-sm-0 pb-xs-25">
+    <!-- feature home-2 -->
+    <div class="sec--feature--home-2">
         <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="tf-element-carousel" data-slick-options='{
-                        "slidesToShow": 1,
-                        "slidesToScroll": 1,
-                        "infinite": true,
-                        "arrows": false,
-                        "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
-                        "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
-                        }' data-slick-responsive='[
-                        {"breakpoint":768, "settings": {
-                        "slidesToShow": 1,
-                        "arrows": false,
-                        "autoplay": true
-                        }},
-                        {"breakpoint":575, "settings": {
-                        "slidesToShow": 1,
-                        "arrows": false,
-                        "autoplay": true
-                        }}
-                        ]'>
-                        @foreach (var product in topHotProduct)
-                        {
-                            <!-- Single Deal Product Start -->
-                            <div class="single-deal-product">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="deal-product-img">
-                                            <a href="/product/detail?id=@product.id">
-                                                <img src="@product.image" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="deal-product-title">
-                                            <h2><span>Hot</span><span>Deal</span></h2>
-                                            <p>@product.description</p>
-                                            <div class="cs-countdown black-color">
-                                                <div class="pro-countdown" data-countdown="@product.topHot.Value.ToString("yyyy/MM/dd")"></div>
-                                            </div>
-                                            <a href="/product/detail?id=@product.id">Shop collection now!</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Deal Product End -->
-                        }
+            <div class="row justify-content-md-end">
+                <div class="col-md-6 pb-5 pb-md-0 pl-md-4 pl-lg-5 order-md-2">
+                    <div class="hun-element-image">
+                        <img src="@bannerHome.Image" alt="IMG">
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-}
-<!--Deal Of Product section end-->
-<!--Product section start-->
-@if (bestSellerProductList.Any())
-{
-    <div class="product-section section pt-100 pt-lg-70 pt-md-65 pt-sm-60 pt-xs-45 pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
-        <div class="container-fluid pl-75 pr-75 pl-lg-15 pr-lg-15 pl-md-15 pr-md-15 pl-sm-15 pr-sm-15 pl-xs-15 pr-xs-15">
-            <div class="row">
 
-                <div class="col-xl-2 col-lg-3">
-                    <!-- Section Title Start -->
-                    <div class="section-title-two mb-40 mb-xs-20">
-                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerOurTitle)</span>
-                        <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerTitle)</h2>
-                        <span>@DictionaryService.GetDictionaryValue(Dictionaries.Home.BestSellerProductsTitle)</span>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-
-                <div class="col-xl-10 col-lg-9">
-                    <div class="row tf-element-carousel product-nav-two" data-slick-options='{
-                            "slidesToShow": @(bestSellerProductList.Count <= 5 ? bestSellerProductList.Count : 5 ),
-                            "slidesToScroll": 1,
-                            "infinite": true,
-                            "arrows": true,
-                            "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
-                            "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
-                            }' data-slick-responsive='[
-                            {"breakpoint":1899, "settings": {
-                            "slidesToShow": @(bestSellerProductList.Count <= 4 ? bestSellerProductList.Count : 4 )
-                            }},
-                            {"breakpoint":1400, "settings": {
-                            "slidesToShow": 3
-                            }},
-                            {"breakpoint":1199, "settings": {
-                            "slidesToShow": 2
-                            }},
-                            {"breakpoint":992, "settings": {
-                            "slidesToShow": 2
-                            }},
-                            {"breakpoint":768, "settings": {
-                            "slidesToShow": 2,
-                            "arrows": false,
-                            "autoplay": true
-                            }},
-                            {"breakpoint":576, "settings": {
-                            "slidesToShow": 1,
-                            "arrows": false,
-                            "autoplay": true
-                            }}
-                            ]'>
-                        @foreach (var product in bestSellerProductList)
-                        {
-                            <div class="col-lg-3">
-                                <!-- Single Product Start -->
-                                <div class="single-product mb-30">
-                                    <div class="product-img">
-                                        <a href="/product/detail?id=@product.id">
-                                            <img src="@product.image" alt="">
-                                        </a>
-                                        @if (product.promotionPrice != null && product.promotionPrice != 0)
-                                        {
-                                            var percent = (int)(((product.price - product.promotionPrice) / product.price) * 100);
-                                            <span class="descount-sticker">-@percent %</span>
-                                        }
-
-
-                                        @{
-                                            var changeValue = DateTime.Now.Date - product.createdDate.Value.Date;
-                                            if (changeValue.TotalDays <= 7)
-                                            {
-                                                <span class="sticker">New</span>
-                                            }
-                                        }
-                                        <div class="product-action d-flex justify-content-between">
-                                            <a data-id="@product.id"  class="product-btn addToCart" href="#">Add to Cart</a>
-                                            <a class="product-btn" href="/product/Detail?id=@product.id"></a>
-                                            @*<ul class="d-flex">
-                                                    <li><a href="#quick-view-modal-container" data-toggle="modal" title="Quick View"><i class="fa fa-eye"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-exchange"></i></a></li>
-                                                </ul>*@
-                                        </div>
-                                    </div>
-                                    <div class="product-content text-left">
-                                        <h3><a href="/product/detail?id=@product.id">@product.name</a></h3>
-                                        <div class="ratting">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
-                                        @if (product.promotionPrice == null || product.price == 0)
-                                        {
-                                            <h4 class="price"><span class="new">@product.price.Value.ToString("N0") đ</span></h4>
-                                        }
-                                        else
-                                        {
-                                            <h4 class="price">
-                                                <span class="new">@product.promotionPrice.Value.ToString("N0") đ</span><span style="text-decoration-line:line-through" class="old">@product.price.Value.ToString("N0") đ</span>
-                                            </h4>
-                                        }
-                                    </div>
-                                </div>
-                                <!-- Single Product End -->
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-}
-<!--Product section end-->
-<!-- Banner Section Start -->
-@if (otherSlide != null)
-{
-    <div class="banner-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-95 pb-lg-75 pb-md-65 pb-sm-55 pb-xs-45" data-bg="@otherSlide.image">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="banner-content">
-
-                        <h2>@otherSlide.YellowTitle</h2>
-                        <h1>@otherSlide.title</h1>
-                        <h3>@otherSlide.subtitle</h3>
-                        <a href="@otherSlide.link">@otherSlide.TextButton</a>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
-<!-- Banner Section End -->
-<!--Blog section start-->
-@if (contentList != null)
-{
-    if (contentList.Any())
-    {
-        <div class="blog-section section bg-gray pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-75 pb-lg-55 pb-md-45 pb-sm-35 pb-xs-30">
-            <div class="container">
-
-                <div class="row">
-                    <!-- Section Title Start -->
-                    <div class="col">
-                        <div class="section-title mb-40 mb-xs-20">
-                            <h2>@DictionaryService.GetDictionaryValue(Dictionaries.Home.FromTheBlog)</h2>
-                        </div>
-                    </div>
-                    <!-- Section Title End -->
-                </div>
-
-                <div class="row tf-element-carousel" data-slick-options='{
-                    "slidesToShow": @(contentList.Count <= 3 ? contentList.Count : 3),
-                    "slidesToScroll": 3,
-                    "infinite": true,
-                    "arrows": true,
-                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-left" },
-                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-right" }
-                    }' data-slick-responsive='[
-                    {"breakpoint":1199, "settings": {
-                    "slidesToShow": 3
-                    }},
-                    {"breakpoint":992, "settings": {
-                    "slidesToShow": 2
-                    }},
-                    {"breakpoint":768, "settings": {
-                    "slidesToShow": 2,
-                    "arrows": false,
-                    "autoplay": true
-                    }},
-                    {"breakpoint":575, "settings": {
-                    "slidesToShow": 1,
-                    "arrows": false,
-                    "autoplay": true
-                    }}
-                    ]'>
-                    @foreach (var content in contentList)
+                <div class="col-sm-11 col-md-6 col-lg-5 pr-md-4 pr-lg-5 order-md-1 align-self-center">
+                    @foreach (var benefit in benefits)
                     {
-                        <!-- Single Blog Start -->
-                        <div class="blog col">
-                            <div class="blog-inner">
-                                <div class="media"><a href="/blog/detail?id=@content.id" class="image"><img src="@content.image" alt=""></a></div>
-                                <div class="content">
-                                    <h3 class="title"><a href="/blog/detail?id=@content.id">@content.name</a></h3>
-                                    <ul class="meta">
-                                        <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">@content.createdDate.Value.Day</span><span class="separator">-</span><span class="month">@content.createdDate.Value.ToString("MMMM")</span></span></li>
-                                    </ul>
-                                    <p>@content.description </p>
-                                    <a class="readmore" href="/blog/detail?id=@content.id">@DictionaryService.GetDictionaryValue(Dictionaries.Blog.Readmore)</a>
+                        <div class="hun-element-feature layout-1 align-right mb-5">
+                            <a href="#" class="icon-element">
+                                <img src="@benefit.Image" alt="IMG">
+                            </a>
+
+                            <div class="text-element">
+                                <h4 class="title-element">
+                                    <a href="#">
+                                        @benefit.Name
+                                    </a>
+                                </h4>
+
+                                <div class="description-element">
+                                    @Html.Raw(benefit.Description)
                                 </div>
                             </div>
                         </div>
-                        <!-- Single Blog End -->
                     }
-                </div>
-            </div>
-        </div>
-    }
-}
-
-<!--Blog section end-->
-<!--Call To Action section start-->
-<div class="cta-section section bg-image pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-100 pb-lg-80 pb-md-70 pb-sm-60 pb-xs-40"
-     data-bg="@(bannerHome == null? "/Asset/Client/images/bg/cta-bg.jpg": bannerHome.Image)">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-12">
-                <div class="cta-content">
-                    <h3>Get <span>10%</span> Discount</h3>
-                    <p>
-                        <span>Subcribe to the TheFace mailing list to receive update on mnew arrivals,</span>
-                        <span>special offers and other discount information.</span>
-                    </p>
-                    <div class="cta-form">
-                        <form id="mc-form" class="mc-form" action="/Home/SendMessage" method="post">
-                            <input name="email" id="mc-email email" type="email" autocomplete="off"
-                                   placeholder="Your email address here" />
-                            <button id="mc-submit" class="cta-btn">Subscribe</button>
-                        </form>
-                        <!-- mailchimp-alerts Start -->
-                        <div class="mailchimp-alerts text-centre">
-                            <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                            <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                            <div class="mailchimp-error"></div><!-- mailchimp-error end -->
-                        </div><!-- mailchimp-alerts end -->
+                    <div class="buttons-section text-md-right">
+                        <a href="/serviceshome" class="hun-button size-normal style-fill-color shape-round">
+                            Read More
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- end feature home-2 -->
+}
+<!-- book-service home-1 -->
+<div class="sec--book-service--home-1 parallax100" style="background-image: url('/Asset/Spa/images/bg-03.jpg');">
+    <div class="container">
+        <div class="row no-gutters justify-content-end">
+            <div class="col-lg-6">
 
+                @using (Html.BeginForm("CreateBooking", "Booking", FormMethod.Post, new { @class = "book-service-form-01 no-border" }))
+                {
+                    <div class="heading-form">
+                        <h3 class="title-form">
+                            Book services
+                        </h3>
+
+                        <img class="line-heading" src="~/Asset/Spa/images/icons/wave-line-03.png" alt="IMG">
+                    </div>
+
+                    <label class="wrap-input">
+                        <input required id="name" name="name" type="text" placeholder="Your full name *">
+
+                        <i class="icon-user"></i>
+                    </label>
+
+                    <label class="wrap-input">
+                        <input required id="phone" name="phone" type="text" pattern="(09|01[2|6|8|9])+([0-9]{8})\b" placeholder="Your phone number *">
+
+                        <i class="icon-call-out"></i>
+                    </label>
+
+                    <label class="wrap-input js-call-select2" data-style="layout-1">
+                        <select id="IdServices" name="IdServices">
+                            <option value="0">Services *</option>
+                            @foreach (var product in featuredProductList)
+                            {
+                                <option value="@product.id">@product.name</option>
+                            }
+
+                        </select>
+
+                        <i class="lnr lnr-chevron-down"></i>
+                    </label>
+
+
+
+                    <label class="wrap-input js-call-datepicker" data-drop="down" data-drop-inside="true">
+                        <input id="ArrivalTime" type="text" name="ArrivalTime" autocomplete="off">
+
+                        <i class="lnr lnr-chevron-down"></i>
+                    </label>
+
+                    <label class="wrap-input js-call-select2" data-style="layout-1">
+                        <select id="time" name="time">
+                            <option value="8">8:00 AM</option>
+                            <option value="9">9:00 AM</option>
+                            <option value="10">10:00 AM</option>
+                            <option value="11">11:00 AM</option>
+                            <option value="13">1:00 PM</option>
+                            <option value="14">2:00 PM</option>
+                            <option value="15">3:00 PM</option>
+                            <option value="16">4:00 PM</option>
+                            <option value="17">5:00 PM</option>
+                            <option value="18">6:00 PM</option>
+                        </select>
+
+                        <i class="icon-clock"></i>
+                    </label>
+
+                    <button class="hun-button size-normal shape-round style-fill-color">
+                        Make appointment
+                    </button>
+                }
+            </div>
         </div>
     </div>
 </div>
-<!--Call To Action section end-->
+<!-- end book-service home-1 -->
+<!-- our-services home-1 -->
+<div class="sec--our-service--home-1">
+    <div class="container">
+        <div class="hun-element-heading layout-1 text-center">
+            <h3 class="title-element">
+                Our services
+            </h3>
+
+            <div class="line-element">
+                <img src="~/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
+            </div>
+        </div>
+
+        <div class="hun-element-service layout-1">
+            <div class="slide-element js-call-slick">
+                <div class="slide-slick" data-slick='{"dots": false, "arrows": true, "autoplay": false, "infinite": true, "slidesToShow": 3, "slidesToScroll": 1, "responsive": [{"breakpoint": 1199, "settings": {"slidesToShow": 2, "slidesToScroll": 1}}, {"breakpoint": 991, "settings": {"slidesToShow": 2, "slidesToScroll": 1}}, {"breakpoint": 767, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}, {"breakpoint": 575, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}]}'>
+                    @foreach (var item in bestSellerProductList)
+                    {
+                        <div class="item-slick">
+                            <div class="item-element">
+                                <div class="pic-item">
+                                    <a href="service-detail.html" class="wrap-pic">
+                                        <img style="width:245px;height:245px" src="@item.image" alt="IMG">
+                                    </a>
+                                </div>
+
+                                <div class="text-item">
+                                    <h4 class="title-item">
+                                        <a href="service-detail.html">
+                                            @item.name
+                                        </a>
+                                    </h4>
+
+                                    <div class="meta-info-item">
+                                        <span class="item-info">
+                                            <i class="zmdi zmdi-money-box"></i>
+                                            $@item.price
+                                        </span>
+
+                                        <span class="item-info">
+                                            <i class="zmdi zmdi-alarm-check"></i>
+
+                                        </span>
+                                    </div>
+
+                                    <div class="description-item">
+                                        @item.description
+                                    </div>
+                                </div>
+
+                                <div class="foot-item">
+                                    <div class="author-item">
+                                        <a href="#" class="pic-author">
+                                            <img src="~/Asset/Spa/images/ava-01.jpg" alt="IMG">
+                                        </a>
+
+                                        <span class="text-author">
+                                            <a href="#" class="name-author">
+                                                Victoria Webb
+                                            </a>
+
+                                            Spa Therapist
+                                        </span>
+                                    </div>
+
+                                    <a href="booking.html" class="link-item">
+                                        Book now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="arrows-slick">
+                    <a class="item-arrow prev-slick"></a>
+
+                    <a class="item-arrow next-slick"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons-section">
+            <a href="/serviceshome" class="hun-button size-normal style-border-color shape-round">
+                View All
+            </a>
+        </div>
+    </div>
+</div>
+<!-- end our-services home-1 -->
+<!-- gallery home-2 -->
+<div class="sec--gallery--home-2">
+    <div class="hun-element-gallery layout-1">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="item-gallery size-2x" style="background-image: url('/Asset/Spa/images/gallery-01-1024x681.jpg');">
+                    <a href="gallery-single.html" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="item-gallery" style="background-image: url('/Asset/Spa/images/gallery-02-1024x684.jpg');">
+                    <a href="gallery-single.html" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="item-gallery" style="background-image: url('/Asset/Spa/images/gallery-03-820x1024.jpg');">
+                    <a href="gallery-single.html" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="item-gallery" style="background-image: url('/Asset/Spa/images/gallery-04-1024x683.jpg');">
+                    <a href="gallery-single.html" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <div class="item-gallery" style="background-image: url('/Asset/Spa/images/gallery-05-1024x659.jpg');">
+                    <a href="gallery-single.html" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="item-gallery size-2x" style="background-image: url('/Asset/Spa/images/gallery-06-e1569822691666-1024x581.jpg');">
+                    <a href="gallery-single.html" class="overlay-item">
+                        <h4 class="title-item">
+                            Nam libero tempore
+                        </h4>
+
+                        <span class="description-item">
+                            Spa / Massage
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end gallery home-2 -->
+<!-- our-team home-2 -->
+<div class="sec--our-team--home-2">
+    <div class="container">
+        <div class="hun-element-heading layout-1 text-center">
+            <h3 class="title-element">
+                Our team
+            </h3>
+
+            <div class="line-element">
+                <img src="~/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
+            </div>
+        </div>
+
+        <div class="hun-element-team layout-1">
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-lg-4">
+                    <div class="item-team">
+                        <a href="#"><img class="pic-item" src="~/Asset/Spa/images/team-01.jpg" alt="IMG"></a>
+
+                        <div class="content-item">
+                            <h4 class="name-item">
+                                <a href="#">
+                                    Lori Alvarez
+                                </a>
+                            </h4>
+
+                            <div class="info-item">
+                                / Massage
+                            </div>
+
+                            <div class="social-link">
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-facebook"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-twitter"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9 col-lg-4">
+                    <div class="item-team">
+                        <a href="#"><img class="pic-item" src="~/Asset/Spa/images/team-02.jpg" alt="IMG"></a>
+
+                        <div class="content-item">
+                            <h4 class="name-item">
+                                <a href="#">
+                                    Lisa Young
+                                </a>
+                            </h4>
+
+                            <div class="info-item">
+                                / Massage
+                            </div>
+
+                            <div class="social-link">
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-facebook"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-twitter"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9 col-lg-4">
+                    <div class="item-team">
+                        <a href="#"><img class="pic-item" src="~/Asset/Spa/images/team-03.jpg" alt="IMG"></a>
+
+                        <div class="content-item">
+                            <h4 class="name-item">
+                                <a href="#">
+                                    Julia Berry
+                                </a>
+                            </h4>
+
+                            <div class="info-item">
+                                / Massage
+                            </div>
+
+                            <div class="social-link">
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-facebook"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-twitter"></i>
+                                </a>
+
+                                <a href="#" class="item-social">
+                                    <i class="icon-social-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end our-team home-2 -->

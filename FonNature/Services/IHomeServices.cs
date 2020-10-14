@@ -22,5 +22,7 @@ namespace FonNature.Services
         List<Content> GetHomeContent();
         Banner GetBannerHome();
         Contact GetContactHome();
+        About GetAboutUs();
+        List<Benefit> GetBenefits();
     }
 }

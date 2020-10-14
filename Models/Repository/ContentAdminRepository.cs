@@ -1,11 +1,8 @@
 ﻿using HelperLibrary;
 using Models.Entity;
-using Models.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -42,7 +39,7 @@ namespace Models.Repository
 
         public bool EditContent(Content content)
         {
-            var contentEdit = _db.Contents.Where(x => x.id == content.id).SingleOrDefault();
+            var contentEdit = _db.Contents.Where(x => x.id == content.id).FirstOrDefault();
             contentEdit.name = content.name;
             contentEdit.metatitle = content.metatitle;
             contentEdit.MetaKeyWord = content.MetaKeyWord;

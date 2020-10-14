@@ -8,89 +8,260 @@
     Models.Entity.Banner banner = ViewBag.banner;
 }
 
-<!-- Page Banner Section Start -->
-<div style="background-image: url('@(banner != null? banner.Image : "")');
-" class="page-banner-section section bg-gray">
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
     <div class="container">
-        <div class="row">
-            <div class="col">
+        <h1 class="main-title">
+            Blog
+        </h1>
 
-                <div class="page-banner text-center">
-                    <h1>Blog</h1>
-                    <ul class="page-breadcrumb">
-                        <li><a href="/">Home</a></li>
-                        <li>Blog</li>
-                    </ul>
-                </div>
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
 
-            </div>
-        </div>
+            <li>
+                Blog List
+            </li>
+        </ul>
     </div>
 </div>
-<!-- Page Banner Section End -->
-<!-- Blog Section Start -->
-<div class="blog-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-65 pb-lg-45 pb-md-35 pb-sm-25 pb-xs-15">
+<!-- end Title Page -->
+<!-- Content Page -->
+<div class="content-page have-sidebar-right">
     <div class="container">
         <div class="row">
-            @if (Model != null)
-            {
-                foreach (var item in Model)
-                {
-                    <!-- Single Blog Start -->
-                    <div class="blog col-lg-6 col-md-6 col-sm-6">
-                        <div class="blog-inner mb-20">
-                            <div class="media"><a href="/blog/detail?id=@item.id" class="image"><img src="@item.image" alt=""></a></div>
-                            <div class="content">
-                                <h3 class="title"><a href="/blog/detail?id=@item.id">@item.name</a></h3>
-                                <ul class="meta">
-                                    <li><i class="fa fa-calendar"></i><span class="date-time"><span class="date">@item.createdDate.Value.Day</span><span class="separator">-</span><span class="month">@item.createdDate.Value.ToString("MMMM")</span></span></li>
-                                </ul>
-                                <p>@Html.Raw(item.description)</p>
-                                <a class="readmore" href="/blog/detail?id=@item.id">Read more</a>
+            <div class="col-lg-9">
+                <div class="main-content">
+                    <div class="hun-element-blog layout-1">
+                        @foreach (var blog in Model)
+                        {
+                            <div class="item-blog">
+                                <div class="pic-blog">
+                                    <a href="/blog/detail?id=@blog.id">
+                                        <img src="@blog.image" alt="IMG">
+                                    </a>
+                                </div>
+
+                                <div class="text-blog">
+                                    <div class="cat-blog">
+                                        <a href="#" class="item-cat">
+                                            @foreach (var category in contentCategories)
+                                            {
+                                                if (category.id == blog.categoryID)
+                                                {
+                                                    @: @category.name
+                                                }
+                                            }
+                                        </a>
+                                    </div>
+
+                                    <h4 class="title-blog">
+                                        <a href="/blogdetail?id=@blog.id">
+                                            @blog.name
+                                        </a>
+                                    </h4>
+
+                                    <div class="description-blog">
+                                        @blog.description
+                                    </div>
+                                </div>
+
+                                <div class="foot-item">
+                                    <a href="/blog/detail?id=@blog.id" class="link-blog">
+                                        Read more
+                                    </a>
+
+                                    <ul class="share-link">
+                                        <li>
+                                            <a href="#" class="item-share">
+                                                <i class="icon-social-facebook"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="item-share">
+                                                <i class="icon-social-twitter"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="item-share">
+                                                <i class="icon-social-dribbble"></i>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="item-share">
+                                                <i class="icon-social-tumblr"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+                        }
+
+
+
+                    </div>
+
+                    <div class="loop-pagination text-center">
+                        @if (Model != null && Model.Any())
+                        {
+                            <ul>
+                                @{
+                                    if (Model.PageNumber == 1)
+                                    {
+                                        <li class="d-none">
+                                            <a href="#" class="page-numbers prev">
+                                                <i class="zmdi zmdi-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+
+                                        var prevalue = Model.PageNumber;
+                                        if (Model.PageNumber > 1)
+                                        {
+                                            prevalue = Model.PageNumber - 1;
+                                        }
+
+                                        <li>
+                                            <a href="/Blog?page=@prevalue" class="page-numbers prev">
+                                                <i class="zmdi zmdi-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+
+
+                                @for (int i = 1; i <= Model.PageCount; i++)
+                                {
+                                    if (Model.PageNumber == i)
+                                    {
+                                        <li>
+                                            <a href="/Blog?page=@i" class="page-numbers current">
+                                                @i
+                                            </a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="/Blog?page=@i" class="page-numbers">
+                                                @i
+                                            </a>
+                                        </li>
+                                    }
+                                }
+
+                                <li>
+                                    @{
+                                        var nextvalue = Model.PageNumber;
+                                        if (Model.PageNumber < Model.PageCount)
+                                        {
+                                            nextvalue = Model.PageNumber + 1;
+                                        }
+                                    }
+                                    @if (nextvalue != Model.PageNumber)
+                                    {
+                                        <a href="/Blog?page=@nextvalue" class="page-numbers next">
+                                            <i class="zmdi zmdi-chevron-right"></i>
+                                        </a>
+                                    }
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 js-call-sticky-sidebar">
+                <div class="main-sidebar">
+                    <div class="hun-widget-search layout-1">
+                        <form action="/blog/BlogHome">
+                            <input name="searchString" id="searchString" type="text" placeholder="Search" value="@ViewBag.SearchString">
+                            <button>
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="hun-widget-categories layout-1">
+                        <h3 class="title-widget">
+                            Categories
+                        </h3>
+
+                        <ul>
+                            @foreach (var category in contentCategories)
+                            {
+                                <li>
+                                    <a href="/Blog/ListByCategory?idCategory=@category.id">
+                                        @category.name
+                                    </a>
+                                    @{
+                                        int count = 0;
+                                        foreach (var blog in blogList)
+                                        {
+                                            if (blog.categoryID == category.id)
+                                            {
+                                                count++;
+                                            }
+                                        }
+                                    }
+
+                                    <span class="count">
+                                        (@count)
+                                    </span>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <div class="hun-widget-posts layout-1">
+                        <h3 class="title-widget">
+                            Recent Posts
+                        </h3>
+
+                        <div class="list-post">
+                            @foreach (var item in recentBlog)
+                            {
+                                <div class="item-post">
+                                    <a href="#" class="pic-post">
+                                        <img src="@item.image" alt="IMG">
+                                    </a>
+
+                                    <div class="text-post">
+                                        <div class="date-post">
+                                            @item.createdDate.Value.ToString("MMMM d")
+                                        </div>
+
+                                        <h4 class="title-post">
+                                            <a href="/blogdetail?id=@item.id">
+                                                @item.name
+                                            </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            }
+
+
+
                         </div>
                     </div>
-                    <!-- Single Blog End -->
-                }
-            }
-        </div>
-        <div class="row mb-35">
-            <div class="col">
-                <ul class="page-pagination">
-                    @{
 
-                        var prevalue = Model.PageNumber;
-                        if (Model.PageNumber > 1)
-                        {
-                            prevalue = Model.PageNumber - 1;
-                        }
-                        <li><a href="/blog?page=@prevalue"><i class="fa fa-angle-left"></i></a></li>
-                    }
-
-
-                    @for (int i = 1; i <= Model.PageCount; i++)
-                    {
-                        if (Model.PageNumber == i)
-                        {
-                            <li class="active"><a href="/blog?page=@i">@i</a></li>
-                        }
-                        else
-                        {
-                            <li><a href="/blog?page=@i">@i</a></li>
-                        }
-                    }
-
-                    @{
-                        var nextvalue = Model.PageNumber;
-                        if (Model.PageNumber < Model.PageCount)
-                        {
-                            nextvalue = Model.PageNumber + 1;
-                        }
-                    }
-                    <li><a href="/blog?page=@nextvalue"><i class="fa fa-angle-right"></i></a></li>
-                </ul>
+                    <div class="hun-widget-text">
+                        <a href="#">
+                            <img src="/Asset/Spa/images/insta-widget-01.jpg" alt="IMG">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Blog Section End -->   
+<!-- end Content Page -->

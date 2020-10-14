@@ -22,9 +22,10 @@ namespace FonNature.Services
         private readonly IContentAdminRepository _contentAdminRepository;
         private readonly IBannerRepository _bannerRepository;
         private readonly IContactAdminRepository _contactAdminRepository;
-        public HomeServices(IMenuAdminRepository menuAdminRepository, ISlideAdminRepository slideAdminRepository, IProductCategoryAdminRepository productCategoryAdminRepository ,IContentCategoryAdminRepository contentCategoryAdminRepository, IFooterAdminRepository footerAdminRepository, IFooterCategoryAdminRepository footerCategoryAdminRepository, IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository
+        private readonly IBenefitRepository _benefitRepository;
+        public HomeServices(IMenuAdminRepository menuAdminRepository, ISlideAdminRepository slideAdminRepository, IProductCategoryAdminRepository productCategoryAdminRepository, IContentCategoryAdminRepository contentCategoryAdminRepository, IFooterAdminRepository footerAdminRepository, IFooterCategoryAdminRepository footerCategoryAdminRepository, IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository
             , ISEORepository seoRepository, IProductAdminRepository productAdminRepository, IContentAdminRepository contentAdminRepository, IBannerRepository bannerRepository,
-             IContactAdminRepository contactAdminRepository)
+             IContactAdminRepository contactAdminRepository, IBenefitRepository benefitRepository)
         {
             _menuAdminRepository = menuAdminRepository;
             _slideAdminRepository = slideAdminRepository;
@@ -39,6 +40,7 @@ namespace FonNature.Services
             _contentAdminRepository = contentAdminRepository;
             _bannerRepository = bannerRepository;
             _contactAdminRepository = contactAdminRepository;
+            _benefitRepository = benefitRepository;
         }
 
         public List<Menu> ListMenu()
@@ -55,12 +57,12 @@ namespace FonNature.Services
         {
             return _slideAdminRepository.GetListTrue();
         }
-       
+
         public List<About> ListAbout()
         {
             return _aboutAdminRepository.GetListAbout();
         }
-  
+
         public List<ProductCategory> ListProductCategories()
         {
             return _productCategoryAdminRepository.GetListProductCategory();
@@ -73,7 +75,7 @@ namespace FonNature.Services
 
         public List<Footer> ListFooter()
         {
-            return _footerAdminRepository.GetListFooter().Where(x=>x.status == true).OrderBy(x=>x.displayOrder).ToList(); 
+            return _footerAdminRepository.GetListFooter().Where(x => x.status == true).OrderBy(x => x.displayOrder).ToList();
         }
 
         public List<FooterCategory> ListFooterCategory()
@@ -93,32 +95,41 @@ namespace FonNature.Services
 
         public List<Product> GetBestSellerProducts()
         {
-            return _productAdminRepository.GetListProduct().OrderByDescending(x=>x.AmountSold).Take(8).ToList();
+            return _productAdminRepository.GetListProduct().OrderByDescending(x => x.AmountSold).Take(8).ToList();
         }
 
         public List<Product> GetTopHot()
         {
-            return _productAdminRepository.GetListProduct().Where(x=>x.topHot >= DateTime.Now).OrderBy(x=>x.topHot).ToList();
+            return _productAdminRepository.GetListProduct().Where(x => x.topHot >= DateTime.Now).OrderBy(x => x.topHot).ToList();
         }
 
         public Slide GetOtherSlide()
         {
             return _slideAdminRepository.GetListSlide().SingleOrDefault(x => x.SlideType == 2);
         }
-        
+
         public List<Content> GetHomeContent()
         {
-            return _contentAdminRepository.GetListContent().Where(x => x.IsDisplayInHomePage).OrderByDescending(x=>x.createdDate).ToList();
+            return _contentAdminRepository.GetListContent().Where(x => x.IsDisplayInHomePage).OrderByDescending(x => x.createdDate).ToList();
         }
-        
+
         public Banner GetBannerHome()
         {
-            return _bannerRepository.GetList().FirstOrDefault(x=>x.Location == (int)BannerLocation.Home);
+            return _bannerRepository.GetList().FirstOrDefault(x => x.Location == (int)BannerLocation.Home);
         }
 
         public Contact GetContactHome()
         {
             return _contactAdminRepository.GetContact();
+        }
+        public About GetAboutUs()
+        {
+            return _aboutAdminRepository.GetListAbout().FirstOrDefault(x => x.Category.Equals(1));
+        }
+
+        public List<Benefit> GetBenefits()
+        {
+            return _benefitRepository.GetBenefits();
         }
     }
 }

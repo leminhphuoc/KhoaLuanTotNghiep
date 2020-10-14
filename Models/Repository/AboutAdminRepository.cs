@@ -1,10 +1,6 @@
 ﻿using Models.Entity;
-using Models.Repository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Models.Repository
 {
@@ -44,6 +40,9 @@ namespace Models.Repository
             aboutEdit.Name = about.Name;
             aboutEdit.Description = about.Description;
             aboutEdit.Image = about.Image;
+            aboutEdit.Author = about.Author;
+            aboutEdit.Sign = about.Sign;
+            aboutEdit.Role = about.Role;
             _db.SaveChanges();
             return true;
         }

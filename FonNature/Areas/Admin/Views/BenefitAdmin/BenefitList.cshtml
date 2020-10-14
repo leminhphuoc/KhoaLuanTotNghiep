@@ -1,0 +1,58 @@
+﻿@model List<Models.Entity.Benefit>
+@{
+    ViewBag.Title = "Benefit List";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                List Benefit
+            </div>
+            <div class="row w3-res-tb">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Benefit</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.Id">
+                                        <td>@item.Id</td>
+                                        <td><img src="@item.Image" style="max-width:300px" /></td>
+                                        <td>@item.Name</td>
+                                        <td>
+                                            <a href="/Admin/BenefitAdmin/BenefitEdit/@item.Id">Sửa</a>
+                                            /
+                                            @Ajax.ActionLink("Xóa", "Delete", new { @id = item.Id }, new AjaxOptions
+                                       {
+                                           Confirm = "Bạn có muốn xoá bản ghi này?",
+                                           OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("BenefitCreate", "BenefitAdmin")'">
+            Create New
+        </button>
+    </div>
+</section>
+

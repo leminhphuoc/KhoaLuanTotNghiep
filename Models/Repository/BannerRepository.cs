@@ -27,12 +27,12 @@ namespace Models.Repository
                 Db.SaveChanges();
                 return addedBanner.Id;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 log.Error($"Error at Add Banner: {e.Message}");
                 return 0;
             }
-            
+
         }
 
         public bool Delete(long id)
@@ -46,7 +46,7 @@ namespace Models.Repository
             }
             catch (Exception e)
             {
-                log.Error($"Error at Add Banner: {e.Message}");
+                log.Error($"Error at Delete Banner: {e.Message}");
                 return false;
             }
         }
@@ -63,7 +63,7 @@ namespace Models.Repository
             }
             catch (Exception e)
             {
-                log.Error($"Error at Add Banner: {e.Message}");
+                log.Error($"Error at Edit Banner: {e.Message}");
                 return false;
             }
         }
@@ -77,7 +77,7 @@ namespace Models.Repository
             }
             catch (Exception e)
             {
-                log.Error($"Error at Add Banner: {e.Message}");
+                log.Error($"Error at Get Detail Banner: {e.Message}");
                 return null;
             }
         }
@@ -90,7 +90,7 @@ namespace Models.Repository
             }
             catch (Exception e)
             {
-                log.Error($"Error at Add Banner: {e.Message}");
+                log.Error($"Error at Get List Banner: {e.Message}");
                 return new List<Banner>();
             }
         }
