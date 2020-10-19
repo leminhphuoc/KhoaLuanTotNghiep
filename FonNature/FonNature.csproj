@@ -235,6 +235,8 @@
     <Compile Include="Areas\Admin\Controllers\ProductAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\SeoAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceCategoryAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffAdminController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
@@ -2031,6 +2033,10 @@
     <Content Include="Asset\Spa\sass\style.scss" />
     <Content Include="Areas\Admin\Views\BenefitAdmin\BenefitList.cshtml" />
     <Content Include="Areas\Admin\Views\BenefitAdmin\BenefitCreate.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceCategoryAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceCategoryAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ServiceCategoryAdmin\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />

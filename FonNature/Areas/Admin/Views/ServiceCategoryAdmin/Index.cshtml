@@ -1,0 +1,113 @@
+﻿@model PagedList.IPagedList<Models.Entity.ServiceCategory>
+@{
+    ViewBag.Title = "Service Category List";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var serviceCategories = ViewBag.ServiceCategories as List<Models.Entity.ServiceCategory>;
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Service Category List
+            </div>
+            <div class="row w3-res-tb">
+                <div class="col-sm-5 m-b-xs">
+                </div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-3">
+                    @using (Html.BeginForm("Index", "ServiceCategoryAdmin", FormMethod.Get, new { @class = "input-group" }))
+                    {
+                        <input name="searchString" id="searchString" value="@ViewBag.SearchString" type="text" class="input-sm form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <input class="btn btn-sm btn-default" type="submit" value="Go!" />
+                        </span>
+                    }
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped b-t b-light">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Category Name</th>
+                            <th>Display Order</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr id="row_@item.Id">
+                                        <td>@item.Id</td>
+                                        <td><a href="/Admin/ServiceCategoryAdmin/Edit/@item.Id">@item.Name</a></td>
+                                        <td>@item.DisplayOrder</td>
+                                        <td>
+                                            <a href="/Admin/ServiceCategoryAdmin/Edit/@item.Id">Edit</a>
+                                            /
+                                            @Ajax.ActionLink("Delete", "Delete", new { @id = item.Id }, new AjaxOptions
+                                       {
+                                           Confirm = "Do you want remove this record?",
+                                           OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                           HttpMethod = "Delete"
+                                       })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <footer class="panel-footer">
+                @if (Model != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-5 text-center">
+                            @*<small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>*@
+                        </div>
+                        <div class="col-sm-7 text-right text-center-xs">
+                            <ul class="pagination pagination-sm m-t-none m-b-none">
+                                @{
+                                    var preValue = Model.PageNumber;
+                                    if (Model.PageNumber > 1)
+                                    {
+                                        preValue = Model.PageNumber - 1;
+                                    }
+                                    var nextValue = Model.PageNumber;
+                                    if (Model.PageNumber < Model.PageCount)
+                                    {
+                                        nextValue = Model.PageNumber + 1;
+                                    }
+                                }
+
+                                @if (!preValue.Equals(Model.PageNumber))
+                                {
+                                    <li><a href="/Admin/ServiceCategoryAdmin/Index?page=@preValue&&searchString=@ViewBag.SearchString"><i class="fa fa-chevron-left"></i></a></li>
+                                }
+
+                                @for (int i = 1; i <= Model.PageCount; i++)
+                                {
+                                    <li><a href="/Admin/ServiceCategoryAdmin/Index?page=@i&&searchString=@ViewBag.SearchString">@i</a></li>
+                                }
+
+                                @if (!nextValue.Equals(Model.PageNumber))
+                                {
+                                    <li><a href="/Admin/ServiceCategoryAdmin/Index?page=@nextValue&&searchString=@ViewBag.SearchString"><i class="fa fa-chevron-right"></i></a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </footer>
+        </div>
+        <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "ServiceCategoryAdmin")'">
+            Tạo mới
+        </button>
+    </div>
+</section>
+
+

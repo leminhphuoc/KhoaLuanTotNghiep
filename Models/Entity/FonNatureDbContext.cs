@@ -36,6 +36,8 @@ namespace Models.Entity
         public virtual DbSet<Dictionary> Dictionaries { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<Benefit> Benefits { get; set; }
+        public virtual DbSet<Service> Services { get; set; }
+        public virtual DbSet<ServiceCategory> ServiceCategories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

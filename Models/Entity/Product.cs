@@ -34,8 +34,6 @@ namespace Models.Entity
 
         public decimal? promotionPrice { get; set; }
 
-        public int? quantity { get; set; }
-
         [Required]
         public int? idCategory { get; set; }
 

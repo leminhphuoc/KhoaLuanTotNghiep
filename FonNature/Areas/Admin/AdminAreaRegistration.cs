@@ -66,13 +66,15 @@ namespace FonNature.Areas.Admin
             container.RegisterType<ISEORepository, SEORepository>();
             container.RegisterType<ISearchService, SearchService>();
             container.RegisterType<IBenefitRepository, BenefitRepository>();
+            container.RegisterType<IServiceRepository, ServiceRepository>();
+            container.RegisterType<IServiceCategoryRepository, ServiceCategoryRepository>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "{controller}List", id = UrlParameter.Optional }
+                new { controller = "{controller}", action = "Index", id = UrlParameter.Optional }
             );
 
             context.MapRoute(

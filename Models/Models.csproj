@@ -73,7 +73,9 @@
     <Compile Include="Entity\OrderInformation.cs" />
     <Compile Include="Entity\OrderStatus.cs" />
     <Compile Include="Entity\Page.cs" />
+    <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\Product.cs" />
+    <Compile Include="Entity\ServiceCategory.cs" />
     <Compile Include="Entity\ProductCategory.cs" />
     <Compile Include="Entity\SEO.cs" />
     <Compile Include="Entity\Slide.cs" />
@@ -87,6 +89,10 @@
     <Compile Include="Migrations\202008271507506_CreatePageTable.cs" />
     <Compile Include="Migrations\202008271507506_CreatePageTable.Designer.cs">
       <DependentUpon>202008271507506_CreatePageTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010141412488_CreateServiceTable.cs" />
+    <Compile Include="Migrations\202010141412488_CreateServiceTable.Designer.cs">
+      <DependentUpon>202010141412488_CreateServiceTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\BenefitRepository.cs" />
     <Compile Include="Repository\DictionaryRepository.cs" />
@@ -109,6 +115,8 @@
     <Compile Include="Repository\IProductAdminRepository.cs" />
     <Compile Include="Repository\IProductCategoryAdminRepository.cs" />
     <Compile Include="Repository\ISEORepository.cs" />
+    <Compile Include="Repository\IServiceCategoryRepository.cs" />
+    <Compile Include="Repository\IServiceRepository.cs" />
     <Compile Include="Repository\ISlideAdminRepository.cs" />
     <Compile Include="Repository\IStaffAdminRepository.cs" />
     <Compile Include="Migrations\201912240333276_Initial.cs" />
@@ -155,6 +163,8 @@
     <Compile Include="Repository\ProductAdminRepository.cs" />
     <Compile Include="Repository\ProductCategoryAdminRepository.cs" />
     <Compile Include="Repository\SEORepository.cs" />
+    <Compile Include="Repository\ServiceCategoryRepository.cs" />
+    <Compile Include="Repository\ServiceRepository.cs" />
     <Compile Include="Repository\SlideAdminRepository.cs" />
     <Compile Include="Repository\StaffAdminRepository.cs" />
     <Compile Include="Repository\VisitorRepository.cs" />
@@ -192,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008271507506_CreatePageTable.resx">
       <DependentUpon>202008271507506_CreatePageTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010141412488_CreateServiceTable.resx">
+      <DependentUpon>202010141412488_CreateServiceTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

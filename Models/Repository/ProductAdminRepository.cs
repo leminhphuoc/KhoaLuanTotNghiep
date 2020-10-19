@@ -62,7 +62,6 @@ namespace Models.Repository
             productEdit.moreImages = product.moreImages;
             productEdit.price = product.price;
             productEdit.promotionPrice = product.promotionPrice;
-            productEdit.quantity = product.quantity;
             productEdit.idCategory = product.idCategory;
             productEdit.detail = product.detail;
             productEdit.modifiDate = DateTime.Now;
