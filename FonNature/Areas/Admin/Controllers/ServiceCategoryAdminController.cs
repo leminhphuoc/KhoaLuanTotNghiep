@@ -1,10 +1,6 @@
 ﻿using Models.Entity;
 using Models.Repository;
 using PagedList;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
@@ -47,7 +43,7 @@ namespace FonNature.Areas.Admin.Controllers
                 var addedServiceCategory = _repository.AddServiceCategory(serviceCategory);
                 if (addedServiceCategory == null)
                 {
-                    ModelState.AddModelError("", "Cannot add dictionary, please see log for more detail!");
+                    ModelState.AddModelError("", "Cannot add category, please see log for more detail!");
                     return View(serviceCategory);
                 }
                 return RedirectToAction("Index");

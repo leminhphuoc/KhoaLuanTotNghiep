@@ -4,6 +4,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
     var serviceCategories = ViewBag.ServiceCategories as List<Models.Entity.ServiceCategory>;
 }
+@section jsFooter{
+
+    <script src="~/Asset/Admin/Controller/ServicesController.js"></script>
+}
 
 <section class="wrapper">
     <div class="table-agile-info">
@@ -34,6 +38,7 @@
                             <th>Image</th>
                             <th>Service Name</th>
                             <th>Category</th>
+                            <th>Carousel</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -65,6 +70,7 @@
                                                 }
                                             }
                                         </td>
+                                        <td><a href="#" class="btn-image" data-id="@item.Id">Manage Carousel</a></td>
                                         <td>
                                             <a href="/Admin/ServiceAdmin/Edit/@item.Id">Edit</a>
                                             /
@@ -126,9 +132,30 @@
             </footer>
         </div>
         <button class="btn btn-info" type="button" onclick="location.href='@Url.Action("Create", "ServiceAdmin")'">
-            Tạo mới
+            Create new
         </button>
     </div>
 </section>
-
+<div class="modal fade" id="btn-multi-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Carousel</h5>
+                <button type="button" class="close closeImage" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="hideServiceId" value="0" />
+                <div id="imageList" class="container-fluid">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary closeImage" data-dismiss="modal">Back</button>
+                <button type="button" id="btnChooseImage" class="btn btn-success">Select Image</button>
+                <button type="button" id="btnSaveImage" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
 

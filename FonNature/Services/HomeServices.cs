@@ -23,9 +23,11 @@ namespace FonNature.Services
         private readonly IBannerRepository _bannerRepository;
         private readonly IContactAdminRepository _contactAdminRepository;
         private readonly IBenefitRepository _benefitRepository;
+        private readonly IServiceRepository _serviceRepository;
+        private readonly IServiceCategoryRepository _serviceCategoryRepository;
         public HomeServices(IMenuAdminRepository menuAdminRepository, ISlideAdminRepository slideAdminRepository, IProductCategoryAdminRepository productCategoryAdminRepository, IContentCategoryAdminRepository contentCategoryAdminRepository, IFooterAdminRepository footerAdminRepository, IFooterCategoryAdminRepository footerCategoryAdminRepository, IAboutAdminRepository aboutAdminRepository, IStaffAdminRepository staffAdminRepository
             , ISEORepository seoRepository, IProductAdminRepository productAdminRepository, IContentAdminRepository contentAdminRepository, IBannerRepository bannerRepository,
-             IContactAdminRepository contactAdminRepository, IBenefitRepository benefitRepository)
+             IContactAdminRepository contactAdminRepository, IBenefitRepository benefitRepository, IServiceRepository serviceRepository, IServiceCategoryRepository serviceCategoryRepository)
         {
             _menuAdminRepository = menuAdminRepository;
             _slideAdminRepository = slideAdminRepository;
@@ -41,6 +43,8 @@ namespace FonNature.Services
             _bannerRepository = bannerRepository;
             _contactAdminRepository = contactAdminRepository;
             _benefitRepository = benefitRepository;
+            _serviceRepository = serviceRepository;
+            _serviceCategoryRepository = serviceCategoryRepository;
         }
 
         public List<Menu> ListMenu()
@@ -130,6 +134,11 @@ namespace FonNature.Services
         public List<Benefit> GetBenefits()
         {
             return _benefitRepository.GetBenefits();
+        }
+
+        public List<ServiceCategory> GetServiceCategories()
+        {
+            return _serviceCategoryRepository.GetServiceCategories();
         }
     }
 }

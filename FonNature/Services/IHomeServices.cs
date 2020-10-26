@@ -24,5 +24,6 @@ namespace FonNature.Services
         Contact GetContactHome();
         About GetAboutUs();
         List<Benefit> GetBenefits();
+        List<ServiceCategory> GetServiceCategories();
     }
 }

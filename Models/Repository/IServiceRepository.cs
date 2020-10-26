@@ -15,5 +15,8 @@ namespace Models.Repository
         Service AddService(Service service);
         long EditService(Service service);
         bool RemoveService(long id);
+        bool SaveImages(string images, long id);
+        List<string> GetImagesList(long id);
+        List<Service> GetServicesByCategory(int categoryId);
     }
 }

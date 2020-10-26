@@ -16,5 +16,15 @@ namespace FonNature
         {
               "p", "h1", "br" , "a"
         };
+
+        public static readonly Dictionary<string, string> MenuLinks = new Dictionary<string, string>()
+        {
+            { "/" , "Home" },
+            { "/service" , "Service" },
+            { "/product" , "Product" },
+            { "/blog" , "Blog" },
+            { "/aboutus" , "About Us" },
+            { "/contact" , "Contact" },
+        };
     }
 }

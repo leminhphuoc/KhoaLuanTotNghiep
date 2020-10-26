@@ -2,45 +2,60 @@
 @{
     List<Models.Entity.ProductCategory> productCategories = ViewBag.ProductsCategories;
     List<Models.Entity.ContentCategory> blogCategories = ViewBag.BlogCategories;
+    List<Models.Entity.ServiceCategory> serviceCategories = ViewBag.ServiceCategories;
 }
 <nav class="main-navigation">
     <ul class="list-menu">
         @foreach (var item in Model)
         {
-            <li>
-                <a href="@item.link">
-                    @item.text
-                </a>
-                @if (item.link == "/product")
-                {
-                    <ul class="sub-menu">
-                        @foreach (var category in productCategories)
-                        {
-                            <li>
-                                <a href="/Product/ProductListByCategory?idCategory=@category.id">
-                                    @category.name
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                }
+        <li>
+            <a href="@item.link">
+                @item.text
+            </a>
+            @if (item.link == "/product")
+            {
+                <ul class="sub-menu">
+                    @foreach (var category in productCategories)
+                    {
+                        <li>
+                            <a href="/Product/ProductListByCategory?idCategory=@category.id">
+                                @category.name
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
 
-                @if (item.link == "/blog")
-                {
-                    <ul class="sub-menu">
-                        @foreach (var category in blogCategories)
-                        {
-                            <li>
-                                <a href="/Blog/ListByCategory?idCategory=@category.id">
-                                    @category.name
-                                </a>
-                            </li>
-                        }
-                    </ul>
-                }
+            @if (item.link == "/service")
+            {
+                <ul class="sub-menu">
+                    @foreach (var category in serviceCategories)
+                    {
+                        <li>
+                            <a href="/Service/ServiceListByCategory?idCategory=@category.Id">
+                                @category.Name
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+
+            @if (item.link == "/blog")
+            {
+                <ul class="sub-menu">
+                    @foreach (var category in blogCategories)
+                    {
+                        <li>
+                            <a href="/Blog/ListByCategory?idCategory=@category.id">
+                                @category.name
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
 
 
-            </li>
+        </li>
         }
 
     </ul>

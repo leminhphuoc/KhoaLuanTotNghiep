@@ -41,6 +41,7 @@ namespace FonNature.Controllers
         {
             ViewBag.BlogCategories = _homeServices.ListContentCategory();
             ViewBag.ProductsCategories = _homeServices.ListProductCategories();
+            ViewBag.ServiceCategories = _homeServices.GetServiceCategories();
             var menus = _homeServices.ListMenu();
             return PartialView(menus);
         }

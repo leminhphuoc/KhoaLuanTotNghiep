@@ -1,0 +1,159 @@
+﻿@model PagedList.IPagedList<Models.Entity.Service>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Models.Entity.ServiceCategory> categories = ViewBag.categories;
+}
+<!--New UI-->
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
+    <div class="container">
+        <h1 class="main-title">
+            Services
+        </h1>
+
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                Services
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end Title Page -->
+<!-- content services-page -->
+<div class="sec--content--services-page">
+    <div class="container">
+        <div class="hun-element-heading layout-1 text-center">
+            <h3 class="title-element">
+                Our Services
+            </h3>
+
+            <div class="line-element">
+                <img src="/Asset/Spa/images/icons/wave-line-02.png" alt="IMG">
+            </div>
+        </div>
+
+        <div class="hun-element-service layout-1">
+            <div id="product-section" class="row">
+
+                @foreach (var service in Model)
+                {
+                    <div class="col-md-6 col-xl-4">
+                        <div class="item-element">
+                            <div class="pic-item">
+                                <a href="/service/detail?id=@service.Id" class="wrap-pic">
+                                    <img style="width:245px;height:245px" src="@service.Image" alt="IMG">
+                                </a>
+                            </div>
+
+                            <div class="text-item">
+                                <h4 class="title-item">
+                                    <a href="/service/detail?id=@service.Id">
+                                        @service.Name
+                                    </a>
+                                </h4>
+                                <div class="meta-info-item">
+                                    <span class="item-info">
+                                        <i class="zmdi zmdi-money-box"></i>
+                                        $@service.Price
+                                    </span>
+                                </div>
+
+                                <div class="description-item">
+                                    @service.Description
+                                </div>
+                            </div>
+
+                            <div class="foot-item">
+                                <a style="margin:auto" href="/service/detail?id=@service.Id" class="link-item">
+                                    Book now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+
+
+            </div>
+
+            <div class="loop-pagination text-center">
+                <ul>
+                    @{
+                        if (Model.PageNumber == 1)
+                        {
+                            <li class="d-none">
+                                <a href="#" class="page-numbers prev">
+                                    <i class="zmdi zmdi-chevron-left"></i>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+
+                            var prevalue = Model.PageNumber;
+                            if (Model.PageNumber > 1)
+                            {
+                                prevalue = Model.PageNumber - 1;
+                            }
+
+                            <li>
+                                <a href="/Service/ServiceHome?page=@prevalue" class="page-numbers prev">
+                                    <i class="zmdi zmdi-chevron-left"></i>
+                                </a>
+                            </li>
+                        }
+                    }
+
+
+                    @for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        if (Model.PageNumber == i)
+                        {
+                            <li>
+                                <a href="/Service/ServiceHome?page=@i" class="page-numbers current">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="/Service/ServiceHome?page=@i" class="page-numbers">
+                                    @i
+                                </a>
+                            </li>
+                        }
+                    }
+
+                    <li>
+                        @{
+                            var nextvalue = Model.PageNumber;
+                            if (Model.PageNumber < Model.PageCount)
+                            {
+                                nextvalue = Model.PageNumber + 1;
+                            }
+                        }
+                        @if(nextvalue != Model.PageNumber)
+                        {
+                            <a href="/Service/ServiceHome?page=@nextvalue" class="page-numbers next">
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </a>
+                        }  
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end content services-page -->

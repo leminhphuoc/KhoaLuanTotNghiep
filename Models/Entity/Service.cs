@@ -52,5 +52,7 @@ namespace Models.Entity
         public DateTime? TopHot { get; set; }
 
         public bool IsDisplayHomePage { get; set; }
+
+        public int Duration { get; set; }
     }
 }

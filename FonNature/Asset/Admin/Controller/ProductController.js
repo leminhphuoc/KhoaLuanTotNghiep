@@ -23,7 +23,6 @@
                 }
             });
         });
-
         $('.btn-image').off('click').on('click', function (e) {
             e.preventDefault();
             //$('#btn-multi-image').modal('show');
@@ -31,7 +30,7 @@
                 backdrop: 'static',
                 keyboard: false
             });
-            $('#hidProductId').val($(this).data('id'))
+            $('#hideProductId').val($(this).data('id'))
             product.loadImage();
            
         });
@@ -61,7 +60,7 @@
             $.each($('#imageList div img'), function (i, item) {
                 images.push($(item).attr('src'));
             })
-            var id = $('#hidProductId').val();
+            var id = $('#hideProductId').val();
 
             $.ajax({
                 url: "/Admin/ProductAdmin/SaveProductImages",
@@ -83,7 +82,7 @@
     loadImage: function () {
         $.ajax({
             url: "/Admin/ProductAdmin/ProductImages",
-            data: { id: $('#hidProductId').val() },
+            data: { id: $('#hideProductId').val() },
             dataType: "json",
             type: "GET",
             success: function (res) {

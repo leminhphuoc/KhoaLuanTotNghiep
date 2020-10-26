@@ -38,6 +38,14 @@ namespace Models.Entity
         public virtual DbSet<Benefit> Benefits { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<ServiceCategory> ServiceCategories { get; set; }
+        public virtual DbSet<ClientAccount> ClientAccounts { get; set; }
+        public virtual DbSet<District> Districts { get; set; }
+        public virtual DbSet<GenderCustomer> GenderCustomers { get; set; }
+        public virtual DbSet<Membership> Memberships { get; set; }
+        public virtual DbSet<MaritalStatusCustomer> MaritalStatusCustomers { get; set; }
+        public virtual DbSet<OccupationCustomer> OccupationCustomers { get; set; }
+        public virtual DbSet<Region> Regions { get; set; }
+        public virtual DbSet<TitleCustomer> TitleCustomers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
