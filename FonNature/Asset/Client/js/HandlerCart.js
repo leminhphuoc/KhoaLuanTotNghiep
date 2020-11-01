@@ -82,16 +82,16 @@
                         if (checkExits == true) {
                             $("#quantityCart_" + res.product.id).html(quantity.toString() + " x ");
                             var totalAmount = oldAmount + (price * addedQuantity);
-                            $("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
-                            //$("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
+                            $("#amountCart").html("$" +totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }));
+                            //$("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " ");
                             return;
                         }
-                        var htmlString = `<li id="cartItem_${res.product.id}" class="single-cart-item"><div class="cart-img"> <a href="/product/Detail?id=${id}"><img style="max-height: 71px;" src="${res.product.image}"></a> </div><div class="cart-content"><h5 class="product-name"><a href="single-product.html">${res.product.name}</a></h5><span id="quantityCart_${res.product.id}" class="product-quantity">${addedQuantity} ×</span><span class="product-price">${price.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span> </div><div class="cart-item-remove"><a onClick="removeFunction(this)" data-id="${id}" class="removeMiniCart" title="Remove" href="javascript:void(0);"><i class="fa fa-trash"></i></a></div> </li>`;
+                        var htmlString = `<li id="cartItem_${res.product.id}" class="single-cart-item"><div class="cart-img"> <a href="/product/Detail?id=${id}"><img style="max-height: 71px;" src="${res.product.image}"></a> </div><div class="cart-content"><h5 class="product-name"><a href="single-product.html">${res.product.name}</a></h5><span id="quantityCart_${res.product.id}" class="product-quantity">${addedQuantity} ×</span><span class="product-price">$${price.toLocaleString(undefined, { minimumFractionDigits: 0 })}</span> </div><div class="cart-item-remove"><a onClick="removeFunction(this)" data-id="${id}" class="removeMiniCart" title="Remove" href="javascript:void(0);"><i class="fa fa-trash"></i></a></div> </li>`;
                         $(".cart-items").append(htmlString);
                         var totalAmount = oldAmount + (price * addedQuantity);
                         console.log(totalAmount);
                         $(document).ajaxStop(function () {
-                            $("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
+                            $("#amountCart").html("$" +totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }));
                         });
                         $(".cartcounter").removeAttr('hidden');
                     }
@@ -127,9 +127,9 @@ function myFunction() {
                         price = res.product.price;
                     }
                     amount += price * value.quantity;
-                    var htmlString = `<li id="cartItem_${res.product.id}" class="single-cart-item"><div class="cart-img"> <a href="/product/Detail?id=${value.itemId}"><img style="max-height: 71px;" src="${res.product.image}"></a> </div><div class="cart-content"><h5 class="product-name"><a href="single-product.html">${res.product.name}</a></h5><span id="quantityCart_${res.product.id}" class="product-quantity">${value.quantity} ×</span><span class="product-price">${price.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span><div class="cart-item-remove"><a onClick="removeFunction(this)" data-id="${value.itemId}" class="removeMiniCart" title="Remove" href="javascript:void(0);"><i class="fa fa-trash"></i></a></div> </li>`;
+                    var htmlString = `<li id="cartItem_${res.product.id}" class="single-cart-item"><div class="cart-img"> <a href="/product/Detail?id=${value.itemId}"><img style="max-height: 71px;" src="${res.product.image}"></a> </div><div class="cart-content"><h5 class="product-name"><a href="single-product.html">${res.product.name}</a></h5><span id="quantityCart_${res.product.id}" class="product-quantity">${value.quantity} ×</span><span class="product-price">$${price.toLocaleString(undefined, { minimumFractionDigits: 0 })}</span><div class="cart-item-remove"><a onClick="removeFunction(this)" data-id="${value.itemId}" class="removeMiniCart" title="Remove" href="javascript:void(0);"><i class="fa fa-trash"></i></a></div> </li>`;
                     $(".cart-items").append(htmlString);
-                    $("#amountCart").html(amount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+                    $("#amountCart").html("$" +amount.toLocaleString(undefined, { minimumFractionDigits: 0 }))
                 }
                 else {
                     console.log(res.product);
@@ -157,10 +157,10 @@ function myFunction() {
                             price = res.product.price;
                         }
                         var amount = price * value.quantity;
-                        var htmlString = `<tr id="previewItemRow_${value.itemId}"><td class="pro-thumbnail"><a href="#"><img src="${res.product.image}" alt="Product"></a></td><td class="pro-title"><a href="#">${res.product.name}</a></td><td class="pro-price"><span class="cartPreviewPrice_${value.itemId}">${price.toLocaleString(undefined, { minimumFractionDigits: 0 })} Vnđ</span></td><td class="pro-quantity"><div class="pro-qty"><input data-id="${value.itemId}" onchange="changeQuantity(this)" min="1" max="9999" type="number" value="${value.quantity}"></div></td><td class="pro-subtotal"><span class="cartPreviewTotal_${value.itemId}">${amount.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span></td><td class="pro-remove_${res.product.id}"><a data-ispreviewitem="true" data-id="${res.product.id}" onClick="removeFunction(this)" href="javascript:void(0);"><i class="fa fa-trash-o"></i></a></td></tr>`;
+                        var htmlString = `<tr id="previewItemRow_${value.itemId}"><td class="pro-thumbnail"><a href="#"><img src="${res.product.image}" alt="Product"></a></td><td class="pro-title"><a href="#">${res.product.name}</a></td><td class="pro-price"><span class="cartPreviewPrice_${value.itemId}">$${price.toLocaleString(undefined, { minimumFractionDigits: 0 })}</span></td><td class="pro-quantity"><div class="pro-qty"><input data-id="${value.itemId}" onchange="changeQuantity(this)" min="1" max="9999" type="number" value="${value.quantity}"></div></td><td class="pro-subtotal"><span class="cartPreviewTotal_${value.itemId}">$${amount.toLocaleString(undefined, { minimumFractionDigits: 0 })}</span></td><td class="pro-remove_${res.product.id}"><a data-ispreviewitem="true" data-id="${res.product.id}" onClick="removeFunction(this)" href="javascript:void(0);"><i class="fa fa-trash-o"></i></a></td></tr>`;
                         $(".cartPreviewTable").append(htmlString);
                         totalAmount += amount;
-                        //$("#amountCart").html(amount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+                        //$("#amountCart").html(amount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + "")
                     }
                     else {
                         console.log(res.product);
@@ -169,8 +169,8 @@ function myFunction() {
             });
         });
         $(document).ajaxStop(function () {
-            $("#cartSubTotal").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
-            $("#cartGrandTotal").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            $("#cartSubTotal").html("$" +totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }))
+            $("#cartGrandTotal").html("$" +totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }))
         });
     }
 
@@ -190,10 +190,10 @@ function myFunction() {
                             price = res.product.price;
                         }
                         var amount = price * value.quantity;
-                        var htmlString = `<li>${res.product.name} X ${value.quantity} <span>${amount.toLocaleString(undefined, { minimumFractionDigits: 0 })} vnđ</span></li>`;
+                        var htmlString = `<li>${res.product.name} X ${value.quantity} <span>$${amount.toLocaleString(undefined, { minimumFractionDigits: 0 })}</span></li>`;
                         $("#checkoutCartItem").append(htmlString);
                         totalAmount += amount;
-                        //$("#amountCart").html(amount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+                        //$("#amountCart").html(amount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " ")
                     }
                     else {
                         console.log(res.product);
@@ -202,8 +202,8 @@ function myFunction() {
             });
         });
         $(document).ajaxStop(function () {
-            $("#subTotalInCheckout").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
-            $("#grandTotalInCheckout").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            $("#subTotalInCheckout").html("$" +totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }))
+            $("#grandTotalInCheckout").html("$" +totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }))
         });
     }
 }
@@ -235,7 +235,7 @@ function removeFunction(elem) {
                             oldAmount = oldAmount.slice(0, oldAmount.indexOf("v") - 1);
                             oldAmount = Number(oldAmount.replace(/[^0-9.-]+/g, ""));
                             var totalAmount = oldAmount - (price * value.quantity);
-                            $("#amountCart").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
+                            $("#amountCart").html("$" +totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }));
                         }
                         else {
                             console.log(res.product);
@@ -259,7 +259,7 @@ function changeQuantity(elem) {
     var price = changeTextToNumber(priceText);
     var quantity = input.val();
     var total = price * quantity;
-    $('.cartPreviewTotal_' + id).html(total.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+    $('.cartPreviewTotal_' + id).html("$" +total.toLocaleString(undefined, { minimumFractionDigits: 0 }))
     var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
     if (cartItemsList == null) return;
     $.each(cartItemsList, function (index, value) {
@@ -273,8 +273,7 @@ function changeQuantity(elem) {
 }
 
 function changeTextToNumber(text) {
-    var number = text.slice(0, text.indexOf("v") - 1);
-    return Number(number.replace(/[^0-9.-]+/g, ""));
+    return Number(text.replace(/[^0-9.-]+/g, ""));
 }
 
 function updateGrandTotalFromStorage() {
@@ -303,8 +302,8 @@ function updateGrandTotalFromStorage() {
         });
     });
     $(document).ajaxStop(function () {
-        $("#cartSubTotal").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
-        $("#cartGrandTotal").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
-        $("#amountCart").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ");
+        $("#cartSubTotal").html("$" +grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }))
+        $("#cartGrandTotal").html("$" +grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }))
+        $("#amountCart").html("$" +grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }));
     });
 }

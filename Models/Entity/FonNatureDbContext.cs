@@ -16,7 +16,6 @@ namespace Models.Entity
         public virtual DbSet<Content> Contents { get; set; }
         public virtual DbSet<ContentCategory> ContentCategories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<CustomerAccount> CustomerAccounts { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<FooterCategory> FooterCategories { get; set; }
         public virtual DbSet<IPAddress> IPAddresses { get; set; }
@@ -38,7 +37,6 @@ namespace Models.Entity
         public virtual DbSet<Benefit> Benefits { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<ServiceCategory> ServiceCategories { get; set; }
-        public virtual DbSet<ClientAccount> ClientAccounts { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<GenderCustomer> GenderCustomers { get; set; }
         public virtual DbSet<Membership> Memberships { get; set; }
@@ -46,6 +44,7 @@ namespace Models.Entity
         public virtual DbSet<OccupationCustomer> OccupationCustomers { get; set; }
         public virtual DbSet<Region> Regions { get; set; }
         public virtual DbSet<TitleCustomer> TitleCustomers { get; set; }
+        public virtual DbSet<ClientAccount> ClientAccounts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

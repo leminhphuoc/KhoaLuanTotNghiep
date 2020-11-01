@@ -1,5 +1,6 @@
 ﻿using FonNature.Filter;
 using FonNature.Services;
+using Models.Entity;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers
@@ -88,6 +89,15 @@ namespace FonNature.Controllers
         {
             SendMail.SendMailSubcribe(email);
             return RedirectToAction("SuccessPage", "success", new { message = "Thank you ! " });
+        }
+
+        [ChildActionOnly]
+        public ActionResult TopAccountNav()
+        {
+            var isLogin = Session[Constant.Membership.IsLoginSession];
+            ViewBag.IsLogin = isLogin;
+            var account = Session[Constant.Membership.AccountSession] as ClientAccount;
+            return PartialView(account);
         }
     }
 }

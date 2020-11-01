@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Models.Repository
 {
-    public class BenefitRepository : IBenefitRepository
+    public class ClientAccountRepository : IClientAccountRepository
     {
         private FonNatureDbContext _db = null;
 
@@ -14,22 +14,22 @@ namespace Models.Repository
 
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public BenefitRepository()
+        public ClientAccountRepository()
         {
             _db = new FonNatureDbContext();
         }
 
-        public long Add(Benefit benefit)
+        public long Add(ClientAccount account)
         {
             try
             {
-                var addedItem = _db.Benefits.Add(benefit);
+                var addedItem = _db.ClientAccounts.Add(account);
                 Db.SaveChanges();
                 return addedItem.Id;
             }
             catch (Exception e)
             {
-                log.Error($"Error at add function from {nameof(BenefitRepository)}: {e.Message}");
+                log.Error($"Error at add function from {nameof(ClientAccountRepository)}: {e.Message}");
                 return 0;
             }
         }
@@ -38,26 +38,23 @@ namespace Models.Repository
         {
             try
             {
-                var benefit = _db.Benefits.Find(id);
-                Db.Benefits.Remove(benefit);
-                Db.SaveChanges();
+                var account = _db.ClientAccounts.Find(id);
+                _db.ClientAccounts.Remove(account);
+                _db.SaveChanges();
                 return true;
             }
             catch (Exception e)
             {
-                log.Error($"Error at delete function {nameof(BenefitRepository)}: {e.Message}");
+                log.Error($"Error at delete function {nameof(ClientAccountRepository)}: {e.Message}");
                 return false;
             }
         }
 
-        public bool Edit(Benefit benefit)
+        public bool Edit(ClientAccount account)
         {
             try
             {
-                var benefitNeedEdit = _db.Benefits.Find(benefit.Id);
-                benefitNeedEdit.Name = benefit.Name;
-                benefitNeedEdit.Description = benefit.Description;
-                benefitNeedEdit.Image = benefit.Image;
+                var editAccount = _db.ClientAccounts.Find(account.Id);
                 Db.SaveChanges();
                 return true;
             }
@@ -68,30 +65,30 @@ namespace Models.Repository
             }
         }
 
-        public Benefit GetDetail(long id)
+        public ClientAccount GetClientAccount(long id)
         {
             try
             {
-                var benefit = _db.Benefits.Find(id);
-                return benefit;
+                var account = _db.ClientAccounts.Find(id);
+                return account;
             }
             catch (Exception e)
             {
-                log.Error($"Error at Get Benefit function from {nameof(BenefitRepository)}: {e.Message}");
+                log.Error($"Error at Get Customer Account function from {nameof(ClientAccountRepository)}: {e.Message}");
                 return null;
             }
         }
 
-        public List<Benefit> GetBenefits()
+        public List<ClientAccount> GetClientAccounts()
         {
             try
             {
-                return _db.Benefits.ToList();
+                return _db.ClientAccounts.ToList();
             }
             catch (Exception e)
             {
-                log.Error($"Error at Get Benefits {nameof(BenefitRepository)}: {e.Message}");
-                return new List<Benefit>();
+                log.Error($"Error at Get Benefits {nameof(ClientAccountRepository)}: {e.Message}");
+                return new List<ClientAccount>();
             }
         }
     }

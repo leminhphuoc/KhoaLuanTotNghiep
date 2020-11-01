@@ -1,4 +1,5 @@
-﻿using FonNature.Services;
+﻿using FonNature.Filter;
+using FonNature.Services;
 using Models.Entity;
 using Models.Model;
 using Newtonsoft.Json;
@@ -70,6 +71,7 @@ namespace FonNature.Controllers
 
         public ActionResult CartPreview()
         {
+            ViewBag.IsLogin = Session[Constant.Membership.IsLoginSession];
             return View();
         }
 
@@ -113,6 +115,7 @@ namespace FonNature.Controllers
             }
         }
 
+        [AuthenticationClient]
         public ActionResult Checkout()
         {
             return View();

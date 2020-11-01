@@ -5,43 +5,37 @@
 }
 @section jsFooter{
     <script src="~/Asset/Client/js/CartPreview.js"></script>
+}
+@{ 
+    var isLogin = ViewBag.IsLogin;
+    if(isLogin == null)
+    {
+        isLogin = false;
     }
-<!-- Page Banner Section Start -->
-<div class="page-banner-section section bg-gray">
+}
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
     <div class="container">
-        <div class="row">
-            <div class="col">
-
-                <div class="page-banner text-center">
-                    <h1>Giỏ hàng</h1>
-                    <ul class="page-breadcrumb">
-                        <li><a href="/">Trang chủ</a></li>
-                        <li>Giỏ hàng</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
+        <h1 class="main-title">
+            Cart
+        </h1>
     </div>
 </div>
-<!-- Page Banner Section End -->
 <!--Cart section start-->
-<div class="cart-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+<div style="margin-top:40px;" class="cart-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
     <div class="container">
         <div class="row">
-
             <div class="col-12">
                 <!-- Cart Table -->
                 <div class="cart-table table-responsive mb-30">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="pro-thumbnail">Hình ảnh</th>
-                                <th class="pro-title">Sản phẩm</th>
-                                <th class="pro-price">Đơn giá</th>
-                                <th class="pro-quantity">Số lượng</th>
-                                <th class="pro-subtotal">Thành tiền</th>
-                                <th class="pro-remove">Xóa</th>
+                                <th class="pro-thumbnail">Image</th>
+                                <th class="pro-title">Product Name</th>
+                                <th class="pro-price">Price</th>
+                                <th class="pro-quantity">Quantity</th>
+                                <th class="pro-subtotal">Total</th>
+                                <th class="pro-remove">Remove</th>
                             </tr>
                         </thead>
                         <tbody class="cartPreviewTable">
@@ -49,25 +43,49 @@
                     </table>
                 </div>
 
-                <div class="row">
-
-                    <div class="col-lg-6 col-12 mb-5">  
+                <div style="margin-top:40px;" class="row">
+                    <div class="col-lg-6 col-12 mb-5">                       
+                        <!-- Discount Coupon -->
+                        <div class="discount-coupon">
+                            <h4>Discount Coupon Code</h4>
+                            <form action="#">
+                                <div class="row">
+                                    <div class="col-md-6 col-12 mb-25">
+                                        <input type="text" placeholder="Coupon Code">
+                                    </div>
+                                    <div class="col-md-6 col-12 mb-25">
+                                        <button class="btn">Apply Code</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
 
                     <!-- Cart Summary -->
                     <div class="col-lg-6 col-12 mb-30 d-flex">
                         <div class="cart-summary">
                             <div class="cart-summary-wrap">
-                                <h4>Tóm tắt đơn hàng</h4>
-                                <p>Tạm Tính <span id="cartSubTotal">0 vnđ</span></p>
-                                <h2>Thành tiền <span id="cartGrandTotal">0 vnđ</span></h2>
+                                <h4>Cart Summary</h4>
+                                <p>Sub Total <span id="cartSubTotal">$0</span></p>
+                                <p>Discount <span id="cartDiscount">$0</span></p>
+                                <h2>Grand Total<span id="cartGrandTotal">$0</span></h2>
                             </div>
                             <div class="cart-summary-button">
                                 @*<button class="btn">Update Cart</button>*@
-                                <button class="btn"
-                                        onclick="window.location.href = '/product/checkout';">
-                                    Đặt hàng
-                                </button>
+                                @if (isLogin)
+                                {
+                                    <button class="btn"
+                                            onclick="window.location.href = '/product/checkout';">
+                                        CHECKOUT
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button data-toggle="modal" data-target="#modalLRForm" class="btn"
+                                            onclick="window.location.href = 'javascript:void(0)';">
+                                        CHECKOUT
+                                    </button>
+                                }
                             </div>
                         </div>
                     </div>

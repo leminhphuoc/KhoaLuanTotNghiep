@@ -26,5 +26,11 @@ namespace FonNature
             { "/aboutus" , "About Us" },
             { "/contact" , "Contact" },
         };
+
+        public struct Membership
+        {
+            public static readonly string IsLoginSession = "IsLoginSession";
+            public static readonly string AccountSession = "AccountSession";
+        }
     }
 }

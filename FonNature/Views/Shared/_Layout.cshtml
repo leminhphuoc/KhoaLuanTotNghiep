@@ -15,6 +15,7 @@
     <meta name="google-site-verification" content="b32z8I1U65G5SAsbWbGk_zZuawyKZQEQ5M2NQdLgnGM" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- All css files are included here. -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="icon" type="image/png" href="/Asset/Spa/images/icons/favicon-01.png" />
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/Asset/Spa/fonts/font-awesome-4/css/font-awesome.min.css">
@@ -39,7 +40,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/Asset/Spa/libs/parallax100/parallax100.css">
     <!--===============================================================================================-->
-    @RenderSection("cssHeader", required:false)
+    @RenderSection("cssHeader", required: false)
     <link href="~/Asset/Client/css/plugins.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Asset/MdBootrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Asset/MdBootrap/css/mdb.min.css">
@@ -79,7 +80,8 @@
                         Book now
                     </a>
                 </div>
-
+                @{Html.RenderAction("TopAccountNav", "Home");}
+                @{Html.RenderAction("MiniCart", "Home");}
                 <div class="hun-element-search layout-1">
                     <span class="search-open">
                         <i class="zmdi zmdi-search"></i>
@@ -108,6 +110,7 @@
                         </div>
                     </nav>
                 </div>
+
             </div>
         </div>
     </header>
@@ -116,32 +119,124 @@
     <!-- Footer -->
     @{Html.RenderAction("Footer", "Home");}
     <!-- end Footer -->
+    <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Modal cascading tabs-->
+                <div class="modal-c-tabs">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+                        <li class="nav-item">
+                            <a id="loginTab" class="nav-link active" data-toggle="tab" href="#panel7" role="tab">
+                                <i class="fas fa-user mr-1"></i>
+                                Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="registerTab" class="nav-link" data-toggle="tab" href="#panel8" role="tab">
+                                <i class="fas fa-user-plus mr-1"></i>
+                                Register
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!-- Tab panels -->
+                    <div class="tab-content">
+                        <!--Panel 7-->
+                        <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+
+                            <!--Body-->
+                            <div class="modal-body mb-1">
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-envelope prefix"></i>
+                                    <input type="email" id="email-login" class="form-control form-control-sm validate">
+                                    <label data-error="Invalid!" data-success="Valid!" for="Email">Your email</label>
+                                </div>
+
+                                <div class="md-form form-sm mb-4">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input type="password" id="password-login" class="form-control form-control-sm validate">
+                                    <label data-error="Invalid!" data-success="Valid!" for="Password">Your password</label>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <label style="color:red" id="message-login"></label>
+                                </div>
+                                <div class="text-center mt-2">
+                                    <button id="btn-login" class="btn btn-info">Log in <i class="fas fa-sign-in ml-1"></i></button>
+                                </div>
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="options text-center text-md-right mt-1">
+                                    <p>Forgot <a href="#" class="blue-text">Password?</a></p>
+                                </div>
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                        <!--/.Panel 7-->
+                        <!--Panel 8-->
+                        <div class="tab-pane fade" id="panel8" role="tabpanel">
+                            <!--Body-->
+                            <div class="modal-body">
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-envelope prefix"></i>
+                                    <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
+                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
+                                </div>
+
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
+                                    <label data-error="wrong" data-success="right" for="modalLRInput13">Your password</label>
+                                </div>
+
+                                <div class="md-form form-sm mb-4">
+                                    <i class="fas fa-lock prefix"></i>
+                                    <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
+                                    <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat password</label>
+                                </div>
+
+                                <div class="text-center form-sm mt-2">
+                                    <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                                </div>
+
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <div class="options text-right">
+                                </div>
+                                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!--/.Panel 8-->
+                    </div>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
     @*<script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>*@
     <script type="text/javascript" src="~/Asset/MdBootrap/js/jquery.min.js"></script>
     <script src="~/Asset/Client/js/HandlerCart.js"></script>
-    <script src="~/Asset/Client/js/popper.min.js"></script>
+    <script type="text/javascript" src="~/Asset/MdBootrap/js/popper.min.js"></script>
     <script src="~/Asset/Client/js/plugins.js"></script>
-    <!-- end Footer -->
-    <!--===============================================================================================-->
     <script src="/Asset/Spa/libs/bootstrap/popper.js"></script>
-    <script src="/Asset/Spa/libs/bootstrap/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
+    <script type="text/javascript" src="~/Asset/MdBootrap/js/bootstrap.min.js"></script>
     <script src="/Asset/Spa/libs/slick/slick.js"></script>
-    <!--===============================================================================================-->
     <script src="/Asset/Spa/libs/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <!--===============================================================================================-->
     <script src="/Asset/Spa/libs/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
     <script src="/Asset/Spa/libs/animsition/animsition.min.js"></script>
-    <!--===============================================================================================-->
     <script src="/Asset/Spa/libs/daterangepicker/moment.min.js"></script>
     <script src="/Asset/Spa/libs/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
     <script src="/Asset/Spa/libs/parallax100/parallax100.js"></script>
-    <!--===============================================================================================-->
-
     <script type="text/javascript" src="~/Asset/MdBootrap/js/mdb.min.js"></script>
     <script src="~/Asset/noty/lib/noty.js"></script>
+    <script src="~/Asset/Client/js/membership.js"></script>
     @RenderSection("jsFooter", required: false)
     <script src="~/Asset/Spa/js/main.js"></script>
     <div id="fb-root"></div>

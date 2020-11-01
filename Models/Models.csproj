@@ -55,15 +55,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\About.cs" />
-    <Compile Include="Entity\ClientAccount.cs" />
     <Compile Include="Entity\AccountAdmin.cs" />
     <Compile Include="Entity\Banner.cs" />
     <Compile Include="Entity\Benefit.cs" />
+    <Compile Include="Entity\ClientAccount.cs" />
     <Compile Include="Entity\Contact.cs" />
     <Compile Include="Entity\Content.cs" />
     <Compile Include="Entity\ContentCategory.cs" />
     <Compile Include="Entity\Customer.cs" />
-    <Compile Include="Entity\CustomerAccount.cs" />
     <Compile Include="Entity\Dictionary.cs" />
     <Compile Include="Entity\District.cs" />
     <Compile Include="Entity\FonNatureDbContext.cs" />
@@ -107,12 +106,26 @@
     <Compile Include="Migrations\202010261542343_AddCliendAcctountAndMembership.Designer.cs">
       <DependentUpon>202010261542343_AddCliendAcctountAndMembership.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010310825264_RenameClientAccount.cs" />
+    <Compile Include="Migrations\202010310825264_RenameClientAccount.Designer.cs">
+      <DependentUpon>202010310825264_RenameClientAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010311218289_CreateClientAccount.cs" />
+    <Compile Include="Migrations\202010311218289_CreateClientAccount.Designer.cs">
+      <DependentUpon>202010311218289_CreateClientAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010311220045_add-clietAccount.cs" />
+    <Compile Include="Migrations\202010311220045_add-clietAccount.Designer.cs">
+      <DependentUpon>202010311220045_add-clietAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\BenefitRepository.cs" />
+    <Compile Include="Repository\ClientAccountRepository.cs" />
     <Compile Include="Repository\DictionaryRepository.cs" />
     <Compile Include="Repository\IAboutAdminRepository.cs" />
     <Compile Include="Repository\IAccountAdminRepository.cs" />
     <Compile Include="Repository\IBannerRepository.cs" />
     <Compile Include="Repository\IBenefitRepository.cs" />
+    <Compile Include="Repository\IClientAccountRepository.cs" />
     <Compile Include="Repository\IContactAdminRepository.cs" />
     <Compile Include="Repository\IContentAdminRepository.cs" />
     <Compile Include="Repository\IContentCategoryAdminRepository.cs" />
@@ -221,6 +234,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010261542343_AddCliendAcctountAndMembership.resx">
       <DependentUpon>202010261542343_AddCliendAcctountAndMembership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010310825264_RenameClientAccount.resx">
+      <DependentUpon>202010310825264_RenameClientAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010311218289_CreateClientAccount.resx">
+      <DependentUpon>202010311218289_CreateClientAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010311220045_add-clietAccount.resx">
+      <DependentUpon>202010311220045_add-clietAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

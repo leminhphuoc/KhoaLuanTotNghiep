@@ -249,6 +249,7 @@
     <Compile Include="Controllers\CustomErrorController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembershipController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SearchResultController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
@@ -259,6 +260,7 @@
     <Compile Include="Enum\AboutType.cs" />
     <Compile Include="Enum\BannerLocation.cs" />
     <Compile Include="Filter\AuthData.cs" />
+    <Compile Include="Filter\AuthenticationClientAttribute.cs" />
     <Compile Include="Filter\CountVisitor.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -268,6 +270,8 @@
     <Compile Include="Services\BookingService.cs" />
     <Compile Include="Services\DictionaryService.cs" />
     <Compile Include="Services\IBookingService.cs" />
+    <Compile Include="Services\IMembershipService.cs" />
+    <Compile Include="Services\MembershipService.cs" />
     <Compile Include="Services\OrderAdminServices.cs" />
     <Compile Include="Services\AboutServices.cs" />
     <Compile Include="Services\BlogServices.cs" />
@@ -625,6 +629,7 @@
     <Content Include="Asset\Client\js\CartPreview.js" />
     <Content Include="Asset\Client\js\HandlerCart.js" />
     <Content Include="Asset\Client\js\main.js" />
+    <Content Include="Asset\Client\js\membership.js" />
     <Content Include="Asset\Client\js\notify.js" />
     <Content Include="Asset\Client\js\plugins.js" />
     <Content Include="Asset\Client\js\popper.min.js" />
@@ -2098,6 +2103,8 @@
     <Content Include="Views\Service\ServiceListByCategory.cshtml" />
     <Content Include="Views\Service\Detail.cshtml" />
     <Content Include="Views\Booking\Index.cshtml" />
+    <Content Include="Views\Membership\Index.cshtml" />
+    <Content Include="Views\Shared\TopAccountNav.cshtml" />
     <None Include="Web.config.Azure.example">
       <SubType>Designer</SubType>
     </None>
