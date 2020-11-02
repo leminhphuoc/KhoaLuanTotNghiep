@@ -1,8 +1,188 @@
-﻿
+﻿@model Models.Entity.Booking
 @{
-    ViewBag.Title = "Booking";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Models.Entity.Service> servicesList = ViewBag.servicesList;
+    string customerName = null;
+    string phone = null;
+    if (ViewBag.name != null)
+    {
+        customerName = ViewBag.name;
+    }
+    if (ViewBag.phone != null)
+    {
+        phone = ViewBag.phone;
+    }
+
 }
 
-<h2>Booking</h2>
+<!-- Title Page -->
+<div class="title-page" style="background-image: url(/Asset/Client/images/title-page-01.png);">
+    <div class="container">
+        <h1 class="main-title">
+            Booking
+        </h1>
 
+        <ul class="breadcrumbs">
+            <li>
+                <a href="/">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                Booking
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end Title Page -->
+<!-- content booking-page -->
+<div class="sec--content--booking-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="hun-element-image layout-1">
+                    <img src="/Asset/Client/images/single-image-06.jpg" alt="IMG">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                @using (Html.BeginForm("Index", "Booking", FormMethod.Post, new { @class = "book-service-form-02" }))
+                {
+                    <div class="heading-form">
+                        <h3 class="title-form">
+                            Book services
+                        </h3>
+
+                        <img class="line-heading" src="/Asset/Client/images/icons/wave-line-03.png" alt="IMG">
+                    </div>
+                    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="wrap-input">
+                                <input value="@(customerName == null ? "" : customerName)" required name="name" id="name" type="text" placeholder="Full name *">
+
+                                <i class="icon-user"></i>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="wrap-input">
+                                <input value="@(phone == null ? "" : phone)" required name="phone" id="phone" pattern="(09|08|03|04|05|07)+([0-9]{8})\b" type="text" placeholder="Phone number *">
+
+                                <i class="icon-call-out"></i>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="wrap-input js-call-datepicker" data-drop="down" data-drop-inside="true">
+                                <input required type="text" name="ArrivalTime" id="ArrivalTime" autocomplete="off">
+
+                                <i class="icon-calendar"></i>
+                            </label>
+                            @Html.ValidationMessageFor(m => m.ArrivalTime, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="wrap-input js-call-select2" data-style="layout-1">
+                                <select required id="time" name="time">
+                                    <option value="8">8:00 AM</option>
+                                    <option value="9">9:00 AM</option>
+                                    <option value="10">10:00 AM</option>
+                                    <option value="11">11:00 AM</option>
+                                    <option value="13">1:00 PM</option>
+                                    <option value="14">2:00 PM</option>
+                                    <option value="15">3:00 PM</option>
+                                    <option value="16">4:00 PM</option>
+                                    <option value="17">5:00 PM</option>
+                                    <option value="18">6:00 PM</option>
+                                </select>
+                                <i class="icon-clock"></i>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="wrap-input js-call-select2" data-style="layout-1">
+                                <select id="IdServices" name="IdServices">
+                                    @if (ViewBag.services != null)
+                                    {
+                                        foreach (var services in servicesList)
+                                        {
+                                            if (services.id == ViewBag.services.id)
+                                            {
+                                                <option value="@services.id" selected>@services.name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@services.id">@services.name</option>
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <option value="0">Services *</option>
+                                        foreach (var services in servicesList)
+                                        {
+                                            <option value="@services.id">@services.name</option>
+                                        }
+                                    }
+
+                                </select>
+                                @Html.ValidationMessageFor(m => m.IdServices, "", new { @class = "text-danger" })
+                                <i class="lnr lnr-chevron-down"></i>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="wrap-input js-call-select2" data-style="layout-1">
+                                <select id="IdBed" name="IdBed">
+                                    <option value="0">Select Spa Room-Bed *</option>
+                                    @foreach (var room in roomsList)
+                                    {
+                                        foreach (var bed in bedsList)
+                                        {
+                                            if (bed.IdRoom == room.Id)
+                                            {
+                                                <option value="@bed.Id">@room.Name : @bed.Name</option>
+                                            }
+
+                                        }
+
+                                    }
+                                </select>
+                                @Html.ValidationMessageFor(m => m.IdBed, "", new { @class = "text-danger" })
+                                <i class="lnr lnr-chevron-down"></i>
+                            </label>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="wrap-input">
+                                <textarea id="Message" name="Message" placeholder="Message"></textarea>
+                            </label>
+
+                            <button type="submit" class="hun-button size-normal shape-round style-fill-color">
+                                Make appointment
+                            </button>
+                        </div>
+                    </div>
+                }
+
+                <div class="hun-element-work-time layout-1 text-center">
+                    <h5 class="title-element">
+                        SPA WORK TIME
+                    </h5>
+
+                    <div class="content-element">
+                        <span>
+                            8am - 7pm
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end content booking-page -->
