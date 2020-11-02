@@ -55,7 +55,17 @@ namespace Models.Repository
             try
             {
                 var editAccount = _db.ClientAccounts.Find(account.Id);
-                Db.SaveChanges();
+                _db.SaveChanges();
+                editAccount.AgeRangeId = account.AgeRangeId;
+                editAccount.Birth = account.Birth;
+                editAccount.FirstName = account.FirstName;
+                editAccount.GenderId = account.GenderId;
+                editAccount.LastName = account.LastName;
+                editAccount.MaritalStatusId = account.MaritalStatusId;
+                editAccount.NickName = account.NickName;
+                editAccount.OccupationId = account.OccupationId;
+                editAccount.RegionId = account.RegionId;
+                editAccount.TitleId = account.TitleId;
                 return true;
             }
             catch (Exception e)
