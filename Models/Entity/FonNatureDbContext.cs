@@ -15,7 +15,6 @@ namespace Models.Entity
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
         public virtual DbSet<ContentCategory> ContentCategories { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<FooterCategory> FooterCategories { get; set; }
         public virtual DbSet<IPAddress> IPAddresses { get; set; }
@@ -49,10 +48,6 @@ namespace Models.Entity
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>()
-                .Property(e => e.phone)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Product>()
                 .Property(e => e.price)
                 .HasPrecision(18, 0);

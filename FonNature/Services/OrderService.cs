@@ -1,26 +1,24 @@
-﻿using Models.Entity;
+﻿using FonNature.Services.Extension;
+using Models.Entity;
 using Models.Model;
 using Models.Repository;
 using System.Collections.Generic;
 
 namespace FonNature.Services
 {
-    public class OrderServicescs : IOrderServices
+    public class OrderService : IOrderServices
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly ICustomerAdminRepository _customerAdminRepository;
-        public OrderServicescs(IOrderRepository orderRepository, ICustomerAdminRepository customerAdminRepository)
+        public OrderService(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
-            _customerAdminRepository = customerAdminRepository;
         }
 
-        public long CreateOrder(List<ProductInCart> productInCarts, Customer customer)
+        public long CreateOrder(List<ProductInCart> productInCarts, long clientAccountId, ShippingAddress shippingAddress)
         {
             try
             {
-                var idCustomer = _customerAdminRepository.AddCustomer(customer);
-                var order = new Order() { IdCustomer = idCustomer };
+                var order = new Order() { ClientAccountId = clientAccountId , ShippingAddress = shippingAddress.ParseToJson() };
                 var idOrder = _orderRepository.CreateOrder(order);
                 foreach (var product in productInCarts)
                 {

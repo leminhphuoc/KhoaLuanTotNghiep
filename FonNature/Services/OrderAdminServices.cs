@@ -1,5 +1,7 @@
-﻿using FonNature.Services.IAdminServices;
+﻿using FonNature.Services.Extension;
+using FonNature.Services.IAdminServices;
 using Models.Entity;
+using Models.Model;
 using Models.Repository;
 using System.Collections.Generic;
 
@@ -8,11 +10,9 @@ namespace FonNature.Services.AdminServices
     public class OrderAdminServices : IOrderAdminServices
     {
         private readonly IOrderRepository _orderRepository;
-        private readonly ICustomerAdminRepository _customerAdminRepository;
-        public OrderAdminServices(IOrderRepository orderRepository, ICustomerAdminRepository customerAdminRepository)
+        public OrderAdminServices(IOrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
-            _customerAdminRepository = customerAdminRepository;
         }
 
         public List<Order> GetOrders()
@@ -31,14 +31,21 @@ namespace FonNature.Services.AdminServices
             return _orderRepository.GetStatuses();
         }
 
-        public List<Customer> GetCustomers()
-        {
-            return _customerAdminRepository.GetListCustomer();
-        }
         public List<OrderInformation> GetOrderInfors(long idOrder)
         {
             if (idOrder == 0) return new List<OrderInformation>();
             return _orderRepository.GetOrderInfors(idOrder);
+        }
+
+        public bool UpdateOrder(Order order, ShippingAddress shippingAddress)
+        {
+            if(order == null || shippingAddress == null)
+            {
+                return false;
+            }
+
+            order.ShippingAddress = shippingAddress.ParseToJson();
+            return _orderRepository.UpdateOrder(order);
         }
     }
 }

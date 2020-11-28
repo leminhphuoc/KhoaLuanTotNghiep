@@ -1,12 +1,66 @@
-﻿@model Models.Entity.Order
+﻿@using FonNature.Services.Extension
+@model Models.Entity.Order
 @{
     ViewBag.Title = "OrderDetail";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    Models.Entity.Customer customer = ViewBag.customer;
+    Models.Entity.ClientAccount clientAccount = ViewBag.clientAccount;
+    var shippingAddress = Model.ShippingAddress.ParseToObject<Models.Model.ShippingAddress>();
     List<Models.Entity.OrderStatus> statuses = ViewBag.statuses;
     List<Models.Entity.OrderInformation> orderInfors = ViewBag.orderInfors;
     List<Models.Model.OrderProduct> orderProducts = ViewBag.OrderProducts;
 }
+
+<script>
+    $(document).ready(function (c) {
+        $('#btnSave').on('click', function (c) {
+            var FirstName = $("#FirstName").val();
+            var LastName = $("#LastName").val();
+            var Address = $("#Address").val();
+            var MobilePhone = $("#MobilePhone").val();
+            var IdStatus = $("#IdStatus").val();
+            var orderId = $("#orderId").val();
+            var model = { FirstName, LastName, Address, MobilePhone};
+            console.log(model);
+            $.ajax({
+                url: "/Admin/OrderAdmin/UpdateOrder",
+                data: { shippingAddress: model, idStatus: IdStatus, orderId: orderId},
+                dataType: "json",
+                type: "POST",
+                success: function (status) {
+                    console.log(status);
+                    if (status) {
+                        var n = new Noty({
+                            text: 'Edit successfully!',
+                            animation: {
+                                open: 'animated bounceInRight', // Animate.css class names
+                                close: 'animated bounceOutRight' // Animate.css class names
+                            },
+                            type: 'success',
+                            layout: 'topRight',
+                            theme: 'metroui',
+                            timeout: 2000,
+                            progressBar: true
+                        }).show();
+                    }
+                    else {
+                        var n = new Noty({
+                            text: 'Change a few things up and try submitting again.',
+                            animation: {
+                                open: 'animated bounceInRight', // Animate.css class names
+                                close: 'animated bounceOutRight' // Animate.css class names
+                            },
+                            type: 'error',
+                            layout: 'topRight',
+                            theme: 'metroui',
+                            timeout: 2000,
+                            progressBar: true
+                        }).show();
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 <section class="wrapper">
     <div class="form-w3layouts">
@@ -14,7 +68,7 @@
             <div class="col-lg-12">
                 <section class="panel">
                     <header class="panel-heading">
-                        Chi tiết đơn hàng
+                        Order detail
                         <span class="tools pull-right">
                         </span>
                     </header>
@@ -24,92 +78,90 @@
                             @*<div class="form">*@
 
                             @*<form  method="get" action="" novalidate="novalidate">*@
-                            @using (Html.BeginForm("Edit", "OrderAdmin", FormMethod.Post, new { @class = "cmxform form-horizontal", @id = "signupForm" }))
-                            {
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="cmxform form-horizontal" id="signupForm">
                                 <div class="form-group ">
-                                    <label class="control-label col-lg-3">Mã đơn hàng</label>
+                                    <label class="control-label col-lg-3">Order Id</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" value="@Model.Id" readonly />
+                                        <input id="orderId" name="orderId" type="text" class="form-control" value="@Model.Id" readonly />
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="MetaTitle" class="control-label col-lg-3">Ngày mua hàng</label>
+                                    <label for="MetaTitle" class="control-label col-lg-3">Purschase Date</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" value="@Model.createdDate.Value.ToShortDateString()" readonly />
+                                        <input name="createdDate" type="text" class="form-control" value="@Model.createdDate.Value.ToShortDateString()" readonly />
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="MetaTitle" class="control-label col-lg-3">Tên khách hàng</label>
+                                    <label for="MetaTitle" class="control-label col-lg-3">First Name</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" name="phone" id="phone" value="@customer.Name" />
+                                        <input type="text" class="form-control" name="FirstName" id="FirstName" value="@shippingAddress.FirstName" />
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="MetaTitle" class="control-label col-lg-3">Số điện thoại khách hàng</label>
+                                    <label for="MetaTitle" class="control-label col-lg-3">Last Name</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" name="phone" id="phone" value="@customer.phone" />
+                                        <input type="text" class="form-control" name="LastName" id="LastName" value="@shippingAddress.LastName" />
                                     </div>
                                 </div>
                                 <div class="form-group ">
-                                    <label for="MetaTitle" class="control-label col-lg-3">Địa chỉ giao hàng</label>
+                                    <label for="MetaTitle" class="control-label col-lg-3">Shipping Mobile Phone</label>
                                     <div class="col-lg-6">
-                                        <input type="text" class="form-control" name="phone" id="phone" value="@customer.address" />
+                                        <input type="text" class="form-control" name="MobilePhone" id="MobilePhone" value="@shippingAddress.MobilePhone" />
                                     </div>
                                 </div>
-                                if (statuses.Count != 0)
-                                {
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-3">Trạng thái đơn hàng</label>
-                                        <div class="col-lg-6">
-                                            <select class="form-control m-bot15">
-                                                @foreach (var status in statuses)
-                                                {
-                                                    if (status.Id == Model.IdStatus)
-                                                    {
-                                                        <option selected value="@status.Id">@status.Title</option>
-                                                    }
-                                                    <option value="@status.Id">@status.Title</option>
-                                                }
-                                            </select>
-                                        </div>
+                                <div class="form-group ">
+                                    <label for="MetaTitle" class="control-label col-lg-3">Shipping Address</label>
+                                    <div class="col-lg-6">
+                                        <input type="text" class="form-control" name="Address" id="Address" value="@shippingAddress.Address" />
                                     </div>
-                                }
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-3">Order Status</label>
+                                    <div class="col-lg-6">
+                                        <select id="IdStatus" name="IdStatus" class="form-control m-bot15">
+                                            <option value="@((int)Models.Model.Enum.OrderStatus.OrderSuccess)">Order Success</option>
+                                            <option value="@((int)Models.Model.Enum.OrderStatus.Shipping)">Shipping </option>
+                                            <option value="@((int)Models.Model.Enum.OrderStatus.ReceivedAndPaid)">Paid and Received</option>
+                                            <option value="@((int)Models.Model.Enum.OrderStatus.Cancel)">Canceled</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        Sản phẩm đặt hàng
+                                        Order Detail
                                     </div>
                                     <div>
                                         <table class="table" ui-jq="footable" ui-options='{"paging": {"enabled": true},"filtering": {"enabled": true},"sorting": {"enabled": true}}'>
                                             <thead>
                                                 <tr>
-                                                    <th>Stt</th>
-                                                    <th>Hình ảnh</th>
-                                                    <th>Mã sản phẩm</th>
-                                                    <th>Tên sản phẩm</th>
-                                                    <th>Đơn giá</th>
-                                                    <th>Số lượng</th>
-                                                    <th>Thành tiền</th>
+                                                    <th>No.</th>
+                                                    <th>Image</th>
+                                                    <th>Product Id</th>
+                                                    <th>Product Name</th>
+                                                    <th>Unit Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                                @{ 
+                                                @{
                                                     var stt = 1;
                                                     foreach (var product in orderProducts)
                                                     {
-                                                <tr>
-                                                    <td>@stt</td>
-                                                    <td><img src="@product.ProductImage" style="max-width:100px" /></td>
-                                                    <td>@product.Id</td>
-                                                    <td>@product.ProductName</td>
-                                                    <td>@product.Price</td>
-                                                    <td>@product.Quantity</td>
-                                                    <td>@product.TotalPrice</td>
-                                                </tr>
+                                                        <tr>
+                                                            <td>@stt</td>
+                                                            <td><img src="@product.ProductImage" style="max-width:100px" /></td>
+                                                            <td>@product.Id</td>
+                                                            <td>@product.ProductName</td>
+                                                            <td>@product.Price</td>
+                                                            <td>@product.Quantity</td>
+                                                            <td>@product.TotalPrice</td>
+                                                        </tr>
                                                         stt += 1;
                                                     }
-                                              }
+                                                }
 
                                             </tbody>
                                         </table>
@@ -117,14 +169,15 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-lg-offset-5 col-lg-6">
-                                        <button class="btn btn-primary" type="submit">Save</button>
-                                        <form>
-                                            <input class="btn btn-default" type="button" onclick="window.location.href = '/Admin/OrderAdmin/OrdersList';" value="Back" />
-                                        </form>
+                                        <button id="btnSave" class="btn btn-primary" type="submit">Save</button>
+                                        <a href='/Admin/OrderAdmin/OrdersList'>
+                                            <button class="btn btn-default" type="button">
+                                                Back
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
-                            }
-
+                            </div>
                         </div>
                     </div>
                 </section>

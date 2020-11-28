@@ -44,6 +44,10 @@
 
         public long OccupationId { get; set; }
 
+        public string Address { get; set; }
+
+        public string ShippingAddress { get; set; }
+
         /// <summary>
         /// True : Active, False : Inactive
         /// </summary>

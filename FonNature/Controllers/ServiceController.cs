@@ -31,6 +31,8 @@ namespace FonNature.Controllers
             var servicesListPaged = servicesList.ToPagedList(pageNumber, pageSize);
             var seo = _seoRepository.GetSEO(6);
             ViewBag.categories = _categoryRepository.GetServiceCategories();
+            var isLogin = Session[Constant.Membership.IsLoginSession];
+            ViewBag.IsLogin = isLogin;
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
@@ -48,6 +50,8 @@ namespace FonNature.Controllers
             var servicesListPaged = serviceList.ToPagedList(pageNumber, pageSize);
             var seo = _seoRepository.GetSEO(6);
             ViewBag.categories = _categoryRepository.GetServiceCategories();
+            var isLogin = Session[Constant.Membership.IsLoginSession];
+            ViewBag.IsLogin = isLogin;
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;
@@ -68,6 +72,8 @@ namespace FonNature.Controllers
             ViewBag.MetaTitle = service.MetaTitle ?? string.Empty;
             ViewBag.MetaDescription = service.MetaKeyword ?? string.Empty;
             ViewBag.MetaKeyword = service.MetaDescription ?? string.Empty;
+            var isLogin = Session[Constant.Membership.IsLoginSession];
+            ViewBag.IsLogin = isLogin;
             return View(service);
         }
     }

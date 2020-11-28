@@ -1,0 +1,23 @@
+﻿@{ 
+    var isLogin = ViewBag.IsLogin;
+    if (isLogin == null)
+    {
+        isLogin = false;
+    }
+}
+@if (isLogin)
+{
+    <div class="buttons-header d-none d-sm-block">
+        <a href="/booking" class="hun-button size-small shape-round style-fill-color">
+            Book now
+        </a>
+    </div>
+}
+else
+{
+    <div class="buttons-header d-none d-sm-block">
+        <a data-toggle="modal" data-target="#modalLRForm" href="#" class="hun-button size-small shape-round style-fill-color">
+            Book now
+        </a>
+    </div>
+}

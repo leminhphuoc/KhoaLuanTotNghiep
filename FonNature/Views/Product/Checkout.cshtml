@@ -1,4 +1,5 @@
-﻿@model Models.Entity.Customer
+﻿@using Models.Entity;
+@model Models.Model.OrderProduct
 @{
     ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -60,6 +61,13 @@
         })
     </script>
 }
+@{ 
+    var account = ViewBag.Account as ClientAccount;
+    if (account == null)
+    {
+        return;
+    }
+}
 <!-- Page Banner Section Start -->
 <div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
     <div class="container">
@@ -83,34 +91,31 @@
                             <div id="billing-form" class="mb-10">
                                 <h4 class="checkout-title">Shipping Address</h4>
                                 <div class="row">
+                                    <div class="col-md-6 col-12 mb-20">
+                                        <label>First Name*</label>
+                                        <input id="validationCustom01" name="FirstName" class="form-control" type="text" placeholder="First Name" required>
+                                        <div class="invalid-feedback">
+                                            Please input fistname!
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Valid!
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb-20">
+                                        <label>Last Name*</label>
+                                        <input id="validationCustom02" name="LastName" class="form-control" type="text" placeholder="Last Name" required>
+                                        <div class="invalid-feedback">
+                                            Please input lastname!
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Valid!
+                                        </div>
+                                    </div>
+
                                     <div class="col-12 mb-20">
-                                        <label>Full Name*</label>
-                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Họ và tên", @type = "text", @id = "validationCustom01", @required = "required" } })
-                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                                        <div class="invalid-feedback">
-                                            Vui lòng điền họ và tên!
-                                        </div>
-                                        <div class="valid-feedback">
-                                            Valid!
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-20">
-                                        <label>Email*</label>
-                                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email", @type = "email", @id = "validationCustom02", @required = "required" } })
-                                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
-                                        <div class="invalid-feedback">
-                                            Please input valid email!
-                                        </div>
-                                        <div class="valid-feedback">
-                                            Valid!
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 col-12 mb-20">
                                         <label>Mobile Phone*</label>
-                                        @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Số điện thoại", @pattern = "(0[3|5|7|8|9])+([0-9]{8})", @type = "phone", @id = "validationCustom03", @required = "required" } })
-                                        @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                                        <input id="validationCustom03" name="MobilePhone" class="form-control" type="phone" placeholder="Last Name" pattern="(0[3|5|7|8|9])+([0-9]{8})" value="@account.MobilePhone" required>
                                         <div class="invalid-feedback">
                                             Please input valid mobile phone!
                                         </div>
@@ -121,8 +126,7 @@
 
                                     <div class="col-12 mb-20">
                                         <label>Address*</label>
-                                        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control", @placeholder = "Địa chỉ", @type = "text", @id = "validationCustom04", @required = "required" } })
-                                        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                                        <input id="validationCustom04" name="Address" class="form-control" type="text" placeholder="Address" required>
                                         <div class="invalid-feedback">
                                             Please input valid address!
                                         </div>
@@ -163,12 +167,12 @@
 
                                     <div class="checkout-payment-method">
                                         <div class="single-method">
-                                            <input type="radio" id="payment_bank" name="payment-method" value="bank" checked>
+                                            <input type="radio" id="PaymentMethod" name="PaymentMethod" value="@Constant.Order.BankTransferPaymentMethods" checked>
                                             <label for="payment_bank">Direct Bank Transfer</label>
                                             <p data-method="bank">Bank Transfer Information: <br />Bank Id: 0231000582588 <br /> Bank Name: Techcombank <br />Account Name: Phạm Thùy Vân</p>
                                         </div>
                                         <div class="single-method">
-                                            <input type="radio" id="payment_cash" name="payment-method" value="cash">
+                                            <input type="radio" id="PaymentMethod" name="PaymentMethod" value="@Constant.Order.CODPaymentMethods">
                                             <label for="payment_cash">Cash on delivery</label>
                                             <p data-method="cash">Payment by cash when receive product</p>
                                         </div>

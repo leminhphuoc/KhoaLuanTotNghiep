@@ -22,8 +22,6 @@ namespace FonNature
             container.RegisterType<IProductAdminSerivces, ProductAdminSerivces>();
             container.RegisterType<IContentAdminRepository, ContentAdminRepository>();
             container.RegisterType<IContentServices, ContentServices>();
-            container.RegisterType<ICustomerAdminRepository, CustomerAdminRepository>();
-            container.RegisterType<ICustomerAdminServices, CustomerAdminServices>();
             container.RegisterType<IMenuAdminRepository, MenuAdminRepository>();
             container.RegisterType<IMenuAdminServices, MenuAdminServices>();
             container.RegisterType<IFooterAdminServices, FooterAdminServices>();

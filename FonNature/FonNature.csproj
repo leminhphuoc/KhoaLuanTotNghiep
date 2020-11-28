@@ -222,7 +222,6 @@
     <Compile Include="Areas\Admin\Controllers\ContactAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentCategoryAdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\CustomerAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DictionaryAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterCategoryAdminController.cs" />
@@ -269,6 +268,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BookingService.cs" />
     <Compile Include="Services\DictionaryService.cs" />
+    <Compile Include="Services\Extension\JsonHandler.cs" />
     <Compile Include="Services\IBookingService.cs" />
     <Compile Include="Services\IMembershipService.cs" />
     <Compile Include="Services\MembershipService.cs" />
@@ -276,7 +276,7 @@
     <Compile Include="Services\AboutServices.cs" />
     <Compile Include="Services\BlogServices.cs" />
     <Compile Include="Services\HomeServices.cs" />
-    <Compile Include="Services\OrderServicescs.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\ProductServices.cs" />
     <Compile Include="Services\SearchService.cs" />
     <Compile Include="Services\SendMail.cs" />
@@ -286,7 +286,6 @@
     <Compile Include="Services\IContactClientServices.cs" />
     <Compile Include="Services\IContentCategoryAdminServices.cs" />
     <Compile Include="Services\IContentServices.cs" />
-    <Compile Include="Services\ICustomerAdminServices.cs" />
     <Compile Include="Services\IFooterAdminServices.cs" />
     <Compile Include="Services\IFooterCategoryAdminServices.cs" />
     <Compile Include="Services\IMenuAdminServices.cs" />
@@ -303,7 +302,6 @@
     <Compile Include="Services\ContactClientServices.cs" />
     <Compile Include="Services\ContentCategoryAdminServices.cs" />
     <Compile Include="Services\ContentServices.cs" />
-    <Compile Include="Services\CustomerAdminServices.cs" />
     <Compile Include="Services\FooterAdminServices.cs" />
     <Compile Include="Services\FooterCategoryAdminServices.cs" />
     <Compile Include="Services\MenuAdminServices.cs" />
@@ -1735,8 +1733,6 @@
     <Content Include="Areas\Admin\Views\ContentAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ContentAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\MenuAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\CustomerAdmin\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\CustomerAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\MenuAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\MenuAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\FooterAdmin\Index.cshtml" />
@@ -2091,7 +2087,6 @@
     <Content Include="Views\Product\ProductListByCategory.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\Success.cshtml" />
-    <Content Include="Views\Product\Order.cshtml" />
     <Content Include="Views\CustomError\DefaultError.cshtml" />
     <Content Include="Views\About\AboutTeamList.cshtml" />
     <Content Include="Views\About\AboutTestimonial.cshtml" />
@@ -2105,6 +2100,7 @@
     <Content Include="Views\Booking\Index.cshtml" />
     <Content Include="Views\Membership\Index.cshtml" />
     <Content Include="Views\Shared\TopAccountNav.cshtml" />
+    <Content Include="Views\Shared\BookNav.cshtml" />
     <None Include="Web.config.Azure.example">
       <SubType>Designer</SubType>
     </None>

@@ -1,5 +1,7 @@
 ﻿
 
+using Models.Entity;
+using Models.Model;
 using System.Collections.Generic;
 
 namespace FonNature
@@ -31,6 +33,38 @@ namespace FonNature
         {
             public static readonly string IsLoginSession = "IsLoginSession";
             public static readonly string AccountSession = "AccountSession";
+        }
+
+        public static readonly Dictionary<int, TimeRange> TimeRanges = new Dictionary<int, TimeRange>()
+        {
+           { 1, new TimeRange(9,00) },
+           { 2, new TimeRange(9,30) },
+           { 3, new TimeRange(10,00) },
+           { 4, new TimeRange(10,30) },
+           { 5, new TimeRange(11,00) },
+           { 6, new TimeRange(11,30) },
+           { 7, new TimeRange(12,00) },
+           { 8, new TimeRange(12,30) },
+           { 9, new TimeRange(13,00) },
+           { 10, new TimeRange(13,30) },
+           { 11, new TimeRange(14,00) },
+           { 12, new TimeRange(14,30) },
+           { 13, new TimeRange(15,00) },
+           { 14, new TimeRange(15,30) },
+           { 15, new TimeRange(16,00) },
+           { 16, new TimeRange(16,30) },
+           { 17, new TimeRange(17,00) },
+           { 18, new TimeRange(17,30) },
+           { 19, new TimeRange(18,00) },
+           { 20, new TimeRange(18,30) },
+           { 21, new TimeRange(19,00) }
+        };
+
+        public struct Order
+        {
+            public const string CODPaymentMethods = "COD";
+            public const string BankTransferPaymentMethods = "BankTransfer";
+            public const string MoMoPaymentMethods = "MoMo";
         }
     }
 }

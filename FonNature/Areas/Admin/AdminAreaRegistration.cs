@@ -28,8 +28,6 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IProductAdminSerivces, ProductAdminSerivces>();
             container.RegisterType<IContentAdminRepository, ContentAdminRepository>();
             container.RegisterType<IContentServices, ContentServices>();
-            container.RegisterType<ICustomerAdminRepository, CustomerAdminRepository>();
-            container.RegisterType<ICustomerAdminServices, CustomerAdminServices>();
             container.RegisterType<IMenuAdminRepository, MenuAdminRepository>();
             container.RegisterType<IMenuAdminServices, MenuAdminServices>();
             container.RegisterType<IFooterAdminServices, FooterAdminServices>();
@@ -61,7 +59,7 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IBlogServices, BlogServices>();
             container.RegisterType<IAboutServices, AboutServices>();
             container.RegisterType<IOrderRepository, OrdersRepository>();
-            container.RegisterType<IOrderServices, OrderServicescs>();
+            container.RegisterType<IOrderServices, OrderService>();
             container.RegisterType<IOrderAdminServices, OrderAdminServices>();
             container.RegisterType<ISEORepository, SEORepository>();
             container.RegisterType<ISearchService, SearchService>();
@@ -71,6 +69,7 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IBookingService, BookingService>();
             container.RegisterType<IClientAccountRepository, ClientAccountRepository>();
             container.RegisterType<IMembershipService, MembershipService>();
+            container.RegisterType<IBookingRepository, BookingRepository>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 

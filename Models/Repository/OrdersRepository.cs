@@ -1,4 +1,5 @@
-﻿using Models.Entity;
+﻿using log4net;
+using Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace Models.Repository
         private FonNatureDbContext _db = null;
 
         public FonNatureDbContext Db { get => _db; set => _db = value; }
+
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public OrdersRepository()
         {
@@ -53,5 +56,28 @@ namespace Models.Repository
             return _db.OrderInformations.Where(x => x.IdOrder == idOrder).ToList();
         }
 
+        public bool UpdateOrder(Order order)
+        {
+            try
+            {
+                var orderInDb = _db.Orders.Find(order.Id);
+                if(orderInDb == null)
+                {
+                    return false;
+                }
+
+                orderInDb.ShippingAddress = order.ShippingAddress;
+                orderInDb.IdStatus = order.IdStatus;
+                _db.SaveChanges();
+
+                log.Info($"Edit order success: {orderInDb.Id}");
+                return true;
+            }
+            catch(Exception ex)
+            {
+                log.Error($"Error at Add Banner: {ex.Message}");
+                return false;
+            }
+        }
     }
 }

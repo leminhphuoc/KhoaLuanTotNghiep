@@ -3,6 +3,11 @@
     ViewBag.Title = Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
     var imageList = ViewBag.ListImage as List<string>;
+    var isLogin = ViewBag.IsLogin;
+    if (isLogin == null)
+    {
+        isLogin = false;
+    }
 }
 
 <!-- Title Page -->
@@ -67,10 +72,20 @@
                         @Model.Duration Minutes
                     </span>
                     <span class="item-info">
-                        <button style="background-color:#28c8dB !important;" type="button" class="btn btn-primary btn-rounded"
-                                onclick="window.location.href = '/service/booking';">
-                            Book now
-                        </button>
+                        @if (isLogin)
+                        {
+                            <button style="background-color:#28c8dB !important;" type="button" class="btn btn-primary btn-rounded"
+                                    onclick="window.location.href = '/booking';">
+                                Book now
+                            </button>
+                        }
+                        else
+                        {
+                            <button  data-toggle="modal" data-target="#modalLRForm" style="background-color:#28c8dB !important;" type="button" class="btn btn-primary btn-rounded"
+                                    onclick="window.location.href = '#';">
+                                Book now
+                            </button>
+                        }
                     </span>
 
                 </div>

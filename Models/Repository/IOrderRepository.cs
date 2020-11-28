@@ -11,5 +11,6 @@ namespace Models.Repository
         List<OrderStatus> GetStatuses();
         Order GetOrder(long id);
         List<OrderInformation> GetOrderInfors(long idOrder);
+        bool UpdateOrder(Order order);
     }
 }

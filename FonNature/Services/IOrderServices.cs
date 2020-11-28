@@ -6,6 +6,6 @@ namespace FonNature.Services
 {
     public interface IOrderServices
     {
-        long CreateOrder(List<ProductInCart> productInCarts, Customer customer);
+        long CreateOrder(List<ProductInCart> productInCarts, long clientAccountId, ShippingAddress shippingAddress);
     }
 }

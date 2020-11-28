@@ -99,5 +99,13 @@ namespace FonNature.Controllers
             var account = Session[Constant.Membership.AccountSession] as ClientAccount;
             return PartialView(account);
         }
+
+        [ChildActionOnly]
+        public ActionResult BookNav()
+        {
+            var isLogin = Session[Constant.Membership.IsLoginSession];
+            ViewBag.IsLogin = isLogin;
+            return PartialView();
+        }
     }
 }

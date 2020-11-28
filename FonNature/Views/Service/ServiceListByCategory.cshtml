@@ -5,6 +5,11 @@
     ViewBag.Title = "Services";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Models.Entity.ServiceCategory> categories = ViewBag.categories;
+    var isLogin = ViewBag.IsLogin;
+    if (isLogin == null)
+    {
+        isLogin = false;
+    }
 }
 <!--New UI-->
 <!-- Title Page -->
@@ -73,9 +78,18 @@
                             </div>
 
                             <div class="foot-item">
-                                <a style="margin:auto" href="/service/detail?id=@service.Id" class="link-item">
-                                    Book now
-                                </a>
+                                @if (isLogin)
+                                {
+                                    <a style="margin:auto" href="/booking?serviceId=@service.Id" class="link-item">
+                                        Book now
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a data-toggle="modal" data-target="#modalLRForm" style="margin:auto" href="#" class="link-item">
+                                        Book now
+                                    </a>
+                                }
                             </div>
                         </div>
                     </div>

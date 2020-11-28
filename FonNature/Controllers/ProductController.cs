@@ -118,20 +118,26 @@ namespace FonNature.Controllers
         [AuthenticationClient]
         public ActionResult Checkout()
         {
+            ViewBag.Account = Session[Constant.Membership.AccountSession];
             return View();
         }
 
         [HttpPost]
-        public ActionResult Checkout(Customer customer)
+        public ActionResult Checkout(ShippingAddress shippingAddress)
         {
+            var account = Session[Constant.Membership.AccountSession] as ClientAccount;
+            if(account == null)
+            {
+                return Redirect("/");
+            }
             if (ModelState.IsValid)
             {
                 var cartItem = Session["cart"];
-                if (cartItem == null && customer == null) return View(customer);
-                var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, customer);
+                if (cartItem == null && shippingAddress == null) return View(shippingAddress);
+                var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, account.Id, shippingAddress);
                 return RedirectToAction("OrderSuccessPage", "Success", new { orderID = orderID });
             }
-            return View(customer);
+            return View(shippingAddress);
         }
     }
 }

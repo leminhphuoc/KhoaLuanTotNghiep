@@ -63,7 +63,6 @@
     <Compile Include="Entity\Contact.cs" />
     <Compile Include="Entity\Content.cs" />
     <Compile Include="Entity\ContentCategory.cs" />
-    <Compile Include="Entity\Customer.cs" />
     <Compile Include="Entity\Dictionary.cs" />
     <Compile Include="Entity\District.cs" />
     <Compile Include="Entity\FonNatureDbContext.cs" />
@@ -123,6 +122,9 @@
     <Compile Include="Migrations\202011021531569_AddBooking.Designer.cs">
       <DependentUpon>202011021531569_AddBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Enum\OrderStatus.cs" />
+    <Compile Include="Model\ShippingAddress.cs" />
+    <Compile Include="Model\TimeRange.cs" />
     <Compile Include="Repository\BenefitRepository.cs" />
     <Compile Include="Repository\BookingRepository.cs" />
     <Compile Include="Repository\ClientAccountRepository.cs" />
@@ -136,7 +138,6 @@
     <Compile Include="Repository\IContactAdminRepository.cs" />
     <Compile Include="Repository\IContentAdminRepository.cs" />
     <Compile Include="Repository\IContentCategoryAdminRepository.cs" />
-    <Compile Include="Repository\ICustomerAdminRepository.cs" />
     <Compile Include="Repository\IDictionaryRepository.cs" />
     <Compile Include="Repository\IFooterAdminRepository.cs" />
     <Compile Include="Repository\IFooterCategoryAdminRepository.cs" />
@@ -185,7 +186,6 @@
     <Compile Include="Repository\ContactAdminRepository.cs" />
     <Compile Include="Repository\ContentAdminRepository.cs" />
     <Compile Include="Repository\ContentCategoryAdminRepository.cs" />
-    <Compile Include="Repository\CustomerAdminRepository.cs" />
     <Compile Include="Repository\FooterAdminRepository.cs" />
     <Compile Include="Repository\FooterCategoryAdminRepository.cs" />
     <Compile Include="Repository\IPAddressRepository.cs" />

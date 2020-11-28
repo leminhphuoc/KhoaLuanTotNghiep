@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "OrdersList";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
-    List<Models.Entity.Customer> customersList = ViewBag.customersList;
+    List<Models.Entity.ClientAccount> clientAccounts = ViewBag.clientAccountList;
     List<Models.Entity.OrderStatus> statusList = ViewBag.statuses;
 }
 
@@ -31,11 +31,12 @@
                             {
                                 foreach (var item in Model)
                                 {
+                                    var clientAccount = clientAccounts.FirstOrDefault(x => x.Id.Equals(item.ClientAccountId));
                                     <tr id="row_@item.Id">
                                         <td><a href="/Admin/OrderAdmin/OrderDetail/@item.Id">@item.Id</a></td>
                                         <td>@item.createdDate.Value.ToShortDateString()</td>
-                                        <td>@(customersList.Where(x=>x.id == item.IdCustomer).Select(x=>x.Name).SingleOrDefault())</td>
-                                        <td>@(customersList.Where(x => x.id == item.IdCustomer).Select(x => x.phone).SingleOrDefault())</td> 
+                                        <td>@(clientAccount == null? string.Empty: clientAccount.FirstName + clientAccount.LastName)</td>
+                                        <td>@(clientAccount == null? string.Empty: clientAccount.MobilePhone)</td> 
                                         <td>
                                             <a href="/Admin/OrderAdmin/OrderDetail/@item.Id">Infor</a>/
                                             <a href="/Admin/OrderAdmin/Edit/@item.Id">Edit</a>
