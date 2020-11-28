@@ -44,6 +44,8 @@ namespace FonNature.Services.AdminServices
                 return false;
             }
 
+            shippingAddress.FirstName = shippingAddress.FirstName.Trim();
+            shippingAddress.LastName = shippingAddress.LastName.Trim();
             order.ShippingAddress = shippingAddress.ParseToJson();
             return _orderRepository.UpdateOrder(order);
         }

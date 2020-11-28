@@ -14,13 +14,15 @@ namespace FonNature.Areas.Admin.Controllers
     public class OrderAdminController : Controller
     {
         private readonly IOrderAdminServices _orderAdminServices;
+        private readonly IOrderRepository _orderRepository;
         private readonly IClientAccountRepository _clientAccountRepository;
         private readonly List<ClientAccount> _clientAccounts;
-        public OrderAdminController(IOrderAdminServices orderAdminServices, IClientAccountRepository clientAccountRepository)
+        public OrderAdminController(IOrderAdminServices orderAdminServices, IClientAccountRepository clientAccountRepository, IOrderRepository orderRepository)
         {
             _orderAdminServices = orderAdminServices;
             _clientAccountRepository = clientAccountRepository;
             _clientAccounts = _clientAccountRepository.GetClientAccounts();
+            _orderRepository = orderRepository;
         }
         // GET: Admin/OrderAdmin
         public ActionResult OrdersList()
@@ -62,6 +64,25 @@ namespace FonNature.Areas.Admin.Controllers
             var result = _orderAdminServices.UpdateOrder(order, shippingAddress);
 
             return Json(new {
+                status = result
+            });
+        }
+
+        [HttpPost]
+        public JsonResult UpdateOrderStatus(long orderId, int statusId)
+        {
+            if (orderId == 0 || statusId == 0)
+            {
+                return Json(new
+                {
+                    status = false
+                });
+            }
+
+            var result = _orderRepository.UpdateOrderStatus(orderId, statusId);
+
+            return Json(new
+            {
                 status = result
             });
         }

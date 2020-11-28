@@ -6,6 +6,51 @@
     List<Models.Entity.ClientAccount> clientAccounts = ViewBag.clientAccountList;
     List<Models.Entity.OrderStatus> statusList = ViewBag.statuses;
 }
+@section jsFooter{
+    <script>
+        $("#IdStatus").change(function () {
+            var statusId = $(this).val();
+            var orderId = $(this).data("id");
+            $.ajax({
+                url: "/Admin/OrderAdmin/UpdateOrderStatus",
+                data: { statusId: statusId, orderId: orderId },
+                dataType: "json",
+                type: "POST",
+                success: function (status) {
+                    console.log(status);
+                    if (status) {
+                        var n = new Noty({
+                            text: 'Edit successfully!',
+                            animation: {
+                                open: 'animated bounceInRight', // Animate.css class names
+                                close: 'animated bounceOutRight' // Animate.css class names
+                            },
+                            type: 'success',
+                            layout: 'topRight',
+                            theme: 'metroui',
+                            timeout: 2000,
+                            progressBar: true
+                        }).show();
+                    }
+                    else {
+                        var n = new Noty({
+                            text: 'Change a few things up and try submitting again.',
+                            animation: {
+                                open: 'animated bounceInRight', // Animate.css class names
+                                close: 'animated bounceOutRight' // Animate.css class names
+                            },
+                            type: 'error',
+                            layout: 'topRight',
+                            theme: 'metroui',
+                            timeout: 2000,
+                            progressBar: true
+                        }).show();
+                    }
+                }
+            });
+        });
+    </script>
+}
 
 <section class="wrapper">
     <div class="table-agile-info">
@@ -23,6 +68,7 @@
                             <th>Created Date</th>
                             <th>Customer Name</th>
                             <th>Customer Phone</th>
+                            <th>Oder status</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -36,12 +82,27 @@
                                         <td><a href="/Admin/OrderAdmin/OrderDetail/@item.Id">@item.Id</a></td>
                                         <td>@item.createdDate.Value.ToShortDateString()</td>
                                         <td>@(clientAccount == null? string.Empty: clientAccount.FirstName + clientAccount.LastName)</td>
-                                        <td>@(clientAccount == null? string.Empty: clientAccount.MobilePhone)</td> 
+                                        <td>@(clientAccount == null? string.Empty: clientAccount.MobilePhone)</td>
+                                        <td>
+                                            <select data-id="@item.Id" style="width:80%" id="IdStatus" name="IdStatus" class="form-control m-bot15 orderStatus">
+                                                @foreach (var status in Constant.OrderStatus)
+                                                {
+                                                    if (status.Key.Equals(item.IdStatus))
+                                                    {
+                                                        <option  selected value="@status.Key">@status.Value</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@status.Key">@status.Value</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </td>
                                         <td>
                                             <a href="/Admin/OrderAdmin/OrderDetail/@item.Id">Infor</a>/
                                             <a href="/Admin/OrderAdmin/Edit/@item.Id">Edit</a>
                                             /
-                                            @Ajax.ActionLink("Delete", "Delete", new {@id = item.Id} ,new AjaxOptions
+                                            @Ajax.ActionLink("Delete", "Delete", new { @id = item.Id }, new AjaxOptions
                                        {
                                            Confirm = "Bạn có muốn xoá đơn hàng này?",
                                            OnComplete = "$('#row_" + @item.Id + "').remove()",

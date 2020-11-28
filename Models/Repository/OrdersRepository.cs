@@ -79,5 +79,28 @@ namespace Models.Repository
                 return false;
             }
         }
+
+        public bool UpdateOrderStatus(long orderId, int statusId)
+        {
+            try
+            {
+                var status = _db.Orders.Find(orderId);
+                if (status == null)
+                {
+                    log.Warn($"Cannot find status: {orderId}");
+                    return false;
+                }
+
+                status.IdStatus = statusId;
+                _db.SaveChanges();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                log.Error($"Cannot update status with id = {statusId} : {ex.Message}");
+                return false;
+            }
+        }
     }
 }

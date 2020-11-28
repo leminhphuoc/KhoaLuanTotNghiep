@@ -9,58 +9,59 @@
     List<Models.Entity.OrderInformation> orderInfors = ViewBag.orderInfors;
     List<Models.Model.OrderProduct> orderProducts = ViewBag.OrderProducts;
 }
-
-<script>
-    $(document).ready(function (c) {
-        $('#btnSave').on('click', function (c) {
-            var FirstName = $("#FirstName").val();
-            var LastName = $("#LastName").val();
-            var Address = $("#Address").val();
-            var MobilePhone = $("#MobilePhone").val();
-            var IdStatus = $("#IdStatus").val();
-            var orderId = $("#orderId").val();
-            var model = { FirstName, LastName, Address, MobilePhone};
-            console.log(model);
-            $.ajax({
-                url: "/Admin/OrderAdmin/UpdateOrder",
-                data: { shippingAddress: model, idStatus: IdStatus, orderId: orderId},
-                dataType: "json",
-                type: "POST",
-                success: function (status) {
-                    console.log(status);
-                    if (status) {
-                        var n = new Noty({
-                            text: 'Edit successfully!',
-                            animation: {
-                                open: 'animated bounceInRight', // Animate.css class names
-                                close: 'animated bounceOutRight' // Animate.css class names
-                            },
-                            type: 'success',
-                            layout: 'topRight',
-                            theme: 'metroui',
-                            timeout: 2000,
-                            progressBar: true
-                        }).show();
+@section jsFooter{
+    <script>
+        $(document).ready(function (c) {
+            $('#btnSave').on('click', function (c) {
+                var FirstName = $("#FirstName").val();
+                var LastName = $("#LastName").val();
+                var Address = $("#Address").val();
+                var MobilePhone = $("#MobilePhone").val();
+                var IdStatus = $("#IdStatus").val();
+                var orderId = $("#orderId").val();
+                var model = { FirstName, LastName, Address, MobilePhone };
+                $.ajax({
+                    url: "/Admin/OrderAdmin/UpdateOrder",
+                    data: { shippingAddress: model, idStatus: IdStatus, orderId: orderId },
+                    dataType: "json",
+                    type: "POST",
+                    success: function (status) {
+                        console.log(status);
+                        if (status) {
+                            var n = new Noty({
+                                text: 'Edit successfully!',
+                                animation: {
+                                    open: 'animated bounceInRight', // Animate.css class names
+                                    close: 'animated bounceOutRight' // Animate.css class names
+                                },
+                                type: 'success',
+                                layout: 'topRight',
+                                theme: 'metroui',
+                                timeout: 2000,
+                                progressBar: true
+                            }).show();
+                        }
+                        else {
+                            var n = new Noty({
+                                text: 'Change a few things up and try submitting again.',
+                                animation: {
+                                    open: 'animated bounceInRight', // Animate.css class names
+                                    close: 'animated bounceOutRight' // Animate.css class names
+                                },
+                                type: 'error',
+                                layout: 'topRight',
+                                theme: 'metroui',
+                                timeout: 2000,
+                                progressBar: true
+                            }).show();
+                        }
                     }
-                    else {
-                        var n = new Noty({
-                            text: 'Change a few things up and try submitting again.',
-                            animation: {
-                                open: 'animated bounceInRight', // Animate.css class names
-                                close: 'animated bounceOutRight' // Animate.css class names
-                            },
-                            type: 'error',
-                            layout: 'topRight',
-                            theme: 'metroui',
-                            timeout: 2000,
-                            progressBar: true
-                        }).show();
-                    }
-                }
+                });
             });
         });
-    });
-</script>
+    </script>
+}
+
 
 <section class="wrapper">
     <div class="form-w3layouts">
@@ -120,10 +121,17 @@
                                     <label class="control-label col-lg-3">Order Status</label>
                                     <div class="col-lg-6">
                                         <select id="IdStatus" name="IdStatus" class="form-control m-bot15">
-                                            <option value="@((int)Models.Model.Enum.OrderStatus.OrderSuccess)">Order Success</option>
-                                            <option value="@((int)Models.Model.Enum.OrderStatus.Shipping)">Shipping </option>
-                                            <option value="@((int)Models.Model.Enum.OrderStatus.ReceivedAndPaid)">Paid and Received</option>
-                                            <option value="@((int)Models.Model.Enum.OrderStatus.Cancel)">Canceled</option>
+                                            @foreach (var item in Constant.OrderStatus)
+                                            {
+                                                if (item.Key.Equals(Model.IdStatus))
+                                                {
+                                                    <option selected value="@item.Key">@item.Value</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.Key">@item.Value</option>
+                                                }
+                                            }
                                         </select>
                                     </div>
                                 </div>

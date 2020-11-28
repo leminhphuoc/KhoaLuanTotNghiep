@@ -60,6 +60,14 @@ namespace FonNature
            { 21, new TimeRange(19,00) }
         };
 
+        public static readonly Dictionary<int, string> OrderStatus = new Dictionary<int, string>()
+        {
+           { 1, "Order Success" },
+           { 2, "Shipping" },
+           { 3, "Paid and Received" },
+           { 4, "Canceled" },
+        };
+
         public struct Order
         {
             public const string CODPaymentMethods = "COD";
