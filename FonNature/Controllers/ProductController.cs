@@ -4,6 +4,7 @@ using Models.Entity;
 using Models.Model;
 using Newtonsoft.Json;
 using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -119,6 +120,12 @@ namespace FonNature.Controllers
         public ActionResult Checkout()
         {
             ViewBag.Account = Session[Constant.Membership.AccountSession];
+
+            if(TempData["PaymentError"] != null)
+            {
+                ModelState.AddModelError("", TempData["PaymentError"].ToString());
+            }
+
             return View();
         }
 
@@ -135,9 +142,38 @@ namespace FonNature.Controllers
                 var cartItem = Session["cart"];
                 if (cartItem == null && shippingAddress == null) return View(shippingAddress);
                 var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, account.Id, shippingAddress);
-                return RedirectToAction("OrderSuccessPage", "Success", new { orderID = orderID });
+
+                var returnUrl = Constant.HostUrl + "/product/ConfirmPayment";
+
+                var result = _orderServices.PaymentByMomo(orderID, returnUrl);
+                if(result.ErrorCode.Equals("0"))
+                {
+                    return Redirect(result.PayUrl);
+                }
+                ModelState.AddModelError("", result.ErrorCode + " - " + result.Message);
             }
-            return View(shippingAddress);
+            ViewBag.Account = Session[Constant.Membership.AccountSession];
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ConfirmPayment(MomoPaymentResponse response)
+        {
+            if(response.ErrorCode.Equals("0"))
+            {
+                //var currentSignature = Session[Constant.SignatureSession];
+
+                //if(!currentSignature.Equals(response.Signature))
+                //{
+                //    TempData["PaymentError"] = "101: Invalid request";
+                //    return RedirectToAction("checkout");
+                //}
+                    
+                return RedirectToAction("OrderSuccessPage", "Success", new { orderID = response.OrderId });
+            }
+
+            TempData["PaymentError"] = response.ErrorCode + " - " + response.Message;
+            return RedirectToAction("checkout");
         }
     }
 }

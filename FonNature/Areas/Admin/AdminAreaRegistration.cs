@@ -70,20 +70,21 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IClientAccountRepository, ClientAccountRepository>();
             container.RegisterType<IMembershipService, MembershipService>();
             container.RegisterType<IBookingRepository, BookingRepository>();
+            container.RegisterType<IHttpClientService, HttpClientService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
+            context.MapRoute(
+                "Admin_default_home",
+                "admin",
+                new { AreaName = "admin", controller = "HomeAdmin", action = "HomeAdmin", id = UrlParameter.Optional }
+            );
 
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { controller = "{controller}", action = "Index", id = UrlParameter.Optional }
-            );
-
-            context.MapRoute(
-                "Admin_default_home",
-                "admin",
-                new { controller = "HomeAdmin", action = "HomeAdmin", id = UrlParameter.Optional }
-            );
+            );          
         }
     }
 }

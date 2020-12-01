@@ -269,9 +269,12 @@
     <Compile Include="Services\BookingService.cs" />
     <Compile Include="Services\DictionaryService.cs" />
     <Compile Include="Services\Extension\JsonHandler.cs" />
+    <Compile Include="Services\HttpClientService.cs" />
     <Compile Include="Services\IBookingService.cs" />
+    <Compile Include="Services\IHttpClientService.cs" />
     <Compile Include="Services\IMembershipService.cs" />
     <Compile Include="Services\MembershipService.cs" />
+    <Compile Include="Services\MoMoSecurity.cs" />
     <Compile Include="Services\OrderAdminServices.cs" />
     <Compile Include="Services\AboutServices.cs" />
     <Compile Include="Services\BlogServices.cs" />
@@ -639,9 +642,7 @@
     <Content Include="Asset\Client\Mail\Message.html" />
     <Content Include="Asset\Client\php\mail.php" />
     <Content Include="Asset\MdBootrap\css\addons\datatables-select.min.css" />
-    <Content Include="Asset\MdBootrap\css\addons\datatables-select2.min.css" />
     <Content Include="Asset\MdBootrap\css\addons\datatables.min.css" />
-    <Content Include="Asset\MdBootrap\css\addons\datatables2.min.css" />
     <Content Include="Asset\MdBootrap\css\addons\directives.min.css" />
     <Content Include="Asset\MdBootrap\css\addons\flag.min.css" />
     <Content Include="Asset\MdBootrap\css\addons\jquery.zmd.hierarchical-display.min.css" />
@@ -654,7 +655,6 @@
     <Content Include="Asset\MdBootrap\css\mdb.min.css" />
     <Content Include="Asset\MdBootrap\css\modules\animations-extended.min.css" />
     <Content Include="Asset\MdBootrap\css\style.css" />
-    <Content Include="Asset\MdBootrap\exclusive-templates\unlock-exclusive-freebies.html" />
     <Content Include="Asset\MdBootrap\img\mdb-favicon.ico" />
     <Content Include="Asset\MdBootrap\img\overlays\01.png" />
     <Content Include="Asset\MdBootrap\img\overlays\02.png" />
@@ -667,11 +667,8 @@
     <Content Include="Asset\MdBootrap\img\overlays\09.png" />
     <Content Include="Asset\MdBootrap\img\svg\arrow_left.svg" />
     <Content Include="Asset\MdBootrap\img\svg\arrow_right.svg" />
-    <Content Include="Asset\MdBootrap\index.html" />
     <Content Include="Asset\MdBootrap\js\addons\datatables-select.min.js" />
-    <Content Include="Asset\MdBootrap\js\addons\datatables-select2.min.js" />
     <Content Include="Asset\MdBootrap\js\addons\datatables.min.js" />
-    <Content Include="Asset\MdBootrap\js\addons\datatables2.min.js" />
     <Content Include="Asset\MdBootrap\js\addons\directives.min.js" />
     <Content Include="Asset\MdBootrap\js\addons\flag.min.js" />
     <Content Include="Asset\MdBootrap\js\addons\imagesloaded.pkgd.min.js" />
@@ -691,15 +688,12 @@
     <Content Include="Asset\MdBootrap\js\modules\wow.min.js" />
     <Content Include="Asset\MdBootrap\js\popper.js" />
     <Content Include="Asset\MdBootrap\js\popper.min.js" />
-    <Content Include="Asset\MdBootrap\README.txt" />
     <Content Include="Asset\MdBootrap\src\js\free\forms-free.js" />
     <Content Include="Asset\MdBootrap\src\js\free\scrolling-navbar.js" />
     <Content Include="Asset\MdBootrap\src\js\free\treeview.js" />
     <Content Include="Asset\MdBootrap\src\js\free\wow.js" />
     <Content Include="Asset\MdBootrap\src\js\vendor\addons\datatables-select.js" />
-    <Content Include="Asset\MdBootrap\src\js\vendor\addons\datatables-select2.js" />
     <Content Include="Asset\MdBootrap\src\js\vendor\addons\datatables.js" />
-    <Content Include="Asset\MdBootrap\src\js\vendor\addons\datatables2.js" />
     <Content Include="Asset\MdBootrap\src\js\vendor\addons\imagesloaded.pkgd.min.js" />
     <Content Include="Asset\MdBootrap\src\js\vendor\addons\jquery.zmd.hierarchical-display.js" />
     <Content Include="Asset\MdBootrap\src\js\vendor\addons\masonry.pkgd.min.js" />
@@ -1878,39 +1872,8 @@
     <Content Include="Areas\Admin\Views\PageAdmin\PageList.cshtml" />
     <Content Include="Areas\Admin\Views\PageAdmin\CreatePage.cshtml" />
     <Content Include="Areas\Admin\Views\PageAdmin\EditPage.cshtml" />
-    <Content Include="Asset\MdBootrap\css\addons\datatables-select.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\addons\datatables-select2.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\addons\datatables.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\addons\datatables2.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\addons\directives.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\addons\flag.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\addons\jquery.zmd.hierarchical-display.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\addons\rating.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\mdb.lite.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\mdb.min.css.map" />
-    <Content Include="Asset\MdBootrap\css\modules\animations-extended.min.css.map" />
-    <Content Include="Asset\MdBootrap\js\addons\datatables-select.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\datatables-select2.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\datatables.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\datatables2.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\directives.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\flag.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\imagesloaded.pkgd.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\jquery.zmd.hierarchical-display.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\masonry.pkgd.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\addons\rating.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\mdb.lite.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\mdb.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\modules\animations-extended.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\modules\forms-free.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\modules\scrolling-navbar.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\modules\treeview.min.js.map" />
-    <Content Include="Asset\MdBootrap\js\modules\wow.min.js.map" />
-    <Content Include="Asset\MdBootrap\License.pdf" />
     <Content Include="Asset\MdBootrap\scss\addons\_datatables-select.scss" />
-    <Content Include="Asset\MdBootrap\scss\addons\_datatables-select2.scss" />
     <Content Include="Asset\MdBootrap\scss\addons\_datatables.scss" />
-    <Content Include="Asset\MdBootrap\scss\addons\_datatables2.scss" />
     <Content Include="Asset\MdBootrap\scss\addons\_directives.scss" />
     <Content Include="Asset\MdBootrap\scss\addons\_flag.scss" />
     <Content Include="Asset\MdBootrap\scss\addons\_hierarchical-display.scss" />
@@ -1951,7 +1914,6 @@
     <Content Include="Asset\MdBootrap\scss\mdb-lite-free.scss" />
     <Content Include="Asset\MdBootrap\scss\_custom-styles.scss" />
     <Content Include="Asset\MdBootrap\scss\_custom-variables.scss" />
-    <Content Include="Asset\MdBootrap\Useful_Resources.pdf" />
     <Content Include="Asset\noty\lib\noty.css.map" />
     <Content Include="Asset\noty\lib\noty.js.map" />
     <Content Include="Asset\noty\lib\noty.min.js.map" />
@@ -2044,19 +2006,9 @@
     <Content Include="Areas\Admin\Views\ServiceCategoryAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ServiceAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ServiceAdmin\Edit.cshtml" />
-    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\fondekao - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - ReadOnly - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\fondekao - ReadOnly - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\fondekao - Web Deploy1.pubxml">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Properties\PublishProfiles\monsbakery.com.publishsettings" />
-    <None Include="Properties\PublishProfiles\monsbakery.com - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\monsbakery.com - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2090,9 +2042,9 @@
     <Content Include="Views\CustomError\DefaultError.cshtml" />
     <Content Include="Views\About\AboutTeamList.cshtml" />
     <Content Include="Views\About\AboutTestimonial.cshtml" />
-    <Content Include="Web.config">
+    <None Include="Web.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <Content Include="Views\Default\CommonPage.cshtml" />
     <Content Include="Views\Service\ServiceHome.cshtml" />
     <Content Include="Views\Service\ServiceListByCategory.cshtml" />

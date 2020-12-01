@@ -16,6 +16,12 @@
 
         public string ShippingAddress { get; set; }
 
+        public decimal SubTotal { get; set; }
+
+        public decimal Discount { get; set; }
+
+        public decimal GrandTotal { get; set; }
+
         [Column(TypeName = "datetime")]
         public DateTime? createdDate { get; set; }
     }

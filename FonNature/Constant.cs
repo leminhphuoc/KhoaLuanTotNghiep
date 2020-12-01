@@ -8,7 +8,9 @@ namespace FonNature
 {
     public struct Constant
     {
+        public const string HostUrl = "http://fondekao.azurewebsites.net";
         public static readonly string Cart_Sesion = "Cart_Session";
+        public static readonly string SignatureSession = "Signature_Session";
         public static readonly List<string> whiteListWebsite = new List<string>()
         {
             "viblo.asia",
@@ -73,6 +75,17 @@ namespace FonNature
             public const string CODPaymentMethods = "COD";
             public const string BankTransferPaymentMethods = "BankTransfer";
             public const string MoMoPaymentMethods = "MoMo";
+        }
+
+        public struct Payment
+        {
+            public struct MoMo
+            {
+                public const string PartnerCode = "MOMO9CJI20201128";
+                public const string AccessCode = "5UBseVYEIavDbdrq";
+                public const string RequestType = "captureMoMoWallet";
+                public const string SecrectKey = "YUYbDoR1BXDyswG5sKgVgbmSJ6Bk1KEH";
+            } 
         }
     }
 }
