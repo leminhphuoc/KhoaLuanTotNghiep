@@ -1,0 +1,8 @@
+{
+  "env": "dev",
+  "partnerCode": "MOMO9CJI20201128",
+  "accessCode": "5UBseVYEIavDbdrq",
+  "requestType": "captureMoMoWallet",
+  "secrectKey": "YUYbDoR1BXDyswG5sKgVgbmSJ6Bk1KEH",
+  "requestUrl": "https://test-payment.momo.vn/gw_payment/transactionProcessor"
+}

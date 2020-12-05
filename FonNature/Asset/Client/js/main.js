@@ -260,7 +260,7 @@ $('.card-header a').on('click', function() {
 /*----- 
 	Payment Method Select
 --------------------------------*/
-$('[name="payment-method"]').on('click', function(){
+$('[name="paymentMethod"]').on('click', function(){
     
     var $value = $(this).attr('value');
 

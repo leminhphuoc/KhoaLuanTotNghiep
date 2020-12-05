@@ -2,11 +2,13 @@
 using FonNature.Services;
 using Models.Entity;
 using Models.Model;
+using Models.Repository;
 using Newtonsoft.Json;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace FonNature.Controllers
 {
@@ -16,10 +18,12 @@ namespace FonNature.Controllers
     {
         private readonly IProductServices _productServices;
         private readonly IOrderServices _orderServices;
-        public ProductController(IProductServices productServices, IOrderServices orderServices)
+        private readonly IOrderRepository _orderRepository;
+        public ProductController(IProductServices productServices, IOrderServices orderServices, IOrderRepository orderRepository)
         {
             _productServices = productServices;
             _orderServices = orderServices;
+            _orderRepository = orderRepository;
         }
         // GET: Product
         public ActionResult ProductHome(int? page, string searchString = null)
@@ -130,7 +134,7 @@ namespace FonNature.Controllers
         }
 
         [HttpPost]
-        public ActionResult Checkout(ShippingAddress shippingAddress)
+        public ActionResult Checkout(ShippingAddress shippingAddress, string paymentMethod)
         {
             var account = Session[Constant.Membership.AccountSession] as ClientAccount;
             if(account == null)
@@ -141,16 +145,31 @@ namespace FonNature.Controllers
             {
                 var cartItem = Session["cart"];
                 if (cartItem == null && shippingAddress == null) return View(shippingAddress);
-                var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, account.Id, shippingAddress);
+                var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, account.Id, shippingAddress, paymentMethod);
 
                 var returnUrl = Constant.HostUrl + "/product/ConfirmPayment";
 
-                var result = _orderServices.PaymentByMomo(orderID, returnUrl);
-                if(result.ErrorCode.Equals("0"))
+                if(!string.IsNullOrWhiteSpace(paymentMethod))
                 {
-                    return Redirect(result.PayUrl);
+                    ModelState.AddModelError("", "Please select payment method");
                 }
-                ModelState.AddModelError("", result.ErrorCode + " - " + result.Message);
+                else
+                {
+                    if (paymentMethod.Equals(Constant.Order.MoMoPaymentMethods))
+                    {
+                        var result = _orderServices.PaymentByMomo(orderID, returnUrl);
+                        if (result.ErrorCode.Equals("0"))
+                        {
+                            _orderRepository.UpdateOrderStatus(orderID,Constant.MoMoOrderStatus.FirstOrDefault(x=>x.Key.Equals(2)).Key);
+                            return Redirect(result.PayUrl);
+                        }
+                        ModelState.AddModelError("", result.ErrorCode + " - " + result.Message);
+                    }
+                    else
+                    {
+                        return RedirectToAction("OrderSuccessPage", "Success", new { orderID = orderID });
+                    }
+                }
             }
             ViewBag.Account = Session[Constant.Membership.AccountSession];
             return View();

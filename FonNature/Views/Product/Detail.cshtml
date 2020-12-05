@@ -91,12 +91,12 @@
                     <div class="single-product-price">
                         @if (Model.promotionPrice == null || Model.price == 0)
                         {
-                            <span class="price new-price">$@Model.price.Value.ToString("N0")</span>
+                            <span class="price new-price">@Model.price.Value.ToString("N0") vnđ</span>
                         }
                         else
                         {
-                            <span class="price new-price">$@Model.promotionPrice.Value.ToString("N0")</span>
-                            <span class="regular-price">$@Model.price.Value.ToString("N0")</span>
+                            <span class="price new-price">@Model.promotionPrice.Value.ToString("N0") vnđ</span>
+                            <span class="regular-price">@Model.price.Value.ToString("N0") vnđ</span>
                         }
                     </div>
                     <div class="product-description">

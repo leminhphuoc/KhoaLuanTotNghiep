@@ -71,6 +71,7 @@ namespace FonNature.Areas.Admin
             container.RegisterType<IMembershipService, MembershipService>();
             container.RegisterType<IBookingRepository, BookingRepository>();
             container.RegisterType<IHttpClientService, HttpClientService>();
+            container.RegisterType<IFileHandlerService, FileHandlerService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
 

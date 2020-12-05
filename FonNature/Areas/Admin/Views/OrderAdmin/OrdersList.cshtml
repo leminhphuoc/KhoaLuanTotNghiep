@@ -85,29 +85,46 @@
                                         <td>@(clientAccount == null? string.Empty: clientAccount.MobilePhone)</td>
                                         <td>
                                             <select data-id="@item.Id" style="width:80%" id="IdStatus" name="IdStatus" class="form-control m-bot15 orderStatus">
-                                                @foreach (var status in Constant.OrderStatus)
+                                                @if (!string.IsNullOrWhiteSpace(item.PaymentMethod) && item.PaymentMethod.Equals(Constant.Order.MoMoPaymentMethods))
                                                 {
-                                                    if (status.Key.Equals(item.IdStatus))
+                                                    foreach (var status in Constant.MoMoOrderStatus)
                                                     {
-                                                        <option  selected value="@status.Key">@status.Value</option>
+                                                        if (status.Key.Equals(item.IdStatus))
+                                                        {
+                                                            <option selected value="@status.Key">@status.Value</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@status.Key">@status.Value</option>
+                                                        }
                                                     }
-                                                    else
+                                                }
+                                                else
+                                                {
+                                                    foreach (var status in Constant.OrderStatus)
                                                     {
-                                                        <option value="@status.Key">@status.Value</option>
+                                                        if (status.Key.Equals(item.IdStatus))
+                                                        {
+                                                            <option selected value="@status.Key">@status.Value</option>
+                                                        }
+                                                        else
+                                                        {
+                                                            <option value="@status.Key">@status.Value</option>
+                                                        }
                                                     }
                                                 }
                                             </select>
                                         </td>
                                         <td>
-                                            <a href="/Admin/OrderAdmin/OrderDetail/@item.Id">Infor</a>/
-                                            <a href="/Admin/OrderAdmin/Edit/@item.Id">Edit</a>
+                                            <a style="color:blue !important" href="/Admin/OrderAdmin/OrderDetail/@item.Id">Infor</a>/
+                                            <a style="color:blue !important" href="/Admin/OrderAdmin/Edit/@item.Id">Edit</a>
                                             /
                                             @Ajax.ActionLink("Delete", "Delete", new { @id = item.Id }, new AjaxOptions
                                        {
                                            Confirm = "Bạn có muốn xoá đơn hàng này?",
                                            OnComplete = "$('#row_" + @item.Id + "').remove()",
                                            HttpMethod = "Delete"
-                                       })
+                                       }, new {@style = "color:blue !important" })
                                         </td>
                                     </tr>
                                 }

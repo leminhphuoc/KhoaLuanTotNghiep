@@ -153,9 +153,9 @@
 
                                         <ul style="padding-left: 0px !important;" id="checkoutCartItem"></ul>
 
-                                        <p>Sub Total <span id="subTotalInCheckout">$0</span></p>
-                                        <p>Shipping fee <span>$0</span></p>
-                                        <h4>Grand Total <span id="grandTotalInCheckout">$0</span></h4>
+                                        <p>Sub Total <span id="subTotalInCheckout">0 vnđ</span></p>
+                                        <p>Shipping fee <span>0 vnđ</span></p>
+                                        <h4>Grand Total <span id="grandTotalInCheckout">0 vnđ</span></h4>
 
                                     </div>
 
@@ -168,19 +168,19 @@
 
                                     <div class="checkout-payment-method">
                                         <div class="single-method">
-                                            <input type="radio" id="PaymentMethod" name="PaymentMethod" value="@Constant.Order.BankTransferPaymentMethods" checked>
-                                            <label for="payment_bank">Direct Bank Transfer</label>
-                                            <p data-method="bank">Bank Transfer Information: <br />Bank Id: 0231000582588 <br /> Bank Name: Techcombank <br />Account Name: Phạm Thùy Vân</p>
+                                            <input type="radio" id="payment_@Constant.Order.BankTransferPaymentMethods" name="paymentMethod" value="@Constant.Order.BankTransferPaymentMethods">
+                                            <label for="payment_@Constant.Order.BankTransferPaymentMethods">Direct Bank Transfer</label>
+                                            <p data-method="@Constant.Order.BankTransferPaymentMethods">Bank Transfer Information: <br />Bank Id: 0231000582588 <br /> Bank Name: Techcombank <br />Account Name: Phạm Thùy Vân</p>
                                         </div>
                                         <div class="single-method">
-                                            <input type="radio" id="PaymentMethod" name="PaymentMethod" value="@Constant.Order.CODPaymentMethods">
-                                            <label for="payment_cash">Cash on delivery</label>
-                                            <p data-method="cash">Payment by cash when receive product</p>
+                                            <input type="radio" id="payment_@Constant.Order.CODPaymentMethods" name="paymentMethod" value="@Constant.Order.CODPaymentMethods" checked>
+                                            <label for="payment_@Constant.Order.CODPaymentMethods">Cash on Delivery</label>
+                                            <p data-method="@Constant.Order.CODPaymentMethods">Paymen when receive</p>
                                         </div>
                                         <div class="single-method">
-                                            <input data-paymentMethod="@Constant.Order.MoMoPaymentMethods" type="radio" id="PaymentMethod" name="PaymentMethod" value="@Constant.Order.MoMoPaymentMethods">
-                                            <label for="payment_cash">Momo Payment</label>
-                                            <p data-method="cash">Payment through momo</p>
+                                            <input type="radio" id="payment_@Constant.Order.MoMoPaymentMethods" name="paymentMethod" value="@Constant.Order.MoMoPaymentMethods">
+                                            <label for="payment_@Constant.Order.MoMoPaymentMethods">Momo</label>
+                                            <p data-method="@Constant.Order.MoMoPaymentMethods">Payment through MoMo</p>
                                         </div>
                                         <div style="color:#FFFFFF !important" class="form-group">
                                             <div class="form-check pl-0">

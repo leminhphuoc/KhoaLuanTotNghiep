@@ -1,7 +1,4 @@
-﻿
-
-using Models.Entity;
-using Models.Model;
+﻿using Models.Model;
 using System.Collections.Generic;
 
 namespace FonNature
@@ -68,6 +65,15 @@ namespace FonNature
            { 2, "Shipping" },
            { 3, "Paid and Received" },
            { 4, "Canceled" },
+        };
+
+        public static readonly Dictionary<int, string> MoMoOrderStatus = new Dictionary<int, string>()
+        {
+           { 1, "Order Success" },
+           { 2, "Payment Success" },
+           { 3, "Shipping" },
+           { 4, "Received" },
+           { 5, "Canceled" },
         };
 
         public struct Order

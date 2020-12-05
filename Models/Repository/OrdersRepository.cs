@@ -102,5 +102,27 @@ namespace Models.Repository
                 return false;
             }
         }
+
+        public void UpdatePrice(Order order, decimal subTotal, decimal discount)
+        {
+            try
+            {
+                var orderInDb = _db.Orders.Find(order.Id);
+                if (orderInDb == null)
+                {
+                    return;
+                }
+
+                orderInDb.SubTotal = subTotal;
+                orderInDb.Discount = discount;
+                orderInDb.GrandTotal = subTotal - discount;
+                _db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error at Update price: {ex.Message}");
+                return;
+            }
+        }
     }
 }

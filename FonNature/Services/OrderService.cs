@@ -4,6 +4,7 @@ using Models.Model;
 using Models.Repository;
 using System.Collections.Generic;
 using System.Web;
+using System.Linq;
 
 namespace FonNature.Services
 {
@@ -11,18 +12,23 @@ namespace FonNature.Services
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IHttpClientService _httpService;
-        public OrderService(IOrderRepository orderRepository, IHttpClientService httpService)
+        private readonly IFileHandlerService _fileHandlerService;
+        private readonly IProductAdminRepository _productRepository;
+        public OrderService(IOrderRepository orderRepository, IHttpClientService httpService, IFileHandlerService fileHandlerService, IProductAdminRepository productRepository)
         {
             _orderRepository = orderRepository;
             _httpService = httpService;
+            _fileHandlerService = fileHandlerService;
+            _productRepository = productRepository;
         }
 
-        public long CreateOrder(List<ProductInCart> productInCarts, long clientAccountId, ShippingAddress shippingAddress)
+        public long CreateOrder(List<ProductInCart> productInCarts, long clientAccountId, ShippingAddress shippingAddress, string paymentMethod)
         {
             try
             {
-                var order = new Order() { ClientAccountId = clientAccountId , ShippingAddress = shippingAddress.ParseToJson() };
+                var order = new Order() { ClientAccountId = clientAccountId , ShippingAddress = shippingAddress.ParseToJson() , PaymentMethod = paymentMethod };
                 var idOrder = _orderRepository.CreateOrder(order);
+                var subTotal = (decimal)0;
                 foreach (var product in productInCarts)
                 {
                     var orderInformation = new OrderInformation()
@@ -32,7 +38,12 @@ namespace FonNature.Services
                         Quantity = product.quantity
                     };
                     _orderRepository.CreateOrderInformation(orderInformation);
+
+                    var productInDb = _productRepository.GetDetail(product.itemId);
+                    subTotal += productInDb.promotionPrice == null ? (productInDb.price.Value * product.quantity) : (productInDb.promotionPrice.Value * product.quantity);
                 }
+
+                _orderRepository.UpdatePrice(order, subTotal, 0);
                 return idOrder;
             }
             catch
@@ -48,17 +59,42 @@ namespace FonNature.Services
                 return null;
             }
 
-            var requestUrl = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
-            var amount = 100000;
-            var orderInfo = "Test";
+            var order = _orderRepository.GetOrder(orderId);
+            var orderInfo = string.Empty;
+            var orderInformations = _orderRepository.GetOrderInfors(orderId);
+
+            if(orderInformations != null && orderInformations.Any())
+            {
+                foreach(var info in orderInformations)
+                {
+                    var productInOrder = _productRepository.GetDetail(info.IdProduct);
+                    if(productInOrder == null)
+                    {
+                        continue;
+                    }
+
+                    orderInfo += productInOrder.name + "  x" + info.Quantity + "\n";
+                }
+            }
+
+            if(order == null)
+            {
+                return null;
+            }
+
+            var config = _fileHandlerService.ReadJsonFile<EnvConfig>("/App_Config/configMomo.json");
+            var orderIdstring = config.Enviroment + " - " + orderId;
+            var amount = order.GrandTotal;
+            
             var notifyurl = "https://webhook.site/23c22149-0cd9-4108-8228-44b20a93b8f7";
             var extraData = "Test";
+
             string rawHash = "partnerCode=" +
                 Constant.Payment.MoMo.PartnerCode + "&accessKey=" +
                 Constant.Payment.MoMo.AccessCode + "&requestId=" +
                 orderId + "&amount=" +
                 amount + "&orderId=" +
-                orderId + "&orderInfo=" +
+                orderIdstring + "&orderInfo=" +
                 orderInfo + "&returnUrl=" +
                 returnUrl + "&notifyUrl=" +
                 notifyurl + "&extraData=" +
@@ -75,11 +111,11 @@ namespace FonNature.Services
             HttpContext.Current.Session[Constant.SignatureSession] = signature;
             var paymentRequest = new MomoPaymentRequest()
             {
-                AccessKey = Constant.Payment.MoMo.AccessCode,
-                PartnerCode = Constant.Payment.MoMo.PartnerCode,
-                RequestType = Constant.Payment.MoMo.RequestType,
+                AccessKey = config.AccessCode,
+                PartnerCode = config.PartnerCode,
+                RequestType = config.RequestType,
                 RequestId = orderId.ToString(),
-                OrderId = orderId.ToString(),
+                OrderId = orderIdstring,
                 ReturnUrl = returnUrl,
                 NotifyUrl = notifyurl,
                 Amount = amount.ToString(),
@@ -88,7 +124,7 @@ namespace FonNature.Services
                 OrderInfo = orderInfo
             };
 
-            return _httpService.Post<MomoPaymentResponse>(requestUrl, paymentRequest);
+            return _httpService.Post<MomoPaymentResponse>(config.RequestUrl, paymentRequest);
         }
     }
 }

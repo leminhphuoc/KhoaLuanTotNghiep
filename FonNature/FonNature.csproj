@@ -269,8 +269,10 @@
     <Compile Include="Services\BookingService.cs" />
     <Compile Include="Services\DictionaryService.cs" />
     <Compile Include="Services\Extension\JsonHandler.cs" />
+    <Compile Include="Services\FileHandlerService.cs" />
     <Compile Include="Services\HttpClientService.cs" />
     <Compile Include="Services\IBookingService.cs" />
+    <Compile Include="Services\IFileHandlerService.cs" />
     <Compile Include="Services\IHttpClientService.cs" />
     <Compile Include="Services\IMembershipService.cs" />
     <Compile Include="Services\MembershipService.cs" />
@@ -635,7 +637,6 @@
     <Content Include="Asset\Client\js\plugins.js" />
     <Content Include="Asset\Client\js\popper.min.js" />
     <Content Include="Asset\Client\js\quickview.js" />
-    <Content Include="Asset\Client\js\Validator.js" />
     <Content Include="Asset\Client\js\vendor\jquery-1.12.4.min.js" />
     <Content Include="Asset\Client\js\vendor\modernizr-2.8.3.min.js" />
     <Content Include="Asset\Client\Mail\Subscribe.html" />
@@ -2006,6 +2007,7 @@
     <Content Include="Areas\Admin\Views\ServiceCategoryAdmin\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ServiceAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ServiceAdmin\Edit.cshtml" />
+    <Content Include="App_Config\configMomo.json" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - Web Deploy.pubxml" />
