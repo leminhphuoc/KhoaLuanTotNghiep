@@ -3,7 +3,7 @@ using System.Web.Mvc;
 
 namespace FonNature.Controllers
 {
-    [RoutePrefix("about")]
+    [RoutePrefix("aboutus")]
     [Route("{action=AboutHome}")]
     public class AboutController : Controller
     {

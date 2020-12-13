@@ -45,6 +45,7 @@ namespace Models.Entity
         public virtual DbSet<TitleCustomer> TitleCustomers { get; set; }
         public virtual DbSet<ClientAccount> ClientAccounts { get; set; }
         public virtual DbSet<Booking> Bookings { get; set; }
+        public virtual DbSet<CouponCode> CouponCodes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

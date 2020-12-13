@@ -67,6 +67,7 @@
     <Compile Include="Entity\Content.cs" />
     <Compile Include="Entity\ContentCategory.cs" />
     <Compile Include="Entity\Dictionary.cs" />
+    <Compile Include="Entity\CouponCode.cs" />
     <Compile Include="Entity\District.cs" />
     <Compile Include="Entity\FonNatureDbContext.cs" />
     <Compile Include="Entity\Footer.cs" />
@@ -125,15 +126,21 @@
     <Compile Include="Migrations\202011021531569_AddBooking.Designer.cs">
       <DependentUpon>202011021531569_AddBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012120949507_CreateCouponCode.cs" />
+    <Compile Include="Migrations\202012120949507_CreateCouponCode.Designer.cs">
+      <DependentUpon>202012120949507_CreateCouponCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Enum\OrderStatus.cs" />
     <Compile Include="Model\EnvConfig.cs" />
     <Compile Include="Model\MomoPaymentRequest.cs" />
     <Compile Include="Model\MomoPaymentResponse.cs" />
+    <Compile Include="Model\ResultModel.cs" />
     <Compile Include="Model\ShippingAddress.cs" />
     <Compile Include="Model\TimeRange.cs" />
     <Compile Include="Repository\BenefitRepository.cs" />
     <Compile Include="Repository\BookingRepository.cs" />
     <Compile Include="Repository\ClientAccountRepository.cs" />
+    <Compile Include="Repository\CouponCodeRepository.cs" />
     <Compile Include="Repository\DictionaryRepository.cs" />
     <Compile Include="Repository\IAboutAdminRepository.cs" />
     <Compile Include="Repository\IAccountAdminRepository.cs" />
@@ -144,6 +151,7 @@
     <Compile Include="Repository\IContactAdminRepository.cs" />
     <Compile Include="Repository\IContentAdminRepository.cs" />
     <Compile Include="Repository\IContentCategoryAdminRepository.cs" />
+    <Compile Include="Repository\ICouponCodeRepository.cs" />
     <Compile Include="Repository\IDictionaryRepository.cs" />
     <Compile Include="Repository\IFooterAdminRepository.cs" />
     <Compile Include="Repository\IFooterCategoryAdminRepository.cs" />
@@ -259,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011021531569_AddBooking.resx">
       <DependentUpon>202011021531569_AddBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012120949507_CreateCouponCode.resx">
+      <DependentUpon>202012120949507_CreateCouponCode.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

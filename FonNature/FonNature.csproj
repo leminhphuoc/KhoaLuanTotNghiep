@@ -222,6 +222,7 @@
     <Compile Include="Areas\Admin\Controllers\ContactAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentCategoryAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CouponCodeAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\DictionaryAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\FooterCategoryAdminController.cs" />
@@ -342,6 +343,7 @@
     <Content Include="Asset\Admin\Controller\ServicesController.js" />
     <Content Include="Asset\Admin\Controller\SlideController.js" />
     <Content Include="Asset\Admin\css\bootstrap.min.css" />
+    <Content Include="Asset\Admin\css\custom.css" />
     <Content Include="Asset\Admin\css\font-awesome.css" />
     <Content Include="Asset\Admin\css\font.css" />
     <Content Include="Asset\Admin\css\jqvmap.css" />
@@ -2008,6 +2010,9 @@
     <Content Include="Areas\Admin\Views\ServiceAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ServiceAdmin\Edit.cshtml" />
     <Content Include="App_Config\configMomo.json" />
+    <Content Include="Areas\Admin\Views\CouponCodeAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\CouponCodeAdmin\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CouponCodeAdmin\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - Web Deploy.pubxml" />

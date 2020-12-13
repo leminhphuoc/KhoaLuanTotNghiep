@@ -1,0 +1,132 @@
+﻿@model Models.Entity.CouponCode
+@{
+    ViewBag.Title = "Edit Coupon Code";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    List<Models.Entity.Product> productList = ViewBag.ProductList;
+    // Material Select Initialization
+}
+
+@section jsFooter
+{
+    <script>
+        $(document).ready(function () {
+            $('.mdb-select').materialSelect();
+        });
+    </script>
+}
+
+<script>
+    $(document).ready(function () {
+        $('.mdb-select').materialSelect();
+    });
+</script>
+
+<section class="wrapper">
+    <div class="form-w3layouts">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Edit CouponCode
+                        <span class="tools pull-right">
+                        </span>
+                    </header>
+                    <div class="panel-body">
+                        <div class="form">
+
+                            @*<div class="form">*@
+
+                            @*<form  method="get" action="" novalidate="novalidate">*@
+                            @using (Html.BeginForm("Edit", "CouponCodeAdmin", FormMethod.Post, new { @class = "cmxform form-horizontal", @id = "signupForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3"></label>
+                                    <div class="col-lg-6">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Code</label>
+                                    <div class="col-lg-6">
+                                        @*<input class="form-control " id="username" name="username" type="text">*@
+                                        @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @readonly = "readonly" , @class = "form-control", @type = "text", @required = "required", @pattern = "^[a-zA-Z0-9äöüÄÖÜ]*$" } })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Display Name</label>
+                                    <div class="col-lg-6">
+                                        @*<input class="form-control " id="username" name="username" type="text">*@
+                                        @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "required" } })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Description</label>
+                                    <div class="col-lg-6">
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Discount Value</label>
+                                    <div class="col-lg-6">
+                                        @Html.ValidationMessageFor(model => model.DiscountValue, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.DiscountValue, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "number", @min = 1000, @max = 9999999999 } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-3">Product List</label>
+                                    <div class="col-lg-6">
+                                        <select id="productList" name="productList" class="form-control m-bot15" multiple>
+                                            @if (Model != null && !string.IsNullOrEmpty(Model.ProductId))
+                                            {
+                                                if (Model.ProductId.Split('|').Contains("all"))
+                                                {
+                                                    <option value="all" selected>Apply for all product</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="all">Apply for all product</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="all" selected>Apply for all product</option>
+                                            }
+
+                                            @if (productList.Any())
+                                            {
+                                                foreach (var item in productList)
+                                                {
+                                                    if (Model != null && Model.ProductId.Split('|').Contains(item.id.ToString()))
+                                                    {
+                                                        <option value="@item.id" selected>@item.name</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        <option value="@item.id">@item.name</option>
+                                                    }
+                                                }
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-3 col-lg-6">
+                                        <button class="btn btn-primary" type="submit">Save</button>
+                                        <button class="btn btn-default" type="button">Cancel</button>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
