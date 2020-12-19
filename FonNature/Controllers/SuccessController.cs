@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Models.Repository;
+using System.Web.Mvc;
 
 namespace FonNature.Controllers
 {
@@ -6,6 +7,12 @@ namespace FonNature.Controllers
     [Route("{action=SuccessPage}")]
     public class SuccessController : Controller
     {
+        private readonly IOrderRepository _orderRepository;
+        public SuccessController(IOrderRepository orderRepository)
+        {
+            _orderRepository = orderRepository;
+        }
+
         // GET: Success
         public ActionResult SuccessPage(string message)
         {
@@ -15,6 +22,12 @@ namespace FonNature.Controllers
 
         public ActionResult OrderSuccessPage(long orderID)
         {
+            var order = _orderRepository.GetOrder(orderID);
+            if(order== null)
+            {
+                return Redirect("/");
+            }
+
             ViewBag.orderID = orderID;
             return View();
         }

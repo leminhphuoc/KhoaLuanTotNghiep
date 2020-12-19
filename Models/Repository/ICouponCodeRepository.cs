@@ -16,5 +16,6 @@ namespace Models.Repository
         ResultModel<string> UpdateCouponCode(CouponCode couponCode);
         bool DeleteCouponCode(string code);
         List<CouponCode> GetCouponCodesByCode(string code);
+        int ReduceQuantity(string code);
     }
 }

@@ -201,9 +201,34 @@ function myFunction() {
                 }
             });
         });
+
+        var couponCode = localStorage.getItem("couponCode");
+        var coupon = {}
+        $.ajax({
+            url: "/product/GetCoupon",
+            data: { code: couponCode },
+            dataType: "json",
+            type: "POST",
+            success: function (res) {
+                if (res.isExist) {
+                    coupon = res.couponCode
+                }
+                else {
+                    console.log(res);
+                }
+            }
+        });
+
         $(document).ajaxStop(function () {
-            $("#subTotalInCheckout").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
-            $("#grandTotalInCheckout").html(totalAmount.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            var couponValue = 0;
+            if (coupon != null) {
+                couponValue = coupon.DiscountValue;
+            }
+            var subTotal = totalAmount;
+            var grandTotal = subTotal - couponValue;
+            $("#subTotalInCheckout").html(subTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            $("#discount-value").html(couponValue.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            $("#grandTotalInCheckout").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
         });
     }
 }

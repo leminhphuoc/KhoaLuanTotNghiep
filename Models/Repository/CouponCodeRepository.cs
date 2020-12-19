@@ -126,9 +126,10 @@ namespace Models.Repository
 
 
                 couponCodeUpdated.ProductId = couponCode.ProductId;
-                couponCodeUpdated.Description = couponCodeUpdated.Description;
-                couponCodeUpdated.DisplayName = couponCodeUpdated.DisplayName;
-                couponCodeUpdated.DiscountValue = couponCodeUpdated.DiscountValue;
+                couponCodeUpdated.Description = couponCode.Description;
+                couponCodeUpdated.DisplayName = couponCode.DisplayName;
+                couponCodeUpdated.DiscountValue = couponCode.DiscountValue;
+                couponCodeUpdated.Quantity = couponCode.Quantity;
                 Db.SaveChanges();
 
                 result.IsError = false;
@@ -137,7 +138,7 @@ namespace Models.Repository
             }
             catch (Exception e)
             {
-                log.Error($"Error at edit function from {nameof(BenefitRepository)}: {e.Message}");
+                log.Error($"Error at edit function from {nameof(CouponCodeRepository)}: {e.Message}");
                 var result = new ResultModel<string>()
                 {
                     Value = string.Empty,
@@ -173,12 +174,41 @@ namespace Models.Repository
         {
             try
             {
-                return _db.CouponCodes.Where(x=>x.Code.Equals(code, StringComparison.OrdinalIgnoreCase)).ToList();
+                return _db.CouponCodes.Where(x=>x.Code.ToLower().Contains(code.ToLower())).ToList();
             }
             catch (Exception e)
             {
                 log.Error($"Error at Get Coupon Codes By Name {nameof(CouponCodeRepository)}: {e.Message}");
                 return new List<CouponCode>();
+            }
+        }
+
+        public int ReduceQuantity(string code)
+        {
+            try
+            {
+                var couponCodeUpdated = _db.CouponCodes.Find(code);
+                if(couponCodeUpdated == null)
+                {
+                    log.Error($"Error at ReduceQuantity from {nameof(CouponCodeRepository)}!");
+                    return -1;
+                }
+
+                if(couponCodeUpdated.Quantity == 0)
+                {
+                    log.Warn($"Out of stock! {nameof(CouponCodeRepository)}!");
+                    return -1;
+                }
+
+                couponCodeUpdated.Quantity = couponCodeUpdated.Quantity - 1;
+                Db.SaveChanges();
+
+                return couponCodeUpdated.Quantity;
+            }
+            catch (Exception e)
+            {
+                log.Error($"Error at edit function from {nameof(CouponCodeRepository)}: {e.Message}");
+                return -1;
             }
         }
     }

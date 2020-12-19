@@ -19,11 +19,13 @@ namespace FonNature.Controllers
         private readonly IProductServices _productServices;
         private readonly IOrderServices _orderServices;
         private readonly IOrderRepository _orderRepository;
-        public ProductController(IProductServices productServices, IOrderServices orderServices, IOrderRepository orderRepository)
+        private readonly ICouponCodeRepository _couponCodeRepository;
+        public ProductController(IProductServices productServices, IOrderServices orderServices, IOrderRepository orderRepository, ICouponCodeRepository couponCodeRepository)
         {
             _productServices = productServices;
             _orderServices = orderServices;
             _orderRepository = orderRepository;
+            _couponCodeRepository = couponCodeRepository;
         }
         // GET: Product
         public ActionResult ProductHome(int? page, string searchString = null)
@@ -100,12 +102,13 @@ namespace FonNature.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddCart(string data)
+        public JsonResult AddCart(string data, string coupon)
         {
             var ProductInCart = JsonConvert.DeserializeObject<List<ProductInCart>>(data);
             if (ProductInCart != null)
             {
                 Session["cart"] = ProductInCart;
+                Session["couponCode"] = coupon;
                 return Json(new
                 {
                     res = true
@@ -144,12 +147,13 @@ namespace FonNature.Controllers
             if (ModelState.IsValid)
             {
                 var cartItem = Session["cart"];
+                var couponCode = Session["couponCode"] as string;
                 if (cartItem == null && shippingAddress == null) return View(shippingAddress);
-                var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, account.Id, shippingAddress, paymentMethod);
+                var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, account.Id, shippingAddress, paymentMethod, couponCode);
 
                 var returnUrl = Constant.HostUrl + "/product/ConfirmPayment";
 
-                if(!string.IsNullOrWhiteSpace(paymentMethod))
+                if(string.IsNullOrWhiteSpace(paymentMethod))
                 {
                     ModelState.AddModelError("", "Please select payment method");
                 }
@@ -193,6 +197,47 @@ namespace FonNature.Controllers
 
             TempData["PaymentError"] = response.ErrorCode + " - " + response.Message;
             return RedirectToAction("checkout");
+        }
+
+        [HttpPost]
+        public JsonResult GetCoupon(string code)
+        {
+            var couponCode = _couponCodeRepository.GetCouponCode(code);
+            if(couponCode == null)
+            {
+                return Json(new
+                {
+                    isExist = false,
+                    couponCode = couponCode
+                }
+            );
+            }
+
+            return Json(new
+            {
+                isExist = true,
+                couponCode = couponCode
+            }
+            );
+        }
+
+        [HttpPost]
+        public JsonResult GetOrder(long orderId)
+        {
+            var order = _orderRepository.GetOrder(orderId);
+            if(order ==null)
+            {
+                return Json(new
+                {
+                    isExist = false
+                });
+            }
+
+            return Json(new
+            {
+                isExist = true,
+                result = order
+            });
         }
     }
 }

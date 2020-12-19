@@ -17,6 +17,7 @@
         public string ShippingAddress { get; set; }
 
         public decimal SubTotal { get; set; }
+        public string CouponCode { get; set; }
 
         public decimal Discount { get; set; }
 

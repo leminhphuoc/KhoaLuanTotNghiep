@@ -3,6 +3,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section jsFooter
+{
+    <script>
+        $(window).on("load", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderID');
+            $.ajax({
+                url: "/product/GetOrder",
+                data: { orderId: orderId },
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    if (res.isExist) {
+                        localStorage.removeItem("cartItemsList");
+                        localStorage.removeItem("couponCode");
+                        $(".cartcounter").html(0);
+                        $(".cartcounter").attr('hidden', true);
+                    }
+                    else {
+                        console.log(res);
+                    }
+                }
+            });
+        });
+    </script>
+}
+
 <div class="faq-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-90 pb-lg-70 pb-md-60 pb-sm-50 pb-xs-40">
     <div class="container">
         <div class="row">
@@ -17,11 +44,11 @@
                         </div>
                         <p style="margin-top: 20px;">We have sent email with order/booking information to you!</p>
                         @*<p style="margin-top: 20px;">
-                            <h4 style="font-weight: bold;">Vui lòng thanh toán đơn hàng của bạn tại:</h4>
-                            Số tài khoản: 0231000582588  <br />
-                            Ngân hàng: Techcombank  <br />
-                            Chủ tài khoản: Phạm Thùy Vân  <br />
-                        </p>*@
+                                <h4 style="font-weight: bold;">Vui lòng thanh toán đơn hàng của bạn tại:</h4>
+                                Số tài khoản: 0231000582588  <br />
+                                Ngân hàng: Techcombank  <br />
+                                Chủ tài khoản: Phạm Thùy Vân  <br />
+                            </p>*@
                         <p style="margin-top: 20px;">See more detail <a style="color: blue;">here!</a></p>
                         <a href="/product" style="margin-top: 20px;background-color: lightgreen;" class="btn btn-success">Continue shopping!</a>
                     </div>

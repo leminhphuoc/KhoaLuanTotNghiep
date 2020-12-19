@@ -8,13 +8,15 @@
     <script>
         $('#orderButtonAjax').off('click').on('click', function (e) {
             var cartItemsList = JSON.parse(localStorage.getItem("cartItemsList"));
+            var couponCode = localStorage.getItem("couponCode");
+            console.log(couponCode)
             if (cartItemsList == null) {
                 window.alert('Cart is empty!')
                 return;
             }
             $.ajax({
                 url: "/Product/AddCart",
-                data: { data: JSON.stringify(cartItemsList) },
+                data: { data: JSON.stringify(cartItemsList), coupon: couponCode},
                 dataType: "json",
                 type: "POST",
                 success: function (res) {
@@ -154,6 +156,7 @@
                                         <ul style="padding-left: 0px !important;" id="checkoutCartItem"></ul>
 
                                         <p>Sub Total <span id="subTotalInCheckout">0 vnđ</span></p>
+                                        <p>Discount <span id="discount-value">0 vnđ</span></p>
                                         <p>Shipping fee <span>0 vnđ</span></p>
                                         <h4>Grand Total <span id="grandTotalInCheckout">0 vnđ</span></h4>
 

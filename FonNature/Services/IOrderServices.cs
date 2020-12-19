@@ -6,7 +6,7 @@ namespace FonNature.Services
 {
     public interface IOrderServices
     {
-        long CreateOrder(List<ProductInCart> productInCarts, long clientAccountId, ShippingAddress shippingAddress, string paymentMethod);
+        long CreateOrder(List<ProductInCart> productInCarts, long clientAccountId, ShippingAddress shippingAddress, string paymentMethod, string couponCode = null);
         MomoPaymentResponse PaymentByMomo(long orderId, string returnUrl);
     }
 }

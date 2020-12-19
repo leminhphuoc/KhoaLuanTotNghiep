@@ -14,19 +14,36 @@ namespace FonNature.Services
         private readonly IHttpClientService _httpService;
         private readonly IFileHandlerService _fileHandlerService;
         private readonly IProductAdminRepository _productRepository;
-        public OrderService(IOrderRepository orderRepository, IHttpClientService httpService, IFileHandlerService fileHandlerService, IProductAdminRepository productRepository)
+        private readonly ICouponCodeRepository _couponCodeRepository;
+        public OrderService(IOrderRepository orderRepository, IHttpClientService httpService, IFileHandlerService fileHandlerService, IProductAdminRepository productRepository, ICouponCodeRepository couponCodeRepository)
         {
             _orderRepository = orderRepository;
             _httpService = httpService;
             _fileHandlerService = fileHandlerService;
             _productRepository = productRepository;
+            _couponCodeRepository = couponCodeRepository;
         }
 
-        public long CreateOrder(List<ProductInCart> productInCarts, long clientAccountId, ShippingAddress shippingAddress, string paymentMethod)
+        public long CreateOrder(List<ProductInCart> productInCarts, long clientAccountId, ShippingAddress shippingAddress, string paymentMethod, string couponCode = null)
         {
             try
             {
-                var order = new Order() { ClientAccountId = clientAccountId , ShippingAddress = shippingAddress.ParseToJson() , PaymentMethod = paymentMethod };
+                var discountValue = (decimal)0;
+                if(!string.IsNullOrWhiteSpace(couponCode))
+                {
+                    var coupon = _couponCodeRepository.GetCouponCode(couponCode);
+                    if(coupon != null)
+                    {
+                        var remainingQuantity = _couponCodeRepository.ReduceQuantity(couponCode);
+                        if(remainingQuantity != -1)
+                        {
+                            discountValue = coupon.DiscountValue;
+                        }
+
+                    }
+                }
+
+                var order = new Order() { ClientAccountId = clientAccountId , ShippingAddress = shippingAddress.ParseToJson() , PaymentMethod = paymentMethod, CouponCode = couponCode, Discount = discountValue };
                 var idOrder = _orderRepository.CreateOrder(order);
                 var subTotal = (decimal)0;
                 foreach (var product in productInCarts)
@@ -43,7 +60,7 @@ namespace FonNature.Services
                     subTotal += productInDb.promotionPrice == null ? (productInDb.price.Value * product.quantity) : (productInDb.promotionPrice.Value * product.quantity);
                 }
 
-                _orderRepository.UpdatePrice(order, subTotal, 0);
+                _orderRepository.UpdatePrice(order, subTotal, discountValue);
                 return idOrder;
             }
             catch

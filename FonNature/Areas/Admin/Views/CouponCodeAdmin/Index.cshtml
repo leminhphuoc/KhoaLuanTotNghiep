@@ -32,6 +32,7 @@
                             <th>No.</th>
                             <th>Code</th>
                             <th>DisplayName</th>
+                            <th>Quantity</th>
                             <th>#</th>
                         </tr>
                     </thead>
@@ -42,23 +43,26 @@
                                 foreach (var item in Model)
                                 {
                                     index++;
-                                    <tr id="row_@item.Code">
-                                        <td>@index</td>
-                                        <td><a href="/Admin/CouponCodeAdmin/Edit?code=@item.Code">@item.Code</a></td>
-                                        <td>
-                                            @item.DisplayName
-                                        </td>
-                                        <td>
-                                            <a href="/Admin/CouponCodeAdmin/Edit?code=@item.Code">Edit</a>
-                                            /
-                                            @Ajax.ActionLink("Delete", "Delete", new { @code = item.Code }, new AjaxOptions
-                                            {
-                                                Confirm = "Do you want remove this record?",
-                                                OnComplete = "$('#row_" + @item.Code + "').remove()",
-                                                HttpMethod = "Delete"
-                                            })
-                                        </td>
-                                    </tr>
+                                                <tr id="row_@item.Code">
+                                                    <td>@index</td>
+                                                    <td><a href="/Admin/CouponCodeAdmin/Edit?code=@item.Code">@item.Code</a></td>
+                                                    <td>
+                                                        @item.DisplayName
+                                                    </td>
+                                                    <td>
+                                                        @item.Quantity
+                                                    </td>
+                                                    <td>
+                                                        <a href="/Admin/CouponCodeAdmin/Edit?code=@item.Code">Edit</a>
+                                                        /
+                                                        @Ajax.ActionLink("Delete", "Delete", new { @code = item.Code }, new AjaxOptions
+                                                        {
+                                                            Confirm = "Do you want remove this record?",
+                                                            OnComplete = "$('#row_" + @item.Code + "').remove()",
+                                                            HttpMethod = "Delete"
+                                                        })
+                                                    </td>
+                                                </tr>
                                 }
                             }
                         }
