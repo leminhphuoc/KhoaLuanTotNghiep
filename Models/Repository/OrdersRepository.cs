@@ -124,5 +124,18 @@ namespace Models.Repository
                 return;
             }
         }
+
+        public List<OrderInformation> GetOrderInfors()
+        {
+            try
+            {
+                return _db.OrderInformations.ToList();
+            }
+            catch (Exception ex)
+            {
+                log.Error($"GetOrderInfors error: {ex.Message}");
+                return new List<OrderInformation>();
+            }
+        }
     }
 }

@@ -2049,6 +2049,7 @@
     <Content Include="Views\CustomError\DefaultError.cshtml" />
     <Content Include="Views\About\AboutTeamList.cshtml" />
     <Content Include="Views\About\AboutTestimonial.cshtml" />
+    <Content Include="Views\Membership\MyProfile.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

@@ -132,6 +132,7 @@
     </Compile>
     <Compile Include="Model\Enum\OrderStatus.cs" />
     <Compile Include="Model\EnvConfig.cs" />
+    <Compile Include="Model\MemberProfileViewModel.cs" />
     <Compile Include="Model\MomoPaymentRequest.cs" />
     <Compile Include="Model\MomoPaymentResponse.cs" />
     <Compile Include="Model\ResultModel.cs" />

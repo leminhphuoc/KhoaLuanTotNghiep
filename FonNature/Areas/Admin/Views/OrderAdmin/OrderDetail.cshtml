@@ -94,6 +94,31 @@
                                     </div>
                                 </div>
                                 <div class="form-group ">
+                                    <label class="control-label col-lg-3">Sub Total</label>
+                                    <div class="col-lg-6">
+                                        <input readonly class="form-control" type="text" value="@Model.SubTotal.ToString("N0") vnđ"/>
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Discount</label>
+                                    <div class="col-lg-6">
+                                        <input readonly class="form-control" type="text" value="@Model.Discount.ToString("N0") vnđ" />
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Coupon Code</label>
+                                    <div class="col-lg-6">
+                                        @*<input class="form-control " id="username" name="username" type="text">*@
+                                        @Html.EditorFor(model => model.CouponCode, new { htmlAttributes = new { @class = "form-control", @type = "text", @required = "required", @readonly = "readonly" } })
+                                    </div>
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label col-lg-3">Grand Total</label>
+                                    <div class="col-lg-6">
+                                        <input readonly class="form-control" type="text" value="@Model.GrandTotal.ToString("N0") vnđ" />
+                                    </div>
+                                </div>
+                                <div class="form-group ">
                                     <label for="MetaTitle" class="control-label col-lg-3">First Name</label>
                                     <div class="col-lg-6">
                                         <input type="text" class="form-control" name="FirstName" id="FirstName" value="@shippingAddress.FirstName" />
@@ -180,9 +205,9 @@
                                                             <td><img src="@product.ProductImage" style="max-width:100px" /></td>
                                                             <td>@product.Id</td>
                                                             <td>@product.ProductName</td>
-                                                            <td>@product.Price</td>
+                                                            <td>@product.Price.Value.ToString("N0") vnđ</td>
                                                             <td>@product.Quantity</td>
-                                                            <td>@product.TotalPrice</td>
+                                                            <td>@product.TotalPrice.Value.ToString("N0") vnđ</td>
                                                         </tr>
                                                         stt += 1;
                                                     }

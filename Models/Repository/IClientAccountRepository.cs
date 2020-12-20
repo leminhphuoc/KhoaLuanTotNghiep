@@ -10,5 +10,6 @@ namespace Models.Repository
         bool Edit(ClientAccount benefit);
         ClientAccount GetClientAccount(long id);
         List<ClientAccount> GetClientAccounts();
+        bool UpdateProfile(long clientAccountId, string newpwd, string firstName, string lastName);
     }
 }

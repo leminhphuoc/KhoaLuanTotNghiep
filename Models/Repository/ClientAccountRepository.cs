@@ -55,7 +55,6 @@ namespace Models.Repository
             try
             {
                 var editAccount = _db.ClientAccounts.Find(account.Id);
-                _db.SaveChanges();
                 editAccount.AgeRangeId = account.AgeRangeId;
                 editAccount.Birth = account.Birth;
                 editAccount.FirstName = account.FirstName;
@@ -66,11 +65,12 @@ namespace Models.Repository
                 editAccount.OccupationId = account.OccupationId;
                 editAccount.RegionId = account.RegionId;
                 editAccount.TitleId = account.TitleId;
+                _db.SaveChanges();
                 return true;
             }
             catch (Exception e)
             {
-                log.Error($"Error at edit function from {nameof(BenefitRepository)}: {e.Message}");
+                log.Error($"Error at edit function from {nameof(ClientAccountRepository)}: {e.Message}");
                 return false;
             }
         }
@@ -84,7 +84,7 @@ namespace Models.Repository
             }
             catch (Exception e)
             {
-                log.Error($"Error at Get Customer Account function from {nameof(ClientAccountRepository)}: {e.Message}");
+                log.Error($"Error at GetClientAccount function from {nameof(ClientAccountRepository)}: {e.Message}");
                 return null;
             }
         }
@@ -97,8 +97,37 @@ namespace Models.Repository
             }
             catch (Exception e)
             {
-                log.Error($"Error at Get Benefits {nameof(ClientAccountRepository)}: {e.Message}");
+                log.Error($"Error at GetClientAccounts {nameof(ClientAccountRepository)}: {e.Message}");
                 return new List<ClientAccount>();
+            }
+        }
+
+        public bool UpdateProfile(long clientAccountId, string newpwd, string firstName, string lastName)
+        {
+            if(string.IsNullOrWhiteSpace(newpwd) || clientAccountId == 0)
+            {
+                return false;
+            }
+            try
+            {
+                var accountUpdated = _db.ClientAccounts.Find(clientAccountId);
+                if(accountUpdated == null)
+                {
+                    log.Error($"Cannot find account when update profile {nameof(ClientAccountRepository)}");
+                    return false;
+                }
+
+                accountUpdated.PassWord = newpwd;
+                accountUpdated.FirstName = firstName;
+                accountUpdated.LastName = lastName;
+                _db.SaveChanges();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                log.Error($"Error at UpdatePassword {nameof(ClientAccountRepository)}: {e.Message}");
+                return false;
             }
         }
     }
