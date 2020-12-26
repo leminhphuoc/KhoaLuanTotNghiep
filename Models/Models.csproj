@@ -137,7 +137,7 @@
     <Compile Include="Model\MomoPaymentResponse.cs" />
     <Compile Include="Model\ResultModel.cs" />
     <Compile Include="Model\ShippingAddress.cs" />
-    <Compile Include="Model\TimeRange.cs" />
+    <Compile Include="Model\PeriodTime.cs" />
     <Compile Include="Repository\BenefitRepository.cs" />
     <Compile Include="Repository\BookingRepository.cs" />
     <Compile Include="Repository\ClientAccountRepository.cs" />

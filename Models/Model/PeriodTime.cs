@@ -1,8 +1,8 @@
 ﻿namespace Models.Model
 {
-    public class TimeRange
+    public class PeriodTime
     {
-        public TimeRange(int hour, int minute)
+        public PeriodTime(int hour, int minute)
         {
             Hour = hour;
             Minute = minute;

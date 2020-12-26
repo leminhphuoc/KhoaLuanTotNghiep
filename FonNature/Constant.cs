@@ -34,29 +34,17 @@ namespace FonNature
             public static readonly string AccountSession = "AccountSession";
         }
 
-        public static readonly Dictionary<int, TimeRange> TimeRanges = new Dictionary<int, TimeRange>()
+        public static readonly Dictionary<int, PeriodTime> TimeRanges = new Dictionary<int, PeriodTime>()
         {
-           { 1, new TimeRange(9,00) },
-           { 2, new TimeRange(9,30) },
-           { 3, new TimeRange(10,00) },
-           { 4, new TimeRange(10,30) },
-           { 5, new TimeRange(11,00) },
-           { 6, new TimeRange(11,30) },
-           { 7, new TimeRange(12,00) },
-           { 8, new TimeRange(12,30) },
-           { 9, new TimeRange(13,00) },
-           { 10, new TimeRange(13,30) },
-           { 11, new TimeRange(14,00) },
-           { 12, new TimeRange(14,30) },
-           { 13, new TimeRange(15,00) },
-           { 14, new TimeRange(15,30) },
-           { 15, new TimeRange(16,00) },
-           { 16, new TimeRange(16,30) },
-           { 17, new TimeRange(17,00) },
-           { 18, new TimeRange(17,30) },
-           { 19, new TimeRange(18,00) },
-           { 20, new TimeRange(18,30) },
-           { 21, new TimeRange(19,00) }
+           { 1, new PeriodTime(9,00) },
+           { 2, new PeriodTime(10,00) },
+           { 3, new PeriodTime(11,00) },
+           { 4, new PeriodTime(13,00) },
+           { 5, new PeriodTime(14,00) },
+           { 6, new PeriodTime(15,00) },
+           { 7, new PeriodTime(16,00) },
+           { 8, new PeriodTime(17,00) },
+           { 9, new PeriodTime(18,00) },
         };
 
         public static readonly Dictionary<int, string> OrderStatus = new Dictionary<int, string>()

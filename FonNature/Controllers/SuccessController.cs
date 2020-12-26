@@ -1,4 +1,5 @@
-﻿using Models.Repository;
+﻿using FonNature.Filter;
+using Models.Repository;
 using System.Web.Mvc;
 
 namespace FonNature.Controllers
@@ -8,9 +9,11 @@ namespace FonNature.Controllers
     public class SuccessController : Controller
     {
         private readonly IOrderRepository _orderRepository;
-        public SuccessController(IOrderRepository orderRepository)
+        private readonly IBookingRepository _bookingRepository;
+        public SuccessController(IOrderRepository orderRepository, IBookingRepository bookingRepository)
         {
             _orderRepository = orderRepository;
+            _bookingRepository = bookingRepository;
         }
 
         // GET: Success
@@ -20,6 +23,7 @@ namespace FonNature.Controllers
             return View();
         }
 
+        [AuthenticationClient]
         public ActionResult OrderSuccessPage(long orderID)
         {
             var order = _orderRepository.GetOrder(orderID);
@@ -29,6 +33,19 @@ namespace FonNature.Controllers
             }
 
             ViewBag.orderID = orderID;
+            return View();
+        }
+
+        [AuthenticationClient]
+        public ActionResult BookingSuccessPage(long bookingId)
+        {
+            var booking = _bookingRepository.GetBooking(bookingId);
+            if (booking == null)
+            {
+                return Redirect("/");
+            }
+
+            ViewBag.bookingId = bookingId;
             return View();
         }
     }

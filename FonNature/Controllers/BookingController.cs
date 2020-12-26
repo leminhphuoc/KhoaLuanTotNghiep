@@ -1,4 +1,5 @@
-﻿using FonNature.Services;
+﻿using FonNature.Filter;
+using FonNature.Services;
 using Models.Entity;
 using Models.Repository;
 using System;
@@ -24,6 +25,7 @@ namespace FonNature.Controllers
             _serviceRepository = serviceRepository;
         }
 
+        [AuthenticationClient]
         public ActionResult Index()
         {
             var isLogin = false;
@@ -41,7 +43,7 @@ namespace FonNature.Controllers
         }
 
         [HttpPost]
-        public ActionResult Book(Booking booking,int timeRangeId)
+        public ActionResult Book(Booking booking)
         {
             var account = Session[Constant.Membership.AccountSession] as ClientAccount;
             if (account == null)
@@ -51,17 +53,17 @@ namespace FonNature.Controllers
 
             if (ModelState.IsValid)
             {
-                var timeRange = Constant.TimeRanges.FirstOrDefault(x => x.Key.Equals(timeRangeId)).Value;
+                var timeRange = Constant.TimeRanges.FirstOrDefault(x => x.Key.Equals(booking.PeriodTime)).Value;
                 booking.ClientAccountId = account.Id;
                 booking.ArrivalTime = booking.ArrivalTime.AddHours(timeRange.Hour);
                 booking.ArrivalTime = booking.ArrivalTime.AddMinutes(timeRange.Minute);
                 var bookingId = _service.BookService(booking);
                 if(bookingId != 0)
                 {
-                    return RedirectToAction("OrderSuccessPage", "Success", new { orderID = bookingId });
+                    return RedirectToAction("BookingSuccessPage", "Success", new { bookingId = bookingId });
                 }
             }
-            ViewBag.TimeRangeId = timeRangeId;
+            ViewBag.TimeRangeId = booking.PeriodTime;
             ViewBag.Services = _serviceRepository.GetServices();
             return View("Index");
         }

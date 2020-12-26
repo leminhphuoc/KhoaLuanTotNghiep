@@ -51,24 +51,25 @@
                 <div class="col-sm-6">
                     <label class="wrap-input js-call-datepicker" data-drop="down" data-drop-inside="true">
                         <input required type="text" name="ArrivalTime" id="ArrivalTime" autocomplete="off">
+                        @Html.ValidationMessageFor(m => m.ArrivalTime, "", new { @class = "text-danger" })
                         <i class="icon-calendar"></i>
                     </label>
-                    @Html.ValidationMessageFor(m => m.ArrivalTime, "", new { @class = "text-danger" })
                 </div>
 
                 <div class="col-sm-6">
                     <label class="wrap-input js-call-select2" data-style="layout-1">
-                        <select required id="timeRangeId" name="timeRangeId">
+                        <select required id="PeriodTime" name="PeriodTime">
+                            <option selected value="0" disabled="disabled">Select arrival time*</option>
                             @foreach (var range in Constant.TimeRanges)
                             {
                                 var timeSpan = new TimeSpan(range.Value.Hour, range.Value.Minute, 0);
                                 <option value="@range.Key">@timeSpan.ToString(@"hh\:mm")</option>
                             }
                         </select>
+                        @Html.ValidationMessageFor(m => m.PeriodTime, "", new { @class = "text-danger" })
                         <i class="icon-clock"></i>
                     </label>
                 </div>
-
                 <div class="col-sm-6">
                     <label class="wrap-input js-call-select2" data-style="layout-1">
                         <select id="ServiceId" name="ServiceId">
@@ -88,7 +89,7 @@
                             }
                             else
                             {
-                                <option value="0">Services *</option>
+                                <option value="0">Select Services *</option>
                                 foreach (var services in servicesList)
                                 {
                                     <option value="@services.Id">@services.Name</option>

@@ -16,6 +16,10 @@
         public DateTime EndTime { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select arrival time!")]
+        public int PeriodTime{ get; set; }
+
+        [Required]
         public long ClientAccountId { get; set; }
 
         [Required]
