@@ -1,4 +1,5 @@
-﻿using Models.Entity;
+﻿using FonNature.Filter;
+using Models.Entity;
 using Models.Repository;
 using PagedList;
 using System;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
 {
+    [AuthData]
     public class CouponCodeAdminController : Controller
     {
         private readonly ICouponCodeRepository _repository;

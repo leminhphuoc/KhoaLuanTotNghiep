@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 /*!
  * Material Design for Bootstrap 4
@@ -10802,6 +10802,8 @@ body.scrollable {
 .md-form textarea.md-textarea+label::after {
     position: absolute;
     top: 65px;
+    width:300px;
+    margin-top:5px;
     display: block;
     content: "";
     opacity: 0;

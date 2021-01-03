@@ -1,0 +1,870 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Models.Entity.About" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgABAAkAAAAAQAAAAAABAAAAAAAAAACAA=</HashCode>
+      <FileName>Entity\About.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.AccountAdmin" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAABAEAAAAAAAAEAAgA=</HashCode>
+      <FileName>Entity\AccountAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Banner" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAIAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Banner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Benefit" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Benefit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Booking" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCACCCAAACAAAAAAAAEAAAAAAgAAAAAAAAoAAAAAA=</HashCode>
+      <FileName>Entity\Booking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.ClientAccount" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAGAkAkQCAAAAAEAAAAAAAAIAAAMEEGAAAAAAAAAAg=</HashCode>
+      <FileName>Entity\ClientAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Contact" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAAAAACAAIEAAAAAAAAAABAAAAEACAAAAAAAAAgA=</HashCode>
+      <FileName>Entity\Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Content" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAEIEQgAAAAEAAEAAIAAAAIAAJAAgE=</HashCode>
+      <FileName>Entity\Content.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.ContentCategory" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAAAAAAAggAAAAAAEAAIAAAAIAAIAAgA=</HashCode>
+      <FileName>Entity\ContentCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.CouponCode" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAEAAAAAAgAAAAAIAgAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Entity\CouponCode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Dictionary" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Entity\Dictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.District" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\District.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.FonNatureDbContext" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hAEAASiAIRAiAAEgAhIAAAICESAAIiAACSAAgARDBAQ=</HashCode>
+      <FileName>Entity\FonNatureDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Footer" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAAAAAAAAAAAAAAAAAAAIAAAAIAEAAkA=</HashCode>
+      <FileName>Entity\Footer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.FooterCategory" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Entity\FooterCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.GenderCustomer" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\GenderCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.IPAddress" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Entity\IPAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.MaritalStatusCustomer" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\MaritalStatusCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Membership" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Membership.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Menu" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAAAAAAAAAAAAAAAAAAAIAAAAIAAAAkA=</HashCode>
+      <FileName>Entity\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.MenuType" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Entity\MenuType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.OccupationCustomer" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\OccupationCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Order" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADQASAQAAAAAAAAAAEAAAAAAAAABAAAgAAAAIAAAA=</HashCode>
+      <FileName>Entity\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.OrderInformation" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAiAAAAAA=</HashCode>
+      <FileName>Entity\OrderInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.OrderStatus" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Page" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAAAAAAAABAAQAAAAAAAAACAgAAABAAAA=</HashCode>
+      <FileName>Entity\Page.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Product" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAQhgAAAAAAAAAACIEAAAAAAEAAEIAAAACgIAAZAAgA=</HashCode>
+      <FileName>Entity\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.ProductCategory" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEAAAAAAAAAggAAAAAAEAAIAAAAIAAIAAgA=</HashCode>
+      <FileName>Entity\ProductCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Region" Collapsed="true">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Region.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Room" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.SEO" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAQAAAAAAAAgAAgAAABAAAA=</HashCode>
+      <FileName>Entity\SEO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Service" Collapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAEAQAiAAAAAAAAggQAAAAAABAABkgAAABgKAA=</HashCode>
+      <FileName>Entity\Service.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.ServiceCategory" Collapsed="true">
+    <Position X="16.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACQAAECAAAAAAAAAAAAAQAIgAAAAAAAgAAgAAAAAA=</HashCode>
+      <FileName>Entity\ServiceCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Slide" Collapsed="true">
+    <Position X="5.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAASEAAAIAAAAAAAEAAkAAAAAIAAAAAAAIAAkA=</HashCode>
+      <FileName>Entity\Slide.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.Staff" Collapsed="true">
+    <Position X="9.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAACCAAAAAgAAAAAAQEEAAAAAICAAAAIAIAAAA=</HashCode>
+      <FileName>Entity\Staff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.TitleCustomer" Collapsed="true">
+    <Position X="12.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entity\TitleCustomer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.UsefulInformation" Collapsed="true">
+    <Position X="14.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Entity\UsefulInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Entity.VisitorByTime" Collapsed="true">
+    <Position X="16.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Entity\VisitorByTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Migrations.Initial" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\201912240333276_Initial.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.CreateOrder" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202001210943023_[-CreateOrder].cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.CreateStatus" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202001211000380_[-CreateStatus].cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.AddSEOTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202002190508253_[-AddSEOTable].cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.AddBanner" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202004281002462_[-AddBanner].cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.AddDictionary" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202008220403371_Add-Dictionary.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.CreatePageTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202008271507506_CreatePageTable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.CreateServiceTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202010141412488_CreateServiceTable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.AddCliendAcctountAndMembership" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202010261542343_AddCliendAcctountAndMembership.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.RenameClientAccount" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202010310825264_RenameClientAccount.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.CreateClientAccount" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202010311218289_CreateClientAccount.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.addclietAccount" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202010311220045_add-clietAccount.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.AddBooking" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202011021531569_AddBooking.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.CreateCouponCode" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202012120949507_CreateCouponCode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.CreateRoomTable" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202012270055107_CreateRoomTable.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Migrations.Configuration" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.Cart" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Cart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.EnvConfig" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAJAAAAAAAAAAEAAEIAAAAAAAAA=</HashCode>
+      <FileName>Model\EnvConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.MemberProfileViewModel" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MemberProfileViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.MomoPaymentRequest" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIBAAAAAAAAAQAAAABAACgAAAAAEAAIAIAAAAAAAE=</HashCode>
+      <FileName>Model\MomoPaymentRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.MomoPaymentResponse" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEAAAQAgAAAAAAQAQAAAAAAAAAgAAEAAAAAAIAAAAAE=</HashCode>
+      <FileName>Model\MomoPaymentResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.OrderProduct" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAEAAQAAAAAAAAAAAAAAAAAAQAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Model\OrderProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.PeriodTime" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\PeriodTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.ProductInCart" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ProductInCart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.ResultModel&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Model\ResultModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.SearchItem" Collapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAAAAAABAAAQAAQAAAAAA=</HashCode>
+      <FileName>Model\SearchItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Model.ShippingAddress" Collapsed="true">
+    <Position X="4" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAUAAAAAACAAAAAAAEAAAAAAAAEACEAAAAAAAAAg=</HashCode>
+      <FileName>Model\ShippingAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Models.Repository.AboutAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAQAAAAgEAAAEAAAAAUAAAAgAAAAAwAAAAA=</HashCode>
+      <FileName>Repository\AboutAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.AccountAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAiEQAAAAAAAAUAAAIAAAACAIAAAAA=</HashCode>
+      <FileName>Repository\AccountAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.BannerRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAgAAAAAAAAAAgEAAACAAAAAEAAAACAAAAAAAAAAI=</HashCode>
+      <FileName>Repository\BannerRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.BenefitRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAgAAAAAAAAAAgEAAACAIAAAEAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\BenefitRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.BookingRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAgCAIAAAAAAMQCACAAAAAAQIAAAAAQAAAAIAAA=</HashCode>
+      <FileName>Repository\BookingRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.ClientAccountRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAgBAAAAAAAAAAEAAACIAAAEEAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Repository\ClientAccountRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.ContactAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAIAAAAEAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Repository\ContactAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.ContentAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAEBAAAAgFAAAAAAAAAUAAAAAAAAAAAEAEAA=</HashCode>
+      <FileName>Repository\ContentAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.ContentCategoryAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgAAAAAQAEAAgEAAAAAABAAUAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Repository\ContentCategoryAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.CouponCodeRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBCAgAAAAAAAAQAAFAABCAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\CouponCodeRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.DictionaryRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAGAAAAAAgAEAAACAABACAAAAAAAAAQAABAAAA=</HashCode>
+      <FileName>Repository\DictionaryRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.FooterAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAgAAAAQAAAAAgEAAAAQBAAAUAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\FooterAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.FooterCategoryAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAggACAAAAAAAgEAAABAAAAAEAAAAAAAAgAgAAAAA=</HashCode>
+      <FileName>Repository\FooterCategoryAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.IPAddressRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAABAEAAAAAAAAAAAAAAAAAAAAAAAQIA=</HashCode>
+      <FileName>Repository\IPAddressRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.MenuAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAEgEACAAAAAgAUAAIAAAAAEAAAAAAA=</HashCode>
+      <FileName>Repository\MenuAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.MenuTypeAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgABAAAAACAEgEAIAEAAAAAEAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Repository\MenuTypeAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.OrdersRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAgQAAAQAYAAAAEAAACAAAAAAAAAAAgAABAAAAAAA=</HashCode>
+      <FileName>Repository\OrdersRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.PageRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACgAAAAAAAAAAAMAAACAACAAARgAAAAAAAAAACAAA=</HashCode>
+      <FileName>Repository\PageRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.ProductAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAECIAAAgEAAAcAQACAUAAAAAgAAAAgAAAAA=</HashCode>
+      <FileName>Repository\ProductAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.ProductCategoryAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAICAAgEAAAAgACAAUAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Repository\ProductCategoryAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.SEORepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAAAAAAAEAAAAAAAIAAgAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\SEORepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.ServiceCategoryRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAgAQAAAAQEAAAGAAAAAAAAAAAAIAAAAAACAA=</HashCode>
+      <FileName>Repository\ServiceCategoryRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.ServiceRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAACAAAAAGAIACAAECAAAAAAAAAAAACCAAEQ=</HashCode>
+      <FileName>Repository\ServiceRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.SlideAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgCAAAAAAACAiEAAAAAAAAAUAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Repository\SlideAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.StaffAdminRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAgCQAAAAAgEAAAAAAAAAUAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Repository\StaffAdminRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Models.Repository.VisitorRepository" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\VisitorRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Models.Repository.IAboutAdminRepository" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAgAAAAEAAAAAUAAAAgAAAAAwAAAAA=</HashCode>
+      <FileName>Repository\IAboutAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IAccountAdminRepository" Collapsed="true">
+    <Position X="2.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAiAQAAAAAAAAUAAAIAAAACAIAAAAA=</HashCode>
+      <FileName>Repository\IAccountAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IBannerRepository" Collapsed="true">
+    <Position X="4" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAgAAAAAAAAAAEAAAACAAAAAAAAAAI=</HashCode>
+      <FileName>Repository\IBannerRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IBenefitRepository" Collapsed="true">
+    <Position X="5.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAgAAAAAAIAAAEAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\IBenefitRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IBookingRepository" Collapsed="true">
+    <Position X="7.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgCAIAAAAAAIQCAAAAAAAAQIAAAAAQAAAAIAAA=</HashCode>
+      <FileName>Repository\IBookingRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IClientAccountRepository" Collapsed="true">
+    <Position X="9.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAABAAAAAAAAAAAAAAAIAAAEEAAAACAAAAAAIAAAA=</HashCode>
+      <FileName>Repository\IClientAccountRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IContactAdminRepository" Collapsed="true">
+    <Position X="11" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Repository\IContactAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IContentAdminRepository" Collapsed="true">
+    <Position X="12.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEBAAAAgBAAAAAAAAAUAAAAAAAAAAAEAEAA=</HashCode>
+      <FileName>Repository\IContentAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IContentCategoryAdminRepository" Collapsed="true">
+    <Position X="14.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAQAEAAgAAAAAAABAAUAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Repository\IContentCategoryAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.ICouponCodeRepository" Collapsed="true">
+    <Position X="16.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBCAAAAAAAAAAQAABAABAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\ICouponCodeRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IDictionaryRepository" Collapsed="true">
+    <Position X="0.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAGAAAAAAgAAAAAAAABACAAAAAAAAAQAABAAAA=</HashCode>
+      <FileName>Repository\IDictionaryRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IFooterAdminRepository" Collapsed="true">
+    <Position X="2.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAQAAAAAgAAAAAQBAAAUAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\IFooterAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IFooterCategoryAdminRepository" Collapsed="true">
+    <Position X="4" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgACAAAAAAAgAAAABAAAAAEAAAAAAAAgAgAAAAA=</HashCode>
+      <FileName>Repository\IFooterCategoryAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IIPAddressRepository" Collapsed="true">
+    <Position X="5.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Repository\IIPAddressRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IMenuAdminRepository" Collapsed="true">
+    <Position X="7.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEgAACAAAAAgAUAAIAAAAAEAAAAAAA=</HashCode>
+      <FileName>Repository\IMenuAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IMenuTypeAdminRepository" Collapsed="true">
+    <Position X="9.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAACAEgAAIAEAAAAAEAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Repository\IMenuTypeAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IOrderRepository" Collapsed="true">
+    <Position X="11" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAAQAAAQAYAAAAAAAAAAAAAAAAAAAAgAABAAAAAAA=</HashCode>
+      <FileName>Repository\IOrderRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IPageRepository" Collapsed="true">
+    <Position X="12.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAIAAAAAACAAARgAAAAAAAAAACAAA=</HashCode>
+      <FileName>Repository\IPageRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IProductAdminRepository" Collapsed="true">
+    <Position X="14.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACIAAAgAAAAcAAACAUAAAAAgAAAAgAAAAA=</HashCode>
+      <FileName>Repository\IProductAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IProductCategoryAdminRepository" Collapsed="true">
+    <Position X="16.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAICAAgAAAAAgACAAUAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Repository\IProductCategoryAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.ISEORepository" Collapsed="true">
+    <Position X="0.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAIAAgAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\ISEORepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IServiceCategoryRepository" Collapsed="true">
+    <Position X="2.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAQAAAAQAAAAEAAAAAAAAAAAAIAAAAAACAA=</HashCode>
+      <FileName>Repository\IServiceCategoryRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IServiceRepository" Collapsed="true">
+    <Position X="4" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAACAIAAAAECAAAAAAAAAAAACCAAEQ=</HashCode>
+      <FileName>Repository\IServiceRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.ISlideAdminRepository" Collapsed="true">
+    <Position X="5.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAACAiAAAAAAAAAAUAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Repository\ISlideAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Models.Repository.IStaffAdminRepository" Collapsed="true">
+    <Position X="7.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAgCQAAAAAgAAAAAAAAAAUAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Repository\IStaffAdminRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Models.Model.Enum.OrderStatus" Collapsed="true">
+    <Position X="0.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Model\Enum\OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Models.Model.Enum.SearchItemType" Collapsed="true">
+    <Position X="2.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Enum\SearchItemType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -10,10 +10,12 @@ namespace FonNature.Controllers
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IBookingRepository _bookingRepository;
-        public SuccessController(IOrderRepository orderRepository, IBookingRepository bookingRepository)
+        private readonly IClientAccountRepository _clientAccountRepository;
+        public SuccessController(IOrderRepository orderRepository, IBookingRepository bookingRepository, IClientAccountRepository clientAccountRepository)
         {
             _orderRepository = orderRepository;
             _bookingRepository = bookingRepository;
+            _clientAccountRepository = clientAccountRepository;
         }
 
         // GET: Success
@@ -46,6 +48,22 @@ namespace FonNature.Controllers
             }
 
             ViewBag.bookingId = bookingId;
+            return View();
+        }
+
+        public ActionResult RegisterSuccess(string email)
+        {
+            if(string.IsNullOrWhiteSpace(email))
+            {
+                return Redirect("/");
+            }
+
+            if(!_clientAccountRepository.IsExistEmail(email))
+            {
+                return Redirect("/");
+            }
+
+            ViewBag.Email = email;
             return View();
         }
     }

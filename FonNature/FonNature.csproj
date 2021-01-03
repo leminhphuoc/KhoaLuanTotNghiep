@@ -219,6 +219,7 @@
     <Compile Include="Areas\Admin\Controllers\AccountAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BannerAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BenefitAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BookingAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContactAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentCategoryAdminController.cs" />
@@ -240,6 +241,7 @@
     <Compile Include="Areas\Admin\Controllers\SlideAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\StaffAdminController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Authentication\Cipher.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -270,6 +272,7 @@
     <Compile Include="Services\BookingService.cs" />
     <Compile Include="Services\DictionaryService.cs" />
     <Compile Include="Services\Extension\JsonHandler.cs" />
+    <Compile Include="Services\Extension\StringExtension.cs" />
     <Compile Include="Services\FileHandlerService.cs" />
     <Compile Include="Services\HttpClientService.cs" />
     <Compile Include="Services\IBookingService.cs" />
@@ -343,6 +346,7 @@
     <Content Include="Asset\Admin\Controller\ServicesController.js" />
     <Content Include="Asset\Admin\Controller\SlideController.js" />
     <Content Include="Asset\Admin\css\bootstrap.min.css" />
+    <Content Include="Asset\Admin\css\custom.client.css" />
     <Content Include="Asset\Admin\css\custom.css" />
     <Content Include="Asset\Admin\css\font-awesome.css" />
     <Content Include="Asset\Admin\css\font.css" />
@@ -641,6 +645,7 @@
     <Content Include="Asset\Client\js\quickview.js" />
     <Content Include="Asset\Client\js\vendor\jquery-1.12.4.min.js" />
     <Content Include="Asset\Client\js\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="Asset\Client\Mail\ConfirmRegister.html" />
     <Content Include="Asset\Client\Mail\Subscribe.html" />
     <Content Include="Asset\Client\Mail\Message.html" />
     <Content Include="Asset\Client\php\mail.php" />
@@ -2013,6 +2018,8 @@
     <Content Include="Areas\Admin\Views\CouponCodeAdmin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\CouponCodeAdmin\Create.cshtml" />
     <Content Include="Areas\Admin\Views\CouponCodeAdmin\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BookingAdmin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BookingAdmin\Book.cshtml" />
     <None Include="Properties\PublishProfiles\fondekao - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fondekao - Web Deploy.pubxml" />
@@ -2051,6 +2058,7 @@
     <Content Include="Views\About\AboutTestimonial.cshtml" />
     <Content Include="Views\Membership\MyProfile.cshtml" />
     <Content Include="Views\Success\BookingSuccessPage.cshtml" />
+    <Content Include="Views\Success\RegisterSuccess.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

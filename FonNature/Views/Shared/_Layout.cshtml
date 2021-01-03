@@ -43,7 +43,7 @@
     @RenderSection("cssHeader", required: false)
     <link href="~/Asset/Client/css/plugins.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Asset/MdBootrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Asset/MdBootrap/css/mdb.min.css">
+    <link rel="stylesheet" href="~/Asset/MdBootrap/css/mdb.css">
     <link href="~/Asset/noty/lib/themes/metroui.css" rel="stylesheet" />
     <link href="~/Asset/noty/lib/noty.css" rel="stylesheet" />
     <!--===============================================================================================-->
@@ -74,40 +74,40 @@
 
             @{Html.RenderAction("MainMenu", "Home");}
 
-        <div class="group-feature">
-            @{Html.RenderAction("BookNav", "Home");} 
-            @{Html.RenderAction("TopAccountNav", "Home");}
-            @{Html.RenderAction("MiniCart", "Home");}
-            <div class="hun-element-search layout-1">
-                <span class="search-open">
-                    <i class="zmdi zmdi-search"></i>
-                </span>
+            <div class="group-feature">
+                @{Html.RenderAction("BookNav", "Home");}
+                @{Html.RenderAction("TopAccountNav", "Home");}
+                @{Html.RenderAction("MiniCart", "Home");}
+                @*<div class="hun-element-search layout-1">
+                    <span class="search-open">
+                        <i class="zmdi zmdi-search"></i>
+                    </span>
 
-                <div class="search-form">
-                    <span class="search-close"></span>
+                    <div class="search-form">
+                        <span class="search-close"></span>
 
-                    <form>
-                        <input type="text" class="search-field" />
-                        <span class="search-notice"> Hit enter to search or ESC to close</span>
-                    </form>
+                        <form>
+                            <input type="text" class="search-field" />
+                            <span class="search-notice"> Hit enter to search or ESC to close</span>
+                        </form>
 
-                    <ul class="list-result"></ul>
-                </div>
-            </div>
-
-            <div class="hun-menu-mobile">
-                <a href="#" class="btn-toggle-menu"></a>
-
-                <nav class="mobile-navigation">
-                    <div class="logo-menu-mobile">
-                        <a href="/">
-                            <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
-                        </a>
+                        <ul class="list-result"></ul>
                     </div>
-                </nav>
-            </div>
+                </div>*@
 
-        </div>
+                <div class="hun-menu-mobile">
+                    <a href="#" class="btn-toggle-menu"></a>
+
+                    <nav class="mobile-navigation">
+                        <div class="logo-menu-mobile">
+                            <a href="/">
+                                <img src="/Asset/Spa/images/icons/logo-02.png" alt="IMG">
+                            </a>
+                        </div>
+                    </nav>
+                </div>
+
+            </div>
         </div>
     </header>
     <!-- end Header -->
@@ -179,25 +179,40 @@
                             <!--Body-->
                             <div class="modal-body">
                                 <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-user prefix"></i>
+                                    <input name="FirstName" type="text" id="first-name-register" class="form-control form-control-sm validate">
+                                    <label data-error="Invalid!" data-success="Valid!" for="first-name-register">Your First Name</label>
+                                </div>
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-user prefix"></i>
+                                    <input name="LastName" type="text" id="last-name-register" class="form-control form-control-sm validate">
+                                    <label data-error="Invalid!" data-success="Valid!" for="last-name-register">Your LastName</label>
+                                </div>
+                                <div class="md-form form-sm mb-5">
+                                    <i class="fas fa-phone prefix"></i>
+                                    <input name="MobilePhone" type="text" id="mobilephone-register" class="form-control form-control-sm">
+                                    <label id="label-mobilephone-register" data-error="Invalid format or have already registered!" data-success="Valid!" for="mobilephone-register">Your mobile phone</label>
+                                </div>
+                                <div class="md-form form-sm mb-5">
                                     <i class="fas fa-envelope prefix"></i>
-                                    <input type="email" id="modalLRInput12" class="form-control form-control-sm validate">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput12">Your email</label>
+                                    <input name="Email" type="email" id="email-register" class="form-control form-control-sm">
+                                    <label data-error="Invalid format or have already registered!" data-success="Valid!" for="email-register">Your email</label>
                                 </div>
 
                                 <div class="md-form form-sm mb-5">
                                     <i class="fas fa-lock prefix"></i>
-                                    <input type="password" id="modalLRInput13" class="form-control form-control-sm validate">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput13">Your password</label>
+                                    <input name="PassWord" type="password" id="password-register" class="form-control form-control-sm">
+                                    <label data-error="Password must have minimum eight characters, at least one letter and one number!" data-success="Valid!" for="password-register">Your password</label>
                                 </div>
 
-                                <div class="md-form form-sm mb-4">
+                                <div class="md-form form-sm mb-5">
                                     <i class="fas fa-lock prefix"></i>
-                                    <input type="password" id="modalLRInput14" class="form-control form-control-sm validate">
-                                    <label data-error="wrong" data-success="right" for="modalLRInput14">Repeat password</label>
+                                    <input name="RepeatPassword" type="password" id="repeatpassword-register" class="form-control form-control-sm validate">
+                                    <label data-error="Not match with password!" data-success="Valid!" for="repeatpassword-register">Repeat password</label>
                                 </div>
 
                                 <div class="text-center form-sm mt-2">
-                                    <button class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
+                                    <button id="btn-register-form" disabled class="btn btn-info">Sign up <i class="fas fa-sign-in ml-1"></i></button>
                                 </div>
 
                             </div>
@@ -214,6 +229,32 @@
                 </div>
             </div>
             <!--/.Content-->
+        </div>
+    </div>
+    <div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-success" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="heading lead">Modal Success</p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+                        <p>
+                            Email have sent to you, please check and confirm your account!
+                        </p>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <a type="button" class="btn btn-success" data-dismiss="modal">Apply</i></a>
+                    <a type="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">No, thanks</a>
+                </div>
+            </div>
         </div>
     </div>
     @*<script src="~/Asset/Client/js/vendor/jquery-1.12.4.min.js"></script>*@

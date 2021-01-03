@@ -84,6 +84,7 @@
     <Compile Include="Entity\OrderStatus.cs" />
     <Compile Include="Entity\Page.cs" />
     <Compile Include="Entity\Region.cs" />
+    <Compile Include="Entity\Room.cs" />
     <Compile Include="Entity\Service.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\ServiceCategory.cs" />
@@ -129,6 +130,10 @@
     <Compile Include="Migrations\202012120949507_CreateCouponCode.cs" />
     <Compile Include="Migrations\202012120949507_CreateCouponCode.Designer.cs">
       <DependentUpon>202012120949507_CreateCouponCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012270055107_CreateRoomTable.cs" />
+    <Compile Include="Migrations\202012270055107_CreateRoomTable.Designer.cs">
+      <DependentUpon>202012270055107_CreateRoomTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Enum\OrderStatus.cs" />
     <Compile Include="Model\EnvConfig.cs" />
@@ -271,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012120949507_CreateCouponCode.resx">
       <DependentUpon>202012120949507_CreateCouponCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012270055107_CreateRoomTable.resx">
+      <DependentUpon>202012270055107_CreateRoomTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

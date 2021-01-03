@@ -1,0 +1,162 @@
+﻿@model PagedList.IPagedList<Models.Entity.Booking>
+@{
+    ViewBag.Title = "Booking List";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@{
+    var clients = ViewBag.Clients as List<Models.Entity.ClientAccount>;
+    var services = ViewBag.Services as List<Models.Entity.Service>;
+    var rooms = ViewBag.Rooms as List<Models.Entity.Room>;
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Booking List
+            </div>
+            <div class="row w3-res-tb">
+                <div class="col-sm-5 m-b-xs">
+                </div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-3">
+                    @using (Html.BeginForm("Index", "BookingAdmin", FormMethod.Get, new { @class = "input-group" }))
+                    {
+                        <p>Please input mobile phone:</p>
+                        <form class="form-inline md-form mr-auto mb-4">
+                            <input name="searchString" id="searchString" value="@ViewBag.SearchString" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn info-color btn-rounded btn-sm my-0" type="submit">Search</button>
+                        </form>
+                    }
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Client Name</th>
+                            <th class="text-center">Client MobilePhone</th>
+                            <th class="text-center">Service</th>
+                            <th class="text-center">Booking Date</th>
+                            <th class="text-center">Arrival Time</th>
+                            <th class="text-center">Room</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ if (Model != null && clients != null && clients.Any())
+                            {
+                                foreach (var item in Model)
+                                {
+                                    var client = clients.FirstOrDefault(x => x.Id.Equals(item.ClientAccountId));
+                                    if (client == null)
+                                    {
+                                        continue;
+                                    }
+                                    var arrivalTime = new Models.Model.PeriodTime(0, 0);
+                                    FonNature.Constant.TimeRanges.TryGetValue(item.PeriodTime, out arrivalTime);
+                                    var timeSpan = new TimeSpan(0, 0, 0);
+                                    if (arrivalTime != null)
+                                    {
+                                        timeSpan = new TimeSpan(arrivalTime.Hour, arrivalTime.Minute, 0);
+                                    }
+
+                                                <tr id="row_@item.Id">
+                                                    <td><a style="color:blue !important" href="/Admin/BookingAdmin/Edit/@item.Id">@item.Id</a></td>
+                                                    <td>
+                                                        @(client.FirstName + " " + client.LastName)
+                                                    </td>
+                                                    <td> @client.MobilePhone</td>
+                                                    <td>
+                                                        @if (services != null && services.Any())
+                                                        {
+                                                            var service = services.FirstOrDefault(x => x.Id.Equals(item.ServiceId));
+                                                            if (service != null)
+                                                            {
+                                                                @: @service.Name
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @item.ArrivalTime.ToString("dd/MM/yyyy")
+                                                    </td>
+                                                    <td>@timeSpan.ToString(@"hh\:mm")</td>
+                                                    <td>
+                                                        @if (rooms != null && rooms.Any())
+                                                        {
+                                                            var room = rooms.FirstOrDefault(x => x.Id.Equals(item.RoomId));
+                                                            if (room != null)
+                                                            {
+                                                                @: @room.DisplayName
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td class="@(item.IsCancel? "danger-color text-dark" : "success-color text-dark")">@(item.IsCancel? "Canceled" : "Active")</td>
+                                                    <td>
+                                                        @if (!item.IsCancel)
+                                                        {
+                                                            @Ajax.ActionLink("Cancel", "CancelBooking", new { @id = item.Id }, new AjaxOptions
+                                                   {
+                                                       Confirm = "Do you cancel this booking?",
+                                                       OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                                       HttpMethod = "Get"
+                                                   }, new { @class = "btn btn-blue" })
+                                                        }
+                                                    </td>
+                                                </tr>
+                                }
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <footer class="panel-footer">
+                @if (Model != null)
+                {
+                    <div class="row">
+                        <div class="col-sm-5 text-center">
+                            @*<small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>*@
+                        </div>
+                        <div class="col-sm-7 text-right text-center-xs">
+                            <ul class="pagination pagination-sm m-t-none m-b-none">
+                                @{
+                                    var preValue = Model.PageNumber;
+                                    if (Model.PageNumber > 1)
+                                    {
+                                        preValue = Model.PageNumber - 1;
+                                    }
+                                    var nextValue = Model.PageNumber;
+                                    if (Model.PageNumber < Model.PageCount)
+                                    {
+                                        nextValue = Model.PageNumber + 1;
+                                    }
+                                }
+
+                                @if (!preValue.Equals(Model.PageNumber))
+                                {
+                                    <li><a href="/Admin/BookingAdmin/Index?page=@preValue&&searchString=@ViewBag.SearchString"><i class="fa fa-chevron-left"></i></a></li>
+                                }
+
+                                @for (int i = 1; i <= Model.PageCount; i++)
+                                {
+                                    <li><a href="/Admin/BookingAdmin/Index?page=@i&&searchString=@ViewBag.SearchString">@i</a></li>
+                                }
+
+                                @if (!nextValue.Equals(Model.PageNumber))
+                                {
+                                    <li><a href="/Admin/BookingAdmin/Index?page=@nextValue&&searchString=@ViewBag.SearchString"><i class="fa fa-chevron-right"></i></a></li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </footer>
+        </div>
+    </div>
+</section>
+

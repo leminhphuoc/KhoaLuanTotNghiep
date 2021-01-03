@@ -1,0 +1,284 @@
+﻿@model List<Models.Entity.Room>
+@{
+    ViewBag.Title = "Book";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section cssHeader{
+    <link href="~/Asset/Admin/css/custom.client.css" rel="stylesheet" />
+}
+@{
+    var bookings = ViewBag.Bookings as List<Models.Entity.Booking>;
+    if(bookings != null && bookings.Any())
+    {
+        bookings = bookings.Where(x => !x.IsCancel).ToList();
+    }
+    var selectedDate = ViewBag.SelectedDate as DateTime?;
+    var servicesList = ViewBag.ServiceList as List<Models.Entity.Service>;
+}
+
+@section jsFooter
+{
+    <script>
+        $(".btn-book-infor").on('click', function () {
+            var bookingId = $(this).data('bookingid');
+            $.ajax({
+                url: "/admin/bookingadmin/GetBookingInfo",
+                data: { bookingId: bookingId },
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    if (!res.isError) {
+
+                        $("#inputFirstName").val(res.result.FirstName);
+                        $("#inputLastName").val(res.result.LastName);
+                        $("#inputMobilePhone").val(res.result.MobilePhone);
+                        $("#inputEmail").val(res.result.Email);
+                    }
+                }
+            });
+        });
+    </script>
+    <script>
+        $('#inputMobilePhone-addBooking').on('change', function (e) {
+            var mobilePhone = $(this).val();
+            $.ajax({
+                url: "/admin/bookingadmin/GetClientInfo",
+                data: { mobilePhone: mobilePhone },
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    if (!res.isError) {
+                        $("#inputFirstName-addBooking").val(res.result.FirstName);
+                        $("#inputLastName-addBooking").val(res.result.LastName);
+                        $("#inputEmail-addBooking").val(res.result.Email);
+                        $("#inputFirstName-addBooking").prop("disabled", true);
+                        $("#inputLastName-addBooking").prop("disabled", true);
+                        $("#inputEmail-addBooking").prop("disabled", true);
+                    }
+                    else {
+                        alert("Client don't exist in system!")
+                        $("#inputFirstName-addBooking").val("")
+                        $("#inputFirstName-addBooking").prop("disabled", false);
+                        $("#inputLastName-addBooking").val("")
+                        $("#inputLastName-addBooking").prop("disabled", false);
+                        $("#inputEmail-addBooking").val("")
+                        $("#inputEmail-addBooking").prop("disabled", false);
+                    }
+                }
+            });
+        });
+        $(".btn-add-book").on('click', function () {
+            var roomId = $(this).data('roomid');
+            var periodTime = $(this).data('time');
+            var date = $(this).data('date');
+            $("input").remove(".elementHidden");
+            $('#booking-form').prepend("<input type='number' class='elementHidden' hidden name='roomId' id='inputRoomId-addBooking' value=\"" + roomId + "\" />");
+            $('#booking-form').prepend("<input type='number' class='elementHidden' hidden name='periodTime' id='inputPeriodTime-addBooking' value=\"" + periodTime + "\" />");
+            $('#booking-form').prepend("<input type='text' class='elementHidden' hidden name='date' id='inputDate-addBooking' value=\"" + date + "\" />");
+        });
+    </script>
+}
+
+<section class="wrapper">
+    <div class="table-agile-info">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Booking List
+            </div>
+            <div style="margin-bottom: 20px" class="row w3-res-tb">
+                <div class="text-center">
+                    <p><a href="/admin/bookingadmin/book?date=@(selectedDate == null || !selectedDate.HasValue || selectedDate.Value.Equals(DateTime.MinValue) ? DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy"): selectedDate.Value.AddDays(-1).ToString("dd/MM/yyyy"))"><i class="fa fa-arrow-left"></i></a>  @(selectedDate == null || !selectedDate.HasValue || selectedDate.Value.Equals(DateTime.MinValue) ? DateTime.Now.ToString("dd/MM/yyyy") : selectedDate.Value.ToString("dd/MM/yyyy"))  <a href="/admin/bookingadmin/book?date=@(selectedDate == null || !selectedDate.HasValue || selectedDate.Value.Equals(DateTime.MinValue)  ?DateTime.Now.AddDays(1).ToString("dd/MM/yyyy") : selectedDate.Value.AddDays(1).ToString("dd/MM/yyyy"))"><i class="fa fa-arrow-right"></i></a></p>
+                </div>
+            </div>
+            @Html.ValidationSummary(true)
+            <div id="table" class="table-editable">
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center"></th>
+                            @foreach (var item in FonNature.Constant.TimeRanges)
+                            {
+                                var arrivalTime = new Models.Model.PeriodTime(0, 0);
+                                FonNature.Constant.TimeRanges.TryGetValue(item.Key, out arrivalTime);
+                                var timeSpan = new TimeSpan(0, 0, 0);
+                                if (arrivalTime != null)
+                                {
+                                    timeSpan = new TimeSpan(arrivalTime.Hour, arrivalTime.Minute, 0);
+                                }
+                                <th class="text-center">@timeSpan.ToString(@"hh\:mm")</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var room in Model)
+                            {
+                                var bookingByRoom = bookings.Where(x => x.RoomId.Equals(room.Id));
+                                <tr>
+                                    <td class="pt-3-half room">@room.DisplayName</td>
+                                    @foreach (var item in FonNature.Constant.TimeRanges)
+                                    {
+                                        var bookingByTime = bookingByRoom.FirstOrDefault(x => x.PeriodTime.Equals(item.Key));
+                                        if (bookingByTime != null)
+                                        {
+                                            <td class="pt-3-half booked">
+                                                <span class="table-remove">
+                                                    <button data-bookingid="@bookingByTime.Id" data-toggle="modal" data-target="#modalBookingInformation" type="button"
+                                                            class="btn btn-mdb-color btn-rounded btn-sm my-0 btn-book-infor">
+                                                        Booked
+                                                    </button>
+                                                </span>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td class="pt-3-half booked">
+                                                <span class="table-remove">
+                                                    <button data-time="@item.Key" data-roomid="@room.Id" data-date="@(selectedDate == null || !selectedDate.HasValue || selectedDate.Value.Equals(DateTime.MinValue) ? DateTime.Now.ToString("dd/MM/yyyy"): selectedDate.Value.ToString("dd/MM/yyyy"))" data-toggle="modal" data-target="#modalAddBooking" type="button"
+                                                            class="btn btn-rounded btn-sm my-0 btn-add-book">
+                                                        Add
+                                                    </button>
+                                                </span>
+                                            </td>
+                                        }
+                                    }
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modalBookingInformation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Booking Information</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <form>
+                    <!-- Grid row -->
+                    <div class="form-group row">
+                        <!-- Default input -->
+                        <label for="inputFirstName" class="col-sm-2 col-form-label">First Name</label>
+                        <div class="col-sm-10">
+                            <input readonly type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <!-- Default input -->
+                        <label for="inputLastName" class="col-sm-2 col-form-label">Last Name</label>
+                        <div class="col-sm-10">
+                            <input readonly type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                    <!-- Grid row -->
+                    <div class="form-group row">
+                        <!-- Default input -->
+                        <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input readonly type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                    <!-- Grid row -->
+                    <div class="form-group row">
+                        <!-- Default input -->
+                        <label for="inputMobilePhone" class="col-sm-2 col-form-label">MobilePhone</label>
+                        <div class="col-sm-10">
+                            <input readonly type="email" class="form-control" id="inputMobilePhone" placeholder="Mobile Phone">
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                    <div class="form-group row">
+                        <div class="text-center">
+                            <button data-dismiss="modal" type="button" class="btn btn-primary btn-md">Close</button>
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                    <!-- Grid row -->
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAddBooking" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Booking Information</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <form action="/admin/BookingAdmin/Book" method="POST" id="booking-form">
+                    <div class="form-group row">
+                        <!-- Default input -->
+                        <label for="inputMobilePhone-addBooking" class="col-sm-2 col-form-label">MobilePhone</label>
+                        <div class="col-sm-10">
+                            <input name="MobilePhone" type="text" class="form-control" id="inputMobilePhone-addBooking" placeholder="Mobile Phone">
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                    <div class="form-group row">
+                        <!-- Default input -->
+                        <label for="inputFirstName-addBooking" class="col-sm-2 col-form-label">First Name</label>
+                        <div class="col-sm-10">
+                            <input name="FirstName" disabled type="text" class="form-control" id="inputFirstName-addBooking" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <!-- Default input -->
+                        <label for="inputLastName-addBooking" class="col-sm-2 col-form-label">Last Name</label>
+                        <div class="col-sm-10">
+                            <input name="LastName" disabled type="text" class="form-control" id="inputLastName-addBooking" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <!-- Grid row -->
+                    <!-- Grid row -->
+                    <div class="form-group row">
+                        <!-- Default input -->
+                        <label for="inputEmail-addBooking" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-10">
+                            <input name="Email" disabled type="email" class="form-control" id="inputEmail-addBooking" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail-addBooking" class="col-sm-2 col-form-label">Service</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="serviceId" name="serviceId">
+                                <option value="0">Select Services *</option>
+                                @foreach (var services in servicesList)
+                                {
+                                    <option value="@services.Id">@services.Name</option>
+                                }
+                            </select>
+                        </div>
+                        </div>
+                        <!-- Grid row -->
+                        <div class="form-group row">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-md">Book</button>
+                            </div>
+                        </div>
+                        <!-- Grid row -->
+                        <!-- Grid row -->
+</form>
+
+            </div>
+        </div>
+    </div>
+</div>

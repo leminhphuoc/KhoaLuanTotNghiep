@@ -1,0 +1,32 @@
+﻿.text-poppy-red {
+    color: #50bdef !important;
+}
+
+.pt-3-half {
+    padding-top: 1.4rem;
+}
+
+.text-center {
+    font-weight: bold;
+}
+
+.room {
+    font-weight: bold;
+}
+
+.btn {
+    background: #4285F4;
+    color: white;
+}
+
+.btn:hover {
+    background: red;
+}
+
+.btn:focus {
+    background: red;
+}
+
+.book {
+    background: red;
+}

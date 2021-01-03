@@ -11,5 +11,11 @@ namespace Models.Repository
         ClientAccount GetClientAccount(long id);
         List<ClientAccount> GetClientAccounts();
         bool UpdateProfile(long clientAccountId, string newpwd, string firstName, string lastName);
+        List<ClientAccount> SearchClient(string searchString);
+        ClientAccount GetClientByPhone(string mobilePhone);
+        long AddPremember(ClientAccount account);
+        bool IsExistMobilePhone(string mobilePhone);
+        bool IsExistEmail(string email);
+        ClientAccount ConfirmAccountByTokenAndEmail(string email, string token);
     }
 }

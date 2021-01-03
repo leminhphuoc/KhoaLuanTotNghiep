@@ -1,10 +1,12 @@
-﻿using Models.Entity;
+﻿using FonNature.Filter;
+using Models.Entity;
 using Models.Repository;
 using PagedList;
 using System.Web.Mvc;
 
 namespace FonNature.Areas.Admin.Controllers
 {
+    [AuthData]
     public class PageAdminController : Controller
     {
         private readonly IPageRepository _repository;

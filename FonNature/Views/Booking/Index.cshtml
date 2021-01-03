@@ -3,9 +3,42 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<Models.Entity.Service> servicesList = ViewBag.Services;
-    string customerName = null;
 }
 
+@section jsFooter
+{
+    <script>
+        const subtractTwoArrays = (arr1, arr2) => arr1.filter(el => !arr2.includes(el))
+        $('#PeriodTime').on('change', function (e) {
+            var date = $('#ArrivalTime').val();
+            var selectedValue = parseInt($(this).val());
+            console.log(selectedValue)
+            $.ajax({
+                url: "/booking/GetAvailablePeriodTimes",
+                data: { date: date },
+                dataType: "json",
+                type: "POST",
+                success: function (res) {
+                    if (!res.isError) {
+                        console.log(res.results);
+                        console.log();
+                        if (!res.results.includes(selectedValue)) {
+                            alert("This time is full booking!")
+                        }
+                    }
+                }
+            });
+        });
+
+        $(function () {
+            $('input[name="startTime"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minDate: moment()
+            });
+        });
+    </script>
+}
 <!-- Title Page -->
 <div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
     <div class="container">
@@ -40,6 +73,7 @@
             <div class="col-lg-6">
                 @using (Html.BeginForm("Book", "Booking", FormMethod.Post, new { @class = "book-service-form-02" }))
                 {
+                    @Html.AntiForgeryToken()
                     <div class="heading-form">
                         <h3 class="title-form">
                             Book services
@@ -47,90 +81,106 @@
 
                         <img class="line-heading" src="/Asset/Spa/images/icons/wave-line-03.png" alt="IMG">
                     </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <label class="wrap-input js-call-datepicker" data-drop="down" data-drop-inside="true">
-                        <input required type="text" name="ArrivalTime" id="ArrivalTime" autocomplete="off">
-                        @Html.ValidationMessageFor(m => m.ArrivalTime, "", new { @class = "text-danger" })
-                        <i class="icon-calendar"></i>
-                    </label>
-                </div>
+                    @Html.ValidationSummary(true, "", new { @class = "d-flex justify-content-start text-danger" })
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="wrap-input js-call-datepicker" data-drop="down" data-drop-inside="true">
+                                <input required type="text" name="startTime" id="ArrivalTime" autocomplete="off">
+                                @Html.ValidationMessageFor(m => m.ArrivalTime, "", new { @class = "text-danger" })
+                                <i class="icon-calendar"></i>
+                            </label>
+                        </div>
 
-                <div class="col-sm-6">
-                    <label class="wrap-input js-call-select2" data-style="layout-1">
-                        <select required id="PeriodTime" name="PeriodTime">
-                            <option selected value="0" disabled="disabled">Select arrival time*</option>
-                            @foreach (var range in Constant.TimeRanges)
-                            {
-                                var timeSpan = new TimeSpan(range.Value.Hour, range.Value.Minute, 0);
-                                <option value="@range.Key">@timeSpan.ToString(@"hh\:mm")</option>
-                            }
-                        </select>
-                        @Html.ValidationMessageFor(m => m.PeriodTime, "", new { @class = "text-danger" })
-                        <i class="icon-clock"></i>
-                    </label>
-                </div>
-                <div class="col-sm-6">
-                    <label class="wrap-input js-call-select2" data-style="layout-1">
-                        <select id="ServiceId" name="ServiceId">
-                            @if (Model != null)
-                            {
-                                foreach (var services in servicesList)
-                                {
-                                    if (services.Id.Equals(Model.ServiceId))
+                        <div class="col-sm-6">
+                            <label class="wrap-input js-call-select2" data-style="layout-1">
+                                <select required id="PeriodTime" name="PeriodTime">
+                                    <option selected value="0" disabled="disabled">Select arrival time*</option>
+                                    @foreach (var range in Constant.TimeRanges)
                                     {
-                                        <option value="@services.Id" selected>@services.Name</option>
+                                        var timeSpan = new TimeSpan(range.Value.Hour, range.Value.Minute, 0);
+                                        <option value="@range.Key">@timeSpan.ToString(@"hh\:mm")</option>
+                                    }
+                                </select>
+                                @Html.ValidationMessageFor(m => m.PeriodTime, "", new { @class = "text-danger" })
+                                <i class="icon-clock"></i>
+                            </label>
+                        </div>
+                        <div class="col-12">
+                            <label class="wrap-input js-call-select2" data-style="layout-1">
+                                <select id="ServiceId" name="ServiceId">
+                                    @if (Model != null)
+                                    {
+                                        foreach (var services in servicesList)
+                                        {
+                                            if (services.Id.Equals(Model.ServiceId))
+                                            {
+                                                <option value="@services.Id" selected>@services.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@services.Id">@services.Name</option>
+                                            }
+                                        }
+                                    }
+                                    else if (ViewBag.SelectedService != null && ViewBag.SelectedService != 0)
+                                    {
+                                        <option value="0">Select Services *</option>
+                                        foreach (var services in servicesList)
+                                        {
+                                            if (services.Id.Equals(ViewBag.SelectedService))
+                                            {
+                                                <option value="@services.Id" selected>@services.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@services.Id">@services.Name</option>
+                                            }
+                                        }
                                     }
                                     else
                                     {
-                                        <option value="@services.Id">@services.Name</option>
+                                        <option value="0">Select Services *</option>
+                                        foreach (var services in servicesList)
+                                        {
+                                            <option value="@services.Id">@services.Name</option>
+                                        }
                                     }
-                                }
-                            }
-                            else
-                            {
-                                <option value="0">Select Services *</option>
-                                foreach (var services in servicesList)
-                                {
-                                    <option value="@services.Id">@services.Name</option>
-                                }
-                            }
 
-                        </select>
-                        @Html.ValidationMessageFor(m => m.ServiceId, "", new { @class = "text-danger" })
-                        <i class="lnr lnr-chevron-down"></i>
-                    </label>
-                </div>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.ServiceId, "", new { @class = "text-danger" })
+                                <i class="lnr lnr-chevron-down"></i>
+                            </label>
+                        </div>
 
-                <div class="col-sm-6">
-                    <label class="wrap-input js-call-select2" data-style="layout-1">
-                        <select id="Quantity" name="Quantity">
-                            <option value="0">Select Quantity*</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                        @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
-                        <i class="lnr lnr-chevron-down"></i>
-                    </label>
-                </div>
-                <div class="col-12">
-                    <label class="wrap-input">
-                        <textarea id="Message" name="Message" placeholder="Message"></textarea>
-                    </label>
+                        @*<div class="col-sm-6">
+                                <label class="wrap-input js-call-select2" data-style="layout-1">
+                                    <select id="Quantity" name="Quantity">
+                                        <option value="0">Select Quantity (Max 2 person per booking)*</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+                                    <i class="lnr lnr-chevron-down"></i>
+                                </label>
+                            </div>*@
+                        <div class="col-12">
+                            <label class="wrap-input">
+                                <textarea id="Message" name="Message" placeholder="Message"></textarea>
+                            </label>
 
-                    <button type="submit" class="hun-button size-normal shape-round style-fill-color">
-                        Make appointment
-                    </button>
-                </div>
-            </div>
+                            <button type="submit" class="hun-button size-normal shape-round style-fill-color">
+                                Make appointment
+                            </button>
+                        </div>
+                    </div>
                 }
 
                 <div class="hun-element-work-time layout-1 text-center">

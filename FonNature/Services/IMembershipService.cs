@@ -7,5 +7,6 @@ namespace FonNature.Services
     {
         ClientAccount Login(string email, string passWord);
         MemberProfileViewModel GetMemberProfileViewModel(long id);
+        long Register(string firstName, string lastName, string email, string mobilePhone, string passWord);
     }
 }

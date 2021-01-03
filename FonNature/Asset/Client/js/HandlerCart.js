@@ -225,9 +225,15 @@ function myFunction() {
                 couponValue = coupon.DiscountValue;
             }
             var subTotal = totalAmount;
-            var grandTotal = subTotal - couponValue;
+            var grandTotal = subTotal;
+            if (couponValue != null && couponValue != undefined) {
+                var grandTotal = subTotal - couponValue;
+            }
+            
             $("#subTotalInCheckout").html(subTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
-            $("#discount-value").html(couponValue.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            if (couponValue != null && couponValue != undefined) {
+                $("#discount-value").html(couponValue.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
+            }
             $("#grandTotalInCheckout").html(grandTotal.toLocaleString(undefined, { minimumFractionDigits: 0 }) + " vnđ")
         });
     }

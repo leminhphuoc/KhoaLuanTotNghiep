@@ -1,5 +1,6 @@
 ﻿using FonNature.Filter;
 using FonNature.Services;
+using FonNature.Services.Extension;
 using Models.Entity;
 using Models.Model;
 using Models.Repository;
@@ -19,12 +20,18 @@ namespace FonNature.Controllers
         private readonly IClientAccountRepository _accountRepository;
         private readonly IProductAdminRepository _productRepository;
         private readonly IOrderRepository _orderRepository;
-        public MembershipController(IMembershipService membershipService, IClientAccountRepository accountRepository, IProductAdminRepository productRepository, IOrderRepository orderRepository)
+        private readonly IServiceRepository _serviceRepository;
+        private readonly IBookingRepository _bookingRepository;
+        private readonly IClientAccountRepository _clientAccountRepository;
+        public MembershipController(IMembershipService membershipService, IClientAccountRepository accountRepository, IProductAdminRepository productRepository, IOrderRepository orderRepository, IServiceRepository serviceRepository, IBookingRepository bookingRepository, IClientAccountRepository clientAccountRepository)
         {
             _membershipService = membershipService;
             _accountRepository = accountRepository;
             _productRepository = productRepository;
             _orderRepository = orderRepository;
+            _serviceRepository = serviceRepository;
+            _bookingRepository = bookingRepository;
+            _clientAccountRepository = clientAccountRepository;
         }
 
         public ActionResult Index()
@@ -45,8 +52,20 @@ namespace FonNature.Controllers
                 }
                 );
             }
+
+            if(!accountInformation.IsConfirm)
+            {
+                return Json(new
+                {
+                    status = false,
+                    message = "Account is not activated, please check your email for active!"
+                }
+                );
+            }
+
             Session[Constant.Membership.IsLoginSession] = true;
             Session[Constant.Membership.AccountSession] = accountInformation;
+
             return Json(new
             {
                 status = true,
@@ -82,6 +101,7 @@ namespace FonNature.Controllers
             var result = _membershipService.GetMemberProfileViewModel(account.Id);
             TempData["orders"] = result.Orders;
             ViewBag.Products = _productRepository.GetListProduct();
+            ViewBag.Services = _serviceRepository.GetServices();
             ViewBag.OrderInfors = _orderRepository.GetOrderInfors();
             return View(result);
         }
@@ -126,8 +146,67 @@ namespace FonNature.Controllers
             };
             ModelState["PassWord"].Errors.Clear();
             ViewBag.Products = _productRepository.GetListProduct();
+            ViewBag.Services = _serviceRepository.GetServices();
             ViewBag.OrderInfors = _orderRepository.GetOrderInfors();
             return View(result);
+        }
+
+        public ActionResult CancelBooking(long id)
+        {
+            _bookingRepository.CancelBooking(id);
+            return Redirect("/membership/myprofile#bookings");
+        }
+
+        [HttpPost]
+        public JsonResult IsExistMobilePhone(string mobilePhone)
+        {
+            if(string.IsNullOrWhiteSpace(mobilePhone))
+            {
+                return Json(new { isError = true, message = "mobilePhone is null!" });
+            }
+
+            var mobilePhoneWithoutAreaCode = mobilePhone.RemoveAreaCode();
+            if (string.IsNullOrWhiteSpace(mobilePhoneWithoutAreaCode))
+            {
+                return Json(new { isError = true, message = "System error!" });
+            }
+
+            var isExist = _clientAccountRepository.IsExistMobilePhone(mobilePhone);
+
+            return Json(new { isExist = isExist, isError = false });
+        }
+
+        [HttpPost]
+        public JsonResult IsExistEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return Json(new { isError = true, message = "mobilePhone is null!" });
+            }
+
+            var isExist = _clientAccountRepository.IsExistEmail(email);
+
+            return Json(new { isExist = isExist, isError = false });
+        }
+
+        [HttpPost]
+        public JsonResult RegisterAccount(string email, string mobilePhone, string password, string lastName, string firstName)
+        {
+            var result = _membershipService.Register(firstName,lastName,email,mobilePhone,password);
+
+            return Json(new { result = result, isError = false });
+        }
+
+        public ActionResult Confirm(string token, string email)
+        {
+            var account = _clientAccountRepository.ConfirmAccountByTokenAndEmail(email, token);
+           
+            if (account == null)
+            {
+                return Redirect("/");
+            }
+
+            return Redirect("/Success/RegisterSuccess?email=" + email);
         }
     }
 }

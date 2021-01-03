@@ -1,4 +1,5 @@
-﻿using FonNature.Filter;
+﻿using FonNature.Common;
+using FonNature.Filter;
 using Models.Repository;
 using System;
 using System.Web.Mvc;
@@ -24,6 +25,12 @@ namespace FonNature.Areas.Admin.Controllers
             ViewBag.CountVisitor7 = new IPAddressRepository().CountByMonth(DateTime.Now.AddMonths(-7).Month);
             ViewBag.CountVisitor8 = new IPAddressRepository().CountByMonth(DateTime.Now.AddMonths(-8).Month);
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.UserSession.USER_SESSION_ADMIN] = null;
+            return Redirect("/admin");
         }
     }
 }

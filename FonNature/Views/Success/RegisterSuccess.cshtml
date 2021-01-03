@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Register Sucess Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="faq-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-90 pb-lg-70 pb-md-60 pb-sm-50 pb-xs-40">
+    <div class="container">
+        <div class="row">
+            <img style="height: 100px;width: auto;display:block;margin:auto;" src="/Asset/Client/images/icons/download.png" />
+            <div class="col-md-12">
+                <div style="text-align: center;margin-top: 50px;" class="faq-content">
+                    <div class="faq-desc">
+                        <h3>Thank you for register account!</h3>
+                        <p>Your email: @(ViewBag.Email ?? string.Empty)</p>  
+                        <a href="/" style="margin-top: 20px;background-color: lightgreen;" class="btn btn-success">Back to home!</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

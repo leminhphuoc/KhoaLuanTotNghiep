@@ -123,7 +123,7 @@
                         </div>
                     }
                     <div class="buttons-section text-md-right">
-                        <a href="/serviceshome" class="hun-button size-normal style-fill-color shape-round">
+                        <a href="/service" class="hun-button size-normal style-fill-color shape-round">
                             Read More
                         </a>
                     </div>
@@ -134,79 +134,6 @@
     <!-- end feature home-2 -->
 }
 <!-- book-service home-1 -->
-<div class="sec--book-service--home-1 parallax100" style="background-image: url('/Asset/Spa/images/bg-03.jpg');">
-    <div class="container">
-        <div class="row no-gutters justify-content-end">
-            <div class="col-lg-6">
-
-                @using (Html.BeginForm("CreateBooking", "Booking", FormMethod.Post, new { @class = "book-service-form-01 no-border" }))
-                {
-                    <div class="heading-form">
-                        <h3 class="title-form">
-                            Book services
-                        </h3>
-
-                        <img class="line-heading" src="~/Asset/Spa/images/icons/wave-line-03.png" alt="IMG">
-                    </div>
-
-                    <label class="wrap-input">
-                        <input required id="name" name="name" type="text" placeholder="Your full name *">
-
-                        <i class="icon-user"></i>
-                    </label>
-
-                    <label class="wrap-input">
-                        <input required id="phone" name="phone" type="text" pattern="(09|01[2|6|8|9])+([0-9]{8})\b" placeholder="Your phone number *">
-
-                        <i class="icon-call-out"></i>
-                    </label>
-
-                    <label class="wrap-input js-call-select2" data-style="layout-1">
-                        <select id="IdServices" name="IdServices">
-                            <option value="0">Services *</option>
-                            @foreach (var product in featuredProductList)
-                            {
-                                <option value="@product.id">@product.name</option>
-                            }
-
-                        </select>
-
-                        <i class="lnr lnr-chevron-down"></i>
-                    </label>
-
-
-
-                    <label class="wrap-input js-call-datepicker" data-drop="down" data-drop-inside="true">
-                        <input id="ArrivalTime" type="text" name="ArrivalTime" autocomplete="off">
-
-                        <i class="lnr lnr-chevron-down"></i>
-                    </label>
-
-                    <label class="wrap-input js-call-select2" data-style="layout-1">
-                        <select id="time" name="time">
-                            <option value="8">8:00 AM</option>
-                            <option value="9">9:00 AM</option>
-                            <option value="10">10:00 AM</option>
-                            <option value="11">11:00 AM</option>
-                            <option value="13">1:00 PM</option>
-                            <option value="14">2:00 PM</option>
-                            <option value="15">3:00 PM</option>
-                            <option value="16">4:00 PM</option>
-                            <option value="17">5:00 PM</option>
-                            <option value="18">6:00 PM</option>
-                        </select>
-
-                        <i class="icon-clock"></i>
-                    </label>
-
-                    <button class="hun-button size-normal shape-round style-fill-color">
-                        Make appointment
-                    </button>
-                }
-            </div>
-        </div>
-    </div>
-</div>
 <!-- end book-service home-1 -->
 <!-- our-services home-1 -->
 <div class="sec--our-service--home-1">
@@ -229,14 +156,14 @@
                         <div class="item-slick">
                             <div class="item-element">
                                 <div class="pic-item">
-                                    <a href="service-detail.html" class="wrap-pic">
+                                    <a href="/product/detail?id=@item.id" class="wrap-pic">
                                         <img style="width:245px;height:245px" src="@item.image" alt="IMG">
                                     </a>
                                 </div>
 
                                 <div class="text-item">
                                     <h4 class="title-item">
-                                        <a href="service-detail.html">
+                                        <a href="/product/detail?id=@item.id">
                                             @item.name
                                         </a>
                                     </h4>
@@ -244,7 +171,7 @@
                                     <div class="meta-info-item">
                                         <span class="item-info">
                                             <i class="zmdi zmdi-money-box"></i>
-                                            $@item.price
+                                            @item.price vnđ
                                         </span>
 
                                         <span class="item-info">
@@ -259,22 +186,8 @@
                                 </div>
 
                                 <div class="foot-item">
-                                    <div class="author-item">
-                                        <a href="#" class="pic-author">
-                                            <img src="~/Asset/Spa/images/ava-01.jpg" alt="IMG">
-                                        </a>
-
-                                        <span class="text-author">
-                                            <a href="#" class="name-author">
-                                                Victoria Webb
-                                            </a>
-
-                                            Spa Therapist
-                                        </span>
-                                    </div>
-
-                                    <a href="booking.html" class="link-item">
-                                        Book now
+                                    <a data-id="@item.id" style="margin:auto" href="#" class="link-item addToCart">
+                                        Add to Cart
                                     </a>
                                 </div>
                             </div>
@@ -292,7 +205,7 @@
         </div>
 
         <div class="buttons-section">
-            <a href="/serviceshome" class="hun-button size-normal style-border-color shape-round">
+            <a href="/product" class="hun-button size-normal style-border-color shape-round">
                 View All
             </a>
         </div>

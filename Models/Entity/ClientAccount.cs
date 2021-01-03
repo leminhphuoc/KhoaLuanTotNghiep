@@ -17,7 +17,6 @@
         [StringLength(20)]
         public string MobilePhone { get; set; }
 
-        [Required]
         [StringLength(1000)]
         public string PassWord { get; set; }
 
@@ -36,7 +35,7 @@
         [StringLength(100)]
         public string LastName { get; set; }
 
-        public DateTime Birth { get; set; }
+        public DateTime? Birth { get; set; }
 
         public long GenderId { get; set; }
 
@@ -52,6 +51,13 @@
         /// True : Active, False : Inactive
         /// </summary>
         public bool Status { get; set; }
+
+        public bool IsPreMember { get; set; }
+
+        public bool IsConfirm { get; set; }
+
+        [StringLength(1000)]
+        public string Token { get; set; }
     }
 }
 

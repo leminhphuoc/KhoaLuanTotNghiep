@@ -32,6 +32,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link rel="stylesheet" href="/Asset/Admin/css/monthly.css">
     <link href="~/Content/PagedList.css" rel="stylesheet" />
     <!-- //calendar -->
+    @RenderSection("cssHeader", required: false)
     <!-- //font-awesome icons -->
     <script src="/Asset/Admin/js/jquery2.0.3.min.js"></script>
     <script src="/Asset/Admin/js/raphael-min.js"></script>
@@ -43,7 +44,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <header class="header fixed-top clearfix">
             <!--logo start-->
             <div class="brand">
-                <a href="/Admin/HomeAdmin" class="logo">
+                <a href="/Admin" class="logo">
                     FonNature
                 </a>
                 <div class="sidebar-toggle-box">
@@ -66,9 +67,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
-                            <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                            <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="/admin/homeadmin/logout"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->

@@ -130,5 +130,126 @@ namespace Models.Repository
                 return false;
             }
         }
+
+        public List<ClientAccount> SearchClient(string searchString)
+        {
+            try
+            {
+                if(string.IsNullOrWhiteSpace(searchString))
+                {
+                    return new List<ClientAccount>();
+                }
+
+                return _db.ClientAccounts.Where(x=> x.MobilePhone.Contains(searchString)).ToList();
+            }
+            catch (Exception e)
+            {
+                log.Error($"Error at SearchClient {nameof(ClientAccountRepository)}: {e.Message}");
+                return new List<ClientAccount>();
+            }
+        }
+
+        public ClientAccount GetClientByPhone(string mobilePhone)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(mobilePhone))
+                {
+                    return null;
+                }
+
+                return _db.ClientAccounts.FirstOrDefault(x => x.MobilePhone.Equals(mobilePhone));
+            }
+            catch (Exception e)
+            {
+                log.Error($"Error at GetClientByPhone {nameof(ClientAccountRepository)}: {e.Message}");
+                return null;
+            }
+        }
+
+        public long AddPremember(ClientAccount account)
+        {
+            try
+            {
+                if(account == null)
+                {
+                    log.Error($"Error at AddPremember function from {nameof(ClientAccountRepository)}: account is null");
+                    return 0;
+                }
+
+                account.IsPreMember = true;
+                var addedItem = _db.ClientAccounts.Add(account);
+                Db.SaveChanges();
+                return addedItem.Id;
+            }
+            catch (Exception e)
+            {
+                log.Error($"Error at add function from {nameof(ClientAccountRepository)}: {e.Message}");
+                return 0;
+            }
+        }
+
+        public bool IsExistMobilePhone(string mobilePhone)
+        {
+            try
+            {
+                if(string.IsNullOrWhiteSpace(mobilePhone))
+                {
+                    return false;
+                }
+
+                return _db.ClientAccounts.Any(x => !x.IsPreMember && x.MobilePhone.Equals(mobilePhone));
+            }
+            catch (Exception e)
+            {
+                log.Error($"Error at IsExistMobilePhone from {nameof(ClientAccountRepository)}: {e.Message}");
+                return false;
+            }
+        }
+
+        public bool IsExistEmail(string email)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    return false;
+                }
+
+                return _db.ClientAccounts.Any(x => !x.IsPreMember && x.Email.Equals(email));
+            }
+            catch (Exception e)
+            {
+                log.Error($"Error at IsExistEmail from {nameof(ClientAccountRepository)}: {e.Message}");
+                return false;
+            }
+        }
+
+        public ClientAccount ConfirmAccountByTokenAndEmail(string email, string token)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(token))
+                {
+                    return null;
+                }
+
+                var account =  _db.ClientAccounts.FirstOrDefault(x => x.Token.Equals(token) && x.Email.Equals(email));
+                if(account == null)
+                {
+                    return null;
+                }
+
+                account.IsConfirm = true;
+                _db.SaveChanges();
+
+                return account;
+            }
+            catch (Exception e)
+            {
+                log.Error($"Error at GetAccountByTokenAndEmail from {nameof(ClientAccountRepository)}: {e.Message}");
+                return null;
+            }
+        }
     }
 }
