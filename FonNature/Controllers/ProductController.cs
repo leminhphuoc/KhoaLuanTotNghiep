@@ -164,7 +164,7 @@ namespace FonNature.Controllers
                         var result = _orderServices.PaymentByMomo(orderID, returnUrl);
                         if (result.ErrorCode.Equals("0"))
                         {
-                            _orderRepository.UpdateOrderStatus(orderID,Constant.MoMoOrderStatus.FirstOrDefault(x=>x.Key.Equals(2)).Key);
+                            _orderRepository.UpdateOrderStatus(orderID,Constant.OrderStatus.FirstOrDefault(x=>x.Key.Equals(2)).Key);
                             return Redirect(result.PayUrl);
                         }
                         ModelState.AddModelError("", result.ErrorCode + " - " + result.Message);

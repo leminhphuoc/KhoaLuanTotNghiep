@@ -50,17 +50,9 @@ namespace FonNature
         public static readonly Dictionary<int, string> OrderStatus = new Dictionary<int, string>()
         {
            { 1, "Order Success" },
-           { 2, "Shipping" },
-           { 3, "Paid and Received" },
-           { 4, "Canceled" },
-        };
-
-        public static readonly Dictionary<int, string> MoMoOrderStatus = new Dictionary<int, string>()
-        {
-           { 1, "Order Success" },
            { 2, "Payment Success" },
            { 3, "Shipping" },
-           { 4, "Received" },
+           { 4, "Paid and Received" },
            { 5, "Canceled" },
         };
 

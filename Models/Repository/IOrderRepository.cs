@@ -15,5 +15,6 @@ namespace Models.Repository
         bool UpdateOrderStatus(long orderId, int statusId);
         void UpdatePrice(Order order, decimal subTotal, decimal discount);
         List<OrderInformation> GetOrderInfors();
+        void CancelOrder(long id);
     }
 }

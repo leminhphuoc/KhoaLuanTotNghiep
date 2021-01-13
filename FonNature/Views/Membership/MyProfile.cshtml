@@ -22,7 +22,7 @@
             });
         });
     </script>
- }
+}
 @{
     var products = new List<Models.Entity.Product>();
     if (ViewBag.Products != null)
@@ -37,7 +37,7 @@
     }
 
     var services = new List<Models.Entity.Service>();
-    if(ViewBag.Services != null)
+    if (ViewBag.Services != null)
     {
         services = ViewBag.Services as List<Models.Entity.Service>;
     }
@@ -127,7 +127,7 @@
                             </div>
                             <!-- Single Tab Content End -->
                             <!-- Single Tab Content Start -->
-                            <div class="tab-pane fade" id="orders" role="tabpanel">
+                            <div style="width: 1000px !important" class="tab-pane fade" id="orders" role="tabpanel">
                                 <div class="myaccount-content">
                                     <h3>Orders</h3>
                                     @if (Model.Orders != null && Model.Orders.Any())
@@ -141,37 +141,49 @@
                                                         <th>Product</th>
                                                         <th>Grand Total</th>
                                                         <th>Status</th>
+                                                        <th>Button</th>
                                                     </tr>
                                                 </thead>
 
                                                 <tbody>
                                                     @foreach (var item in Model.Orders)
                                                     {
-                                                        <tr>
-                                                            <td>@item.Id</td>
-                                                            <td>@item.createdDate.Value.ToString("dd/MM/yyyy")</td>
-                                                            <td>
-                                                                @if (orderInfors != null && orderInfors.Any())
+                                                    <tr>
+                                                        <td>@item.Id</td>
+                                                        <td>@item.createdDate.Value.ToString("dd/MM/yyyy")</td>
+                                                        <td>
+                                                            @if (orderInfors != null && orderInfors.Any())
+                                                            {
+                                                                foreach (var infor in orderInfors.Where(x => x.IdOrder.Equals(item.Id)))
                                                                 {
-                                                                    foreach (var infor in orderInfors.Where(x => x.IdOrder.Equals(item.Id)))
+                                                                    var productInOrder = products.FirstOrDefault(x => x.id.Equals(infor.IdProduct));
+                                                                    if (productInOrder != null)
                                                                     {
-                                                                        var productInOrder = products.FirstOrDefault(x => x.id.Equals(infor.IdProduct));
-                                                                        if (productInOrder != null)
-                                                                        {
-                                                                            @: @productInOrder.name x @infor.Quantity
-                                                                        }
-                                                                        <br />
+                                                                        @: @productInOrder.name x @infor.Quantity
                                                                     }
+                                                                    <br />
                                                                 }
-                                                            </td>
-                                                            <td>@item.GrandTotal.ToString("N0") vnđ</td>
-                                                            <td>
-                                                                @foreach (var status in Constant.OrderStatus)
+                                                            }
+                                                        </td>
+                                                        <td>@item.GrandTotal.ToString("N0") vnđ</td>
+                                                        <td class="@(item.IdStatus.Equals(5)? "danger-color text-dark" : "")">
+                                                            @foreach (var status in Constant.OrderStatus)
+                                                            {
+                                                                if (status.Key.Equals(item.IdStatus))
                                                                 {
-                                                                    if (status.Key.Equals(item.IdStatus))
-                                                                    {
-                                                                        @: @status.Value
-                                                                    }
+                                                                    @: @status.Value
+                                                                }
+                                                            }
+                                                        </td>
+                                                            <td>
+                                                                @if (!item.IdStatus.Equals(5) && !item.IdStatus.Equals(4))
+                                                                {
+                                                                    @Ajax.ActionLink("Cancel", "CancelOrder", new { @id = item.Id }, new AjaxOptions
+                                                           {
+                                                               Confirm = "Do you want cancel this order?",
+                                                               OnComplete = "$('#row_" + @item.Id + "').remove()",
+                                                               HttpMethod = "Get"
+                                                           }, new { @class = "btn btn-danger" })
                                                                 }
                                                             </td>
                                                         </tr>
@@ -203,7 +215,7 @@
                                                 </thead>
 
                                                 <tbody>
-                                                    @foreach (var item in Model.Bookings.OrderByDescending(x=>x.ArrivalTime))
+                                                    @foreach (var item in Model.Bookings.OrderByDescending(x => x.ArrivalTime))
                                                     {
                                                         <tr>
                                                             <td>@item.Id</td>
@@ -226,13 +238,13 @@
                                                             </td>
                                                             <td class="@(item.IsCancel? "danger-color text-dark" : "success-color text-dark")">@(item.IsCancel? "Canceled" : "Active")</td>
                                                             <td>
-                                                                @if (!item.IsCancel)
+                                                                @if (!item.IsCancel && item.ArrivalTime > DateTime.Now)
                                                                 {
                                                                     @Ajax.ActionLink("Cancel", "CancelBooking", new { @id = item.Id }, new AjaxOptions
                                                            {
                                                                Confirm = "Do you want cancel this booking?",
                                                                OnComplete = "$('#row_" + @item.Id + "').remove()",
-                                                               HttpMethod = "POST"
+                                                               HttpMethod = "Get"
                                                            }, new { @class = "btn btn-danger" })
                                                                 }
                                                             </td>

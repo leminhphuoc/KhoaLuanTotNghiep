@@ -1,4 +1,5 @@
-﻿using FonNature.Filter;
+﻿using FonNature.Authentication;
+using FonNature.Filter;
 using FonNature.Services;
 using FonNature.Services.Extension;
 using Models.Entity;
@@ -23,7 +24,8 @@ namespace FonNature.Controllers
         private readonly IServiceRepository _serviceRepository;
         private readonly IBookingRepository _bookingRepository;
         private readonly IClientAccountRepository _clientAccountRepository;
-        public MembershipController(IMembershipService membershipService, IClientAccountRepository accountRepository, IProductAdminRepository productRepository, IOrderRepository orderRepository, IServiceRepository serviceRepository, IBookingRepository bookingRepository, IClientAccountRepository clientAccountRepository)
+        private readonly IIPAddressRepository _ipAddressRepository;
+        public MembershipController(IMembershipService membershipService, IClientAccountRepository accountRepository, IProductAdminRepository productRepository, IOrderRepository orderRepository, IServiceRepository serviceRepository, IBookingRepository bookingRepository, IClientAccountRepository clientAccountRepository, IIPAddressRepository ipAddressRepository)
         {
             _membershipService = membershipService;
             _accountRepository = accountRepository;
@@ -32,6 +34,7 @@ namespace FonNature.Controllers
             _serviceRepository = serviceRepository;
             _bookingRepository = bookingRepository;
             _clientAccountRepository = clientAccountRepository;
+            _ipAddressRepository = ipAddressRepository;
         }
 
         public ActionResult Index()
@@ -117,11 +120,11 @@ namespace FonNature.Controllers
                 return Redirect("/");
             }
 
-            if (!string.IsNullOrWhiteSpace(currentPwd) && currentPwd.Equals(currentAccount.PassWord))
+            if (!string.IsNullOrWhiteSpace(currentPwd) && Cipher.Encrypt(currentPwd, "]bc5M>[M}ym>[4a=").Equals(currentAccount.PassWord))
             {
                 if(!string.IsNullOrWhiteSpace(newPwd) && !string.IsNullOrWhiteSpace(confirmPwd) && newPwd.Equals(confirmPwd))
                 {
-                    var isUpdateSuccess = _accountRepository.UpdateProfile(currentAccount.Id, newPwd, clientAccount.FirstName, clientAccount.LastName);
+                    var isUpdateSuccess = _accountRepository.UpdateProfile(currentAccount.Id, Cipher.Encrypt(newPwd, "]bc5M>[M}ym>[4a="), clientAccount.FirstName, clientAccount.LastName);
                     if(isUpdateSuccess)
                     {
                         return RedirectToAction("MyProfile");
@@ -144,7 +147,11 @@ namespace FonNature.Controllers
                 Orders = orders,
                 AccountInformation = clientAccount
             };
-            ModelState["PassWord"].Errors.Clear();
+
+            if(ModelState["PassWord"] != null && ModelState["PassWord"].Errors != null)
+            {
+                ModelState["PassWord"].Errors.Clear();
+            }
             ViewBag.Products = _productRepository.GetListProduct();
             ViewBag.Services = _serviceRepository.GetServices();
             ViewBag.OrderInfors = _orderRepository.GetOrderInfors();
@@ -207,6 +214,19 @@ namespace FonNature.Controllers
             }
 
             return Redirect("/Success/RegisterSuccess?email=" + email);
+        }
+
+        public ActionResult CancelOrder(long id)
+        {
+            _orderRepository.CancelOrder(id);
+            return Redirect("/membership/myprofile#orders");
+        }
+
+        [HttpPost]
+        public JsonResult CountVisistor(string info)
+        {
+            var isError = _ipAddressRepository.AddIpAddress(info);
+            return Json(new { isError = !isError });
         }
     }
 }

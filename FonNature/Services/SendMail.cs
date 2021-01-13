@@ -7,17 +7,17 @@ namespace FonNature.Services
     {
         public static bool SendMailFromCustomer(string name, string email, string message)
         {
-            if (email != null)
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(message))
             {
-                string content = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Asset/Client/Mail/Message.html"));
-                content = content.Replace("{{customer}}", name);
-                content = content.Replace("{{email}}", email);
-                content = content.Replace("{{message}}", message);
-                new MailHelper().SendMail(ConfigurationManager.AppSettings["ToEmailAddress"].ToString(), "Mail from customer", content);
-                return true;
-
+                return false;
             }
-            return false;
+
+            string content = System.IO.File.ReadAllText(System.Web.Hosting.HostingEnvironment.MapPath("~/Asset/Client/Mail/Message.html"));
+            content = content.Replace("{{customer}}", name);
+            content = content.Replace("{{email}}", email);
+            content = content.Replace("{{message}}", message);
+            new MailHelper().SendMail(ConfigurationManager.AppSettings["ToEmailAddress"].ToString(), "Mail from customer", content);
+            return true;
         }
 
         public static bool SendMailSubcribe(string email)

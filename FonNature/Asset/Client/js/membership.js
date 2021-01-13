@@ -236,3 +236,35 @@
 }
 memberShip.init();
 
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+$(window).on("load", function () { 
+    if (getCookie("isCounted") != 1)
+    {   
+        $.get('https://www.cloudflare.com/cdn-cgi/trace', function (data) {
+            var date = new Date(),
+            expires = 'expires=';
+            date.setTime(date.getTime() + 31536000000);
+            expires += date.toGMTString();
+            document.cookie = "isCounted=1+ '; " + expires + "; path=/";
+            $.ajax({
+                url: "/membership/CountVisistor",
+                data: { info: data},
+                dataType: "json",
+                type: "POST",
+                success: function (result) {
+                    if (!result.isError) {
+                        console.log("cookie write success!")
+                    }
+                }
+            });   
+        });     
+    }
+});
+
+
+

@@ -27,6 +27,23 @@ namespace Models.Repository
             return true;
         }
 
+        public bool AddVisitor(string infor)
+        {
+            try
+            {
+                var IP = new IPAddress() { IP = infor, date = DateTime.Now };
+                _db.IPAddresses.Add(IP);
+                var Visitor = _db.UsefulInformations.Where(x => x.Name == "Visitor").SingleOrDefault();
+                Visitor.Value += 1;
+                _db.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
         public int? CountVisitor()
         {
             var visitor = _db.UsefulInformations.Where(x => x.Name == "Visitor").SingleOrDefault();

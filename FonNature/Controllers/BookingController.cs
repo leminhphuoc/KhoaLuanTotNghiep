@@ -51,7 +51,7 @@ namespace FonNature.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Book(Booking booking, string startTime)
         {
-            DateTime.TryParse(startTime, out var arrivalTimeParsed);
+            DateTime.TryParseExact(startTime, "MM/dd/yyyy" , CultureInfo.InvariantCulture, DateTimeStyles.None ,out var arrivalTimeParsed);
             if(arrivalTimeParsed != DateTime.MinValue)
             {
                 booking.ArrivalTime = arrivalTimeParsed;

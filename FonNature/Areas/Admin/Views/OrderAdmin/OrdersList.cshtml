@@ -87,7 +87,7 @@
                                             <select data-id="@item.Id" style="width:80%" id="IdStatus" name="IdStatus" class="form-control m-bot15 orderStatus">
                                                 @if (!string.IsNullOrWhiteSpace(item.PaymentMethod) && item.PaymentMethod.Equals(Constant.Order.MoMoPaymentMethods))
                                                 {
-                                                    foreach (var status in Constant.MoMoOrderStatus)
+                                                    foreach (var status in Constant.OrderStatus)
                                                     {
                                                         if (status.Key.Equals(item.IdStatus))
                                                         {

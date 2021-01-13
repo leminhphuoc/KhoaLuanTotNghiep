@@ -24,8 +24,9 @@ namespace Models.Repository
             order.createdDate = DateTime.Now;
             if (_db.OrderStatuses.ToList().Count != 0)
             {
-                order.IdStatus = _db.OrderStatuses.Take(1).Select(x => x.Id).SingleOrDefault();
+                order.IdStatus = _db.OrderStatuses.Take(1).Select(x => x.Id).FirstOrDefault();
             }
+            order.IdStatus = 1;
             var addOrder = _db.Orders.Add(order);
             _db.SaveChanges();
             return addOrder.Id;
@@ -135,6 +136,26 @@ namespace Models.Repository
             {
                 log.Error($"GetOrderInfors error: {ex.Message}");
                 return new List<OrderInformation>();
+            }
+        }
+
+        public void CancelOrder(long id)
+        {
+            try
+            {
+                var orderInDb = _db.Orders.Find(id);
+                if (orderInDb == null)
+                {
+                    return;
+                }
+
+                orderInDb.IdStatus = 5;
+                _db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                log.Error($"Error at CancelOrder: {ex.Message}");
+                return;
             }
         }
     }

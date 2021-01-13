@@ -68,7 +68,7 @@
                                 <div class="meta-info-item">
                                     <span class="item-info">
                                         <i class="zmdi zmdi-money-box"></i>
-                                        $@service.Price
+                                        @(service.Price.HasValue ? service.Price.Value.ToString("N0") + " vnđ" : "Contact us")
                                     </span>
                                 </div>
 

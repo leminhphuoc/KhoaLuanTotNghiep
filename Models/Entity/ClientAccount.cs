@@ -58,6 +58,8 @@
 
         [StringLength(1000)]
         public string Token { get; set; }
+
+        public DateTime CreatedDate { get; set; }
     }
 }
 

@@ -23,7 +23,7 @@
                     close: 'animated bounceOutRight' // Animate.css class names
                 },
                 type: 'success',
-                layout: 'topRight',
+                layout: 'topLeft',
                 theme: 'metroui',
                 timeout: 2000,
                 progressBar: true

@@ -23,6 +23,12 @@ namespace Models.Repository
         {
             try
             {
+                if(account == null)
+                {
+                    return 0;
+                }
+
+                account.CreatedDate = DateTime.Now;
                 var addedItem = _db.ClientAccounts.Add(account);
                 Db.SaveChanges();
                 return addedItem.Id;
@@ -178,6 +184,7 @@ namespace Models.Repository
                 }
 
                 account.IsPreMember = true;
+                account.CreatedDate = DateTime.Now;
                 var addedItem = _db.ClientAccounts.Add(account);
                 Db.SaveChanges();
                 return addedItem.Id;

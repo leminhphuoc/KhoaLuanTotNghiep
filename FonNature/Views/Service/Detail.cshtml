@@ -65,7 +65,7 @@
                 <div class="info-service">
                     <span class="item-info">
                         <i class="zmdi zmdi-money-box"></i>
-                        $@Model.Price
+                        @(Model.Price.HasValue ? Model.Price.Value.ToString("N0") + " vnđ" : "Contact us") 
                     </span>
                     <span class="item-info">
                         <i class="zmdi zmdi-alarm-check"></i>
@@ -75,7 +75,7 @@
                         @if (isLogin)
                         {
                             <button style="background-color:#28c8dB !important;" type="button" class="btn btn-primary btn-rounded"
-                                    onclick="window.location.href = '/booking';">
+                                    onclick="window.location.href = '/booking?serviceId=@Model.Id';">
                                 Book now
                             </button>
                         }

@@ -148,7 +148,7 @@
                                         <select id="IdStatus" name="IdStatus" class="form-control m-bot15">
                                             @if (!string.IsNullOrWhiteSpace(Model.PaymentMethod) && Model.PaymentMethod.Equals(Constant.Order.MoMoPaymentMethods))
                                             {
-                                                foreach (var item in Constant.MoMoOrderStatus)
+                                                foreach (var item in Constant.OrderStatus)
                                                 {
                                                     if (item.Key.Equals(Model.IdStatus))
                                                     {
