@@ -2059,6 +2059,7 @@
     <Content Include="Views\Membership\MyProfile.cshtml" />
     <Content Include="Views\Success\BookingSuccessPage.cshtml" />
     <Content Include="Views\Success\RegisterSuccess.cshtml" />
+    <Content Include="Views\Product\PaymentPaypal.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

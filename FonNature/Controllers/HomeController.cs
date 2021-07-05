@@ -28,6 +28,7 @@ namespace FonNature.Controllers
             ViewBag.bannerHome = _homeServices.GetBannerHome();
             ViewBag.aboutUs = _homeServices.GetAboutUs();
             ViewBag.benefits = _homeServices.GetBenefits();
+            ViewBag.contentCategories = _homeServices.GetContentCategories();
             if (seo != null)
             {
                 ViewBag.MetaTitle = seo.MetaTitle ?? string.Empty;

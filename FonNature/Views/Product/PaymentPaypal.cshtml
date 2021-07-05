@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "PaymentPaypal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Models.Entity.Order orderNeedPayment = ViewBag.orderNeedPayment;
+}
+@section jsFooter{
+    <script>
+        paypal.Buttons({
+            createOrder: function (data, actions) {
+                var amount = $('#paypal-button-container').data('amount')
+                var orderId = $('#paypal-button-container').data('orderId')
+                var roundAmount = Math.round(amount * 100) / 100
+                // This function sets up the details of the transaction, including the amount and line item details.
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: roundAmount
+                        },
+                        invoice_id: orderId
+                    }]
+                });
+            },
+            onApprove: function (data, actions) {
+                var orderId = $('#paypal-button-container').data('orderId')
+                const urlSearchParams = new URLSearchParams(window.location.search);
+                const params = Object.fromEntries(urlSearchParams.entries());
+                // This function captures the funds from the transaction.
+                return actions.order.capture().then(function (details) {
+                    $.ajax({
+                        url: "/Product/ConfirmPaypalPayment",
+                        data: {
+                            orderID: params.orderID },
+                        dataType: "json",
+                        type: "POST",
+                        success: function (res) {
+                            if (res) {
+                                if (res.isSuccess) {
+                                    window.location.href = "/Success/OrderSuccessPage?orderID=" + params.orderID;
+                                }
+                                else {
+                                    alert('System error!');
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+}
+<script src="https://www.paypal.com/sdk/js?client-id=Abv4vm1ob0jhsHaSWXFhjUX314qOaP1kvNWKTjCAg1i5DMAtKnkNDGDfLatfYxdW3DGoyzPYpyQcXiSJ">
+</script>
+<!-- Page Banner Section Start -->
+<div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
+    <div class="container">
+        <h1 class="main-title">
+            Payment Paypal
+        </h1>
+    </div>
+</div>
+<div style="margin-top:40px;" class="checkout-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50  pb-70 pb-lg-50 pb-md-40 pb-sm-30 pb-xs-20">
+    <div class="d-flex justify-content-center">
+        <h2>Please click button below for payment</h2>
+    </div>
+
+    <div style="margin-top:20px" class="d-flex justify-content-center">
+        <div data-orderId="@orderNeedPayment.Id" data-amount="@(orderNeedPayment.GrandTotal/23000)" id="paypal-button-container"></div>
+    </div>
+</div>

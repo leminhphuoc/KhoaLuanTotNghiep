@@ -5,13 +5,16 @@
     {
         isLogin = false;
     }
+
+    var isHomePage = "Home".Equals(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString());
+    var topNavColor = isHomePage ? "color: #FFFFFF !important" : "color: #000000 !important";
 }
 
 <div id="account-top-nav" class="dropdown">
     <!--Trigger-->
     @if (isLogin && Model != null)
     {
-        <a class="dropdown-toggle" style="color: #000000 !important" href="#" id="dropdownMenu2" data-toggle="dropdown"
+        <a class="dropdown-toggle" @topNavColor href="#" id="dropdownMenu2" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="true"><i class="fa fa-user-circle-o"></i> Hi! @(Model.FirstName + Model.LastName)</a>
         <div class="dropdown-menu dropdown-primary login-button-header">
             <a class="dropdown-item" href="/membership/myprofile#orders">My Orders</a>
@@ -22,7 +25,7 @@
     }
     else
     {
-        <a class="dropdown-toggle" style="color: #000000 !important" href="#" id="dropdownMenu2" data-toggle="dropdown"
+        <a class="dropdown-toggle" href="#" style="@topNavColor" id="dropdownMenu2" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="true"><i class="fa fa-user-circle-o"></i> Login</a>
         <!--Menu-->
         <div class="dropdown-menu dropdown-primary login-button-header">

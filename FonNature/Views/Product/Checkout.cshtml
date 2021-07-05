@@ -16,7 +16,7 @@
             }
             $.ajax({
                 url: "/Product/AddCart",
-                data: { data: JSON.stringify(cartItemsList), coupon: couponCode},
+                data: { data: JSON.stringify(cartItemsList), coupon: couponCode },
                 dataType: "json",
                 type: "POST",
                 success: function (res) {
@@ -62,14 +62,20 @@
 
         })
     </script>
+    <script>
+        paypal.Buttons().render('#paypal-button-container');
+        // This function displays Smart Payment Buttons on your web page.
+    </script>
 }
-@{ 
+@{
     var account = ViewBag.Account as ClientAccount;
     if (account == null)
     {
         return;
     }
 }
+<script src="https://www.paypal.com/sdk/js?client-id=Abv4vm1ob0jhsHaSWXFhjUX314qOaP1kvNWKTjCAg1i5DMAtKnkNDGDfLatfYxdW3DGoyzPYpyQcXiSJ">
+</script>
 <!-- Page Banner Section Start -->
 <div class="title-page" style="background-image: url(/Asset/Spa/images/title-page-01.jpg);">
     <div class="container">
@@ -178,12 +184,12 @@
                                         <div class="single-method">
                                             <input type="radio" id="payment_@Constant.Order.CODPaymentMethods" name="paymentMethod" value="@Constant.Order.CODPaymentMethods" checked>
                                             <label for="payment_@Constant.Order.CODPaymentMethods">Cash on Delivery</label>
-                                            <p data-method="@Constant.Order.CODPaymentMethods">Paymen when receive</p>
+                                            <p data-method="@Constant.Order.CODPaymentMethods">Payment when receive</p>
                                         </div>
                                         <div class="single-method">
-                                            <input type="radio" id="payment_@Constant.Order.MoMoPaymentMethods" name="paymentMethod" value="@Constant.Order.MoMoPaymentMethods">
-                                            <label for="payment_@Constant.Order.MoMoPaymentMethods">Momo</label>
-                                            <p data-method="@Constant.Order.MoMoPaymentMethods">Payment through MoMo</p>
+                                            <input type="radio" id="payment_@Constant.Order.PaypalPaymentMethod" name="paymentMethod" value="@Constant.Order.PaypalPaymentMethod" checked>
+                                            <label for="payment_@Constant.Order.PaypalPaymentMethod">Paypal</label>
+                                            <p data-method="@Constant.Order.PaypalPaymentMethod">Payment through paypal</p>
                                         </div>
                                         <div style="color:#FFFFFF !important" class="form-group">
                                             <div class="form-check pl-0">

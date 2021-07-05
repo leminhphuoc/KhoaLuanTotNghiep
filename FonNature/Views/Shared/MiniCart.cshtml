@@ -1,3 +1,7 @@
-﻿<div class="header-cart">
-    <a href="/product/CartPreview"><i class="fa fa-shopping-cart"></i><span hidden class="cartcounter"></span></a>
+﻿@{ 
+    var isHomePage = "Home".Equals(HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString());
+    var topNavColor = isHomePage ? "color: #FFFFFF !important" : "color: #000000 !important";
+}
+<div class="header-cart">
+    <a style="@topNavColor" href="/product/CartPreview"><i class="fa fa-shopping-cart"></i><span hidden class="cartcounter"></span></a>
 </div>

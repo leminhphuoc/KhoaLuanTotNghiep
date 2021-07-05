@@ -117,6 +117,11 @@ namespace FonNature.Services
             return _contentAdminRepository.GetListContent().Where(x => x.IsDisplayInHomePage).OrderByDescending(x => x.createdDate).ToList();
         }
 
+        public List<ContentCategory> GetContentCategories()
+        {
+            return _contentAdminRepository.GetContentCategories().ToList();
+        }
+
         public Banner GetBannerHome()
         {
             return _bannerRepository.GetList().FirstOrDefault(x => x.Location == (int)BannerLocation.Home);

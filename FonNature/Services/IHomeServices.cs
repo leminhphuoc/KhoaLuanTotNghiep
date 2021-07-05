@@ -25,5 +25,6 @@ namespace FonNature.Services
         About GetAboutUs();
         List<Benefit> GetBenefits();
         List<ServiceCategory> GetServiceCategories();
+        List<ContentCategory> GetContentCategories();
     }
 }

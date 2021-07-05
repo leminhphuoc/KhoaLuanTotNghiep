@@ -13,17 +13,17 @@ namespace Models.Model
         [JsonProperty("requestType")]
         public string RequestType { get; set; }
 
-        [JsonProperty("notifyUrl")]
-        public string NotifyUrl { get; set; }
+        [JsonProperty("ipnUrl")]
+        public string IpnUrl { get; set; }
 
-        [JsonProperty("returnUrl")]
-        public string ReturnUrl { get; set; }
+        [JsonProperty("redirectUrl")]
+        public string RedirectUrl { get; set; }
 
         [JsonProperty("orderId")]
         public string OrderId { get; set; }
 
         [JsonProperty("amount")]
-        public string Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("orderInfo")]
         public string OrderInfo { get; set; }

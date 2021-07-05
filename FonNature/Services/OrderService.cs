@@ -5,6 +5,7 @@ using Models.Repository;
 using System.Collections.Generic;
 using System.Web;
 using System.Linq;
+using System;
 
 namespace FonNature.Services
 {
@@ -100,7 +101,7 @@ namespace FonNature.Services
             }
 
             var config = _fileHandlerService.ReadJsonFile<EnvConfig>("/App_Config/configMomo.json");
-            var orderIdstring = config.Enviroment + " - " + orderId;
+            var orderIdstring = config.Enviroment + orderId;
             var amount = order.GrandTotal;
             
             var notifyurl = "https://webhook.site/23c22149-0cd9-4108-8228-44b20a93b8f7";
@@ -117,9 +118,20 @@ namespace FonNature.Services
                 notifyurl + "&extraData=" +
                 extraData;
 
+            var ipnUrl = "https://webhook.site/5e592244-d031-48fc-be99-033cf9b08c44";
+            string rawHashv2 = "accessKey=" +
+                Constant.Payment.MoMo.AccessCode + "&amount=" +
+                amount + "&extraData=" +
+                extraData + "&ipnUrl=" + ipnUrl + "&orderId=" +
+                orderIdstring + "&orderInfo=" +
+                orderInfo + "&partnerCode=" +
+                config.PartnerCode + "&redirectUrl=" + returnUrl + "&requestId=" +
+                "MM" + GenerateNumber() + "&requestType=" +
+                config.RequestType;
+
             MoMoSecurity crypto = new MoMoSecurity();
             //sign signature SHA256
-            var signature = crypto.signSHA256(rawHash, Constant.Payment.MoMo.SecrectKey);
+            var signature = crypto.signSHA256(rawHashv2, Constant.Payment.MoMo.SecrectKey);
             if (string.IsNullOrWhiteSpace(signature))
             {
                 return null;
@@ -129,19 +141,31 @@ namespace FonNature.Services
             var paymentRequest = new MomoPaymentRequest()
             {
                 AccessKey = config.AccessCode,
-                PartnerCode = config.PartnerCode,
-                RequestType = config.RequestType,
-                RequestId = orderId.ToString(),
-                OrderId = orderIdstring,
-                ReturnUrl = returnUrl,
-                NotifyUrl = notifyurl,
-                Amount = amount.ToString(),
+                Amount = (long)amount,
                 ExtraData = extraData,
+                OrderId = orderIdstring,
+                OrderInfo = orderInfo,
+                PartnerCode = config.PartnerCode,
+                RedirectUrl = returnUrl,
+                RequestId = "MM" + GenerateNumber(),
+                RequestType = config.RequestType,
                 Signature = signature,
-                OrderInfo = orderInfo
+                IpnUrl = ipnUrl
             };
 
             return _httpService.Post<MomoPaymentResponse>(config.RequestUrl, paymentRequest);
+        }
+
+        private string GenerateNumber()
+        {
+            var random = new Random();
+            var r = "";
+            for (int i = 1; i < 11; i++)
+            {
+                r += random.Next(0, 13).ToString();
+            }
+
+            return r;
         }
     }
 }

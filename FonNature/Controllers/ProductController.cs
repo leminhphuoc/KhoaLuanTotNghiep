@@ -128,7 +128,7 @@ namespace FonNature.Controllers
         {
             ViewBag.Account = Session[Constant.Membership.AccountSession];
 
-            if(TempData["PaymentError"] != null)
+            if (TempData["PaymentError"] != null)
             {
                 ModelState.AddModelError("", TempData["PaymentError"].ToString());
             }
@@ -140,7 +140,7 @@ namespace FonNature.Controllers
         public ActionResult Checkout(ShippingAddress shippingAddress, string paymentMethod)
         {
             var account = Session[Constant.Membership.AccountSession] as ClientAccount;
-            if(account == null)
+            if (account == null)
             {
                 return Redirect("/");
             }
@@ -151,9 +151,9 @@ namespace FonNature.Controllers
                 if (cartItem == null && shippingAddress == null) return View(shippingAddress);
                 var orderID = _orderServices.CreateOrder(cartItem as List<ProductInCart>, account.Id, shippingAddress, paymentMethod, couponCode);
 
-                var returnUrl = Constant.HostUrl + "/product/ConfirmPayment";
+                var returnUrl = Constant.HostUrl + "product/ConfirmPayment";
 
-                if(string.IsNullOrWhiteSpace(paymentMethod))
+                if (string.IsNullOrWhiteSpace(paymentMethod))
                 {
                     ModelState.AddModelError("", "Please select payment method");
                 }
@@ -164,10 +164,14 @@ namespace FonNature.Controllers
                         var result = _orderServices.PaymentByMomo(orderID, returnUrl);
                         if (result.ErrorCode.Equals("0"))
                         {
-                            _orderRepository.UpdateOrderStatus(orderID,Constant.OrderStatus.FirstOrDefault(x=>x.Key.Equals(2)).Key);
+                            _orderRepository.UpdateOrderStatus(orderID, Constant.OrderStatus.FirstOrDefault(x => x.Key.Equals(2)).Key);
                             return Redirect(result.PayUrl);
                         }
                         ModelState.AddModelError("", result.ErrorCode + " - " + result.Message);
+                    }
+                    if (paymentMethod.Equals(Constant.Order.PaypalPaymentMethod))
+                    {
+                        return RedirectToAction("PaymentPaypal", new { orderID = orderID });
                     }
                     else
                     {
@@ -182,16 +186,9 @@ namespace FonNature.Controllers
         [HttpGet]
         public ActionResult ConfirmPayment(MomoPaymentResponse response)
         {
-            if(response.ErrorCode.Equals("0"))
+            if (response.ErrorCode.Equals("0"))
             {
-                //var currentSignature = Session[Constant.SignatureSession];
 
-                //if(!currentSignature.Equals(response.Signature))
-                //{
-                //    TempData["PaymentError"] = "101: Invalid request";
-                //    return RedirectToAction("checkout");
-                //}
-                    
                 return RedirectToAction("OrderSuccessPage", "Success", new { orderID = response.OrderId });
             }
 
@@ -200,10 +197,22 @@ namespace FonNature.Controllers
         }
 
         [HttpPost]
+        public JsonResult ConfirmPaypalPayment(long orderID)
+        {
+            var isSuccess = _orderRepository.UpdateOrderStatus(orderID, (int)Models.Model.Enum.OrderStatus.PaymentSuccess);
+
+            return Json(new
+            {
+                isSuccess = isSuccess
+            }
+           );
+        }
+
+        [HttpPost]
         public JsonResult GetCoupon(string code)
         {
             var couponCode = _couponCodeRepository.GetCouponCode(code);
-            if(couponCode == null)
+            if (couponCode == null)
             {
                 return Json(new
                 {
@@ -225,7 +234,7 @@ namespace FonNature.Controllers
         public JsonResult GetOrder(long orderId)
         {
             var order = _orderRepository.GetOrder(orderId);
-            if(order ==null)
+            if (order == null)
             {
                 return Json(new
                 {
@@ -238,6 +247,19 @@ namespace FonNature.Controllers
                 isExist = true,
                 result = order
             });
+
+
+
+        }
+
+        [HttpGet]
+        public ActionResult PaymentPaypal(long orderID)
+        {
+            if(orderID != 0)
+            {
+                ViewBag.orderNeedPayment = _orderRepository.GetOrder(orderID);
+            }
+            return View();
         }
     }
 }

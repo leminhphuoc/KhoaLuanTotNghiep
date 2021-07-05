@@ -3,8 +3,9 @@
     public enum OrderStatus
     {
         OrderSuccess = 1,
-        Shipping = 2,
-        ReceivedAndPaid = 3,
-        Cancel = 4
+        PaymentSuccess = 2,
+        Shipping = 3,
+        PaidAndReceived = 4,
+        Canceled = 5
     }
 }
