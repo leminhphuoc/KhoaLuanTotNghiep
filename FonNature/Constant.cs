@@ -5,7 +5,7 @@ namespace FonNature
 {
     public struct Constant
     {
-        public const string HostUrl = "http://fondekao.azurewebsites.net";
+        public const string HostUrl = "http://localhost:56080/";
         public static readonly string Cart_Sesion = "Cart_Session";
         public static readonly string SignatureSession = "Signature_Session";
         public static readonly List<string> whiteListWebsite = new List<string>()
@@ -61,6 +61,7 @@ namespace FonNature
             public const string CODPaymentMethods = "COD";
             public const string BankTransferPaymentMethods = "BankTransfer";
             public const string MoMoPaymentMethods = "MoMo";
+            public const string PaypalPaymentMethod = "Paypal";
         }
 
         public struct Payment
